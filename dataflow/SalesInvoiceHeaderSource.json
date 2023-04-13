@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Invoice_Header_DF",
+	"name": "SalesInvoiceHeaderSource",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -43,9 +43,18 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SalesInvoiceHeaderSource",
-				"SalesInvoiceHeaderSource derive(column1 = ERROR_FUNCTION(''),",
-				"          column2 = ERROR_FUNCTION(''),",
-				"          column3 = ERROR_FUNCTION('')) ~> DataCleaning"
+				"SalesInvoiceHeaderSource derive(InvoiceNo = toString(iifNull(InvoiceNo, \"None\", InvoiceNo)),",
+				"          Excise_InvoiceNo = toString(iifNull(Excise_InvoiceNo, \"None\", Excise_InvoiceNo)),",
+				"          Customer_No = toString(iifNull(Customer_No, \"None\", Customer_No)),",
+				"          Posted_CustomerCategory = toString(iifNull(Posted_CustomerCategory, \"None\", Posted_CustomerCategory)),",
+				"          {Order Date} = toTimestamp({Order Date},'dd-MM-yyyy hh:mm:ss a','UTC'),",
+				"          {Posting Date} = toTimestamp({Posting Date},'dd-MM-yyyy hh:mm:ss a','UTC'),",
+				"          DACommSalesPerson = toString(iifNull(DACommSalesPerson, \"None\", DACommSalesPerson)),",
+				"          {Route Code} = toString(iifNull({Route Code}, \"None\", {Route Code})),",
+				"          {Shortcut Dimension 1 Code} = toString(iifNull({Shortcut Dimension 1 Code}, \"None\",{Shortcut Dimension 1 Code})),",
+				"          {Shortcut Dimension 2 Code} = toString(iifNull({Shortcut Dimension 2 Code}, \"None\",{Shortcut Dimension 2 Code})),",
+				"          {Order No_} = toString(iifNull({Order No_}, \"None\",{Order No_})),",
+				"          {Vehicle Type} = toString(iifNull({Vehicle Type}, \"None\",{Vehicle Type}))) ~> DataCleaning"
 			]
 		}
 	}
