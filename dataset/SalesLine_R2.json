@@ -1,0 +1,173 @@
+{
+	"name": "SalesLine_R2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SalesLine_R2.csv",
+				"folderPath": "goa-csv",
+				"container": "raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "InvoiceNo",
+				"type": "String"
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Amount",
+				"type": "String"
+			},
+			{
+				"name": "Tax Amount",
+				"type": "String"
+			},
+			{
+				"name": "Amount To Customer",
+				"type": "String"
+			},
+			{
+				"name": "Document Date",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "No_",
+				"type": "String"
+			},
+			{
+				"name": "SLineNo",
+				"type": "String"
+			},
+			{
+				"name": "Location Code",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Date",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Description 2",
+				"type": "String"
+			},
+			{
+				"name": "Unit of Measure",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Quantity (Base)",
+				"type": "String"
+			},
+			{
+				"name": "Qty_ per Unit of Measure",
+				"type": "String"
+			},
+			{
+				"name": "Discount Structure Code",
+				"type": "String"
+			},
+			{
+				"name": "Fat Catagory",
+				"type": "String"
+			},
+			{
+				"name": "Unit Price",
+				"type": "String"
+			},
+			{
+				"name": "Unit Cost (LCY)",
+				"type": "String"
+			},
+			{
+				"name": "Unit of Measure Code",
+				"type": "String"
+			},
+			{
+				"name": "ItemCategry",
+				"type": "String"
+			},
+			{
+				"name": "Free Supply",
+				"type": "String"
+			},
+			{
+				"name": "Freight Discount",
+				"type": "String"
+			},
+			{
+				"name": "Discount Structure Amount",
+				"type": "String"
+			},
+			{
+				"name": "Tax Area Code",
+				"type": "String"
+			},
+			{
+				"name": "Conversion Cost",
+				"type": "String"
+			},
+			{
+				"name": "PVC_PPR Cost",
+				"type": "String"
+			},
+			{
+				"name": "Scheme Reason",
+				"type": "String"
+			},
+			{
+				"name": "Charges To Customer",
+				"type": "String"
+			},
+			{
+				"name": "Tax Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Excise Amount",
+				"type": "String"
+			},
+			{
+				"name": "Non-Dispatch Reason",
+				"type": "String"
+			},
+			{
+				"name": "Last Modified On",
+				"type": "String"
+			},
+			{
+				"name": "SIL_Key",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -1,0 +1,101 @@
+{
+	"name": "SalesHeader_R2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SalesHeader_R2.csv",
+				"folderPath": "goa-csv",
+				"container": "raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "InvoiceNo",
+				"type": "String"
+			},
+			{
+				"name": "Excise_InvoiceNo",
+				"type": "String"
+			},
+			{
+				"name": "Customer_No",
+				"type": "String"
+			},
+			{
+				"name": "Posted_CustomerCategory",
+				"type": "String"
+			},
+			{
+				"name": "Order Date",
+				"type": "String"
+			},
+			{
+				"name": "Posting Date",
+				"type": "String"
+			},
+			{
+				"name": "DACommSalesPerson",
+				"type": "String"
+			},
+			{
+				"name": "Route Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "String"
+			},
+			{
+				"name": "Order No_",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Address",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Address 2",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to City",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Code",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Name",
+				"type": "String"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Last Modified On",
+				"type": "String"
+			}
+		]
+	}
+}
