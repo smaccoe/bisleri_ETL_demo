@@ -1,0 +1,121 @@
+{
+	"name": "Item_Master",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Item_R2.csv",
+				"folderPath": "goa-csv",
+				"container": "raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "String"
+			},
+			{
+				"name": "Pack Title",
+				"type": "String"
+			},
+			{
+				"name": "No_ 2",
+				"type": "String"
+			},
+			{
+				"name": "ItemName",
+				"type": "String"
+			},
+			{
+				"name": "ItemName2",
+				"type": "String"
+			},
+			{
+				"name": "Base Unit of Measure",
+				"type": "String"
+			},
+			{
+				"name": "Item Category Code",
+				"type": "String"
+			},
+			{
+				"name": "Product Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Pack Size Information",
+				"type": "String"
+			},
+			{
+				"name": "Pack Size",
+				"type": "String"
+			},
+			{
+				"name": "2Way Item",
+				"type": "String"
+			},
+			{
+				"name": "Pcs Per Case",
+				"type": "String"
+			},
+			{
+				"name": "Jar Deposit",
+				"type": "String"
+			},
+			{
+				"name": "Selling Price",
+				"type": "String"
+			},
+			{
+				"name": "Pack Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Item Class",
+				"type": "String"
+			},
+			{
+				"name": "Short Name",
+				"type": "String"
+			},
+			{
+				"name": "Container Type",
+				"type": "String"
+			},
+			{
+				"name": "FG Category",
+				"type": "String"
+			},
+			{
+				"name": "Packaging Type",
+				"type": "String"
+			},
+			{
+				"name": "SKU Category",
+				"type": "String"
+			},
+			{
+				"name": "Pack Title Desc",
+				"type": "String"
+			},
+			{
+				"name": "NEW_ItemNo",
+				"type": "String"
+			},
+			{
+				"name": "OLD",
+				"type": "String"
+			}
+		]
+	}
+}

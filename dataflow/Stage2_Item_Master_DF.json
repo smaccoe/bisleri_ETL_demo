@@ -1,0 +1,50 @@
+{
+	"name": "Stage2_Item_Master_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Item_Master",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          No_ as string,",
+				"          {Pack Title} as string,",
+				"          {No_ 2} as string,",
+				"          ItemName as string,",
+				"          ItemName2 as string,",
+				"          {Base Unit of Measure} as string,",
+				"          {Item Category Code} as string,",
+				"          {Product Group Code} as string,",
+				"          {Pack Size Information} as string,",
+				"          {Pack Size} as string,",
+				"          {2Way Item} as string,",
+				"          {Pcs Per Case} as string,",
+				"          {Jar Deposit} as string,",
+				"          {Selling Price} as string,",
+				"          {Pack Group Code} as string,",
+				"          {Item Class} as string,",
+				"          {Short Name} as string,",
+				"          {Container Type} as string,",
+				"          {FG Category} as string,",
+				"          {Packaging Type} as string,",
+				"          {SKU Category} as string,",
+				"          {Pack Title Desc} as string,",
+				"          NEW_ItemNo as string,",
+				"          OLD as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1"
+			]
+		}
+	}
+}
