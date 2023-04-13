@@ -1,12 +1,12 @@
 {
-	"name": "location_masterdf",
+	"name": "Stage2_Location_Master_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "location_master",
+						"referenceName": "Location_Master",
 						"type": "DatasetReference"
 					},
 					"name": "locationmastersource"

@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "location_masterdf",
+						"referenceName": "Stage2_Location_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

@@ -1,5 +1,5 @@
 {
-	"name": "location_master",
+	"name": "Location_Master",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "raw_data",
