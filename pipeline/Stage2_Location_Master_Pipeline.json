@@ -1,5 +1,5 @@
 {
-	"name": "location_master_pipeline",
+	"name": "Stage2_Location_Master_Pipeline",
 	"properties": {
 		"activities": [
 			{
