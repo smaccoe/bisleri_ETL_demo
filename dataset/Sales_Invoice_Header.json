@@ -1,5 +1,5 @@
 {
-	"name": "SalesHeader_R2",
+	"name": "Sales_Invoice_Header",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "raw_data",

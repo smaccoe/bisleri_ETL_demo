@@ -1,5 +1,5 @@
 {
-	"name": "SalesLine_R2",
+	"name": "Sales_Invoice_Line",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "raw_data",
