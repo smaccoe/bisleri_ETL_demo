@@ -1,0 +1,9 @@
+{
+	"name": "TeamComputers",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "eb355ed2-a97f-4327-a096-5df73c57f23c",
+		"tenantId": "45f95e3a-b725-490d-83f1-a8c18a487a7a"
+	}
+}
