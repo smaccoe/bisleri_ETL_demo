@@ -1,0 +1,145 @@
+{
+	"name": "Sales_Cr_Memo_Line",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SalesCR_Line_R2.csv",
+				"folderPath": "goa-csv",
+				"container": "raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SR_DocNo",
+				"type": "String"
+			},
+			{
+				"name": "RRCustomer_No",
+				"type": "String"
+			},
+			{
+				"name": "RType",
+				"type": "String"
+			},
+			{
+				"name": "Line No_",
+				"type": "String"
+			},
+			{
+				"name": "RItemCat",
+				"type": "String"
+			},
+			{
+				"name": "RITEMNO",
+				"type": "String"
+			},
+			{
+				"name": "RFreeSupply",
+				"type": "String"
+			},
+			{
+				"name": "RSchemeReason",
+				"type": "String"
+			},
+			{
+				"name": "RTUOM",
+				"type": "String"
+			},
+			{
+				"name": "RDiscount_Structure_Amount",
+				"type": "String"
+			},
+			{
+				"name": "Unit of Measure",
+				"type": "String"
+			},
+			{
+				"name": "RDIS_Struct_Code",
+				"type": "String"
+			},
+			{
+				"name": "RFat_Catagory",
+				"type": "String"
+			},
+			{
+				"name": "RAmountToCustomer",
+				"type": "String"
+			},
+			{
+				"name": "RAmount",
+				"type": "String"
+			},
+			{
+				"name": "RTaxAmount",
+				"type": "String"
+			},
+			{
+				"name": "RTaxAreaCode",
+				"type": "String"
+			},
+			{
+				"name": "RExciseAmount",
+				"type": "String"
+			},
+			{
+				"name": "ReturnQTY",
+				"type": "String"
+			},
+			{
+				"name": "ReturnQTYBASE",
+				"type": "String"
+			},
+			{
+				"name": "ReturnQTYUOM",
+				"type": "String"
+			},
+			{
+				"name": "RUnitPrice",
+				"type": "String"
+			},
+			{
+				"name": "RRateDiff_ItemNo",
+				"type": "String"
+			},
+			{
+				"name": "RDescription",
+				"type": "String"
+			},
+			{
+				"name": "RChargesToCustomer",
+				"type": "String"
+			},
+			{
+				"name": "R_RefCheckIn_SlipLineNo",
+				"type": "String"
+			},
+			{
+				"name": "R_RefCheckIn_SlipNo",
+				"type": "String"
+			},
+			{
+				"name": "Return Reason Code",
+				"type": "String"
+			},
+			{
+				"name": "Last Modified On",
+				"type": "String"
+			},
+			{
+				"name": "CRL_Key",
+				"type": "String"
+			}
+		]
+	}
+}
