@@ -1,0 +1,45 @@
+{
+	"name": "Stage2_Sales_Invoice_Header_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_Invoice_Header",
+						"type": "DatasetReference"
+					},
+					"name": "SalesInvoiceHeaderSource"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          InvoiceNo as string,",
+				"          Excise_InvoiceNo as string,",
+				"          Customer_No as string,",
+				"          Posted_CustomerCategory as string,",
+				"          {Order Date} as string,",
+				"          {Posting Date} as string,",
+				"          DACommSalesPerson as string,",
+				"          {Route Code} as string,",
+				"          {Shortcut Dimension 1 Code} as string,",
+				"          {Shortcut Dimension 2 Code} as string,",
+				"          {Order No_} as string,",
+				"          {Vehicle Type} as string,",
+				"          {Ship-to Address} as string,",
+				"          {Ship-to Address 2} as string,",
+				"          {Ship-to City} as string,",
+				"          {Ship-to Code} as string,",
+				"          {Ship-to Name} as string,",
+				"          {Customer Group Code} as string,",
+				"          {Last Modified On} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesInvoiceHeaderSource"
+			]
+		}
+	}
+}
