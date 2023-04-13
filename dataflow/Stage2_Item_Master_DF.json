@@ -9,7 +9,7 @@
 						"referenceName": "Item_Master",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "itemmastersource"
 				}
 			],
 			"sinks": [],
@@ -43,7 +43,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> itemmastersource"
 			]
 		}
 	}
