@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "DataCleaning"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          InvoiceNo as string,",
@@ -38,7 +42,10 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesInvoiceHeaderSource"
+				"     ignoreNoFilesFound: false) ~> SalesInvoiceHeaderSource",
+				"SalesInvoiceHeaderSource derive(column1 = ERROR_FUNCTION(''),",
+				"          column2 = ERROR_FUNCTION(''),",
+				"          column3 = ERROR_FUNCTION('')) ~> DataCleaning"
 			]
 		}
 	}
