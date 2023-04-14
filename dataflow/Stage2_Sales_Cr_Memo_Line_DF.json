@@ -1,0 +1,93 @@
+{
+	"name": "Stage2_Sales_Cr_Memo_Line_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_Cr_Memo_Line",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "DataCleaning"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     parameter1 as string",
+				"}",
+				"source(output(",
+				"          SR_DocNo as string,",
+				"          RRCustomer_No as string,",
+				"          RType as string,",
+				"          {Line No_} as string,",
+				"          RItemCat as string,",
+				"          RITEMNO as string,",
+				"          RFreeSupply as string,",
+				"          RSchemeReason as string,",
+				"          RTUOM as string,",
+				"          RDiscount_Structure_Amount as string,",
+				"          {Unit of Measure} as string,",
+				"          RDIS_Struct_Code as string,",
+				"          RFat_Catagory as string,",
+				"          RAmountToCustomer as string,",
+				"          RAmount as string,",
+				"          RTaxAmount as string,",
+				"          RTaxAreaCode as string,",
+				"          RExciseAmount as string,",
+				"          ReturnQTY as string,",
+				"          ReturnQTYBASE as string,",
+				"          ReturnQTYUOM as string,",
+				"          RUnitPrice as string,",
+				"          RRateDiff_ItemNo as string,",
+				"          RDescription as string,",
+				"          RChargesToCustomer as string,",
+				"          R_RefCheckIn_SlipLineNo as string,",
+				"          R_RefCheckIn_SlipNo as string,",
+				"          {Return Reason Code} as string,",
+				"          {Last Modified On} as string,",
+				"          CRL_Key as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(SR_DocNo = toString(iifNull(SR_DocNo, \"None\", SR_DocNo)),",
+				"          RRCustomer_No = toString(iifNull(RRCustomer_No, \"None\", RRCustomer_No)),",
+				"          RType = toInteger(RType),",
+				"          {Line No_} = toInteger({Line No_}),",
+				"          RItemCat = toString(iifNull(RItemCat, \"None\", RItemCat)),",
+				"          RITEMNO = toString(iifNull(RITEMNO, \"None\", RITEMNO)),",
+				"          RFreeSupply = toInteger(RFreeSupply),",
+				"          RSchemeReason = toString(iifNull(RSchemeReason, \"None\", RSchemeReason)),",
+				"          RTUOM = toString(iifNull(RTUOM, \"None\", RTUOM)),",
+				"          RDiscount_Structure_Amount = toInteger(RDiscount_Structure_Amount),",
+				"          {Unit of Measure} = toString(iifNull({Unit of Measure}, \"None\", {Unit of Measure})),",
+				"          RDIS_Struct_Code = toString(iifNull(RDIS_Struct_Code, \"None\", RDIS_Struct_Code)),",
+				"          RFat_Catagory = toInteger(RFat_Catagory),",
+				"          RAmountToCustomer = ERROR_FUNCTION(''),",
+				"          RAmount = ERROR_FUNCTION(''),",
+				"          RTaxAmount = toInteger(RTaxAmount),",
+				"          RTaxAreaCode = ERROR_FUNCTION(''),",
+				"          RExciseAmount = toInteger(RExciseAmount),",
+				"          ReturnQTY = ERROR_FUNCTION(''),",
+				"          ReturnQTYBASE = ERROR_FUNCTION(''),",
+				"          ReturnQTYUOM = ERROR_FUNCTION(''),",
+				"          RUnitPrice = ERROR_FUNCTION(''),",
+				"          RRateDiff_ItemNo = ERROR_FUNCTION(''),",
+				"          RDescription = ERROR_FUNCTION(''),",
+				"          RChargesToCustomer = ERROR_FUNCTION(''),",
+				"          R_RefCheckIn_SlipLineNo = ERROR_FUNCTION(''),",
+				"          R_RefCheckIn_SlipNo = ERROR_FUNCTION(''),",
+				"          {Return Reason Code} = ERROR_FUNCTION(''),",
+				"          {Last Modified On} = ERROR_FUNCTION(''),",
+				"          CRL_Key = ERROR_FUNCTION('')) ~> DataCleaning"
+			]
+		}
+	}
+}
