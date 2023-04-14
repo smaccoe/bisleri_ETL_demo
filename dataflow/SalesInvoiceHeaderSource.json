@@ -18,7 +18,11 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "SalesInvoiceLine"
+					"name": "SalesInvoiceLine",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -29,7 +33,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     Container_Name as string ('curated-data'),",
-				"     Folder_Name as string ('Sales Invoice Header')",
+				"     Folder_Name as string ('Sales Invoice')",
 				"}",
 				"source(output(",
 				"          InvoiceNo as string,",
