@@ -11,8 +11,8 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "SalesHeader_R2.csv",
-				"folderPath": "goa-csv",
-				"container": "raw-data"
+				"folderPath": "Transaction",
+				"container": "primary-sales-raw-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
