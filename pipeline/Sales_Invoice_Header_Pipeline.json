@@ -1,5 +1,5 @@
 {
-	"name": "Sales_Invoice_Header",
+	"name": "Sales_Invoice_Header_Pipeline",
 	"properties": {
 		"activities": [
 			{
