@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "Stage2_Item_Master_Pipeline",
 	"properties": {
 		"activities": [
 			{

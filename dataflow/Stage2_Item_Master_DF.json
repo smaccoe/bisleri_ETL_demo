@@ -18,7 +18,11 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "itemmastersink"
+					"name": "itemmastersink",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
