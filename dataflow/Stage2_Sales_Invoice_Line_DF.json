@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
 					"name": "SalesInvoiceLineSink"
 				}
 			],
@@ -85,12 +89,12 @@
 				"          Description2 = {Description 2},",
 				"          Unit_of_Measure = {Unit of Measure},",
 				"          Quantity,",
-				"          {Quantity(Base)} = {Quantity (Base)},",
+				"          Quantity_Base = {Quantity (Base)},",
 				"          Qty_per_Unit_of_Measure = {Qty_ per Unit of Measure},",
 				"          Discount_Structure_Code = {Discount Structure Code},",
 				"          Fat_Catagory = {Fat Catagory},",
 				"          Unit_Price = {Unit Price},",
-				"          {Unit_Cost_(LCY)} = {Unit Cost (LCY)},",
+				"          Unit_Cost_LCY = {Unit Cost (LCY)},",
 				"          Unit_of_Measure_Code = {Unit of Measure Code},",
 				"          ItemCategry,",
 				"          Free_Supply = {Free Supply},",
@@ -126,12 +130,12 @@
 				"          Description2 = iifNull(Description2,toString(null())),",
 				"          Unit_of_Measure = iifNull(Unit_of_Measure,toString(null())),",
 				"          Quantity = toDouble(Quantity),",
-				"          {Quantity(Base)} = toDouble({Quantity(Base)}),",
+				"          Quantity_Base = toDouble(Quantity_Base),",
 				"          Qty_per_Unit_of_Measure = toDouble(Qty_per_Unit_of_Measure),",
 				"          Discount_Structure_Code = iifNull(Discount_Structure_Code,toString(null())),",
 				"          Fat_Catagory = toInteger(Fat_Catagory),",
 				"          Unit_Price = toDouble(Unit_Price),",
-				"          {Unit_Cost_(LCY)} = toDouble({Unit_Cost_(LCY)}),",
+				"          Unit_Cost_LCY = toDouble(Unit_Cost_LCY),",
 				"          Unit_of_Measure_Code = iifNull(Unit_of_Measure_Code,toString(null())),",
 				"          ItemCategry = iifNull(ItemCategry,toString(null())),",
 				"          Free_Supply = toInteger(Free_Supply),",
@@ -150,6 +154,20 @@
 				"          Site = toString(null())) ~> Cleaning",
 				"Cleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'curated-data',",
+				"     folderPath: 'Sales_Invoice/Sales_Invoice_Line',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SalesInvoiceLineSink"
 			]
