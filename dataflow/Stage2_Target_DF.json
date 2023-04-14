@@ -27,10 +27,10 @@
 			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "columnrename"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "datacleaning"
 				}
 			],
 			"scriptLines": [
@@ -70,8 +70,8 @@
 				"          Last_Modified = {Last Modified}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
+				"     skipDuplicateMapOutputs: true) ~> columnrename",
+				"columnrename derive(Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
 				"          Customer_No_ = iifNull(Customer_No_, toString(null())),",
 				"          End_Date = toTimestamp(End_Date, 'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          Item_No_ = iifNull(Item_No_, toString(null())),",
@@ -83,8 +83,8 @@
 				"          DLP_Target_Qty = toInteger(iifNull(DLP_Target_Qty, toString(null()))),",
 				"          Year = toInteger(iifNull(Year, toString(null()))),",
 				"          Last_Modified = toTimestamp({Last_Modified}, 'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
-				"          Site = toString(null())) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"          Site = toString(null())) ~> datacleaning",
+				"datacleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: ($Contanier_Name),",
