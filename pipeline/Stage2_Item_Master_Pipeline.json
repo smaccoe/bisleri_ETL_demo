@@ -1,0 +1,36 @@
+{
+	"name": "Stage2_Item_Master_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stage2_Item_Master_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage2_Item_Master_DF",
+						"type": "DataFlowReference",
+						"parameters": {
+							"Contanier_Name": "'curated-data'",
+							"Folder_Name": "'Item_Master'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
