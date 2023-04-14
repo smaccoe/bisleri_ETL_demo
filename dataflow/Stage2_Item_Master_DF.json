@@ -18,15 +18,15 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "itemmastersink"
 				}
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn"
+					"name": "datacleaning"
 				},
 				{
-					"name": "select1"
+					"name": "columnrename"
 				}
 			],
 			"scriptLines": [
@@ -63,15 +63,15 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> itemmastersource",
-				"select1 derive(No_ = iifNull(No_, toString(null())),",
+				"columnrename derive(No_ = iifNull(No_, toString(null())),",
 				"          Pack_Title = iifNull(Pack_Title, toString(null())),",
-				"          {No_ 2} = iifNull({No_ 2}, toString(null())),",
+				"          No_2 = iifNull(No_2, toString(null())),",
 				"          ItemName = iifNull(ItemName, toString(null()))\r",
 				"\r",
 				",",
 				"          ItemName2 = iifNull(ItemName2, toString(null())),",
 				"          Base_Unit_of_Measure = iifNull(Base_Unit_of_Measure, toString(null())),",
-				"          {Item_Categor_ Code} = iifNull({Item_Categor_ Code}, toString(null())),",
+				"          Item_Categor_Code = iifNull(Item_Categor_Code, toString(null())),",
 				"          Product_Group_Code = iifNull(Product_Group_Code, toString(null())),",
 				"          Pack_Size_Information = toInteger(iifNull(Pack_Size_Information, toString(null()))),",
 				"          Pack_Size = iifNull(Pack_Size, toString(null())),",
@@ -89,15 +89,15 @@
 				"          Pack_Title_Desc = iifNull(Pack_Title_Desc, toString(null())),",
 				"          NEW_ItemNo = iifNull(NEW_ItemNo, toString(null())),",
 				"          OLD = toInteger(iifNull(OLD, toString(null()))),",
-				"          Site = toString(null())) ~> derivedColumn",
+				"          Site = toString(null())) ~> datacleaning",
 				"itemmastersource select(mapColumn(",
 				"          No_,",
 				"          Pack_Title = {Pack Title},",
-				"          {No_ 2},",
+				"          No_2 = {No_ 2},",
 				"          ItemName,",
 				"          ItemName2,",
 				"          Base_Unit_of_Measure = {Base Unit of Measure},",
-				"          {Item_Categor_ Code} = {Item Category Code},",
+				"          Item_Categor_Code = {Item Category Code},",
 				"          Product_Group_Code = {Product Group Code},",
 				"          Pack_Size_Information = {Pack Size Information},",
 				"          Pack_Size = {Pack Size},",
@@ -117,8 +117,8 @@
 				"          OLD",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"derivedColumn sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> columnrename",
+				"datacleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: ($Contanier_Name),",
@@ -135,7 +135,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> itemmastersink"
 			]
 		}
 	}
