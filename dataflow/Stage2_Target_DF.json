@@ -12,7 +12,19 @@
 					"name": "targetsource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "targetsink",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -61,15 +73,35 @@
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 derive(Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
 				"          Customer_No_ = iifNull(Customer_No_, toString(null())),",
-				"          End_Date = toTimestamp({End_Date}, 'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          End_Date = toTimestamp(End_Date, 'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          Item_No_ = iifNull(Item_No_, toString(null())),",
 				"          Item_Unit_of_Measure = iifNull(Item_Unit_of_Measure, toString(null())),",
 				"          Month = toInteger(iifNull(Month, toString(null()))),",
 				"          T_ROUTE = toString(null()),",
+				"          Start_Date = toTimestamp({Start_Date}, 'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          Target_Qty = toInteger(iifNull(Target_Qty, toString(null()))),",
 				"          DLP_Target_Qty = toInteger(iifNull(DLP_Target_Qty, toString(null()))),",
 				"          Year = toInteger(iifNull(Year, toString(null()))),",
-				"          Site = toString(null())) ~> derivedColumn1"
+				"          Last_Modified = toTimestamp({Last_Modified}, 'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          Site = toString(null())) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> targetsink"
 			]
 		}
 	}
