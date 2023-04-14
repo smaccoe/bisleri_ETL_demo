@@ -1,0 +1,165 @@
+{
+	"name": "Sales_Order_Line",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "primary_raw_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Sales_Order_Line.csv",
+				"folderPath": "Transaction",
+				"fileSystem": "primary-sales-raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SO_BillNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Bill_CustomerNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Completely_Shipped",
+				"type": "String"
+			},
+			{
+				"name": "SO_DocumentDate",
+				"type": "String"
+			},
+			{
+				"name": "SO_DocumentNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_DocType",
+				"type": "String"
+			},
+			{
+				"name": "SO_FreeSupply",
+				"type": "String"
+			},
+			{
+				"name": "SO_ItemCategory",
+				"type": "String"
+			},
+			{
+				"name": "SO_ItemSubCategory",
+				"type": "String"
+			},
+			{
+				"name": "SO_LineNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Location",
+				"type": "String"
+			},
+			{
+				"name": "SO_ItemNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Item_Name",
+				"type": "String"
+			},
+			{
+				"name": "SO_OrderQty",
+				"type": "String"
+			},
+			{
+				"name": "SO_OrderUOM",
+				"type": "String"
+			},
+			{
+				"name": "SO_PackSize",
+				"type": "String"
+			},
+			{
+				"name": "SO_Qty_Shp_Not_INV",
+				"type": "String"
+			},
+			{
+				"name": "SO_Qty_To_INV",
+				"type": "String"
+			},
+			{
+				"name": "SO_Qty_To_Ship",
+				"type": "String"
+			},
+			{
+				"name": "SO_Qty",
+				"type": "String"
+			},
+			{
+				"name": "SO_Qty_Inv",
+				"type": "String"
+			},
+			{
+				"name": "SO_Qty_Shipped",
+				"type": "String"
+			},
+			{
+				"name": "SO_Route_SalesNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Amt_To_Customer",
+				"type": "String"
+			},
+			{
+				"name": "SO_SchemeReason",
+				"type": "String"
+			},
+			{
+				"name": "SO_SellingPrice",
+				"type": "String"
+			},
+			{
+				"name": "SO_Non_DispatchReason",
+				"type": "String"
+			},
+			{
+				"name": "SO_Blanket_OrderNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Branch",
+				"type": "String"
+			},
+			{
+				"name": "SO_Reason_Code",
+				"type": "String"
+			},
+			{
+				"name": "SO_Order_Placed",
+				"type": "String"
+			},
+			{
+				"name": "SO_Order_PlacedBy",
+				"type": "String"
+			},
+			{
+				"name": "SO_Order_Placed_On",
+				"type": "String"
+			},
+			{
+				"name": "SO_Dispatch_Location",
+				"type": "String"
+			},
+			{
+				"name": "SO_Division",
+				"type": "String"
+			}
+		]
+	}
+}
