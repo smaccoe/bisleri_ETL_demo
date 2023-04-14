@@ -106,7 +106,9 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select",
 				"select derive(InvoiceNo = iifNull(InvoiceNo, toString(null())),",
-				"          SelltoCustomerNo = iifNull(SelltoCustomerNo, toString(null()))) ~> derivedColumn1"
+				"          SelltoCustomerNo = iifNull(SelltoCustomerNo, toString(null())),",
+				"          Amount = ERROR_FUNCTION(''),",
+				"          column2 = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
