@@ -18,7 +18,11 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "SalesOrderHeaderSink"
+					"name": "SalesOrderHeaderSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
