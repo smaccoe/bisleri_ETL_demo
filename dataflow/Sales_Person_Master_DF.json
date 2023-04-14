@@ -18,7 +18,7 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1",
+					"name": "salespersonsink",
 					"rejectedDataLinkedService": {
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
@@ -80,7 +80,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> salespersonsink"
 			]
 		}
 	}
