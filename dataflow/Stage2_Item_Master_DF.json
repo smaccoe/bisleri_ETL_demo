@@ -13,8 +13,16 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn"
+				}
+			],
 			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Item_Master')",
+				"}",
 				"source(output(",
 				"          No_ as string,",
 				"          {Pack Title} as string,",
@@ -43,7 +51,32 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> itemmastersource"
+				"     ignoreNoFilesFound: false) ~> itemmastersource",
+				"itemmastersource derive(No_ = iifNull(No_, toString(null())),",
+				"          {Pack Title} = iifNull({Pack Title}, toString(null())),",
+				"          ItemName = iifNull(ItemName, toString(null()))\r",
+				"\r",
+				",",
+				"          ItemName2 = iifNull(ItemName2, toString(null())),",
+				"          {Base Unit of Measure} = iifNull({Base Unit of Measure}, toString(null())),",
+				"          {Item Category Code} = iifNull({Item Category Code}, toString(null())),",
+				"          {Product Group Code} = iifNull({Product Group Code}, toString(null())),",
+				"          {Pack Size Information} = toInteger(iifNull({Pack Size Information}, toString(null()))),",
+				"          {Pack Size} = iifNull({Pack Size}, toString(null())),",
+				"          {2Way Item} = iifNull({2Way Item}, toString(null())),",
+				"          {Pcs Per Case} = toInteger(iifNull({Pcs Per Case}, toString(null()))),",
+				"          {Jar Deposit} = toInteger(iifNull({Jar Deposit}, toString(null()))),",
+				"          {Selling Price} = toDouble((iifNull({Selling Price}, toString(null())))),",
+				"          {Pack Group Code} = iifNull({Pack Group Code}, toString(null())),",
+				"          {Item Class} = toInteger((iifNull({Item Class}, toString(null())))),",
+				"          {Short Name} = iifNull({Short Name}, toString(null())),",
+				"          {Container Type} = toInteger(iifNull({Container Type}, toString(null()))),",
+				"          {FG Category} = toInteger(iifNull({FG Category}, toString(null()))),",
+				"          {Packaging Type} = toInteger(iifNull({Packaging Type}, toString(null()))),",
+				"          {SKU Category} = toInteger(iifNull({SKU Category}, toString(null()))),",
+				"          {Pack Title Desc} = iifNull({Pack Title Desc}, toString(null())),",
+				"          NEW_ItemNo = iifNull({NEW_ItemNo}, toString(null())),",
+				"          OLD = toInteger(iifNull({OLD}, toString(null())))) ~> derivedColumn"
 			]
 		}
 	}
