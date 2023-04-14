@@ -1,0 +1,36 @@
+{
+	"name": "Target_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stage2_Target_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage2_Target_DF",
+						"type": "DataFlowReference",
+						"parameters": {
+							"Contanier_Name": "'curated-data'",
+							"Folder_Name": "'Target'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
