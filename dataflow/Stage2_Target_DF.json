@@ -1,0 +1,66 @@
+{
+	"name": "Stage2_Target_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Target",
+						"type": "DatasetReference"
+					},
+					"name": "targetsource"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Target')",
+				"}",
+				"source(output(",
+				"          {Customer Group Code} as string,",
+				"          {Customer No_} as string,",
+				"          {End Date} as string,",
+				"          {Item No_} as string,",
+				"          {Item Unit of Measure} as string,",
+				"          Month as string,",
+				"          T_ROUTE as string,",
+				"          {Start Date} as string,",
+				"          {Target Qty} as string,",
+				"          {DLP Target Qty} as string,",
+				"          Year as string,",
+				"          {Last Modified} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> targetsource",
+				"targetsource select(mapColumn(",
+				"          Customer_Group_Code = {Customer Group Code},",
+				"          Customer_No_ = {Customer No_},",
+				"          End_Date = {End Date},",
+				"          Item_No_ = {Item No_},",
+				"          Item_Unit_of_Measure = {Item Unit of Measure},",
+				"          Month,",
+				"          T_ROUTE,",
+				"          Start_Date = {Start Date},",
+				"          Target_Qty = {Target Qty},",
+				"          DLP_Target_Qty = {DLP Target Qty},",
+				"          Year,",
+				"          Last_Modified = {Last Modified}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Customer_Group_Code = ERROR_FUNCTION('')) ~> derivedColumn1"
+			]
+		}
+	}
+}
