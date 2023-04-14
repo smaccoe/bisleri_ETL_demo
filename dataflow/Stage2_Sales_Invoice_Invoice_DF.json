@@ -1,0 +1,113 @@
+{
+	"name": "Stage2_Sales_Invoice_Invoice_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_Invoice_Line",
+						"type": "DatasetReference"
+					},
+					"name": "SalesInvoiceLine"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "select"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          InvoiceNo as string,",
+				"          {Sell-to Customer No_} as string,",
+				"          Amount as string,",
+				"          {Tax Amount} as string,",
+				"          {Amount To Customer} as string,",
+				"          {Document Date} as string,",
+				"          {Bill-to Customer No_} as string,",
+				"          Type as string,",
+				"          No_ as string,",
+				"          SLineNo as string,",
+				"          {Location Code} as string,",
+				"          {Shipment Date} as string,",
+				"          Description as string,",
+				"          {Description 2} as string,",
+				"          {Unit of Measure} as string,",
+				"          Quantity as string,",
+				"          {Quantity (Base)} as string,",
+				"          {Qty_ per Unit of Measure} as string,",
+				"          {Discount Structure Code} as string,",
+				"          {Fat Catagory} as string,",
+				"          {Unit Price} as string,",
+				"          {Unit Cost (LCY)} as string,",
+				"          {Unit of Measure Code} as string,",
+				"          ItemCategry as string,",
+				"          {Free Supply} as string,",
+				"          {Freight Discount} as string,",
+				"          {Discount Structure Amount} as string,",
+				"          {Tax Area Code} as string,",
+				"          {Conversion Cost} as string,",
+				"          {PVC_PPR Cost} as string,",
+				"          {Scheme Reason} as string,",
+				"          {Charges To Customer} as string,",
+				"          {Tax Group Code} as string,",
+				"          {Excise Amount} as string,",
+				"          {Non-Dispatch Reason} as string,",
+				"          {Last Modified On} as string,",
+				"          SIL_Key as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesInvoiceLine",
+				"SalesInvoiceLine select(mapColumn(",
+				"          InvoiceNo,",
+				"          SelltoCustomerNo = {Sell-to Customer No_},",
+				"          Amount,",
+				"          TaxAmount = {Tax Amount},",
+				"          AmountToCustomer = {Amount To Customer},",
+				"          DocumentDate = {Document Date},",
+				"          BilltoCustomerNo = {Bill-to Customer No_},",
+				"          Type,",
+				"          No = No_,",
+				"          SLineNo,",
+				"          LocationCode = {Location Code},",
+				"          ShipmentDate = {Shipment Date},",
+				"          Description,",
+				"          Description2 = {Description 2},",
+				"          UnitofMeasure = {Unit of Measure},",
+				"          Quantity,",
+				"          {Quantity(Base)} = {Quantity (Base)},",
+				"          QtyperUnitofMeasure = {Qty_ per Unit of Measure},",
+				"          DiscountStructureCode = {Discount Structure Code},",
+				"          FatCatagory = {Fat Catagory},",
+				"          UnitPrice = {Unit Price},",
+				"          {UnitCost(LCY)} = {Unit Cost (LCY)},",
+				"          UnitofMeasureCode = {Unit of Measure Code},",
+				"          ItemCategry,",
+				"          FreeSupply = {Free Supply},",
+				"          FreightDiscount = {Freight Discount},",
+				"          DiscountStructureAmount = {Discount Structure Amount},",
+				"          TaxAreaCode = {Tax Area Code},",
+				"          ConversionCost = {Conversion Cost},",
+				"          PVCPPRCost = {PVC_PPR Cost},",
+				"          SchemeReason = {Scheme Reason},",
+				"          ChargesToCustomer = {Charges To Customer},",
+				"          TaxGroupCode = {Tax Group Code},",
+				"          ExciseAmount = {Excise Amount},",
+				"          NonDispatchReason = {Non-Dispatch Reason},",
+				"          LastModifiedOn = {Last Modified On},",
+				"          SILKey = SIL_Key",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select",
+				"select derive(InvoiceNo = iifNull(InvoiceNo, toString(null())),",
+				"          SelltoCustomerNo = iifNull(SelltoCustomerNo, toString(null()))) ~> derivedColumn1"
+			]
+		}
+	}
+}

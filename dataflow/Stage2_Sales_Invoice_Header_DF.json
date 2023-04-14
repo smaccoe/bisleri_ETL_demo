@@ -36,7 +36,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     Container_Name as string ('curated-data'),",
-				"     Folder_Name as string ('Sales_Invoice_Header')",
+				"     Folder_Name as string ('Sales_Invoice/Sales_Invoice_Header')",
 				"}",
 				"source(output(",
 				"          InvoiceNo as string,",
@@ -80,7 +80,8 @@
 				"          ShiptoCode = iifNull(ShiptoCode, toString(null())),",
 				"          ShiptoName = iifNull(ShiptoName, toString(null())),",
 				"          CustomerGroupCode = iifNull(CustomerGroupCode, toString(null())),",
-				"          LastModifiedOn = toTimestamp(LastModifiedOn,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> DataCleaning",
+				"          LastModifiedOn = toTimestamp(LastModifiedOn,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          Site = iifNull(Site, toString(null()))) ~> DataCleaning",
 				"SalesInvoiceHeaderSource select(mapColumn(",
 				"          InvoiceNo,",
 				"          ExciseInvoiceNo = Excise_InvoiceNo,",
