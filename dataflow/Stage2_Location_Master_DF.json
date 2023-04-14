@@ -24,7 +24,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"parameters{",
-				"     Contanier_Name as string ('curated-data'),",
+				"     Container_Name as string ('curated-data'),",
 				"     Folder_Name as string ('Location_master')",
 				"}",
 				"source(output(",

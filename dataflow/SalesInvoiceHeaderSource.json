@@ -12,13 +12,25 @@
 					"name": "SalesInvoiceHeaderSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesInvoiceLine"
+				}
+			],
 			"transformations": [
 				{
 					"name": "DataCleaning"
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales Invoice Header')",
+				"}",
 				"source(output(",
 				"          InvoiceNo as string,",
 				"          Excise_InvoiceNo as string,",
@@ -54,7 +66,32 @@
 				"          {Shortcut Dimension 1 Code} = toString(iifNull({Shortcut Dimension 1 Code}, \"None\",{Shortcut Dimension 1 Code})),",
 				"          {Shortcut Dimension 2 Code} = toString(iifNull({Shortcut Dimension 2 Code}, \"None\",{Shortcut Dimension 2 Code})),",
 				"          {Order No_} = toString(iifNull({Order No_}, \"None\",{Order No_})),",
-				"          {Vehicle Type} = toString(iifNull({Vehicle Type}, \"None\",{Vehicle Type}))) ~> DataCleaning"
+				"          {Vehicle Type} = toString(iifNull({Vehicle Type}, \"None\",{Vehicle Type})),",
+				"          {Ship-to Address} = toString(iifNull({Ship-to Address}, \"None\", {Ship-to Address})),",
+				"          {Ship-to Address 2} = toString(iifNull({Ship-to Address 2}, \"None\",{Ship-to Address 2})),",
+				"          {Ship-to City} = toString(iifNull({Ship-to City}, \"None\",{Ship-to City})),",
+				"          {Ship-to Code} = toString(iifNull({Ship-to Code}, \"None\",{Ship-to Code})),",
+				"          {Ship-to Name} = toString(iifNull({Ship-to Name}, \"None\",{Ship-to Name})),",
+				"          {Customer Group Code} = toString(iifNull({Customer Group Code}, \"None\",{Customer Group Code})),",
+				"          {Last Modified On} = toTimestamp({Last Modified On},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Container_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesInvoiceLine"
 			]
 		}
 	}
