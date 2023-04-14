@@ -2,17 +2,17 @@
 	"name": "Sales_Cr_Memo_Line",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "raw_data",
+			"referenceName": "primary_raw_data",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": "SalesCR_Line_R2.csv",
 				"folderPath": "Transaction",
-				"container": "primary-sales-raw-data"
+				"fileSystem": "primary-sales-raw-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
