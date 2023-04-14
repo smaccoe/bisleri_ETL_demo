@@ -12,7 +12,11 @@
 					"name": "SalesCrMemoHeader"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "SalesCrMemoHeaderSink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -49,7 +53,11 @@
 				"          RRoutecode = iifNull(RRoutecode, toString(null())),",
 				"          RPdate = toTimestamp({RPdate},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          RCustomer_Posting_Group = iifNull(RCustomer_Posting_Group, toString(null())),",
-				"          {Last Modified On} = toTimestamp({Last Modified On},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> derivedColumn1"
+				"          {Last Modified On} = toTimestamp({Last Modified On},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesCrMemoHeaderSink"
 			]
 		}
 	}
