@@ -17,7 +17,11 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Stage2_Location_Master_DF",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"Contanier_Name": "'curated-data'",
+							"Folder_Name": "'Location_master'"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
