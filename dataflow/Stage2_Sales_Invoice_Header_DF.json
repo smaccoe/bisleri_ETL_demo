@@ -1,5 +1,5 @@
 {
-	"name": "SalesInvoiceHeaderSource",
+	"name": "Stage2_Sales_Invoice_Header_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -33,7 +33,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     Container_Name as string ('curated-data'),",
-				"     Folder_Name as string ('Sales Invoice')",
+				"     Folder_Name as string ('Sales_Invoice')",
 				"}",
 				"source(output(",
 				"          InvoiceNo as string,",
