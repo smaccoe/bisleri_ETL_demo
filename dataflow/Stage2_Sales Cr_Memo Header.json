@@ -1,0 +1,52 @@
+{
+	"name": "Stage2_Sales Cr_Memo Header",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_Cr_Memo_Header",
+						"type": "DatasetReference"
+					},
+					"name": "SalesCrMemoHeader"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          SR_DocNo as string,",
+				"          RCustomer_No as string,",
+				"          RBranch as string,",
+				"          RDivision as string,",
+				"          SDACommSalesPerson as string,",
+				"          R_Location_Code as string,",
+				"          R_External_Doc_No as string,",
+				"          RRoutecode as string,",
+				"          RPdate as string,",
+				"          RCustomer_Posting_Group as string,",
+				"          {Last Modified On} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
+				"SalesCrMemoHeader derive(SR_DocNo = toString(iifNull(SR_DocNo, \"None\", SR_DocNo)),",
+				"          RCustomer_No = toString(iifNull(RCustomer_No, \"None\", RCustomer_No)),",
+				"          RBranch = toString(iifNull(RBranch, \"None\", RBranch)),",
+				"          RDivision = toString(iifNull(RDivision, \"None\", RDivision)),",
+				"          SDACommSalesPerson = toString(iifNull(SDACommSalesPerson, \"None\", SDACommSalesPerson)),",
+				"          R_Location_Code = toString(iifNull(R_Location_Code, \"None\", R_Location_Code)),",
+				"          R_External_Doc_No = toString(iifNull(R_External_Doc_No, \"None\", R_External_Doc_No)),",
+				"          RRoutecode = toString(iifNull(RRoutecode, \"None\", RRoutecode)),",
+				"          RPdate = toTimestamp({RPdate},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          RCustomer_Posting_Group = toString(iifNull(RCustomer_Posting_Group, \"None\", RCustomer_Posting_Group)),",
+				"          {Last Modified On} = toTimestamp({Last Modified On},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> derivedColumn1"
+			]
+		}
+	}
+}
