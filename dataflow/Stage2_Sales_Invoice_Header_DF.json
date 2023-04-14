@@ -81,7 +81,7 @@
 				"          ShiptoName = iifNull(ShiptoName, toString(null())),",
 				"          CustomerGroupCode = iifNull(CustomerGroupCode, toString(null())),",
 				"          LastModifiedOn = toTimestamp(LastModifiedOn,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
-				"          Site = iifNull(Site, toString(null()))) ~> DataCleaning",
+				"          Site = toString(null())) ~> DataCleaning",
 				"SalesInvoiceHeaderSource select(mapColumn(",
 				"          InvoiceNo,",
 				"          ExciseInvoiceNo = Excise_InvoiceNo,",
