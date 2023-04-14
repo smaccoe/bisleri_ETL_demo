@@ -1,0 +1,88 @@
+{
+	"name": "Stage2_Sales_Order_Header_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_Order_Header",
+						"type": "DatasetReference"
+					},
+					"name": "SalesOrderHeaderSource"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesOrderHeaderSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Cleaning"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales_Order/Sales_Order_Header')",
+				"}",
+				"source(output(",
+				"          SO_DocType as string,",
+				"          SO_DocumentNo as string,",
+				"          SO_Category as string,",
+				"          SO_CustomerNo as string,",
+				"          SO_CustomerName as string,",
+				"          SO_PostingDate as string,",
+				"          SO_CustomerPostingGroup as string,",
+				"          SO_RouteCode as string,",
+				"          SO_Status as string,",
+				"          SO_SalesPerson as string,",
+				"          SO_CustomerGroupCode as string,",
+				"          SO_ManagerName as string,",
+				"          SO_ASMName as string,",
+				"          SO_EXEName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesOrderHeaderSource",
+				"SalesOrderHeaderSource derive(SO_DocType = toInteger(SO_DocType),",
+				"          SO_DocumentNo = iifNull(SO_DocumentNo, toString(null())),",
+				"          SO_Category = iifNull(SO_Category, toString(null())),",
+				"          SO_CustomerNo = iifNull(SO_CustomerNo, toString(null())),",
+				"          SO_CustomerName = iifNull(SO_CustomerName, toString(null())),",
+				"          SO_PostingDate = toTimestamp(SO_PostingDate,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          SO_CustomerPostingGroup = iifNull(SO_CustomerPostingGroup, toString(null())),",
+				"          SO_RouteCode = iifNull(SO_RouteCode, toString(null())),",
+				"          SO_Status = toInteger(SO_Status),",
+				"          SO_SalesPerson = iifNull(SO_SalesPerson, toString(null())),",
+				"          SO_CustomerGroupCode = iifNull(SO_CustomerGroupCode, toString(null())),",
+				"          SO_ManagerName = iifNull(SO_ManagerName, toString(null())),",
+				"          SO_ASMName = iifNull(SO_ASMName, toString(null())),",
+				"          SO_EXEName = iifNull(SO_EXEName, toString(null()))) ~> Cleaning",
+				"Cleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Container_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesOrderHeaderSink"
+			]
+		}
+	}
+}
