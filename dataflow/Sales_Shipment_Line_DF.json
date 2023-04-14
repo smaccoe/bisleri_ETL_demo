@@ -1,5 +1,5 @@
 {
-	"name": "Sales_Shipment_Line",
+	"name": "Sales_Shipment_Line_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
