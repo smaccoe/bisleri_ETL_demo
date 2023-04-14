@@ -17,11 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Sales_Shipment_Header_DF",
-						"type": "DataFlowReference",
-						"parameters": {
-							"Container_Name": "'curated-data'",
-							"Folder_Name": "'Sales_Shipment / Sales_Shipment_Header'"
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
