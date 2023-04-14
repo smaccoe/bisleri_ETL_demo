@@ -19,6 +19,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales Cr_Memo Header')",
+				"}",
 				"source(output(",
 				"          SR_DocNo as string,",
 				"          RCustomer_No as string,",
