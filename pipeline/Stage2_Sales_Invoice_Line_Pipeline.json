@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Invoice_Header_Pipeline",
+	"name": "Stage2_Sales_Invoice_Line_Pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Sales_Invoice_Header_DF",
+						"referenceName": "Stage2_Sales_Invoice_Line_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

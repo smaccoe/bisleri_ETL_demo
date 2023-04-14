@@ -30,6 +30,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales_Invoice/Sales_Invoice_Line')",
+				"}",
 				"source(output(",
 				"          InvoiceNo as string,",
 				"          {Sell-to Customer No_} as string,",
