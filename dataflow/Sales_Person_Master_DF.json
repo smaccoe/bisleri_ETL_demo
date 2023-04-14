@@ -9,7 +9,7 @@
 						"referenceName": "Sales_Person_Master",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "salesperson"
 				}
 			],
 			"sinks": [
@@ -18,12 +18,16 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
+					"name": "datacleaning"
 				}
 			],
 			"scriptLines": [
@@ -47,22 +51,23 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(SASM = toInteger('SASM'),",
+				"     ignoreNoFilesFound: false) ~> salesperson",
+				"salesperson derive(SASM = toInteger('SASM'),",
 				"          SManager = toInteger('SManager'),",
 				"          SExecutive = toInteger('SManager'),",
-				"          SalesPerson_Category = toInteger('SalesPersonName'),",
+				"          SalesPersonName = toInteger('SalesPersonName'),",
 				"          SalesPerson_Blocked = toInteger('SalesPerson_Blocked'),",
 				"          SalesPerson_Location = iifNull(SalesPerson_Location, toString(null())),",
 				"          SalesPerson_Route = iifNull(SalesPerson_Route, toString(null())),",
 				"          Sales_hierarchy_code = iifNull(Sales_hierarchy_code, toString(null())),",
 				"          BranchCode_SP = iifNull(BranchCode_SP, toString(null())),",
-				"          SalesPersonZone = iifNull({SalesPersonZone}, toString(null()))) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"          SalesPersonZone = iifNull(SalesPersonZone, toString(null())),",
+				"          Site = toString(null())) ~> datacleaning",
+				"datacleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: '$Contanier_Name',",
-				"     folderPath: '$Folder_Name',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($Folder_Name),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
