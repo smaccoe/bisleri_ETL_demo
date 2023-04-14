@@ -12,7 +12,19 @@
 					"name": "SalesOrderLineSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesOrderLine",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -22,6 +34,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales_Order/Sales_Order_Line')",
+				"}",
 				"source(output(",
 				"          SO_BillNo as string,",
 				"          SO_Bill_CustomerNo as string,",
@@ -112,7 +128,48 @@
 				"          SO_ItemSubCategory = iifNull(SO_ItemSubCategory, toString(null())),",
 				"          SO_LineNo = toInteger(SO_LineNo),",
 				"          SO_Location = iifNull(SO_Location, toString(null())),",
-				"          column1 = ERROR_FUNCTION('')) ~> Cleaning"
+				"          SO_ItemNo = iifNull(SO_ItemNo, toString(null())),",
+				"          SO_Item_Name = iifNull(SO_Location, toString(null())),",
+				"          SO_OrderQty = toDouble(SO_OrderQty),",
+				"          SO_OrderUOM = iifNull(SO_OrderUOM, toString(null())),",
+				"          SO_PackSize = iifNull(SO_PackSize, toString(null())),",
+				"          SO_Qty_Shp_Not_INV = toInteger(SO_Qty_Shp_Not_INV),",
+				"          SO_Qty_To_INV = toInteger(SO_Qty_To_INV),",
+				"          SO_Qty_To_Ship = toInteger(SO_Qty_To_Ship),",
+				"          SO_Qty = toDouble(SO_Qty),",
+				"          SO_Qty_Inv = toDouble(SO_Qty_Inv),",
+				"          SO_Qty_Shipped = toDouble(SO_Qty_Shipped),",
+				"          SO_Route_SalesNo = iifNull(SO_Route_SalesNo, toString(null())),",
+				"          SO_Amt_To_Customer = toDouble(SO_Amt_To_Customer),",
+				"          SO_SchemeReason = iifNull(SO_SchemeReason, toString(null())),",
+				"          SO_SellingPrice = toDouble(SO_SellingPrice),",
+				"          SO_Non_DispatchReason = iifNull(SO_Non_DispatchReason, toString(null())),",
+				"          SO_Blanket_OrderNo = iifNull(SO_Blanket_OrderNo, toString(null())),",
+				"          SO_Branch = iifNull(SO_Branch, toString(null())),",
+				"          SO_Reason_Code = iifNull(SO_Reason_Code, toString(null())),",
+				"          SO_Order_Placed = toInteger(SO_Order_Placed),",
+				"          SO_Order_PlacedBy = iifNull(SO_Order_PlacedBy, toString(null())),",
+				"          SO_Order_Placed_On = toTimestamp(SO_Order_Placed_On,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          SO_Dispatch_Location = iifNull(SO_Dispatch_Location, toString(null())),",
+				"          SO_Division = iifNull(SO_Division, toString(null()))) ~> Cleaning",
+				"Cleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Container_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesOrderLine"
 			]
 		}
 	}
