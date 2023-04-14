@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales Cr_Memo Header",
+	"name": "Stage2_Sales_Cr_Memo_Header_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
