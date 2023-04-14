@@ -1,0 +1,82 @@
+{
+	"name": "Sales_Person_Master_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_Person_Master",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales_Person_Master')",
+				"}",
+				"source(output(",
+				"          SalesPerson as string,",
+				"          SalesPersonName as string,",
+				"          SASM as string,",
+				"          SManager as string,",
+				"          SExecutive as string,",
+				"          SalesPerson_Location as string,",
+				"          SalesPerson_Route as string,",
+				"          Sales_hierarchy_code as string,",
+				"          SalesPerson_Category as string,",
+				"          SalesPerson_Blocked as string,",
+				"          BranchCode_SP as string,",
+				"          SalesPersonZone as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(SASM = toInteger('SASM'),",
+				"          SManager = toInteger('SManager'),",
+				"          SExecutive = toInteger('SManager'),",
+				"          SalesPerson_Category = toInteger('SalesPersonName'),",
+				"          SalesPerson_Blocked = toInteger('SalesPerson_Blocked'),",
+				"          SalesPerson_Location = iifNull(SalesPerson_Location, toString(null())),",
+				"          SalesPerson_Route = iifNull(SalesPerson_Route, toString(null())),",
+				"          Sales_hierarchy_code = iifNull(Sales_hierarchy_code, toString(null())),",
+				"          BranchCode_SP = iifNull(BranchCode_SP, toString(null())),",
+				"          SalesPersonZone = iifNull({SalesPersonZone}, toString(null()))) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: '$Contanier_Name',",
+				"     folderPath: '$Folder_Name',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
