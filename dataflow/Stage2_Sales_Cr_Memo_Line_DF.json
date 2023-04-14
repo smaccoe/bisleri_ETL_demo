@@ -84,6 +84,7 @@
 				"          RDescription = toString(iifNull(RDescription, \"None\", RDescription)),",
 				"          RChargesToCustomer = toInteger(RChargesToCustomer),",
 				"          R_RefCheckIn_SlipLineNo = toInteger(R_RefCheckIn_SlipLineNo),",
+				"          R_RefCheckIn_SlipNo =  toInteger(iifNull({R_RefCheckIn_SlipNo}, toString(null()))),",
 				"          {Return Reason Code} = toString(iifNull({Return Reason Code}, \"None\", {Return Reason Code})),",
 				"          {Last Modified On} = toTimestamp({Last Modified On}, 'MM/dd/yyyy hh:mm:ss a', 'UTC'),",
 				"          CRL_Key = toString(iifNull(CRL_Key, \"None\", CRL_Key))) ~> DataCleaning"
