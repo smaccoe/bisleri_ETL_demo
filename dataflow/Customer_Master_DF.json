@@ -201,7 +201,7 @@
 				"          Post_Code = {Post Code},",
 				"          E_Mail = {E-Mail},",
 				"          Urzza_Display_Outlet = {Urzza Display Outlet},",
-				"          Cust_Creadit_Limit_Active,",
+				"          Cust_Credit_Limit_Active = Cust_Creadit_Limit_Active,",
 				"          Activate_Credit_Limit_Days = {Activate Credit Limit Days},",
 				"          Billing_Type = {Billing Type},",
 				"          Cust_Scheme_Applicable,",
@@ -294,14 +294,17 @@
 				"          Cust_Structure = iifNull(Cust_Structure,toString(null())),",
 				"          A_S_M_ = iifNull(A_S_M_,toString(null())),",
 				"          Cust_ASM_Name = iifNull(Cust_ASM_Name,toString(null())),",
-				"          Active_Customer = toInteger(iifNull({Active_Customer},toString(null()))),",
-				"          Customer_Channel = toInteger(iifNull({Customer_Channel},toString(null()))),",
-				"          A_S_M_Name = iifNull({A_S_M_Name},toString(null())),",
-				"          Post_Code = toInteger(iifNull({Post_Code},toString(null()))),",
-				"          E_Mail = iifNull({E_Mail},toString(null())),",
-				"          Urzza_Display_Outlet = iifNull({Urzza_Display_Outlet},toString(null())),",
-				"          Cust_Creadit_Limit_Active = iifNull({Cust_Creadit_Limit_Active},toString(null())),",
-				"          Activate_Credit_Limit_Days = ERROR_FUNCTION('')) ~> datacleaning"
+				"          Active_Customer = toInteger(iifNull(Active_Customer,toString(null()))),",
+				"          Customer_Channel = toInteger(iifNull(Customer_Channel,toString(null()))),",
+				"          A_S_M_Name = iifNull(A_S_M_Name,toString(null())),",
+				"          Post_Code = toInteger(iifNull(Post_Code,toString(null()))),",
+				"          E_Mail = iifNull(E_Mail,toString(null())),",
+				"          Urzza_Display_Outlet = toInteger(iifNull(Urzza_Display_Outlet,toString(null()))),",
+				"          Cust_Credit_Limit_Active = toInteger(iifNull(Cust_Credit_Limit_Active,toString(null()))),",
+				"          Activate_Credit_Limit_Days = iifNull(Activate_Credit_Limit_Days,toString(null())),",
+				"          Billing_Type = toInteger(iifNull(Billing_Type,toString(null()))),",
+				"          Cust_Scheme_Applicable = toInteger(iifNull(Cust_Scheme_Applicable,toString(null()))),",
+				"          Cust_Ceration_User_ID = ERROR_FUNCTION('')) ~> datacleaning"
 			]
 		}
 	}
