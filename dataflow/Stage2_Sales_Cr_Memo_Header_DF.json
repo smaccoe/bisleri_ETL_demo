@@ -14,12 +14,19 @@
 			],
 			"sinks": [
 				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
 					"name": "SalesCrMemoHeaderSink"
 				}
 			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -43,19 +50,48 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
-				"SalesCrMemoHeader derive(SR_DocNo = iifNull(SR_DocNo, toString(null())),",
-				"          RCustomer_No = iifNull(RCustomer_No, toString(null())),",
+				"select1 derive(SRDocNo = iifNull(SRDocNo, toString(null())),",
+				"          RCustomerNo = iifNull(RCustomerNo, toString(null())),",
 				"          RBranch = iifNull(RBranch, toString(null())),",
 				"          RDivision = iifNull(RDivision, toString(null())),",
 				"          SDACommSalesPerson = iifNull(SDACommSalesPerson, toString(null())),",
-				"          R_Location_Code = iifNull(R_Location_Code, toString(null())),",
-				"          R_External_Doc_No = iifNull(R_External_Doc_No, toString(null())),",
+				"          RLocationCode = iifNull(RLocationCode, toString(null())),",
+				"          RExternalDocNo = iifNull(RExternalDocNo, toString(null())),",
 				"          RRoutecode = iifNull(RRoutecode, toString(null())),",
-				"          RPdate = toTimestamp({RPdate},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
-				"          RCustomer_Posting_Group = iifNull(RCustomer_Posting_Group, toString(null())),",
-				"          {Last Modified On} = toTimestamp({Last Modified On},'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> derivedColumn1",
+				"          RPdate = toTimestamp(RPdate,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          RCustomerPostingGroup = iifNull(RCustomerPostingGroup, toString(null())),",
+				"          LastModifiedOn = toTimestamp(LastModifiedOn,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> derivedColumn1",
+				"SalesCrMemoHeader select(mapColumn(",
+				"          SRDocNo = SR_DocNo,",
+				"          RCustomerNo = RCustomer_No,",
+				"          RBranch,",
+				"          RDivision,",
+				"          SDACommSalesPerson,",
+				"          RLocationCode = R_Location_Code,",
+				"          RExternalDocNo = R_External_Doc_No,",
+				"          RRoutecode,",
+				"          RPdate,",
+				"          RCustomerPostingGroup = RCustomer_Posting_Group,",
+				"          LastModifiedOn = {Last Modified On}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'curated-data',",
+				"     folderPath: 'Sales Return/Sales Cr_Memo Header',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SalesCrMemoHeaderSink"
 			]
