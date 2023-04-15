@@ -140,6 +140,8 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
+				"     fileSystem: ($Container_Name),",
+				"     folderPath: ($Folder_Name),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
