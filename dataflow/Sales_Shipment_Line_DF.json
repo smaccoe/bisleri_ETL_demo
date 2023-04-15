@@ -12,7 +12,19 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -120,7 +132,23 @@
 				"          Tax_Group_Code = iifNull(Tax_Group_Code,toString(null())),",
 				"          Excise_Amount = toInteger(iifNull(Excise_Amount,toString(null()))),",
 				"          Total_GST_Amount = iifNull(Total_GST_Amount,toString(null())),",
-				"          Site = toString(null())) ~> derivedColumn1"
+				"          Site = toString(null())) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink"
 			]
 		}
 	}
