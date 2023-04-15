@@ -262,7 +262,7 @@
 				"          Currency_Code = iifNull(Currency_Code,toString(null())),",
 				"          Customer_Price_Group = iifNull(Customer_Price_Group,toString(null())),",
 				"          Language_Code = iifNull(Language_Code,toString(null())),",
-				"          Statistics_Group =  toInteger(iifNull(Statistics_Group,toString(null()))),",
+				"          Statistics_Group = toInteger(iifNull(Statistics_Group,toString(null()))),",
 				"          Payment_Terms_Code = iifNull(Payment_Terms_Code,toString(null())),",
 				"          Fin_Charge_Terms_Code = iifNull(Fin_Charge_Terms_Code,toString(null())),",
 				"          Salesperson_Code = iifNull(Salesperson_Code,toString(null())),",
@@ -304,7 +304,19 @@
 				"          Activate_Credit_Limit_Days = iifNull(Activate_Credit_Limit_Days,toString(null())),",
 				"          Billing_Type = toInteger(iifNull(Billing_Type,toString(null()))),",
 				"          Cust_Scheme_Applicable = toInteger(iifNull(Cust_Scheme_Applicable,toString(null()))),",
-				"          Cust_Ceration_User_ID = ERROR_FUNCTION('')) ~> datacleaning"
+				"          Cust_Ceration_User_ID = iifNull(Cust_Ceration_User_ID,toString(null())),",
+				"          {Sub-Channel_1} = iifNull({Sub-Channel_1},toString(null())),",
+				"          {Sub-Channel_2} = iifNull({Sub-Channel_2},toString(null())),",
+				"          {Sub-Channel_3} = iifNull({Sub-Channel_3},toString(null())),",
+				"          Remaining_Amt = toDouble(iifNull(Remaining_Amt,toString(null()))),",
+				"          SGA = toInteger(SGA),",
+				"          Created_From_Source = toInteger(Created_From_Source),",
+				"          BT_Monday = toInteger(BT_Monday),",
+				"          BT_Tuesday = toInteger(BT_Tuesday),",
+				"          BT_Wednesday = toInteger(BT_Wednesday),",
+				"          BT_Thursday = toInteger(BT_Thursday),",
+				"          BT_Friday = toInteger(BT_Friday),",
+				"          BT_Sunday = toInteger(BT_Sunday)) ~> datacleaning"
 			]
 		}
 	}
