@@ -27,10 +27,10 @@
 			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "renamingcolums"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "cleaningdata"
 				}
 			],
 			"scriptLines": [
@@ -104,8 +104,8 @@
 				"          Total_GST_Amount = {Total GST Amount}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Amount = toDouble(iifNull(Amount,toString(null()))),",
+				"     skipDuplicateMapOutputs: true) ~> renamingcolums",
+				"renamingcolums derive(Amount = toDouble(iifNull(Amount,toString(null()))),",
 				"          InvoiceNo = iifNull(InvoiceNo,toString(null())),",
 				"          Sell_to_Customer_No_ = iifNull(Sell_to_Customer_No_,toString(null())),",
 				"          Document_Date = toTimestamp(Document_Date,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')\r",
@@ -136,8 +136,8 @@
 				"          Tax_Group_Code = iifNull(Tax_Group_Code,toString(null())),",
 				"          Excise_Amount = toInteger(iifNull(Excise_Amount,toString(null()))),",
 				"          Total_GST_Amount = iifNull(Total_GST_Amount,toString(null())),",
-				"          Site = toString(null())) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"          Site = toString(null())) ~> cleaningdata",
+				"cleaningdata sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: ($Container_Name),",
