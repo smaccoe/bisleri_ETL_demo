@@ -9,7 +9,7 @@
 						"referenceName": "Sales_Shipment_Lines",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "salesshipmentline"
 				}
 			],
 			"sinks": [
@@ -18,7 +18,7 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink",
+					"name": "salesshipmentlinesink",
 					"rejectedDataLinkedService": {
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
@@ -71,8 +71,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 select(mapColumn(",
+				"     ignoreNoFilesFound: false) ~> salesshipmentline",
+				"salesshipmentline select(mapColumn(",
 				"          Amount,",
 				"          InvoiceNo,",
 				"          Sell_to_Customer_No_ = {Sell-to Customer No_},",
@@ -154,7 +154,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink"
+				"     skipDuplicateMapOutputs: true) ~> salesshipmentlinesink"
 			]
 		}
 	}
