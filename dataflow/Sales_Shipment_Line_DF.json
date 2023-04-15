@@ -34,6 +34,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales_Shipment/Sales_Shipment_Line')",
+				"}",
 				"source(output(",
 				"          Amount as string,",
 				"          InvoiceNo as string,",
