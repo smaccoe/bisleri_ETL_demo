@@ -1,0 +1,36 @@
+{
+	"name": "Sales_Shipment_Line_DF_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Sales_Shipment_Line_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Sales_Shipment_Line_DF",
+						"type": "DataFlowReference",
+						"parameters": {
+							"Container_Name": "'curated-data'",
+							"Folder_Name": "'Sales_Shipment/Sales_Shipment_Line'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
