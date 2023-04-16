@@ -12,7 +12,15 @@
 					"name": "customersource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "customersink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "columnrename"
@@ -22,6 +30,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ($Contanier_Name),",
+				"     Folder_Name as string ($Folder_Name)",
+				"}",
 				"source(output(",
 				"          Customer_No as string,",
 				"          Cust_Creation_Date as string,",
@@ -236,7 +248,7 @@
 				"          Search_Name = iifNull(Search_Name,toString(null())),",
 				"          Name_2 = iifNull(Name_2,toString(null())),",
 				"          Territory_SH = iifNull(Territory_SH,toString(null())),",
-				"          Phone_No_2 = toInteger(Phone_No_2),",
+				"          Phone_No_2 = iifNull({Phone_No_2},toString(null())),",
 				"          Cust_Resd_Phone_no = toInteger(iifNull(Cust_Resd_Phone_no, toString(null()))),",
 				"          Cust_Mobile_no = toInteger(iifNull(Cust_Mobile_no,toString(null()))),",
 				"          Address = iifNull(Address,toString(null())),",
@@ -258,6 +270,8 @@
 				"          Cust_Route_Name = iifNull(Cust_Route_Name,toString(null())),",
 				"          SalesCode = iifNull(SalesCode,toString(null())),",
 				"          SalesName = iifNull(SalesName,toString(null())),",
+				"          Budgeted_Amount = toInteger(Budgeted_Amount),",
+				"          Credit_Limit_LCY = toInteger({Credit_Limit_LCY}),",
 				"          Customer_Posting_Group = iifNull(Customer_Posting_Group,toString(null())),",
 				"          Currency_Code = iifNull(Currency_Code,toString(null())),",
 				"          Customer_Price_Group = iifNull(Customer_Price_Group,toString(null())),",
@@ -301,7 +315,7 @@
 				"          E_Mail = iifNull(E_Mail,toString(null())),",
 				"          Urzza_Display_Outlet = toInteger(iifNull(Urzza_Display_Outlet,toString(null()))),",
 				"          Cust_Credit_Limit_Active = toInteger(iifNull(Cust_Credit_Limit_Active,toString(null()))),",
-				"          Activate_Credit_Limit_Days = iifNull(Activate_Credit_Limit_Days,toString(null())),",
+				"          Activate_Credit_Limit_Days = toInteger(iifNull(Activate_Credit_Limit_Days,toString(null()))),",
 				"          Billing_Type = toInteger(iifNull(Billing_Type,toString(null()))),",
 				"          Cust_Scheme_Applicable = toInteger(iifNull(Cust_Scheme_Applicable,toString(null()))),",
 				"          Cust_Ceration_User_ID = iifNull(Cust_Ceration_User_ID,toString(null())),",
@@ -316,7 +330,33 @@
 				"          BT_Wednesday = toInteger(BT_Wednesday),",
 				"          BT_Thursday = toInteger(BT_Thursday),",
 				"          BT_Friday = toInteger(BT_Friday),",
-				"          BT_Sunday = toInteger(BT_Sunday)) ~> datacleaning"
+				"          BT_Sunday = toInteger(BT_Sunday),",
+				"          {BT_Week-1} = toInteger({BT_Week-1}),",
+				"          {BT_Week-2} = toInteger({BT_Week-2}),",
+				"          {BT_Week-3} = toInteger({BT_Week-3}),",
+				"          {BT_Week-4} = toInteger({BT_Week-4}),",
+				"          Exclude_Cust = toInteger(Exclude_Cust),",
+				"          DLP = toInteger(DLP),",
+				"          DLP_Slab = toInteger(DLP_Slab),",
+				"          Channel = toInteger(Channel)) ~> datacleaning",
+				"datacleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> customersink"
 			]
 		}
 	}
