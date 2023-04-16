@@ -18,7 +18,11 @@
 						"referenceName": "curated_data",
 						"type": "LinkedServiceReference"
 					},
-					"name": "customersink"
+					"name": "customersink",
+					"rejectedDataLinkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -31,8 +35,8 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     Contanier_Name as string ($Contanier_Name),",
-				"     Folder_Name as string ($Folder_Name)",
+				"     Contanier_Name as string ('curated-data'),",
+				"     Folder_Name as string",
 				"}",
 				"source(output(",
 				"          Customer_No as string,",
