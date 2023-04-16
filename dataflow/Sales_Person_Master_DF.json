@@ -55,7 +55,7 @@
 				"salesperson derive(SASM = toInteger(SASM),",
 				"          SManager = toInteger(SManager),",
 				"          SExecutive = toInteger(SManager),",
-				"          SalesPersonName = toInteger(SalesPersonName),",
+				"          SalesPerson_Category = toInteger(SalesPerson_Category),",
 				"          SalesPerson_Blocked = toInteger(SalesPerson_Blocked),",
 				"          SalesPerson_Location = iifNull(SalesPerson_Location, toString(null())),",
 				"          SalesPerson_Route = iifNull(SalesPerson_Route, toString(null())),",
