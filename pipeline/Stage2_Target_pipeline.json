@@ -1,5 +1,5 @@
 {
-	"name": "Target_pipeline",
+	"name": "Stage2_Target_pipeline",
 	"properties": {
 		"activities": [
 			{
