@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Sales_Shipment_Header_DF",
+						"referenceName": "Stage2_Sales_Shipment_Header_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

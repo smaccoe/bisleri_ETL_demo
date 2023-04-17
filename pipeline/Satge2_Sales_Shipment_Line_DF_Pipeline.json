@@ -1,5 +1,5 @@
 {
-	"name": "Sales_Shipment_Line_DF_Pipeline",
+	"name": "Satge2_Sales_Shipment_Line_DF_Pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Sales_Shipment_Line_DF",
+						"referenceName": "Stage2_Sales_Shipment_Line_DF",
 						"type": "DataFlowReference",
 						"parameters": {
 							"Container_Name": "'curated-data'",

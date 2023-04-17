@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Sales_Person_Master_DF",
+						"referenceName": "Stage2_Sales_Person_Master_DF",
 						"type": "DataFlowReference",
 						"parameters": {
 							"Contanier_Name": "'curated-data'",

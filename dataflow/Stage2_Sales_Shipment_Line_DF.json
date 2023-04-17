@@ -1,5 +1,5 @@
 {
-	"name": "Sales_Shipment_Line_DF",
+	"name": "Stage2_Sales_Shipment_Line_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -108,15 +108,13 @@
 				"renamingcolums derive(Amount = toDouble(iifNull(Amount,toString(null()))),",
 				"          InvoiceNo = iifNull(InvoiceNo,toString(null())),",
 				"          Sell_to_Customer_No_ = iifNull(Sell_to_Customer_No_,toString(null())),",
-				"          Document_Date = toTimestamp(Document_Date,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')\r",
-				",",
+				"          Document_Date = toTimestamp(Document_Date,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          Bill_to_Customer_No_ = iifNull(Bill_to_Customer_No_,toString(null())),",
 				"          Type = toInteger(iifNull(Type,toString(null()))),",
 				"          No_ = iifNull(No_,toString(null())),",
 				"          SLineNo = toInteger(iifNull(SLineNo,toString(null()))),",
 				"          Location_Code = iifNull(Location_Code,toString(null())),",
-				"          Shipment_Date = toTimestamp(Shipment_Date,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')\r",
-				",",
+				"          Shipment_Date = toTimestamp(Shipment_Date,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          Description = iifNull(Description,toString(null())),",
 				"          Description_2 = iifNull(Description_2,toString(null())),",
 				"          Unit_of_Measure = iifNull(Unit_of_Measure,toString(null())),",
