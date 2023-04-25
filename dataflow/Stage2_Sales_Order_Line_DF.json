@@ -20,7 +20,7 @@
 					},
 					"name": "SalesOrderLine",
 					"rejectedDataLinkedService": {
-						"referenceName": "curated_data",
+						"referenceName": "Delta_Full_Load",
 						"type": "LinkedServiceReference"
 					}
 				}
