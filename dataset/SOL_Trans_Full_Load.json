@@ -1,0 +1,84 @@
+{
+	"name": "SOL_Trans_Full_Load",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Sales_Order_Line',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')\n\n",
+					"type": "Expression"
+				},
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SO_DocType",
+				"type": "String"
+			},
+			{
+				"name": "SO_DocumentNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_Category",
+				"type": "String"
+			},
+			{
+				"name": "SO_CustomerNo",
+				"type": "String"
+			},
+			{
+				"name": "SO_CustomerName",
+				"type": "String"
+			},
+			{
+				"name": "SO_PostingDate",
+				"type": "String"
+			},
+			{
+				"name": "SO_CustomerPostingGroup",
+				"type": "String"
+			},
+			{
+				"name": "SO_RouteCode",
+				"type": "String"
+			},
+			{
+				"name": "SO_Status",
+				"type": "String"
+			},
+			{
+				"name": "SO_SalesPerson",
+				"type": "String"
+			},
+			{
+				"name": "SO_CustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "SO_ManagerName",
+				"type": "String"
+			},
+			{
+				"name": "SO_ASMName",
+				"type": "String"
+			},
+			{
+				"name": "SO_EXEName",
+				"type": "String"
+			}
+		]
+	}
+}
