@@ -9,7 +9,7 @@
 						"referenceName": "Stage2_Sales_Order_Header_TB",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "SalesOrderHeaderSource"
 				}
 			],
 			"sinks": [
@@ -27,7 +27,7 @@
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
+					"name": "DataCleaning"
 				}
 			],
 			"scriptLines": [
@@ -49,8 +49,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(SO_DocType = toInteger(SO_DocType),",
+				"     ignoreNoFilesFound: false) ~> SalesOrderHeaderSource",
+				"SalesOrderHeaderSource derive(SO_DocType = toInteger(SO_DocType),",
 				"          SO_Category = iifNull(SO_Category,toString(null())),",
 				"          SO_CustomerNo = iifNull(SO_CustomerNo,toString(null())),",
 				"          SO_CustomerName = iifNull(SO_CustomerName,toString(null())),",
@@ -63,8 +63,8 @@
 				"          SO_ManagerName = iifNull(SO_ManagerName,toString(null())),",
 				"          SO_ASMName = iifNull(SO_ASMName,toString(null())),",
 				"          SO_EXEName = iifNull(SO_EXEName,toString(null())),",
-				"          Site = toString(null())) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"          Site = toString(null())) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
