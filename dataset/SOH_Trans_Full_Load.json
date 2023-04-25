@@ -1,0 +1,27 @@
+{
+	"name": "SOH_Trans_Full_Load",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Sales_Order_Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
