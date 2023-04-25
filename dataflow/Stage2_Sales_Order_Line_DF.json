@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Sales_Order_Line",
+						"referenceName": "Stage2_Sales_Order_Line",
 						"type": "DatasetReference"
 					},
 					"name": "SalesOrderLineSource"

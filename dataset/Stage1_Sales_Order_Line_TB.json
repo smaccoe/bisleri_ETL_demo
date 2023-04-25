@@ -1,5 +1,5 @@
 {
-	"name": "Sales_Order_Line_TB",
+	"name": "Stage1_Sales_Order_Line_TB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SqlServerOnPrem",

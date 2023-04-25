@@ -1,5 +1,5 @@
 {
-	"name": "Sales_Order_Line",
+	"name": "Stage2_Sales_Order_Line",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",
@@ -10,9 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Sales_Order_Line.csv",
-				"folderPath": "Transaction",
-				"fileSystem": "primary-sales-raw-data"
+				"fileName": "Sales_Order_Line2023-04-25 03:55:15.15.csv",
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
