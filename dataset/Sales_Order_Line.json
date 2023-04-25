@@ -2,7 +2,7 @@
 	"name": "Sales_Order_Line",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "primary_raw_data",
+			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
