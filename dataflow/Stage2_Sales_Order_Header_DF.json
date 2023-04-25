@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Sales_Order_Header",
+						"referenceName": "SOH_Trans_Full_Load",
 						"type": "DatasetReference"
 					},
 					"name": "SalesOrderHeaderSource"
@@ -35,23 +35,7 @@
 				"     Container_Name as string ('curated-data'),",
 				"     Folder_Name as string ('Sales_Order/Sales_Order_Header')",
 				"}",
-				"source(output(",
-				"          SO_DocType as string,",
-				"          SO_DocumentNo as string,",
-				"          SO_Category as string,",
-				"          SO_CustomerNo as string,",
-				"          SO_CustomerName as string,",
-				"          SO_PostingDate as string,",
-				"          SO_CustomerPostingGroup as string,",
-				"          SO_RouteCode as string,",
-				"          SO_Status as string,",
-				"          SO_SalesPerson as string,",
-				"          SO_CustomerGroupCode as string,",
-				"          SO_ManagerName as string,",
-				"          SO_ASMName as string,",
-				"          SO_EXEName as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SalesOrderHeaderSource",
 				"SalesOrderHeaderSource derive(SO_DocType = toInteger(SO_DocType),",

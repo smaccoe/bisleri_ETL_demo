@@ -44,7 +44,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Sales_Order_Header_TB",
+						"referenceName": "Stage1_Sales_Order_Header_TB",
 						"type": "DatasetReference"
 					}
 				],
