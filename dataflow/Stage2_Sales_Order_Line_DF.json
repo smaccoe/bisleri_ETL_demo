@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Order_Line_DF_copy1",
+	"name": "Stage2_Sales_Order_Line_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

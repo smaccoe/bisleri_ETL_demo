@@ -1,9 +1,9 @@
 {
-	"name": "Stage2_Sales_Order_Line_Pipeline",
+	"name": "Stage2_SOL_Full_Load_Pipeline",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Stage2_SOL_Full_Load_Pipeline",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
