@@ -20,7 +20,7 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     parameter1 as string",
+				"      as string",
 				"}",
 				"source(output(",
 				"          SO_DocType as string,",
