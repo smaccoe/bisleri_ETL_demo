@@ -12,16 +12,25 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesOrderHedaerSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"      as string",
-				"}",
 				"source(output(",
 				"          SO_DocType as string,",
 				"          SO_DocumentNo as string,",
@@ -45,10 +54,7 @@
 				"          SO_Category = iifNull(SO_Category,toString(null())),",
 				"          SO_CustomerNo = iifNull(SO_CustomerNo,toString(null())),",
 				"          SO_CustomerName = iifNull(SO_CustomerName,toString(null())),",
-				"          SO_PostingDate = toTimestamp(toString(toTimestamp(SO_PostingDate,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS'))\r",
-				"\r",
-				"\r",
-				",",
+				"          SO_PostingDate = toTimestamp(toString(toTimestamp(SO_PostingDate,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          SO_CustomerPostingGroup = iifNull(SO_CustomerPostingGroup,toString(null())),",
 				"          SO_RouteCode = iifNull(SO_RouteCode,toString(null())),",
 				"          SO_Status = toInteger(SO_Status),",
@@ -56,7 +62,26 @@
 				"          SO_CustomerGroupCode = iifNull(SO_CustomerGroupCode,toString(null())),",
 				"          SO_ManagerName = iifNull(SO_ManagerName,toString(null())),",
 				"          SO_ASMName = iifNull(SO_ASMName,toString(null())),",
-				"          SO_EXEName = iifNull(SO_EXEName,toString(null()))) ~> derivedColumn1"
+				"          SO_EXEName = iifNull(SO_EXEName,toString(null())),",
+				"          Site = toString(null())) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Load/Sales_Order_Header',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesOrderHedaerSink"
 			]
 		}
 	}
