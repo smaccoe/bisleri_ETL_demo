@@ -18,7 +18,7 @@
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "SalesOrderHedaerSink",
+					"name": "SalesOrderHeaderSink",
 					"rejectedDataLinkedService": {
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
@@ -68,7 +68,7 @@
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: ('delta-lake'),",
-				"     folderPath: '\\'Transaction/Full-Load/Sales_Order_Header\\'',",
+				"     folderPath: ('Transaction/Full-Load/Sales_Order_Header'),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
@@ -81,7 +81,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> SalesOrderHedaerSink"
+				"     skipDuplicateMapOutputs: true) ~> SalesOrderHeaderSink"
 			]
 		}
 	}
