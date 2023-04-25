@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_SOH_Full_Load_DF",
+	"name": "Stage2_Sales_Order_Header_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
