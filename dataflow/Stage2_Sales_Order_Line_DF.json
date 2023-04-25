@@ -18,7 +18,7 @@
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "SalesOrderLine",
+					"name": "SalesOrderLineTarget",
 					"rejectedDataLinkedService": {
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
@@ -168,7 +168,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> SalesOrderLine"
+				"     skipDuplicateMapOutputs: true) ~> SalesOrderLineTarget"
 			]
 		}
 	}
