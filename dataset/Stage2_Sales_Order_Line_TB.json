@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Order_Line",
+	"name": "Stage2_Sales_Order_Line_TB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",
