@@ -1,0 +1,75 @@
+{
+	"name": "Sales_Order_Header_TB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServerOnPrem",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "SO_DocType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_DocumentNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_CustomerNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_CustomerName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_PostingDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SO_CustomerPostingGroup",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_RouteCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_Status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_SalesPerson",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_CustomerGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_ManagerName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_ASMName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SO_EXEName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Sales_Order_Header"
+		}
+	}
+}
