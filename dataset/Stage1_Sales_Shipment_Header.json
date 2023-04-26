@@ -17,6 +17,10 @@
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
 			"table": {
 				"value": "@dataset().table",
 				"type": "Expression"
