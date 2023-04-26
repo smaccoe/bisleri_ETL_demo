@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "Select \n    replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$','_') as TABLE_NAME\nFROM  INFORMATION_SCHEMA.TABLES\nwhere  \nTABLE_SCHEMA = 'dbo' and \nTABLE_NAME like '%Sales Shipment Header' \nand TABLE_NAME not in ('BIPL - HO$Sales Shipment Header', 'BIPL-  IND AS$Sales Shipment Header', \n'BIPL - INVESTMENT$Sales Shipment Header')",
+						"sqlReaderQuery": "Select \n    TABLE_SCHEMA,\n    replace(replace(replace(replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$',''),' ','' ),'(',''),')','') as TABLE_NAME\nFROM  INFORMATION_SCHEMA.TABLES\nwhere  \nTABLE_SCHEMA = 'dbo' and \nTABLE_NAME like '%Sales Shipment Header' \nand TABLE_NAME not in ('BIPL - HO$Sales Shipment Header', 'BIPL-  IND AS$Sales Shipment Header', \n'BIPL - INVESTMENT$Sales Shipment Header')",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
