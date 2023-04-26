@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select TABLE_SCHEMA,TABLE_NAME \nFROM  INFORMATION_SCHEMA.TABLES\nwhere TABLE_TYPE = 'BASE TABLE' \nand TABLE_SCHEMA = 'dbo' and \nTABLE_NAME like '%Sales Shipment Header' \nand TABLE_NAME not in ('BIPL - HO$Sales Shipment Header', 'BIPL-  IND AS$Sales Shipment Header', \n'BIPL - INVESTMENT$Sales Shipment Header');",
+						"sqlReaderQuery": "Select \n    replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$','_') as TABLE_NAME\nFROM  INFORMATION_SCHEMA.TABLES\nwhere  \nTABLE_SCHEMA = 'dbo' and \nTABLE_NAME like '%Sales Shipment Header' \nand TABLE_NAME not in ('BIPL - HO$Sales Shipment Header', 'BIPL-  IND AS$Sales Shipment Header', \n'BIPL - INVESTMENT$Sales Shipment Header')",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -29,7 +29,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "Tables",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -48,7 +48,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Copy data1",
+							"name": "Full-Load_Copy",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -65,12 +65,49 @@
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
-								"enableStaging": false
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
 							},
 							"inputs": [
 								{
 									"referenceName": "Stage1_Sales_Shipment_Header",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"table": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Sales_Shipment_Header_Sink",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@concat(item().TABLE_NAME,formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
