@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Sales_Order_Header_TB",
-						"type": "DatasetReference"
-					},
 					"name": "SalesOrderHeaderSource"
 				}
 			],
@@ -48,8 +44,7 @@
 				"          SO_EXEName as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesOrderHeaderSource",
+				"     validateSchema: false) ~> SalesOrderHeaderSource",
 				"SalesOrderHeaderSource derive(SO_DocType = toInteger(SO_DocType),",
 				"          SO_Category = iifNull(SO_Category,toString(null())),",
 				"          SO_CustomerNo = iifNull(SO_CustomerNo,toString(null())),",

@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Sales_Shipment_Header",
-						"type": "DatasetReference"
-					},
 					"name": "salesshipmentheadersource"
 				}
 			],
@@ -58,8 +54,7 @@
 				"          {Ship-to Name} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> salesshipmentheadersource",
+				"     validateSchema: false) ~> salesshipmentheadersource",
 				"renamingcolumns derive(InvoiceNo = iifNull(InvoiceNo,toString(null())),",
 				"          Excise_InvoiceNo = iifNull(Excise_InvoiceNo,toString(null())),",
 				"          Customer_No = iifNull(Customer_No,toString(null())),",

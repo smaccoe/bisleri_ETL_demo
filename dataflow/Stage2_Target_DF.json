@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Target",
-						"type": "DatasetReference"
-					},
 					"name": "targetsource"
 				}
 			],
@@ -53,8 +49,7 @@
 				"          {Last Modified} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> targetsource",
+				"     validateSchema: false) ~> targetsource",
 				"targetsource select(mapColumn(",
 				"          Customer_Group_Code = {Customer Group Code},",
 				"          Customer_No_ = {Customer No_},",

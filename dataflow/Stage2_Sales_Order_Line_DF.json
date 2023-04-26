@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Sales_Order_Line_TB",
-						"type": "DatasetReference"
-					},
 					"name": "SalesOrderLineSource"
 				}
 			],
@@ -70,8 +66,7 @@
 				"          SO_Division as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesOrderLineSource",
+				"     validateSchema: false) ~> SalesOrderLineSource",
 				"SalesOrderLineSource derive(SO_BillNo = toInteger(SO_BillNo),",
 				"          SO_Bill_CustomerNo = iifNull(SO_Bill_CustomerNo, toString(null())),",
 				"          SO_Completely_Shipped = toInteger(SO_Completely_Shipped),",

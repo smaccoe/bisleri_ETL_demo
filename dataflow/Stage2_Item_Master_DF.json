@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Item_Master",
-						"type": "DatasetReference"
-					},
 					"name": "itemmastersource"
 				}
 			],
@@ -65,14 +61,11 @@
 				"          OLD as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> itemmastersource",
+				"     validateSchema: false) ~> itemmastersource",
 				"columnrename derive(No_ = iifNull(No_, toString(null())),",
 				"          Pack_Title = iifNull(Pack_Title, toString(null())),",
 				"          No_2 = iifNull(No_2, toString(null())),",
-				"          ItemName = iifNull(ItemName, toString(null()))\r",
-				"\r",
-				",",
+				"          ItemName = iifNull(ItemName, toString(null())),",
 				"          ItemName2 = iifNull(ItemName2, toString(null())),",
 				"          Base_Unit_of_Measure = iifNull(Base_Unit_of_Measure, toString(null())),",
 				"          Item_Categor_Code = iifNull(Item_Categor_Code, toString(null())),",

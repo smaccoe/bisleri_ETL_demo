@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Sales_Shipment_Lines",
-						"type": "DatasetReference"
-					},
 					"name": "salesshipmentline"
 				}
 			],
@@ -70,8 +66,7 @@
 				"          {Total GST Amount} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> salesshipmentline",
+				"     validateSchema: false) ~> salesshipmentline",
 				"salesshipmentline select(mapColumn(",
 				"          Amount,",
 				"          InvoiceNo,",

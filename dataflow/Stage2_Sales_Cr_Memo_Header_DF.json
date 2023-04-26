@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Sales_Cr_Memo_Header",
-						"type": "DatasetReference"
-					},
 					"name": "SalesCrMemoHeader"
 				}
 			],
@@ -48,8 +44,7 @@
 				"          {Last Modified On} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
+				"     validateSchema: false) ~> SalesCrMemoHeader",
 				"select1 derive(SRDocNo = iifNull(SRDocNo, toString(null())),",
 				"          RCustomerNo = iifNull(RCustomerNo, toString(null())),",
 				"          RBranch = iifNull(RBranch, toString(null())),",

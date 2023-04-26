@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Customer_Master",
-						"type": "DatasetReference"
-					},
 					"name": "customersource"
 				}
 			],
@@ -141,8 +137,7 @@
 				"          Remaining_Amt as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> customersource",
+				"     validateSchema: false) ~> customersource",
 				"customersource select(mapColumn(",
 				"          Customer_No,",
 				"          Cust_Creation_Date,",

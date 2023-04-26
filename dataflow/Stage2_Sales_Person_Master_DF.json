@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Sales_Person_Master",
-						"type": "DatasetReference"
-					},
 					"name": "salesperson"
 				}
 			],
@@ -50,8 +46,7 @@
 				"          SalesPersonZone as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> salesperson",
+				"     validateSchema: false) ~> salesperson",
 				"salesperson derive(SASM = toInteger(SASM),",
 				"          SManager = toInteger(SManager),",
 				"          SExecutive = toInteger(SManager),",

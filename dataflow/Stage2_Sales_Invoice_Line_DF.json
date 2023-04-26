@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Sales_Invoice_Line",
-						"type": "DatasetReference"
-					},
 					"name": "SalesInvoiceLineSource"
 				}
 			],
@@ -74,8 +70,7 @@
 				"          SIL_Key as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesInvoiceLineSource",
+				"     validateSchema: false) ~> SalesInvoiceLineSource",
 				"SalesInvoiceLineSource select(mapColumn(",
 				"          Invoice_No = InvoiceNo,",
 				"          Sell_to_Customer_No = {Sell-to Customer No_},",
@@ -120,8 +115,7 @@
 				"select derive(Invoice_No = iifNull(Invoice_No, toString(null())),",
 				"          Sell_to_Customer_No = iifNull(Sell_to_Customer_No, toString(null())),",
 				"          Amount = toDouble(Amount),",
-				"          Tax_Amount = toInteger(Tax_Amount)\r",
-				",",
+				"          Tax_Amount = toInteger(Tax_Amount),",
 				"          Amount_To_Customer = toDouble(Amount_To_Customer),",
 				"          Document_Date = toTimestamp(Document_Date,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
 				"          Bill_to_Customer_No = iifNull(Bill_to_Customer_No, toString(null())),",

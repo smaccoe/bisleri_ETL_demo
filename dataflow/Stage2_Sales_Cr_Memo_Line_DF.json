@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Sales_Cr_Memo_Line",
-						"type": "DatasetReference"
-					},
 					"name": "source1"
 				}
 			],
@@ -67,8 +63,7 @@
 				"          CRL_Key as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
+				"     validateSchema: false) ~> source1",
 				"select1 derive(SR_DocNo = iifNull(SR_DocNo, toString(null())),",
 				"          RRCustomer_No = iifNull(RRCustomer_No, toString(null())),",
 				"          RType = toInteger(RType),",
