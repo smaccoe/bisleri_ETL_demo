@@ -104,7 +104,7 @@
 				"          SO_Reason_Code = iifNull(SO_Reason_Code, toString(null())),",
 				"          SO_Order_Placed = toInteger(SO_Order_Placed),",
 				"          SO_Order_PlacedBy = iifNull(SO_Order_PlacedBy, toString(null())),",
-				"          SO_Order_Placed_On = toTimestamp(toString(toTimestamp(SO_Order_Placed_On,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          SO_Order_Placed_On = toTimestamp(toString(toTimestamp(SO_Order_Placed_On,'dd-MM-yyyy H.mm','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          SO_Dispatch_Location = iifNull(SO_Dispatch_Location, toString(null())),",
 				"          SO_Division = iifNull(SO_Division, toString(null())),",
 				"          Site = toString(null())) ~> Cleaning",
