@@ -1,0 +1,27 @@
+{
+	"name": "SSH_Incre_Folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Sales_Shipment_Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "Transaction/Incremental-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
