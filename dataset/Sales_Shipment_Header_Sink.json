@@ -5,21 +5,16 @@
 			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"filename": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().filename",
+					"value": "@concat('Sales_Shipment_Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
 					"type": "Expression"
 				},
-				"folderPath": "Transaction/Full-Load/Sales_Shipment_Header",
+				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
