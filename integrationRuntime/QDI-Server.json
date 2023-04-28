@@ -1,0 +1,6 @@
+{
+	"name": "QDI-Server",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
