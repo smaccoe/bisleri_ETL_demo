@@ -17,11 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Stage2_Sales_Cr_Memo_Header_DF",
-						"type": "DataFlowReference",
-						"parameters": {
-							"Container_Name": "'curated-data'",
-							"Folder_Name": "'Sales Cr_Memo Header'"
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,

@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Cr_Memo_Header_Pipeline",
+	"name": "Stage2_Sales_Cr_Memo_Header_Full_Load",
 	"properties": {
 		"activities": [
 			{
