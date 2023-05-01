@@ -15,15 +15,22 @@
 			"sinks": [
 				{
 					"linkedService": {
-						"referenceName": "curated_data",
+						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "SalesCrMemoHeaderSink"
+					"name": "SalesCrMemoHeaderSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -45,20 +52,33 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
-				"SalesCrMemoHeader derive(No_ = toString(iifNull(No_, \"None\", No_)),",
-				"          {Sell-to Customer No_} = toString(iifNull({Sell-to Customer No_}, \"None\", {Sell-to Customer No_})),",
-				"          {Bill-to Customer No_} = toString(iifNull({Bill-to Customer No_}, \"None\", {Bill-to Customer No_})),",
-				"          {Posting Date} = toTimestamp(toString(toTimestamp({Posting Date},'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          {Shipment Date} = toTimestamp(toString(toTimestamp({Shipment Date},'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          {Location Code} = toString(iifNull({Location Code}, \"None\", {Location Code})),",
+				"select1 derive(No_ = toString(iifNull(No_, \"None\", No_)),",
+				"          Sell_to_Customer_No_ = toString(iifNull(Sell_to_Customer_No_, \"None\", Sell_to_Customer_No_)),",
+				"          Bill_to_Customer_No_ = toString(iifNull(Bill_to_Customer_No_, \"None\", Bill_to_Customer_No_)),",
+				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Shipment_Date = toTimestamp(toString(toTimestamp(Shipment_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Location_Code = toString(iifNull(Location_Code, \"None\", Location_Code)),",
 				"          ECOM = iif(ECOM,1 ,0),",
-				"          {Last Modified On} = toTimestamp(toString(toTimestamp({Last Modified On},'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Site_Code = toString(Site_Code)) ~> derivedColumn1",
+				"SalesCrMemoHeader select(mapColumn(",
+				"          No_,",
+				"          Sell_to_Customer_No_ = {Sell-to Customer No_},",
+				"          Bill_to_Customer_No_ = {Bill-to Customer No_},",
+				"          Posting_Date = {Posting Date},",
+				"          Shipment_Date = {Shipment Date},",
+				"          Location_Code = {Location Code},",
+				"          ECOM,",
+				"          Last_Modified_On = {Last Modified On},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: 'curated-data',",
-				"     folderPath: 'Sales Return/Sales Cr_Memo Header',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Load',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
