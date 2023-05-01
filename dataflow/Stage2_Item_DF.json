@@ -82,7 +82,9 @@
 				"          Description = iifNull(Description, toString(null())),",
 				"          Description_2 = iifNull(Description_2, toString(null())),",
 				"          Base_Unit_of_Measure = iifNull(Base_Unit_of_Measure, toString(null())),",
-				"          Item_Category_Code = iifNull(Item_Category_Code, toString(null()))) ~> derivedColumn1"
+				"          Item_Category_Code = iifNull(Item_Category_Code, toString(null())),",
+				"          Product_Group_Code = iifNull(Product_Group_Code, toString(null())),",
+				"          Selling_Price = toDouble((iifNull(Selling_Price, toString(null()))))) ~> derivedColumn1"
 			]
 		}
 	}
