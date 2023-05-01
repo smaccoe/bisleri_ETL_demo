@@ -1,0 +1,16 @@
+{
+	"name": "Stage1_Sales_Cr_Memo_Header",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Sales Cr_Memo Header"
+		}
+	}
+}
