@@ -1,0 +1,16 @@
+{
+	"name": "Stage1_Dim_Geo_Hierarchy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Sales hierarchy"
+		}
+	}
+}
