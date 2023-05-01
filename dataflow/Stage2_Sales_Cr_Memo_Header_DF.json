@@ -74,7 +74,7 @@
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Transaction/Full-Load',",
+				"     folderPath: 'Transaction/Full-Load/Sales_Cr_Memo_Header',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
