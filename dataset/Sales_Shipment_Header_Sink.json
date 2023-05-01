@@ -17,7 +17,7 @@
 				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
-			"columnDelimiter": "|",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
