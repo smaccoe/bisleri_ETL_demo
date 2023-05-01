@@ -1,0 +1,36 @@
+{
+	"name": "Stage2_Sales_Cr_Memo_Header_Pipeline_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stage2_Sales_Cr_Memo_Header_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage2_Sales_Cr_Memo_Header_DF",
+						"type": "DataFlowReference",
+						"parameters": {
+							"Container_Name": "'curated-data'",
+							"Folder_Name": "'Sales Cr_Memo Header'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": []
+	}
+}

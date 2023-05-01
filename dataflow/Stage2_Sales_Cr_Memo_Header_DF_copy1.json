@@ -1,0 +1,95 @@
+{
+	"name": "Stage2_Sales_Cr_Memo_Header_DF_copy1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "SalesCrMemoHeader"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "curated_data",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesCrMemoHeaderSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('curated-data'),",
+				"     Folder_Name as string ('Sales Cr_Memo Header')",
+				"}",
+				"source(output(",
+				"          SR_DocNo as string,",
+				"          RCustomer_No as string,",
+				"          RBranch as string,",
+				"          RDivision as string,",
+				"          SDACommSalesPerson as string,",
+				"          R_Location_Code as string,",
+				"          R_External_Doc_No as string,",
+				"          RRoutecode as string,",
+				"          RPdate as string,",
+				"          RCustomer_Posting_Group as string,",
+				"          {Last Modified On} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false) ~> SalesCrMemoHeader",
+				"select1 derive(SRDocNo = iifNull(SRDocNo, toString(null())),",
+				"          RCustomerNo = iifNull(RCustomerNo, toString(null())),",
+				"          RBranch = iifNull(RBranch, toString(null())),",
+				"          RDivision = iifNull(RDivision, toString(null())),",
+				"          SDACommSalesPerson = iifNull(SDACommSalesPerson, toString(null())),",
+				"          RLocationCode = iifNull(RLocationCode, toString(null())),",
+				"          RExternalDocNo = iifNull(RExternalDocNo, toString(null())),",
+				"          RRoutecode = iifNull(RRoutecode, toString(null())),",
+				"          RPdate = toTimestamp(RPdate,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a'),",
+				"          RCustomerPostingGroup = iifNull(RCustomerPostingGroup, toString(null())),",
+				"          LastModifiedOn = toTimestamp(LastModifiedOn,'dd/MM/yyyy hh:mm:ss a','UTC','yyyy-MM-dd hh:mm:ss a')) ~> derivedColumn1",
+				"SalesCrMemoHeader select(mapColumn(",
+				"          SRDocNo = SR_DocNo,",
+				"          RCustomerNo = RCustomer_No,",
+				"          RBranch,",
+				"          RDivision,",
+				"          SDACommSalesPerson,",
+				"          RLocationCode = R_Location_Code,",
+				"          RExternalDocNo = R_External_Doc_No,",
+				"          RRoutecode,",
+				"          RPdate,",
+				"          RCustomerPostingGroup = RCustomer_Posting_Group,",
+				"          LastModifiedOn = {Last Modified On}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'curated-data',",
+				"     folderPath: 'Sales Return/Sales Cr_Memo Header',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesCrMemoHeaderSink"
+			]
+		}
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"name": "Stage2_Sales_Cr_Memo_Header",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Sales_Cr_Memo_Header_2023-05-01 12:44:27.27.csv",
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "No_|Sell-to Customer No_|Bill-to Customer No_|Posting Date|Shipment Date|Location Code|ECOM|Last Modified On|Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
