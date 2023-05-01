@@ -14,7 +14,7 @@
 					"value": "@concat('Sales_Shipment_Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
 					"type": "Expression"
 				},
-				"folderPath": "Transaction/Incremental-Load",
+				"folderPath": "Transaction/Incremental-Load/Sales_Shipment_Header",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
