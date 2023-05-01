@@ -18,7 +18,7 @@
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": "|",
-			"escapeChar": "\"",
+			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
