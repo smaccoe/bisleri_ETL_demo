@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "Stage2_Sales_Cr_Memo_Header",
+						"type": "DatasetReference"
+					},
 					"name": "SalesCrMemoHeader"
 				}
 			],
@@ -39,15 +43,16 @@
 				"          Site_Code as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> SalesCrMemoHeader",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
 				"SalesCrMemoHeader derive(No_ = toString(iifNull(No_, \"None\", No_)),",
 				"          {Sell-to Customer No_} = toString(iifNull({Sell-to Customer No_}, \"None\", {Sell-to Customer No_})),",
 				"          {Bill-to Customer No_} = toString(iifNull({Bill-to Customer No_}, \"None\", {Bill-to Customer No_})),",
-				"          {Posting Date} = toTimestamp(toString(toTimestamp({Posting Date},'dd-MM-yyyy HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          {Shipment Date} = toTimestamp(toString(toTimestamp({Shipment Date},'dd-MM-yyyy HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          {Posting Date} = toTimestamp(toString(toTimestamp({Posting Date},'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          {Shipment Date} = toTimestamp(toString(toTimestamp({Shipment Date},'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          {Location Code} = toString(iifNull({Location Code}, \"None\", {Location Code})),",
-				"          ECOM = toBoolean('ECOM'),",
-				"          {Last Modified On} = toTimestamp(toString(toTimestamp({Last Modified On},'dd-MM-yyyy HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          ECOM = iif(ECOM,1 ,0),",
+				"          {Last Modified On} = toTimestamp(toString(toTimestamp({Last Modified On},'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Site_Code = toString(Site_Code)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
