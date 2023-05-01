@@ -1,0 +1,16 @@
+{
+	"name": "Stage1_Customer_Master",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - DELHI$Customer"
+		}
+	}
+}
