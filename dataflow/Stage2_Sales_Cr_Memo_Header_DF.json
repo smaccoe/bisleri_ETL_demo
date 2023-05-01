@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"linkedService": {
-						"referenceName": "Transaction_Full_Load_Folder",
-						"type": "LinkedServiceReference"
-					},
 					"name": "SalesCrMemoHeader"
 				}
 			],
@@ -42,18 +38,8 @@
 				"          {Last Modified On} as string,",
 				"          Site_Code as string",
 				"     ),",
-				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false,",
-				"     format: 'delimited',",
-				"     fileSystem: 'data-lake',",
-				"     folderPath: 'Transaction/Full-Load',",
-				"     fileName: 'Sales_Cr_Memo_Header_2023-05-01 12:44:27.27.csv',",
-				"     columnDelimiter: '|',",
-				"     escapeChar: '\\\\',",
-				"     quoteChar: '\\\"',",
-				"     columnNamesAsHeader: true) ~> SalesCrMemoHeader",
+				"     validateSchema: false) ~> SalesCrMemoHeader",
 				"SalesCrMemoHeader derive(No_ = toString(iifNull(No_, \"None\", No_)),",
 				"          {Sell-to Customer No_} = toString(iifNull({Sell-to Customer No_}, \"None\", {Sell-to Customer No_})),",
 				"          {Bill-to Customer No_} = toString(iifNull({Bill-to Customer No_}, \"None\", {Bill-to Customer No_})),",
