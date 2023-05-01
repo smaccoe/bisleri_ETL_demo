@@ -1,0 +1,129 @@
+{
+	"name": "Stage1_SalesTarget_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Document No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer ledger Entry No_",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Target As On Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Customer Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Manager Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "A_S_M_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Period",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "System Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Collection Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Collection From Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Collection To Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Document Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Responsible Person",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posting Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Route Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Route Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Document date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Last Modified On",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Sales Target"
+		}
+	}
+}
