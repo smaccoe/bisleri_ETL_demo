@@ -1,0 +1,6 @@
+{
+	"name": "Bisleri-UAT-Server",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
