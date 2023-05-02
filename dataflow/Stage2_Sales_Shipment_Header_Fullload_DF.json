@@ -126,7 +126,7 @@
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Transaction/Full-Loads/Sales_Shipment_Header',",
+				"     folderPath: 'Transaction/Full-Load/Sales_Shipment_Header',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
