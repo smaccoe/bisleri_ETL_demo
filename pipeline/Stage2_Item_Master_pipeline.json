@@ -17,7 +17,11 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Stage2_Item_Master_DF",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"Contanier_Name": "'delta-lake'",
+							"Folder_Name": "'Master/Item_Master'"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
