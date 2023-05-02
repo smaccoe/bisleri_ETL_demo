@@ -21,13 +21,7 @@
 						"partitionOption": "None"
 					},
 					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "Stage1_SalesTarget_Source",
-						"type": "DatasetReference"
-					}
-				]
+				}
 			}
 		],
 		"annotations": []
