@@ -34,6 +34,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     FolderName as string ('Item_Master'),",
+				"     Contanier_Name as string ('delta-lake/Master')",
+				"}",
 				"source(output(",
 				"          No_ as string,",
 				"          {No_ 2} as string,",
@@ -116,8 +120,8 @@
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Master/Item_Master',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($FolderName),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
