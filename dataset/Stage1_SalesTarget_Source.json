@@ -123,7 +123,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "BIPL - ANDHRA PRADESH$Sales Target"
+			"table": "BIPL - ANDHRA PRADESH$Cust Target"
 		}
 	}
 }
