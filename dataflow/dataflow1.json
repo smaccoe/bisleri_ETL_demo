@@ -1,0 +1,79 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Code as string,",
+				"          Name as string,",
+				"          A_S_M_ as boolean,",
+				"          Agent as boolean,",
+				"          ARM as boolean,",
+				"          {Location Code} as string,",
+				"          Route as string,",
+				"          {Sales hierarchy code} as string,",
+				"          {Global Dimension 1 Code} as string,",
+				"          Zone as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Sales_Person2023-05-02 02:30:41.41.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> source1",
+				"source1 select(mapColumn(",
+				"          Code,",
+				"          Name,",
+				"          A_S_M = A_S_M_,",
+				"          Agent,",
+				"          ARM,",
+				"          Location_Code = {Location Code},",
+				"          Route,",
+				"          Sales_hierarchy_code = {Sales hierarchy code},",
+				"          Global_Dimension_1_Code = {Global Dimension 1 Code},",
+				"          Zone,",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Code = iifNull(Code, toString(null())),",
+				"          Name = iifNull(Name, toString(null())),",
+				"          A_S_M = iif(A_S_M,1 ,0),",
+				"          Agent = iif(Agent,1 ,0),",
+				"          ARM = iif(ARM,1 ,0),",
+				"          Location_Code = iifNull(Location_Code, toString(null())),",
+				"          Route = iifNull(Route, toString(null())),",
+				"          Sales_hierarchy_code = iifNull(Sales_hierarchy_code, toString(null())),",
+				"          Global_Dimension_1_Code = iifNull(Global_Dimension_1_Code, toString(null())),",
+				"          Zone = iifNull(Zone, toString(null())),",
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1"
+			]
+		}
+	}
+}
