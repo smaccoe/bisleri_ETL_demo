@@ -89,7 +89,7 @@
 				"          Pack_Size = iifNull(Pack_Size, toString(null())),",
 				"          {2Way_Item} = iifNull({2Way_Item}, toString(null())),",
 				"          Short_Name = iifNull(Short_Name, toString(null())),",
-				"          Pack_Title = ERROR_FUNCTION(''),",
+				"          Pack_Title = iifNull(Pack_Title, toString(null())),",
 				"          Pack_Group_Code = ERROR_FUNCTION(''),",
 				"          Jar_Deposit = ERROR_FUNCTION(''),",
 				"          Pcs_Per_Case = ERROR_FUNCTION(''),",
