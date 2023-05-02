@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Sales_Person",
+	"name": "Stage1_SalesPerson_Purchaser",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BisleriServer",
