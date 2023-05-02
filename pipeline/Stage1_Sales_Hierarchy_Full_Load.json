@@ -1,0 +1,61 @@
+{
+	"name": "Stage1_Sales_Hierarchy_Full_Load",
+	"properties": {
+		"activities": [
+			{
+				"name": "Sales_Hierarchy",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'AP' as Site_Code\r\nFROM [dbo].[BIPL - ANDHRA PRADESH$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'CHE' as Site_Code\r\nFROM [dbo].[BIPL - CHENNAI$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'CG' as Site_Code\r\nFROM [dbo].[BIPL - CHHATTISGARH$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'DEL' as Site_Code\r\nFROM [dbo].[BIPL - DELHI$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'GOA' as Site_Code\r\nFROM [dbo].[BIPL - GOA$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'GJ' as Site_Code\r\nFROM [dbo].[BIPL - GUJARAT$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'HR' as Site_Code\r\nFROM [dbo].[BIPL - HARYANA$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'JP' as Site_Code\r\nFROM [dbo].[BIPL - JAIPUR$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'KMST' as Site_Code\r\nFROM [dbo].[BIPL - KAMSHET$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'KAR' as Site_Code\r\nFROM [dbo].[BIPL - KARNATAKA$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'KR' as Site_Code\r\nFROM [dbo].[BIPL - KERALA$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'MP' as Site_Code\r\nFROM [dbo].[BIPL - MADHYAPRADESH$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'ODSH' as Site_Code\r\nFROM [dbo].[BIPL - ODISHA$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'PUN' as Site_Code\r\nFROM [dbo].[BIPL - PUNE$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'PUB' as Site_Code\r\nFROM [dbo].[BIPL - PUNJAB$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'RUDR' as Site_Code\r\nFROM [dbo].[BIPL - RUDRAPUR$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'SHD' as Site_Code\r\nFROM [dbo].[BIPL – SAHIBABAD$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'TEL' as Site_Code\r\nFROM [dbo].[BIPL - TELANGANA$Sales hierarchy]\r\nUNION ALL\r\nSelect\r\n[Territory Code],\r\n[Area Code],\r\n[Branch Code],\r\n[Zone Code],\r\n[National Code],\r\n[National Name],\r\n[Region Code],\r\n[Region Name],\r\n[Regional Sales Head Name],\r\n[Branch Name],\r\n[Branch Sales Head Name],\r\n[Zone Name],\r\n[Sales Manager Name],\r\n[Area Name],\r\n[Area Sales Manager Name],\r\n[Territory Name],\r\n[Sales Executive Name],\r\n[Division Name],\r\n[SE Code],\r\n[Channel],\r\n[Business Unit],\r\n'WB' as Site_Code\r\nFROM [dbo].[BIPL - WESTBENGAL$Sales hierarchy]\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Stage1_Sales_Hierarchy",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Stage1_Sales_Hierarchy_Sink",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

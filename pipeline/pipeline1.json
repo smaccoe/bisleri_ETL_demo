@@ -25,7 +25,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Stage1_Sales_Order_Line",
+						"referenceName": "Stage1_Sales_Hierarchy",
 						"type": "DatasetReference"
 					}
 				]
