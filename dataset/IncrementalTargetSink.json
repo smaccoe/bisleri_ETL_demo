@@ -5,16 +5,6 @@
 			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"Container_Name": {
-				"type": "string",
-				"defaultValue": "'data-lake'"
-			},
-			"Folder_Name": {
-				"type": "string",
-				"defaultValue": "'Transaction/Incremental-Load/Target'"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
@@ -24,8 +14,14 @@
 					"value": "@concat('Cust Target',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
 					"type": "Expression"
 				},
-				"folderPath": "Transaction/Incremental-Load",
-				"fileSystem": "data-lake"
+				"folderPath": {
+					"value": "Transaction/Incremental-Load/Target",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "data-lake",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
