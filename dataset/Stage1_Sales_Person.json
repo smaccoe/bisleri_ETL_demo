@@ -1,0 +1,16 @@
+{
+	"name": "Stage1_Sales_Person",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Salesperson_Purchaser"
+		}
+	}
+}
