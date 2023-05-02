@@ -1,0 +1,66 @@
+{
+	"name": "Parquet2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Delta_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-cfde0a76-dd39-4809-99cc-ce52ecb78035-c000.snappy.parquet",
+				"folderPath": "Master/Sales_Person_Master",
+				"fileSystem": "delta-lake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "A_S_M",
+				"type": "INT32"
+			},
+			{
+				"name": "Agent",
+				"type": "INT32"
+			},
+			{
+				"name": "ARM",
+				"type": "INT32"
+			},
+			{
+				"name": "Location_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Route",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sales_hierarchy_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Global_Dimension_1_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Zone",
+				"type": "UTF8"
+			},
+			{
+				"name": "Site_Code",
+				"type": "UTF8"
+			}
+		]
+	}
+}

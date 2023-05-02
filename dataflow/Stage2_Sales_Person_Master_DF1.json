@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "Stage2_Sales_Person_Master_DF1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -12,7 +12,19 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -72,7 +84,25 @@
 				"          Sales_hierarchy_code = iifNull(Sales_hierarchy_code, toString(null())),",
 				"          Global_Dimension_1_Code = iifNull(Global_Dimension_1_Code, toString(null())),",
 				"          Zone = iifNull(Zone, toString(null())),",
-				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1"
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Sales_Person_Master',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
