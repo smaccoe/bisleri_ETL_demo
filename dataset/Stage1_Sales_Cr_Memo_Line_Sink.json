@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_SalesCR_Line_R2_Sink",
+	"name": "Stage1_Sales_Cr_Memo_Line_Sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",
@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@concat('Purch_ Cr_ Memo Line',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"value": "@concat('Sales Cr_Memo Line',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
 					"type": "Expression"
 				},
 				"folderPath": "Transaction/Full-Load",
