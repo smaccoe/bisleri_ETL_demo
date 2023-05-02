@@ -12,7 +12,19 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -99,7 +111,7 @@
 				"          Shortcut_Dimension_1_Code = iifNull(Shortcut_Dimension_1_Code, toString(null())),",
 				"          Shortcut_Dimension_2_Code = iifNull(Shortcut_Dimension_2_Code, toString(null())),",
 				"          Shipping_Agent_Code = iifNull(Shipping_Agent_Code, toString(null())),",
-				"          LR_RR_No_ = toInteger(iifNull({LR_RR_No_}, toString(null()))),",
+				"          LR_RR_No_ = toInteger(iifNull(LR_RR_No_, toString(null()))),",
 				"          LR_RR_Date = toTimestamp(toString(toTimestamp(LR_RR_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Vehicle_No_ = iifNull(Vehicle_No_, toString(null())),",
 				"          Vehicle_Type = iifNull(Vehicle_Type, toString(null())),",
@@ -107,8 +119,27 @@
 				"          Customer_Category = iifNull(Customer_Category, toString(null())),",
 				"          Loading_Slip_No_ = iifNull(Loading_Slip_No_, toString(null())),",
 				"          AutoPDASO = iif(toBoolean(AutoPDASO),1 ,0),",
+				"          ECOM = iif(toBoolean(ECOM),1 ,0),",
 				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Site_Code = toString(Site_Code)) ~> derivedColumn1"
+				"          Site_Code = toString(Site_Code)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Loads/Sales_Shipment_Header',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
