@@ -1,0 +1,58 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Delta_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-24115c16-974d-42c8-9b53-80011d2d74e6-c000.snappy.parquet",
+				"folderPath": "Transaction/Full-Load/Sales_Cr_Memo_Header",
+				"fileSystem": "delta-lake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sell_to_Customer_No_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Bill_to_Customer_No_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Posting_Date",
+				"type": "INT96"
+			},
+			{
+				"name": "Shipment_Date",
+				"type": "INT96"
+			},
+			{
+				"name": "Location_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "ECOM",
+				"type": "INT32"
+			},
+			{
+				"name": "Last_Modified_On",
+				"type": "INT96"
+			},
+			{
+				"name": "Site_Code",
+				"type": "UTF8"
+			}
+		]
+	}
+}
