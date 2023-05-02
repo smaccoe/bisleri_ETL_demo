@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Item_DF",
+	"name": "Stage2_Item_Master_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,16 +9,28 @@
 						"referenceName": "Stage2_Iteam_Source",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "Stage2ItemSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage2ItemSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "ColumnRenaming"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "DataCleaning"
 				}
 			],
 			"scriptLines": [
@@ -49,8 +61,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 select(mapColumn(",
+				"     ignoreNoFilesFound: false) ~> Stage2ItemSource",
+				"Stage2ItemSource select(mapColumn(",
 				"          No_,",
 				"          No_2 = {No_ 2},",
 				"          Description,",
@@ -76,8 +88,8 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(No_ = iifNull(No_, toString(null())),",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
+				"ColumnRenaming derive(No_ = iifNull(No_, toString(null())),",
 				"          No_2 = iifNull(No_2, toString(null())),",
 				"          Description = iifNull(Description, toString(null())),",
 				"          Description_2 = iifNull(Description_2, toString(null())),",
@@ -100,7 +112,25 @@
 				"          Container_Type = iifNull(Container_Type, toString(null())),",
 				"          Sub_Brand = iifNull(Sub_Brand, toString(null())),",
 				"          SKU_Category = iifNull(SKU_Category, toString(null())),",
-				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1"
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage2ItemSink"
 			]
 		}
 	}

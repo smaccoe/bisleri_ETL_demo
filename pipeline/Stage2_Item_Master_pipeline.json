@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Item_Master_Pipeline_Dummy",
+	"name": "Stage2_Item_Master_pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -16,12 +16,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Item_Master_DF_Dummy",
-						"type": "DataFlowReference",
-						"parameters": {
-							"Contanier_Name": "'curated-data'",
-							"Folder_Name": "'Item_Master'"
-						}
+						"referenceName": "Stage2_Item_Master_DF",
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,

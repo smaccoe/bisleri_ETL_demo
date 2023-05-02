@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Item_Master_DF",
+	"name": "Stage2_Item_Master_DF_Dummy",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
