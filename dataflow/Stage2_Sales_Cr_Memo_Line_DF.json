@@ -5,14 +5,83 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "Stage2_Sales_Cr_Memo_Line_dataset",
+						"type": "DatasetReference"
+					},
+					"name": "SalesCrMemoLineSource"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          {Document No_} as string,",
+				"          {Line No_} as string,",
+				"          Type as string,",
+				"          No_ as string,",
+				"          {Sell-to Customer No_} as string,",
+				"          {Location Code} as string,",
+				"          Quantity as string,",
+				"          {Shipment Date} as string,",
+				"          Description as string,",
+				"          {Unit of Measure} as string,",
+				"          {Quantity (Base)} as string,",
+				"          {Unit Price} as string,",
+				"          {Unit Cost (LCY)} as string,",
+				"          Amount as string,",
+				"          {Gross Weight} as string,",
+				"          {Bill-to Customer No_} as string,",
+				"          {GST Base Amount} as string,",
+				"          {Posting Date} as string,",
+				"          {Unit of Measure Code} as string,",
+				"          {Amount To Customer} as string,",
+				"          {TCS Nature of Collection} as string,",
+				"          {Discount Structure Code} as string,",
+				"          {Discount Structure Amount} as string,",
+				"          {Scheme Reason} as string,",
+				"          {Scheme Code} as string,",
+				"          {Scheme Parent Item No_} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesCrMemoLineSource",
+				"SalesCrMemoLineSource select(mapColumn(",
+				"          Document_No_ = {Document No_},",
+				"          Line_No_ = {Line No_},",
+				"          Type,",
+				"          No_,",
+				"          Sell_to_Customer_No_ = {Sell-to Customer No_},",
+				"          Location_Code = {Location Code},",
+				"          Quantity,",
+				"          Shipment_Date = {Shipment Date},",
+				"          Description,",
+				"          Unit_of_Measure = {Unit of Measure},",
+				"          Quantity_Base = {Quantity (Base)},",
+				"          Unit_Price = {Unit Price},",
+				"          Unit_Cost_LCY = {Unit Cost (LCY)},",
+				"          Amount,",
+				"          Gross_Weight = {Gross Weight},",
+				"          Bill_to_Customer_No_ = {Bill-to Customer No_},",
+				"          GST_Base_Amount = {GST Base Amount},",
+				"          Posting_Date = {Posting Date},",
+				"          Unit_of_Measure_Code = {Unit of Measure Code},",
+				"          Amount_To_Customer = {Amount To Customer},",
+				"          TCS_Nature_of_Collection = {TCS Nature of Collection},",
+				"          Discount_Structure_Code = {Discount Structure Code},",
+				"          Discount_Structure_Amount = {Discount Structure Amount},",
+				"          Scheme_Reason = {Scheme Reason},",
+				"          Scheme_Code = {Scheme Code},",
+				"          Scheme_Parent_Item_No_ = {Scheme Parent Item No_},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
