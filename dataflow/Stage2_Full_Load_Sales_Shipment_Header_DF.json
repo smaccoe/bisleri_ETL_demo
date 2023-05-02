@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Shipment_Header_Fullload_DF",
+	"name": "Stage2_Full_Load_Sales_Shipment_Header_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

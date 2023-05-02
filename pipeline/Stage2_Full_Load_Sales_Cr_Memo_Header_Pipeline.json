@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Cr_Memo_Header_Full_Load",
+	"name": "Stage2_Full_Load_Sales_Cr_Memo_Header_Pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Sales_Cr_Memo_Header_Fullload_DF",
+						"referenceName": "Stage2_Full_Load_Sales_Cr_Memo_Header_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Sales_Shipment_Header_Fullload_Pipeline",
+	"name": "Stage2__Full_Load_Sales_Shipment_Header_Pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Sales_Shipment_Header_Fullload_DF",
+						"referenceName": "Stage2_Full_Load_Sales_Shipment_Header_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {
