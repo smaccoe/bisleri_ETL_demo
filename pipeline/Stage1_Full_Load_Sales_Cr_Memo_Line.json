@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Stage1_Full_Load_Sales_Cr_Memo_Line",
+				"name": "Sales_Cr_Memo_Line",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
