@@ -84,7 +84,22 @@
 				"          Base_Unit_of_Measure = iifNull(Base_Unit_of_Measure, toString(null())),",
 				"          Item_Category_Code = iifNull(Item_Category_Code, toString(null())),",
 				"          Product_Group_Code = iifNull(Product_Group_Code, toString(null())),",
-				"          Selling_Price = toDouble((iifNull(Selling_Price, toString(null()))))) ~> derivedColumn1"
+				"          Selling_Price = toDouble((iifNull(Selling_Price, toString(null())))),",
+				"          Pack_Size_Information = toInteger(iifNull(Pack_Size_Information, toString(null()))),",
+				"          Pack_Size = iifNull(Pack_Size, toString(null())),",
+				"          {2Way_Item} = iifNull({2Way_Item}, toString(null())),",
+				"          Short_Name = iifNull(Short_Name, toString(null())),",
+				"          Pack_Title = ERROR_FUNCTION(''),",
+				"          Pack_Group_Code = ERROR_FUNCTION(''),",
+				"          Jar_Deposit = ERROR_FUNCTION(''),",
+				"          Pcs_Per_Case = ERROR_FUNCTION(''),",
+				"          Item_Class = ERROR_FUNCTION(''),",
+				"          FG_Category = ERROR_FUNCTION(''),",
+				"          Packaging_Type = ERROR_FUNCTION(''),",
+				"          Container_Type = ERROR_FUNCTION(''),",
+				"          Sub_Brand = ERROR_FUNCTION(''),",
+				"          SKU_Category = ERROR_FUNCTION(''),",
+				"          Site_Code = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
