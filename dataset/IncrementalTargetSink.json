@@ -5,6 +5,16 @@
 			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Container_Name": {
+				"type": "string",
+				"defaultValue": "'data-lake'"
+			},
+			"Folder_Name": {
+				"type": "string",
+				"defaultValue": "'Transaction/Incremental-Load/Target'"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

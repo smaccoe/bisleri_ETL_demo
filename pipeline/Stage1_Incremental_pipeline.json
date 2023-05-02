@@ -56,16 +56,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"Container_Name": {
-				"type": "string",
-				"defaultValue": "'data-lake'"
-			},
-			"Folder_Name": {
-				"type": "string",
-				"defaultValue": "'Transaction/Incremental-Load/Target'"
-			}
-		},
 		"annotations": []
 	}
 }
