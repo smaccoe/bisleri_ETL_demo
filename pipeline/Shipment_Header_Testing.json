@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "SSHFullLoad",
+				"name": "Stage1_SSH_FullLoad",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {

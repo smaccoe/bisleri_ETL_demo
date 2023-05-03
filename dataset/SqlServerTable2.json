@@ -1,129 +1,131 @@
 {
-	"name": "Stage2_Sales_Shipment_Header_Fullload",
+	"name": "SqlServerTable2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Transaction_Full_Load_Folder",
+			"referenceName": "Azure_VMSQLDB",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "DelimitedText",
-		"typeProperties": {
-			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileName": "Sales_Shipment_Header_2023-05-03 02:41:09.09.csv",
-				"folderPath": "Transaction/Full-Load",
-				"fileSystem": "data-lake"
-			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
-		},
+		"type": "SqlServerTable",
 		"schema": [
 			{
 				"name": "No_",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Sell-to Customer No_",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Bill-to Customer No_",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Ship-to Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Ship-to Name",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Ship-to Address",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Ship-to Address 2",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Ship-to City",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Posting Date",
-				"type": "String"
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			},
 			{
 				"name": "Shipment Date",
-				"type": "String"
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			},
 			{
 				"name": "Shipment Method Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Location Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Shortcut Dimension 1 Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Shortcut Dimension 2 Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Shipping Agent Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "LR_RR No_",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "LR_RR Date",
-				"type": "String"
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			},
 			{
 				"name": "Vehicle No_",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Vehicle Type",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Route Code",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Customer Category",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Loading Slip No_",
-				"type": "String"
+				"type": "nvarchar"
 			},
 			{
 				"name": "AutoPDASO",
-				"type": "String"
+				"type": "tinyint",
+				"precision": 3
 			},
 			{
 				"name": "ECOM",
-				"type": "String"
+				"type": "tinyint",
+				"precision": 3
 			},
 			{
 				"name": "Last Modified On",
-				"type": "String"
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			},
 			{
 				"name": "Site_Code",
-				"type": "String"
+				"type": "varchar"
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales_shipment_header"
+		}
 	}
 }

@@ -1,8 +1,8 @@
 {
-	"name": "Stage2_Sales_Shipment_Header_Fullload",
+	"name": "DelimitedText1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Transaction_Full_Load_Folder",
+			"referenceName": "Incre_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,118 +10,94 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Sales_Shipment_Header_2023-05-03 02:41:09.09.csv",
-				"folderPath": "Transaction/Full-Load",
+				"fileName": {
+					"value": "@concat('Sales_Shipment_Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "Transaction/Incremental-Load/Sales_Shipment_Header",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "No_",
 				"type": "String"
 			},
 			{
-				"name": "Sell-to Customer No_",
 				"type": "String"
 			},
 			{
-				"name": "Bill-to Customer No_",
 				"type": "String"
 			},
 			{
-				"name": "Ship-to Code",
 				"type": "String"
 			},
 			{
-				"name": "Ship-to Name",
 				"type": "String"
 			},
 			{
-				"name": "Ship-to Address",
 				"type": "String"
 			},
 			{
-				"name": "Ship-to Address 2",
 				"type": "String"
 			},
 			{
-				"name": "Ship-to City",
 				"type": "String"
 			},
 			{
-				"name": "Posting Date",
 				"type": "String"
 			},
 			{
-				"name": "Shipment Date",
 				"type": "String"
 			},
 			{
-				"name": "Shipment Method Code",
 				"type": "String"
 			},
 			{
-				"name": "Location Code",
 				"type": "String"
 			},
 			{
-				"name": "Shortcut Dimension 1 Code",
 				"type": "String"
 			},
 			{
-				"name": "Shortcut Dimension 2 Code",
 				"type": "String"
 			},
 			{
-				"name": "Shipping Agent Code",
 				"type": "String"
 			},
 			{
-				"name": "LR_RR No_",
 				"type": "String"
 			},
 			{
-				"name": "LR_RR Date",
 				"type": "String"
 			},
 			{
-				"name": "Vehicle No_",
 				"type": "String"
 			},
 			{
-				"name": "Vehicle Type",
 				"type": "String"
 			},
 			{
-				"name": "Route Code",
 				"type": "String"
 			},
 			{
-				"name": "Customer Category",
 				"type": "String"
 			},
 			{
-				"name": "Loading Slip No_",
 				"type": "String"
 			},
 			{
-				"name": "AutoPDASO",
 				"type": "String"
 			},
 			{
-				"name": "ECOM",
 				"type": "String"
 			},
 			{
-				"name": "Last Modified On",
 				"type": "String"
 			},
 			{
-				"name": "Site_Code",
 				"type": "String"
 			}
 		]
