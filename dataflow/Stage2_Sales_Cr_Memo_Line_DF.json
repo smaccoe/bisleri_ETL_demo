@@ -91,7 +91,27 @@
 				"          No_ = iifNull(No_,toString(null())),",
 				"          Sell_to_Customer_No_ = iifNull(Sell_to_Customer_No_, toString(null())),",
 				"          Location_Code = iifNull(Location_Code, toString(null())),",
-				"          Quantity = toInteger(Quantity,toString(null()))) ~> derivedColumn1"
+				"          Quantity = toInteger(Quantity,toString(null())),",
+				"          Shipment_Date = toTimestamp(toString(toTimestamp(Shipment_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Description = iifNull(Description,toString(null())),",
+				"          Unit_of_Measure = iifNull(Unit_of_Measure,toString(null())),",
+				"          Quantity_Base = toDouble(iifNull(Quantity_Base, toString(null()))),",
+				"          Unit_Price = toDouble(iifNull(Unit_Price, toString(null()))),",
+				"          Unit_Cost_LCY = toDouble(iifNull(Unit_Cost_LCY, toString(null()))),",
+				"          Amount = toDouble(iifNull(Amount, toString(null()))),",
+				"          Gross_Weight = toDouble(iifNull(Gross_Weight, toString(null()))),",
+				"          Bill_to_Customer_No_ = iifNull(Bill_to_Customer_No_, toString(null())),",
+				"          GST_Base_Amount = toDouble(iifNull(GST_Base_Amount, toString(null()))),",
+				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Unit_of_Measure_Code = iifNull(Unit_of_Measure_Code, toString(null())),",
+				"          Amount_To_Customer = toDouble(iifNull(Amount_To_Customer, toString(null()))),",
+				"          TCS_Nature_of_Collection = iifNull(TCS_Nature_of_Collection, toString(null())),",
+				"          Discount_Structure_Code = iifNull(Discount_Structure_Code, toString(null())),",
+				"          Discount_Structure_Amount = toDouble(iifNull(Discount_Structure_Amount, toString(null()))),",
+				"          Scheme_Reason = iifNull(Scheme_Reason, toString(null())),",
+				"          Scheme_Code = iifNull(Scheme_Code, toString(null())),",
+				"          Scheme_Parent_Item_No_ = iifNull(Scheme_Parent_Item_No_, toString(null())),",
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1"
 			]
 		}
 	}
