@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Target_Dataset_Source",
+	"name": "Stage1_Target_Source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BisleriServer",
