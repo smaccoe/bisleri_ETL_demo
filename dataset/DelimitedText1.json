@@ -2,8 +2,13 @@
 	"name": "DelimitedText1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Incre_Load_Folder",
+			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Filename": {
+				"type": "String"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
@@ -11,93 +16,76 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@concat('Sales_Shipment_Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"value": "@dataset().Filename",
 					"type": "Expression"
 				},
-				"folderPath": "Transaction/Incremental-Load/Sales_Shipment_Header",
+				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
+				"name": "Customer No_",
 				"type": "String"
 			},
 			{
+				"name": "Route Code",
 				"type": "String"
 			},
 			{
+				"name": "Customer Group Code",
 				"type": "String"
 			},
 			{
+				"name": "Item No_",
 				"type": "String"
 			},
 			{
+				"name": "Start Date",
 				"type": "String"
 			},
 			{
+				"name": "DLP Target Qty",
 				"type": "String"
 			},
 			{
+				"name": "Target Qty",
 				"type": "String"
 			},
 			{
+				"name": "End Date",
 				"type": "String"
 			},
 			{
+				"name": "Item Unit of Measure",
 				"type": "String"
 			},
 			{
+				"name": "Pack Group Code",
 				"type": "String"
 			},
 			{
+				"name": "Month",
 				"type": "String"
 			},
 			{
+				"name": "Year",
 				"type": "String"
 			},
 			{
+				"name": "Last Modified",
 				"type": "String"
 			},
 			{
+				"name": "Pack Title",
 				"type": "String"
 			},
 			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
+				"name": "Site_Code",
 				"type": "String"
 			}
 		]
