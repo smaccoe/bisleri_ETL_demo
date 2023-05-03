@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Target_Full_Load_Source_Dataset",
+	"name": "Stage2_Target_Full_Load_Source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",

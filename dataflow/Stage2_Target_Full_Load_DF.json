@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Stage2_Target_Full_Load_Source_Dataset",
+						"referenceName": "Stage2_Target_Full_Load_Source",
 						"type": "DatasetReference"
 					},
 					"name": "Stage2TargetFullLoadSource"
