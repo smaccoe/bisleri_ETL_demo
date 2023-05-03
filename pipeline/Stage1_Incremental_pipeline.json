@@ -50,7 +50,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "IncrementalTargetSink",
+						"referenceName": "Stage1_Incremental_Target_Sink",
 						"type": "DatasetReference"
 					}
 				]

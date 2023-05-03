@@ -1,5 +1,5 @@
 {
-	"name": "IncrementalTargetSink",
+	"name": "Stage1_Incremental_Target_Sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",
