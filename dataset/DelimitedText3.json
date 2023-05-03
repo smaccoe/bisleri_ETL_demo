@@ -19,7 +19,7 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"folderPath": "Transaction/Incremental-Load",
+				"folderPath": "Transaction/Incremental-Load/Sales_Shipment_Header",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
