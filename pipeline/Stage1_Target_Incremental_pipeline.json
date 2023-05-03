@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Incremental_pipeline",
+	"name": "Stage1_Target_Incremental_pipeline",
 	"properties": {
 		"activities": [
 			{

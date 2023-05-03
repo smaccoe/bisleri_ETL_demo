@@ -12,7 +12,19 @@
 					"name": "Stage2TargetFullLoadSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage2TargetFullLoadSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "ColumnRenaming"
@@ -22,6 +34,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('delta-lake'),",
+				"     Folder_Name as string ('Transaction/Full-Load/Target')",
+				"}",
 				"source(output(",
 				"          {Customer No_} as string,",
 				"          {Route Code} as string,",
@@ -75,7 +91,25 @@
 				"          Year = toInteger(iifNull(Year, toString(null()))),",
 				"          Last_Modified = toTimestamp(toString(toTimestamp(Last_Modified,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Pack_Title = iifNull(Pack_Title, toString(null())),",
-				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> DataCleaning"
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Load',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage2TargetFullLoadSink"
 			]
 		}
 	}
