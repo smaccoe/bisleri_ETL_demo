@@ -167,7 +167,7 @@
 					},
 					"activities": [
 						{
-							"name": "Get Metadata2",
+							"name": "get_lastmodified_of_all_files",
 							"type": "GetMetadata",
 							"dependsOn": [],
 							"policy": {
@@ -207,7 +207,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "Get Metadata2",
+									"activity": "get_lastmodified_of_all_files",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -260,7 +260,7 @@
 				}
 			},
 			{
-				"name": "Copy data3",
+				"name": "copying_data_from_adls_to_temp_file",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -331,11 +331,11 @@
 				]
 			},
 			{
-				"name": "Data flow1",
+				"name": "Stage2_sales_shipment_header_incremental_load",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Copy data3",
+						"activity": "copying_data_from_adls_to_temp_file",
 						"dependencyConditions": [
 							"Succeeded"
 						]
