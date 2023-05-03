@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Sales_Shipment_Line2023-05-03 11:49:37.37.csv",
+				"fileName": "Sales_Shipment_Line2023-05-03 01:00:18.18.csv",
 				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
