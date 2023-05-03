@@ -1,5 +1,5 @@
 {
-	"name": "stage1_sales_shipment header",
+	"name": "stage1_and_2_sales_shipment header",
 	"properties": {
 		"activities": [
 			{
@@ -351,7 +351,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow2",
+						"referenceName": "sales_shipment_header_dataflow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
