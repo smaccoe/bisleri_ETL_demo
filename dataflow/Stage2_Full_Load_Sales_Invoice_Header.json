@@ -1,0 +1,100 @@
+{
+	"name": "Stage2_Full_Load_Sales_Invoice_Header",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stage2_Sales_Invoice_Header_Source",
+						"type": "DatasetReference"
+					},
+					"name": "SalesInvoiceHeader"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "ColumnRenaming"
+				},
+				{
+					"name": "DataCleaning"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          No_ as string,",
+				"          {Sell-to Customer No_} as string,",
+				"          {Bill-to Customer No_} as string,",
+				"          {Bill-to Name} as string,",
+				"          {Bill-to Name 2} as string,",
+				"          {Bill-to Address} as string,",
+				"          {Posting Date} as string,",
+				"          {Shipment Date} as string,",
+				"          {Location Code} as string,",
+				"          {Shortcut Dimension 1 Code} as string,",
+				"          {Shortcut Dimension 2 Code} as string,",
+				"          {Shipping Agent Code} as string,",
+				"          {LR_RR No_} as string,",
+				"          {LR_RR Date} as string,",
+				"          {Vehicle No_} as string,",
+				"          {Vehicle Type} as string,",
+				"          {Route Code} as string,",
+				"          {Customer Category} as string,",
+				"          ECOM as string,",
+				"          {Last Modified On} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SalesInvoiceHeader",
+				"SalesInvoiceHeader select(mapColumn(",
+				"          No_,",
+				"          Sell_to_Customer_No_ = {Sell-to Customer No_},",
+				"          Bill_to_Customer_No_ = {Bill-to Customer No_},",
+				"          Bill_to_Name = {Bill-to Name},",
+				"          Bill_to_Name_2 = {Bill-to Name 2},",
+				"          Bill_to_Address = {Bill-to Address},",
+				"          Posting_Date = {Posting Date},",
+				"          Shipment_Date = {Shipment Date},",
+				"          Location_Code = {Location Code},",
+				"          Shortcut_Dimension_1_Code = {Shortcut Dimension 1 Code},",
+				"          Shortcut_Dimension_2_Code = {Shortcut Dimension 2 Code},",
+				"          Shipping_Agent_Code = {Shipping Agent Code},",
+				"          LR_RR_No_ = {LR_RR No_},",
+				"          LR_RR_Date = {LR_RR Date},",
+				"          Vehicle_No_ = {Vehicle No_},",
+				"          Vehicle_Type = {Vehicle Type},",
+				"          Route_Code = {Route Code},",
+				"          Customer_Category = {Customer Category},",
+				"          ECOM,",
+				"          Last_Modified_On = {Last Modified On},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
+				"ColumnRenaming derive(No_ = iifNull(No_,toString(null())),",
+				"          Sell_to_Customer_No_ = iifNull(Sell_to_Customer_No_,toString(null())),",
+				"          Bill_to_Customer_No_ = iifNull(Bill_to_Customer_No_,toString(null())),",
+				"          Bill_to_Name = iifNull(Bill_to_Name,toString(null())),",
+				"          Bill_to_Name_2 = iifNull(Bill_to_Name_2,toString(null())),",
+				"          Bill_to_Address = iifNull(Bill_to_Address,toString(null())),",
+				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Shipment_Date = toTimestamp(toString(toTimestamp(Shipment_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Location_Code = iifNull(Location_Code,toString(null())),",
+				"          Shortcut_Dimension_1_Code = iifNull(Shortcut_Dimension_1_Code,toString(null())),",
+				"          Shortcut_Dimension_2_Code = iifNull(Shortcut_Dimension_2_Code,toString(null())),",
+				"          Shipping_Agent_Code = iifNull(Shipping_Agent_Code,toString(null())),",
+				"          LR_RR_No_ = iifNull(LR_RR_No_,toString(null())),",
+				"          LR_RR_Date = toTimestamp(toString(toTimestamp(LR_RR_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Vehicle_No_ = iifNull(Vehicle_No_,toString(null())),",
+				"          Vehicle_Type = iifNull(Vehicle_Type,toString(null())),",
+				"          Route_Code = iifNull(Route_Code,toString(null())),",
+				"          Customer_Category = iifNull(Customer_Category,toString(null())),",
+				"          ECOM = iifNull(ECOM,toString(null())),",
+				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Site_Code = iifNull(Site_Code,toString(null()))) ~> DataCleaning"
+			]
+		}
+	}
+}
