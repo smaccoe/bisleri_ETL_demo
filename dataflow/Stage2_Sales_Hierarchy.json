@@ -12,7 +12,11 @@
 					"name": "saleshierarchy"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -105,7 +109,11 @@
 				"          SE_Code = iifNull(SE_Code,toString(null())),",
 				"          Channel = iif(Channel, 1, 0),",
 				"          Business_Unit = iif(Business_Unit ,1,0),",
-				"          Site_Code = iifNull(Site_Code,toString(null()))) ~> derivedColumn1"
+				"          Site_Code = iifNull(Site_Code,toString(null()))) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
