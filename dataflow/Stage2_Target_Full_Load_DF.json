@@ -65,7 +65,16 @@
 				"          Route_Code = iifNull(Route_Code, toString(null())),",
 				"          Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
 				"          Item_No_ = iifNull(Item_No_, toString(null())),",
-				"          Start_Date = ERROR_FUNCTION('')) ~> DataCleaning"
+				"          Start_Date = toTimestamp(toString(toTimestamp(Start_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          DLP_Target_Qty = toInteger(iifNull(DLP_Target_Qty, toString(null()))),",
+				"          Target_Qty = toDouble((iifNull(Target_Qty, toString(null())))),",
+				"          End_Date = toTimestamp(toString(toTimestamp(End_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Item_Unit_of_Measure = iifNull(Item_Unit_of_Measure, toString(null())),",
+				"          Pack_Group_Code = iifNull(Pack_Group_Code, toString(null())),",
+				"          Month = toInteger(iifNull(Month, toString(null()))),",
+				"          Year = toInteger(iifNull(Year, toString(null()))),",
+				"          Pack_Title = iifNull(Pack_Title, toString(null())),",
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> DataCleaning"
 			]
 		}
 	}
