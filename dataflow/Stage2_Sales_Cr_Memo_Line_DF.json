@@ -12,13 +12,25 @@
 					"name": "SalesCrMemoLineSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesCrMemoLineSourcesink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "renamingcolumn"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "cleaningdata"
 				}
 			],
 			"scriptLines": [
@@ -84,8 +96,8 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Document_No_ = iifNull(Document_No_, toString(null())),",
+				"     skipDuplicateMapOutputs: true) ~> renamingcolumn",
+				"renamingcolumn derive(Document_No_ = iifNull(Document_No_, toString(null())),",
 				"          Line_No_ = toInteger(iifNull(Line_No_,toString(null()))),",
 				"          Type = toInteger(iifNull(Type,toString(null()))),",
 				"          No_ = iifNull(No_,toString(null())),",
@@ -111,7 +123,25 @@
 				"          Scheme_Reason = iifNull(Scheme_Reason, toString(null())),",
 				"          Scheme_Code = iifNull(Scheme_Code, toString(null())),",
 				"          Scheme_Parent_Item_No_ = iifNull(Scheme_Parent_Item_No_, toString(null())),",
-				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1"
+				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> cleaningdata",
+				"cleaningdata sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Load/Sales_Cr_Memo_Line',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesCrMemoLineSourcesink"
 			]
 		}
 	}
