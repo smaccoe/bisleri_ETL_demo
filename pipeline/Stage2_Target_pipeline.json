@@ -15,14 +15,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "Stage2_Target_DF",
-						"type": "DataFlowReference",
-						"parameters": {
-							"Contanier_Name": "'curated-data'",
-							"Folder_Name": "'Target'"
-						}
-					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
