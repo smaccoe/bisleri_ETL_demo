@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "stage1_sales_shipment header",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Sales_shipment_header_full_load",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -52,11 +52,11 @@
 				]
 			},
 			{
-				"name": "Copy data2",
+				"name": "Sales_shipment_header_incremental_load",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "Sales_shipment_header_full_load",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -112,11 +112,11 @@
 				]
 			},
 			{
-				"name": "Get Metadata1",
+				"name": "list_of_files",
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
-						"activity": "Copy data2",
+						"activity": "Sales_shipment_header_incremental_load",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -148,11 +148,12 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "get_all_files_lastmodified",
+				"description": "get all files lastmodified and use latest file to dump in a temp csv filr.",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "list_of_files",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -263,7 +264,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "ForEach1",
+						"activity": "get_all_files_lastmodified",
 						"dependencyConditions": [
 							"Succeeded"
 						]
