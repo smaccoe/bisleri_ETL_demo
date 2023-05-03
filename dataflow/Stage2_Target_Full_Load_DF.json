@@ -1,0 +1,64 @@
+{
+	"name": "Stage2_Target_Full_Load_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stage2_Target_Full_Load_Source_Dataset",
+						"type": "DatasetReference"
+					},
+					"name": "Stage2TargetFullLoadSource"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {Customer No_} as string,",
+				"          {Route Code} as string,",
+				"          {Customer Group Code} as string,",
+				"          {Item No_} as string,",
+				"          {Start Date} as string,",
+				"          {DLP Target Qty} as string,",
+				"          {Target Qty} as string,",
+				"          {End Date} as string,",
+				"          {Item Unit of Measure} as string,",
+				"          {Pack Group Code} as string,",
+				"          Month as string,",
+				"          Year as string,",
+				"          {Last Modified} as string,",
+				"          {Pack Title} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Stage2TargetFullLoadSource",
+				"Stage2TargetFullLoadSource select(mapColumn(",
+				"          Customer_No_ = {Customer No_},",
+				"          Route_Code = {Route Code},",
+				"          Customer_Group_Code = {Customer Group Code},",
+				"          Item_No_ = {Item No_},",
+				"          Start_Date = {Start Date},",
+				"          DLP_Target_Qty = {DLP Target Qty},",
+				"          Target_Qty = {Target Qty},",
+				"          End_Date = {End Date},",
+				"          Item_Unit_of_Measure = {Item Unit of Measure},",
+				"          Pack_Group_Code = {Pack Group Code},",
+				"          Month,",
+				"          Year,",
+				"          Last_Modified = {Last Modified},",
+				"          Pack_Title = {Pack Title},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
+			]
+		}
+	}
+}
