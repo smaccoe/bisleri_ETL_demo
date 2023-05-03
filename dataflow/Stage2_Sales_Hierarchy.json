@@ -104,7 +104,7 @@
 				"          Division_Name = iifNull(Division_Name,toString(null())),",
 				"          SE_Code = iifNull(SE_Code,toString(null())),",
 				"          Channel = iif(Channel, 1, 0),",
-				"          Business_Unit = toInteger(iifNull(Business_Unit, toString(null()))),",
+				"          Business_Unit = iif(Business_Unit ,1,0),",
 				"          Site_Code = iifNull(Site_Code,toString(null()))) ~> derivedColumn1"
 			]
 		}
