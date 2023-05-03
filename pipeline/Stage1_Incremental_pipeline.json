@@ -44,7 +44,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Stage1_SalesTarget_Source",
+						"referenceName": "Stage1_Target_Dataset",
 						"type": "DatasetReference"
 					}
 				],
