@@ -5,14 +5,82 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "saleshierarchy"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          {Territory Code} as string,",
+				"          {Area Code} as string,",
+				"          {Branch Code} as string,",
+				"          {Zone Code} as string,",
+				"          {National Code} as string,",
+				"          {National Name} as string,",
+				"          {Region Code} as string,",
+				"          {Region Name} as string,",
+				"          {Regional Sales Head Name} as string,",
+				"          {Branch Name} as string,",
+				"          {Branch Sales Head Name} as string,",
+				"          {Zone Name} as string,",
+				"          {Sales Manager Name} as string,",
+				"          {Area Name} as string,",
+				"          {Area Sales Manager Name} as string,",
+				"          {Territory Name} as string,",
+				"          {Sales Executive Name} as string,",
+				"          {Division Name} as string,",
+				"          {SE Code} as string,",
+				"          Channel as boolean,",
+				"          {Business Unit} as boolean,",
+				"          Site_Code as string",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Sales_Hierarchy2023-05-02 01:11:24.24.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> saleshierarchy",
+				"saleshierarchy select(mapColumn(",
+				"          {Territory Code},",
+				"          {Area Code},",
+				"          {Branch Code},",
+				"          {Zone Code},",
+				"          {National Code},",
+				"          {National Name},",
+				"          {Region Code},",
+				"          {Region Name},",
+				"          {Regional Sales Head Name},",
+				"          {Branch Name},",
+				"          {Branch Sales Head Name},",
+				"          {Zone Name},",
+				"          {Sales Manager Name},",
+				"          {Area Name},",
+				"          {Area Sales Manager Name},",
+				"          {Territory Name},",
+				"          {Sales Executive Name},",
+				"          {Division Name},",
+				"          {SE Code},",
+				"          Channel,",
+				"          {Business Unit},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
