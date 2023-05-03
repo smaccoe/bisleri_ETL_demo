@@ -85,7 +85,13 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Document_No_ = iifNull(Document_No_,toString(null()))) ~> derivedColumn1"
+				"select1 derive(Document_No_ = iifNull(Document_No_, toString(null())),",
+				"          Line_No_ = toInteger(iifNull(Line_No_,toString(null()))),",
+				"          Type = toInteger(iifNull(Type,toString(null()))),",
+				"          No_ = iifNull(No_,toString(null())),",
+				"          Sell_to_Customer_No_ = iifNull(Sell_to_Customer_No_, toString(null())),",
+				"          Location_Code = iifNull(Location_Code, toString(null())),",
+				"          Quantity = toInteger(Quantity,toString(null()))) ~> derivedColumn1"
 			]
 		}
 	}
