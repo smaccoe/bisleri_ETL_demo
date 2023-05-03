@@ -15,7 +15,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "ColumnRenaming"
+				},
+				{
+					"name": "DataCleaning"
 				}
 			],
 			"scriptLines": [
@@ -57,7 +60,12 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
+				"ColumnRenaming derive(Customer_No_ = iifNull(Customer_No_, toString(null())),",
+				"          Route_Code = iifNull(Route_Code, toString(null())),",
+				"          Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
+				"          Item_No_ = iifNull(Item_No_, toString(null())),",
+				"          Start_Date = ERROR_FUNCTION('')) ~> DataCleaning"
 			]
 		}
 	}
