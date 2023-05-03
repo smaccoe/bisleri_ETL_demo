@@ -132,7 +132,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DelimitedText2",
+						"referenceName": "List_of_all_files_in_adls",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -162,7 +162,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
+						"value": "@activity('list_of_files').output.childItems",
 						"type": "Expression"
 					},
 					"activities": [
@@ -180,7 +180,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "DelimitedText3",
+									"referenceName": "Dataset_to_get_all_filenames_according_to_modifieddate",
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
@@ -216,7 +216,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('Get Metadata2').output.lastModified, variables('refdatetime'))",
+									"value": "@activity('get_lastmodified_of_all_files').output.lastModified,variables('refdatetime'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -228,7 +228,7 @@
 										"typeProperties": {
 											"variableName": "refdatetime",
 											"value": {
-												"value": "@activity('Get Metadata2').output.lastModified",
+												"value": "@activity('get_lastmodified_of_all_files').output.lastModified",
 												"type": "Expression"
 											}
 										}
@@ -248,7 +248,7 @@
 										"typeProperties": {
 											"variableName": "latestfile",
 											"value": {
-												"value": "@activity('Get Metadata2').output.itemName",
+												"value": "@activity('get_lastmodified_of_all_files').output.itemName",
 												"type": "Expression"
 											}
 										}
@@ -313,7 +313,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText3",
+						"referenceName": "Dataset_to_get_all_filenames_according_to_modifieddate",
 						"type": "DatasetReference",
 						"parameters": {
 							"filename": {

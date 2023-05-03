@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText2",
+	"name": "List_of_all_files_in_adls",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",

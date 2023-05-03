@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText3",
+	"name": "Dataset_to_get_all_filenames_according_to_modifieddate",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",
