@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Sales Invoice Header',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')\n",
+					"type": "Expression"
+				},
 				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
