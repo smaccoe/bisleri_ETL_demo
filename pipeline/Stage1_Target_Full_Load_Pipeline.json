@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Target_Full_Load",
+	"name": "Stage1_Target_Full_Load_Pipeline",
 	"properties": {
 		"activities": [
 			{
