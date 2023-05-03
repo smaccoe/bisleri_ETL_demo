@@ -18,7 +18,11 @@
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -117,6 +121,8 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Sales_Hierarchy',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
