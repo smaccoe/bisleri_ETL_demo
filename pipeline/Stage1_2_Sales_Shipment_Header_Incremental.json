@@ -1,5 +1,5 @@
 {
-	"name": "stage1_and_2_sales_shipment header",
+	"name": "Stage1_2_Sales_Shipment_Header_Incremental",
 	"properties": {
 		"activities": [
 			{
@@ -140,6 +140,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -195,6 +196,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {

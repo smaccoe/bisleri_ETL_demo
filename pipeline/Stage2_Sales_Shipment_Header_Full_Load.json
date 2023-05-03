@@ -1,5 +1,5 @@
 {
-	"name": "Stage2__Full_Load_Sales_Shipment_Header_Pipeline",
+	"name": "Stage2_Sales_Shipment_Header_Full_Load",
 	"properties": {
 		"activities": [
 			{
