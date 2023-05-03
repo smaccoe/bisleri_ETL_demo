@@ -1,0 +1,1104 @@
+{
+	"name": "Stage1_Sales_Invoice_Header_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Name 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Address 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Contact",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Your Reference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Name 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Address 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Contact",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Posting Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Shipment Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Posting Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Payment Terms Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Due Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Payment Discount _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Pmt_ Discount Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Shipment Method Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency Factor",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Customer Price Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Prices Including VAT",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Invoice Disc_ Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Disc_ Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Salesperson Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "No_ Printed",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Applies-to Doc_ Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Applies-to Doc_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bal_ Account No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VAT Registration No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reason Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Gen_ Bus_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transaction Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transport Method",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VAT Country_Region Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Customer Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Customer Name 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Address 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Contact",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Post Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Country_Region Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Post Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Country_Region Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Post Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Country_Region Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bal_ Account Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Document Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "External Document No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Area",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Payment Method Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shipping Agent Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pre-Assigned No_ Series",
+				"type": "nvarchar"
+			},
+			{
+				"name": "No_ Series",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order No_ Series",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pre-Assigned No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "User ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Tax Area Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Tax Liable",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "VAT Bus_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VAT Base Discount _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Prepayment No_ Series",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Prepayment Invoice",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Prepayment Order No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quote No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Dimension Set ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Document Exchange Identifier",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Document Exchange Status",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Doc_ Exch_ Original Identifier",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Coupled to CRM",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Credit Card No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Direct Debit Mandate ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Canceled By",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cust_ Ledger Entry No_",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Campaign No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Contact No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Contact No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Responsibility Center",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Allow Line Disc_",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Get Shipment Used",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Excise Bus_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill to Customer State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Form Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Form No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transit Document",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LC No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Structure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Free Supply",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Export or Deemed Export",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "VAT Exempted",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "PLA Entry No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trading",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Transaction No_ Serv_ Tax",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Re-Dispatch",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Return Re-Dispatch Rcpt_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RG 23 A Entry No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RG 23 C Entry No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Calc_ Inv_ Discount (_)",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Time of Removal",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LR_RR No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LR_RR Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Vehicle No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Mode of Transport",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ST Pure Agent",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Nature of Services",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Service Tax Rounding Precision",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Service Tax Rounding Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PoT",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Nature of Supply",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GST Customer Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GST Without Payment of Duty",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Invoice Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Bill Of Export No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill Of Export Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "e-Commerce Customer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "e-Commerce Merchant Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Bill-to State Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Ship-to State Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location State Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Rounding Precision",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "GST Rounding Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Time of Issue",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Time of Removal1",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Date of Preparation",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Date of Removal",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Remarks",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item Category Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ARM Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Non Feasible Enq_",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Exclude Commision Stat",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Creation Time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Debit",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "L_R_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Freight Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order Unit of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Document",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Excise Invoice No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Internal Payment Terms Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Internal Due Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Vehicle No_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Documents through",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Agent Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Exemption certificate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LR Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Supplementary Invoice",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Shipping State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Realization rating",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Payment rating",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Ageing rating",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Combined rating",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Adv_ Payment Rating",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Adv_ Payment  Rcvd_",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Dispatch Date Time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Shipping Agent Whse_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Total Outstanding amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Shipping Agent Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Route Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Per_ Of Overloaded Vehicles",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Route Sales No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Auto Check",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Cheque No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cheque Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Actual Reporting Time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Actual Release Time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Purchase Inv Posted",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Vehicle Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LR Mark",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Purch Inv No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch Inv Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Route Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transporter Veh_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Loading Slip No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purchase Doc No",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Manager Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "A_S_M Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Executive Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Drawee Bank",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type of Charge",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Excise Invoice Printed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Commercial Invoice Printed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Excise cum Tax Invoice Printed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Excise Tax Invoice FOC Printed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Date Sent",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Time Sent",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Batch No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery Challan No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AutoPDASO",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Name of Driver",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Driver Mobile number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Expected arrival time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SMS on despatch",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Select entry",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "SMS Sent(A_S_M)",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "SMS Sent(EXE)",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "POD",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "POD Modified Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "POD User ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "POD Comment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Form Receipt Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Customer Name for Store",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Helper 1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Helper 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Helper 3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SR FOC Order",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "SR Approved By",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Last Modified On",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Channel",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EINV TMP ACCESS",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "ECOM",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Payment Terms Code STSP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Due Date STSP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Email Sent",
+				"type": "tinyint",
+				"precision": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Sales Invoice Header"
+		}
+	}
+}
