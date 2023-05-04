@@ -43,7 +43,7 @@
 				"          {Location Code} as string,",
 				"          ECOM as boolean,",
 				"          {Last Modified On} as string,",
-				"          Site_Code as string",
+				"          Site_Code as short",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
