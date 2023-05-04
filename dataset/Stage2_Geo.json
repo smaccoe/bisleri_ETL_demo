@@ -1,0 +1,81 @@
+{
+	"name": "Stage2_Geo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Dim_Geo_Hierarchy_2023-05-04 05:37:07.07.csv",
+				"folderPath": "Master",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Area Code",
+				"type": "String"
+			},
+			{
+				"name": "Area Name",
+				"type": "String"
+			},
+			{
+				"name": "Branch Code",
+				"type": "String"
+			},
+			{
+				"name": "Branch Name",
+				"type": "String"
+			},
+			{
+				"name": "Territory Code",
+				"type": "String"
+			},
+			{
+				"name": "Territory Name",
+				"type": "String"
+			},
+			{
+				"name": "Region Code",
+				"type": "String"
+			},
+			{
+				"name": "Region Name",
+				"type": "String"
+			},
+			{
+				"name": "Zone Code",
+				"type": "String"
+			},
+			{
+				"name": "Zone Name",
+				"type": "String"
+			},
+			{
+				"name": "National Code",
+				"type": "String"
+			},
+			{
+				"name": "National Name",
+				"type": "String"
+			},
+			{
+				"name": "Division Name",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
