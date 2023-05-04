@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          No_ as string,",
@@ -59,7 +63,51 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Stage1DimGeoHierarchysource"
+				"     ignoreNoFilesFound: false) ~> Stage1DimGeoHierarchysource",
+				"Stage1DimGeoHierarchysource select(mapColumn(",
+				"          No_,",
+				"          Name,",
+				"          Address,",
+				"          Address_2 = {Address 2},",
+				"          Contact,",
+				"          Phone_No_ = {Phone No_},",
+				"          {Credit_Limit_(LCY)} = {Credit Limit (LCY)},",
+				"          Customer_Posting_Group = {Customer Posting Group},",
+				"          Currency_Code = {Currency Code},",
+				"          Customer_Price_Group = {Customer Price Group},",
+				"          Payment_Terms_Code = {Payment Terms Code},",
+				"          Invoice_Disc_Code = {Invoice Disc_ Code},",
+				"          Customer_Disc_Group = {Customer Disc_ Group},",
+				"          Collection_Method = {Collection Method},",
+				"          Payment_Method_Code = {Payment Method Code},",
+				"          Gen_Bus_Posting_Group = {Gen_ Bus_ Posting Group},",
+				"          Post_Code = {Post Code},",
+				"          E_Mail = {E-Mail},",
+				"          T_I_N_No_ = {T_I_N_ No_},",
+				"          P_A_N_No_ = {P_A_N_ No_},",
+				"          Phone_No_2 = {Phone No_2},",
+				"          Customer_Group_Code = {Customer Group Code},",
+				"          Customer_Category = {Customer Category},",
+				"          Route_Code = {Route Code},",
+				"          Customer_Type = {Customer Type},",
+				"          Executive_Code = {Executive Code},",
+				"          Customer_Subcategory_Code = {Customer Subcategory Code},",
+				"          Creation_Date_Time = {Creation Date Time},",
+				"          Sales_Code = {Sales Code},",
+				"          Territory,",
+				"          Parent_Group = {Parent Group},",
+				"          Activate_Credit_Limit_Days = {Activate Credit Limit Days},",
+				"          Billing_Type = {Billing Type},",
+				"          Scheme_Applicable = {Scheme Applicable},",
+				"          Channel,",
+				"          Sub_Channel_1 = {Sub-Channel 1},",
+				"          Sub_Channel_2 = {Sub-Channel 2},",
+				"          Sub_Channel_3 = {Sub-Channel 3},",
+				"          State_Code = {State Code},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
