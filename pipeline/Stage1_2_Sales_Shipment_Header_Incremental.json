@@ -73,7 +73,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "\nselect a.* from [dbo].[sales_shipment_header] a left join [dbo].[watermarkssh] b on a.Site_Code = b.Site_Code \nwhere a.[Last Modified On] > b.Last_Modified_On",
+						"sqlReaderQuery": "select a.* from [dbo].[sales_shipment_header] a left join [dbo].[watermarkssh] b on a.Site_Code = b.Site_Code \nwhere a.[Last Modified On] > b.Last_Modified_On",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
