@@ -12,7 +12,15 @@
 					"name": "SalesInvoiceHeader"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesInvoiceHeaderSink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "ColumnRenaming"
@@ -95,7 +103,25 @@
 				"          ECOM = iif(toBoolean(ECOM),1,0),",
 				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS'))\r",
 				",",
-				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning"
+				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Load/Sales_Invoice_Header',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesInvoiceHeaderSink"
 			]
 		}
 	}
