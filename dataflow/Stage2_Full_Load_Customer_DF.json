@@ -113,7 +113,12 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> ColumnReaming",
-				"ColumnReaming derive(No_ = iifNull(No_, toString(null()))) ~> DataCleaning"
+				"ColumnReaming derive(No_ = iifNull(No_, toString(null())),",
+				"          Name = iifNull(Name, toString(null())),",
+				"          Address = iifNull(Address, toString(null())),",
+				"          Address_2 = iifNull(Address_2, toString(null())),",
+				"          Contact = iifNull(Contact, toString(null())),",
+				"          Phone_No_ = ERROR_FUNCTION('')) ~> DataCleaning"
 			]
 		}
 	}
