@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_2_Sales_Shipment_Header_Incremental",
+	"name": "Stage1_2_Sales_Shipment_Header_Incremental_copy1",
 	"properties": {
 		"activities": [
 			{
@@ -218,7 +218,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('get_lastmodified_of_all_files').output.lastModified, variables('refdatetime'))",
+									"value": "@activity('get_lastmodified_of_all_files').output.lastModified,variables('refdatetime'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
