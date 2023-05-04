@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "ColumnReaming"
+				},
+				{
+					"name": "DataCleaning"
 				}
 			],
 			"scriptLines": [
@@ -109,7 +112,8 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ColumnReaming"
+				"     skipDuplicateMapOutputs: true) ~> ColumnReaming",
+				"ColumnReaming derive(No_ = ERROR_FUNCTION('')) ~> DataCleaning"
 			]
 		}
 	}
