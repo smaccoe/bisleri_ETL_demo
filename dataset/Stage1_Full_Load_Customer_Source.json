@@ -1,0 +1,189 @@
+{
+	"name": "Stage1_Full_Load_Customer_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Customer_Master_2023-05-04 12:57:49.49.csv",
+				"folderPath": "Master",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Address",
+				"type": "String"
+			},
+			{
+				"name": "Address 2",
+				"type": "String"
+			},
+			{
+				"name": "Contact",
+				"type": "String"
+			},
+			{
+				"name": "Phone No_",
+				"type": "String"
+			},
+			{
+				"name": "Credit Limit (LCY)",
+				"type": "String"
+			},
+			{
+				"name": "Customer Posting Group",
+				"type": "String"
+			},
+			{
+				"name": "Currency Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Price Group",
+				"type": "String"
+			},
+			{
+				"name": "Payment Terms Code",
+				"type": "String"
+			},
+			{
+				"name": "Invoice Disc_ Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Disc_ Group",
+				"type": "String"
+			},
+			{
+				"name": "Collection Method",
+				"type": "String"
+			},
+			{
+				"name": "Payment Method Code",
+				"type": "String"
+			},
+			{
+				"name": "Gen_ Bus_ Posting Group",
+				"type": "String"
+			},
+			{
+				"name": "Post Code",
+				"type": "String"
+			},
+			{
+				"name": "E-Mail",
+				"type": "String"
+			},
+			{
+				"name": "T_I_N_ No_",
+				"type": "String"
+			},
+			{
+				"name": "P_A_N_ No_",
+				"type": "String"
+			},
+			{
+				"name": "Phone No_2",
+				"type": "String"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Category",
+				"type": "String"
+			},
+			{
+				"name": "Route Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Type",
+				"type": "String"
+			},
+			{
+				"name": "Executive Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Subcategory Code",
+				"type": "String"
+			},
+			{
+				"name": "Creation Date Time",
+				"type": "String"
+			},
+			{
+				"name": "Sales Code",
+				"type": "String"
+			},
+			{
+				"name": "Territory",
+				"type": "String"
+			},
+			{
+				"name": "Parent Group",
+				"type": "String"
+			},
+			{
+				"name": "Activate Credit Limit Days",
+				"type": "String"
+			},
+			{
+				"name": "Billing Type",
+				"type": "String"
+			},
+			{
+				"name": "Scheme Applicable",
+				"type": "String"
+			},
+			{
+				"name": "Channel",
+				"type": "String"
+			},
+			{
+				"name": "Sub-Channel 1",
+				"type": "String"
+			},
+			{
+				"name": "Sub-Channel 2",
+				"type": "String"
+			},
+			{
+				"name": "Sub-Channel 3",
+				"type": "String"
+			},
+			{
+				"name": "State Code",
+				"type": "String"
+			},
+			{
+				"name": "Active Customer",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}

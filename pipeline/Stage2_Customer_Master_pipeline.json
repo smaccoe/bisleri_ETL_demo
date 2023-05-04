@@ -15,14 +15,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "Stage2_Customer_Master_DF",
-						"type": "DataFlowReference",
-						"parameters": {
-							"Contanier_Name": "'curated-data'",
-							"Folder_Name": "'Customer_Master'"
-						}
-					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"

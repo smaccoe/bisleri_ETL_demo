@@ -1,0 +1,67 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stage1_Full_Load_Customer_Source",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          No_ as string,",
+				"          Name as string,",
+				"          Address as string,",
+				"          {Address 2} as string,",
+				"          Contact as string,",
+				"          {Phone No_} as string,",
+				"          {Credit Limit (LCY)} as string,",
+				"          {Customer Posting Group} as string,",
+				"          {Currency Code} as string,",
+				"          {Customer Price Group} as string,",
+				"          {Payment Terms Code} as string,",
+				"          {Invoice Disc_ Code} as string,",
+				"          {Customer Disc_ Group} as string,",
+				"          {Collection Method} as string,",
+				"          {Payment Method Code} as string,",
+				"          {Gen_ Bus_ Posting Group} as string,",
+				"          {Post Code} as string,",
+				"          {E-Mail} as string,",
+				"          {T_I_N_ No_} as string,",
+				"          {P_A_N_ No_} as string,",
+				"          {Phone No_2} as string,",
+				"          {Customer Group Code} as string,",
+				"          {Customer Category} as string,",
+				"          {Route Code} as string,",
+				"          {Customer Type} as string,",
+				"          {Executive Code} as string,",
+				"          {Customer Subcategory Code} as string,",
+				"          {Creation Date Time} as string,",
+				"          {Sales Code} as string,",
+				"          Territory as string,",
+				"          {Parent Group} as string,",
+				"          {Activate Credit Limit Days} as string,",
+				"          {Billing Type} as string,",
+				"          {Scheme Applicable} as string,",
+				"          Channel as string,",
+				"          {Sub-Channel 1} as string,",
+				"          {Sub-Channel 2} as string,",
+				"          {Sub-Channel 3} as string,",
+				"          {State Code} as string,",
+				"          {Active Customer} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1"
+			]
+		}
+	}
+}
