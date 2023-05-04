@@ -34,10 +34,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     Container_Name as string ('delta-lake' ),",
-				"     Folder_Name as string ('Transaction / Full-Load')",
-				"}",
 				"source(output(",
 				"          No_ as string,",
 				"          {Document Type} as string,",
@@ -136,8 +132,8 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: ($Container_Name),",
-				"     folderPath: ($Folder_Name),",
+				"     fileSystem: '\\'delta-lake\\'',",
+				"     folderPath: '\\'Transaction / Full-Load/Sales_Order_Header\\'',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
