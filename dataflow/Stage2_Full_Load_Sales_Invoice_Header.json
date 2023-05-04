@@ -86,14 +86,16 @@
 				"          Shortcut_Dimension_2_Code = iifNull(Shortcut_Dimension_2_Code,toString(null())),",
 				"          Shipping_Agent_Code = iifNull(Shipping_Agent_Code,toString(null())),",
 				"          LR_RR_No_ = iifNull(LR_RR_No_,toString(null())),",
-				"          LR_RR_Date = toTimestamp(toString(toTimestamp(LR_RR_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          LR_RR_Date = toTimestamp(toString(toTimestamp(LR_RR_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS'))\r",
+				",",
 				"          Vehicle_No_ = iifNull(Vehicle_No_,toString(null())),",
 				"          Vehicle_Type = iifNull(Vehicle_Type,toString(null())),",
 				"          Route_Code = iifNull(Route_Code,toString(null())),",
 				"          Customer_Category = iifNull(Customer_Category,toString(null())),",
-				"          ECOM = iifNull(ECOM,toString(null())),",
-				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Site_Code = iifNull(Site_Code,toString(null()))) ~> DataCleaning"
+				"          ECOM = iif(toBoolean(ECOM),1,0),",
+				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS'))\r",
+				",",
+				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning"
 			]
 		}
 	}
