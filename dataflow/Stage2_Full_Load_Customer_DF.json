@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Full_Load_Customer_DF",
+	"name": "Stage2_Full_Load_Customer_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,7 +9,7 @@
 						"referenceName": "Stage1_Full_Load_Customer_Source",
 						"type": "DatasetReference"
 					},
-					"name": "Stage1FullLoadCustomerSource"
+					"name": "Stage2FullLoadCustomerSource"
 				}
 			],
 			"sinks": [],
@@ -67,8 +67,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Stage1FullLoadCustomerSource",
-				"Stage1FullLoadCustomerSource select(mapColumn(",
+				"     ignoreNoFilesFound: false) ~> Stage2FullLoadCustomerSource",
+				"Stage2FullLoadCustomerSource select(mapColumn(",
 				"          No_,",
 				"          Name,",
 				"          Address,",
@@ -113,7 +113,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> ColumnReaming",
-				"ColumnReaming derive(No_ = ERROR_FUNCTION('')) ~> DataCleaning"
+				"ColumnReaming derive(No_ = iifNull(No_, toString(null()))) ~> DataCleaning"
 			]
 		}
 	}
