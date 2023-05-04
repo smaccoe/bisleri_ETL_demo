@@ -72,7 +72,7 @@
 				"          National_Code = iifNull(National_Code, toString(null())),",
 				"          National_Name = iifNull(National_Name, toString(null())),",
 				"          Division_Name = iifNull(Division_Name, toString(null())),",
-				"          Site_Code = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> derivedColumn1"
 			]
 		}
 	}
