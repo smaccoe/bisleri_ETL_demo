@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Dim_Geo_Hierarchy_DF",
+	"name": "Stage2_Dim_Geo_Hierarchy_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -39,23 +42,37 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Stage1DimGeoHierarchysource",
 				"Stage1DimGeoHierarchysource select(mapColumn(",
-				"          {Area Code},",
-				"          {Area Name},",
-				"          {Branch Code},",
-				"          {Branch Name},",
-				"          {Territory Code},",
-				"          {Territory Name},",
-				"          {Region Code},",
-				"          {Region Name},",
-				"          {Zone Code},",
-				"          {Zone Name},",
-				"          {National Code},",
-				"          {National Name},",
-				"          {Division Name},",
+				"          Area_Code = {Area Code},",
+				"          Area_Name = {Area Name},",
+				"          Branch_Code = {Branch Code},",
+				"          Branch_Name = {Branch Name},",
+				"          Territory_Code = {Territory Code},",
+				"          Territory_Name = {Territory Name},",
+				"          Region_Code = {Region Code},",
+				"          Region_Name = {Region Name},",
+				"          Zone_Code = {Zone Code},",
+				"          Zone_Name = {Zone Name},",
+				"          National_Code = {National Code},",
+				"          National_Name = {National Name},",
+				"          Division_Name = {Division Name},",
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Area_Code = iifNull(Area_Code, toString(null())),",
+				"          Area_Name = iifNull(Area_Name, toString(null())),",
+				"          Branch_Code = iifNull(Branch_Code, toString(null())),",
+				"          Branch_Name = Branch_Name,",
+				"          Territory_Code = iifNull(Territory_Code, toString(null())),",
+				"          Territory_Name = iifNull(Territory_Name, toString(null())),",
+				"          Region_Code = iifNull(Region_Code, toString(null())),",
+				"          Region_Name = iifNull(Region_Name, toString(null())),",
+				"          Zone_Code = iifNull(Zone_Code, toString(null())),",
+				"          Zone_Name = iifNull(Zone_Name, toString(null())),",
+				"          National_Code = iifNull(National_Code, toString(null())),",
+				"          National_Name = iifNull(National_Name, toString(null())),",
+				"          Division_Name = iifNull(Division_Name, toString(null())),",
+				"          Site_Code = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
