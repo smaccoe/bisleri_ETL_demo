@@ -84,7 +84,7 @@
 				"          Sales_hierarchy_code = iifNull(Sales_hierarchy_code, toString(null())),",
 				"          Global_Dimension_1_Code = iifNull(Global_Dimension_1_Code, toString(null())),",
 				"          Zone = iifNull(Zone, toString(null())),",
-				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1",
+				"          Site_Code = toInteger(iifNull(Site_Code,toString(null())))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
