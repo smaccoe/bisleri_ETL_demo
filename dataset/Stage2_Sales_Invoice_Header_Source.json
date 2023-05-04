@@ -1,0 +1,109 @@
+{
+	"name": "Stage2_Sales_Invoice_Header_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Sales_Invoice_Header2023-05-04 11:27:22.22.csv",
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "String"
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Name",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Name 2",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Address",
+				"type": "String"
+			},
+			{
+				"name": "Posting Date",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Date",
+				"type": "String"
+			},
+			{
+				"name": "Location Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "String"
+			},
+			{
+				"name": "Shipping Agent Code",
+				"type": "String"
+			},
+			{
+				"name": "LR_RR No_",
+				"type": "String"
+			},
+			{
+				"name": "LR_RR Date",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle No_",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "String"
+			},
+			{
+				"name": "Route Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Category",
+				"type": "String"
+			},
+			{
+				"name": "ECOM",
+				"type": "String"
+			},
+			{
+				"name": "Last Modified On",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
