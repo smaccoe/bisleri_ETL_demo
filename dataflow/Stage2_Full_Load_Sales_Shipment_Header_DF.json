@@ -35,6 +35,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     container_name as string ('delta-lake'),",
+				"     folder_name as string ('Transaction/Full-Load/Sales_Shipment_Header')",
+				"}",
 				"source(output(",
 				"          No_ as string,",
 				"          {Sell-to Customer No_} as string,",
@@ -125,8 +129,8 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Transaction/Full-Load/Sales_Shipment_Header',",
+				"     fileSystem: ($container_name),",
+				"     folderPath: ($folder_name),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
