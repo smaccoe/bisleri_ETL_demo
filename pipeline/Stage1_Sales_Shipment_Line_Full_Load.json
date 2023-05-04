@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Sales_Shipment_Line_Full_load",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
