@@ -12,7 +12,19 @@
 					"name": "salesorderheader"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "salesorderheadersink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -22,6 +34,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Container_Name as string ('delta-lake' ),",
+				"     Folder_Name as string ('Transaction / Full-Load')",
+				"}",
 				"source(output(",
 				"          No_ as string,",
 				"          {Document Type} as string,",
@@ -111,7 +127,30 @@
 				"          Customer_Group_Code = iifNull(Customer_Group_Code,toString(null())),",
 				"          AutoPDASO = toInteger(AutoPDASO),",
 				"          Order_is_Placed = toInteger(Order_is_Placed),",
-				"          Finance_Control = toInteger(Finance_Control)) ~> derivedColumn1"
+				"          Finance_Control = toInteger(Finance_Control),",
+				"          Channel = toInteger(Channel),",
+				"          Short_Close = toInteger(Short_Close),",
+				"          ECOM = toInteger(ECOM),",
+				"          Mannual_Route_order = toInteger(Mannual_Route_order),",
+				"          Site_Code = toInteger(Site_Code)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Container_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> salesorderheadersink"
 			]
 		}
 	}
