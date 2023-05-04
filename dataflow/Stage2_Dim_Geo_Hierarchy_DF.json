@@ -62,7 +62,7 @@
 				"select1 derive(Area_Code = iifNull(Area_Code, toString(null())),",
 				"          Area_Name = iifNull(Area_Name, toString(null())),",
 				"          Branch_Code = iifNull(Branch_Code, toString(null())),",
-				"          Branch_Name = Branch_Name,",
+				"          Branch_Name = iifNull(Branch_Name, toString(null())),",
 				"          Territory_Code = iifNull(Territory_Code, toString(null())),",
 				"          Territory_Name = iifNull(Territory_Name, toString(null())),",
 				"          Region_Code = iifNull(Region_Code, toString(null())),",
