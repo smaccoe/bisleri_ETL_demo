@@ -1,0 +1,132 @@
+{
+	"name": "Stage1_Adls_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Sales_Shipment_Line',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "Transaction/Incremental-Load/sales_shipment_line",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "String"
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Code",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Name",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Address",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Address 2",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to City",
+				"type": "String"
+			},
+			{
+				"name": "Posting Date",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Date",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Method Code",
+				"type": "String"
+			},
+			{
+				"name": "Location Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "String"
+			},
+			{
+				"name": "Shipping Agent Code",
+				"type": "String"
+			},
+			{
+				"name": "LR_RR No_",
+				"type": "String"
+			},
+			{
+				"name": "LR_RR Date",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle No_",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "String"
+			},
+			{
+				"name": "Route Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Category",
+				"type": "String"
+			},
+			{
+				"name": "Loading Slip No_",
+				"type": "String"
+			},
+			{
+				"name": "AutoPDASO",
+				"type": "String"
+			},
+			{
+				"name": "ECOM",
+				"type": "String"
+			},
+			{
+				"name": "Last Modified On",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}

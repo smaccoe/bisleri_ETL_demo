@@ -1,17 +1,25 @@
 {
-	"name": "dumpdata_to_temp_file",
+	"name": "to_get_all_filenames_and_lastmodifieddate",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Transaction_Full_Load_Folder",
+			"referenceName": "Incre_Load_Folder",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "temp.csv",
-				"folderPath": "Transaction/Incremental-Load",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": "Transaction/Incremental-Load/sales_shipment_line",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",

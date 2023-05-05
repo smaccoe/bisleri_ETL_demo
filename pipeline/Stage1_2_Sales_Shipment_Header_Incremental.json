@@ -327,7 +327,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText4",
+						"referenceName": "dumpdata_to_temp_file",
 						"type": "DatasetReference"
 					}
 				]

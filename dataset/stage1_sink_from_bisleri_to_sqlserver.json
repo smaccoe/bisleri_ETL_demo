@@ -1,0 +1,145 @@
+{
+	"name": "stage1_sink_from_bisleri_to_sqlserver",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_VMSQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Document No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Line No_",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unit of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Unit Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Unit Cost (LCY)",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity (Base)",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Item Category Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Free Supply",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Unit Price Incl_ of Tax",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "GST Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Total GST Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "HSN_SAC Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Scheme Reason",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Scheme Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pack title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Scheme Parent Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ECOM",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Last Modified On",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Posting Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Site_Code",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales_shipment_line"
+		}
+	}
+}

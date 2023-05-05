@@ -1,8 +1,8 @@
 {
-	"name": "dumpdata_to_temp_file",
+	"name": "Sales_Shipment_Line_Folder_Files",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Transaction_Full_Load_Folder",
+			"referenceName": "Incre_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,13 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "temp.csv",
-				"folderPath": "Transaction/Incremental-Load",
+				"folderPath": "Transaction/Incremental-Load/sales_shipment_line",
 				"fileSystem": "data-lake"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
