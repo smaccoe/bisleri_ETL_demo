@@ -10,7 +10,15 @@
 			],
 			"sinks": [
 				{
-					"name": "Stage2FullLoadCompanysink"
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage2FullLoadCompanysink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -22,6 +30,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     ContainerName as string ('delta-lake'),",
+				"     FolderName as string (' Master/Company')",
+				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false) ~> Stage2FullLoadCompanySource",
 				"Stage2FullLoadCompanySource select(skipDuplicateMapInputs: true,",
@@ -29,6 +41,18 @@
 				"ColumnRenaming derive() ~> DataCleaning",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> Stage2FullLoadCompanysink"
 			]
