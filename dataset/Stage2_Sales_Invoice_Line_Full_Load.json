@@ -1,0 +1,69 @@
+{
+	"name": "Stage2_Sales_Invoice_Line_Full_Load",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Sales_Invoice_Line2023-05-05 12:12:33.33.csv",
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Amount",
+				"type": "String"
+			},
+			{
+				"name": "Shipment No_",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Line No_",
+				"type": "String"
+			},
+			{
+				"name": "Amount To Customer",
+				"type": "String"
+			},
+			{
+				"name": "Charges To Customer",
+				"type": "String"
+			},
+			{
+				"name": "GST Base Amount",
+				"type": "String"
+			},
+			{
+				"name": "Total GST Amount",
+				"type": "String"
+			},
+			{
+				"name": "Discount Structure Code",
+				"type": "String"
+			},
+			{
+				"name": "PVC_PPR Cost",
+				"type": "String"
+			},
+			{
+				"name": "Posting Date",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
