@@ -8,11 +8,29 @@
 					"name": "Stage2FullLoadCompanySource"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"name": "Stage2FullLoadCompanysink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ColumnRenaming"
+				},
+				{
+					"name": "DataCleaning"
+				}
+			],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> Stage2FullLoadCompanySource"
+				"     validateSchema: false) ~> Stage2FullLoadCompanySource",
+				"Stage2FullLoadCompanySource select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
+				"ColumnRenaming derive() ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage2FullLoadCompanysink"
 			]
 		}
 	}
