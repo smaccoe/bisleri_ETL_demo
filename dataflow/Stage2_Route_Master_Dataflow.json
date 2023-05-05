@@ -64,7 +64,7 @@
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Master',",
+				"     folderPath: 'Master/Route_Master',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
