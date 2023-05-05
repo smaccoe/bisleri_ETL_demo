@@ -1,18 +1,69 @@
 {
-	"name": "dataflow2",
+	"name": "Stage2_Sales_Invoice_Line_Full_Load",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "Stage2_Sales_Invoice_Line_Full_Load",
+						"type": "DatasetReference"
+					},
 					"name": "source1"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          Amount as string,",
+				"          {Shipment No_} as string,",
+				"          {Shipment Line No_} as string,",
+				"          {Amount To Customer} as string,",
+				"          {Charges To Customer} as string,",
+				"          {GST Base Amount} as string,",
+				"          {Total GST Amount} as string,",
+				"          {Discount Structure Code} as string,",
+				"          {PVC_PPR Cost} as string,",
+				"          {Posting Date} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(mapColumn(",
+				"          Amount,",
+				"          Shipment_No_ = {Shipment No_},",
+				"          Shipment_Line_No_ = {Shipment Line No_},",
+				"          Amount_To_Customer = {Amount To Customer},",
+				"          Charges_To_Customer = {Charges To Customer},",
+				"          GST_Base_Amount = {GST Base Amount},",
+				"          Total_GST_Amount = {Total GST Amount},",
+				"          Discount_Structure_Code = {Discount Structure Code},",
+				"          PVC_PPR_Cost = {PVC_PPR Cost},",
+				"          Posting_Date = {Posting Date},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Amount = ERROR_FUNCTION(''),",
+				"          Shipment_No_ = ERROR_FUNCTION(''),",
+				"          Shipment_Line_No_ = ERROR_FUNCTION(''),",
+				"          Amount_To_Customer = ERROR_FUNCTION(''),",
+				"          Charges_To_Customer = ERROR_FUNCTION(''),",
+				"          GST_Base_Amount = ERROR_FUNCTION(''),",
+				"          Total_GST_Amount = ERROR_FUNCTION(''),",
+				"          Discount_Structure_Code = ERROR_FUNCTION(''),",
+				"          PVC_PPR_Cost = ERROR_FUNCTION(''),",
+				"          Posting_Date = ERROR_FUNCTION(''),",
+				"          Site_Code = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
