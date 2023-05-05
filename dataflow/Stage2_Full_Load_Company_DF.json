@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "Stage2FullLoadCompanySource",
+						"type": "DatasetReference"
+					},
 					"name": "Stage2FullLoadCompanySource"
 				}
 			],
@@ -34,8 +38,13 @@
 				"     ContainerName as string ('delta-lake'),",
 				"     FolderName as string (' Master/Company')",
 				"}",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> Stage2FullLoadCompanySource",
+				"source(output(",
+				"          Name as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Stage2FullLoadCompanySource",
 				"Stage2FullLoadCompanySource select(skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
 				"ColumnRenaming derive() ~> DataCleaning",
