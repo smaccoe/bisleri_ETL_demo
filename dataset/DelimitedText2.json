@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Item_Master.csv",
 				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
