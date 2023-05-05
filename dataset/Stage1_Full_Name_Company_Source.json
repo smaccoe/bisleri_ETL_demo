@@ -1,0 +1,25 @@
+{
+	"name": "Stage1_Full_Name_Company_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Company"
+		}
+	}
+}

@@ -1,0 +1,61 @@
+{
+	"name": "Stage1_Full_Load_Company_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Company",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \r\n    Name,\r\n    CASE \r\n        WHEN Name = 'BIPL - ANDHRA PRADESH' THEN '10001'\r\n        WHEN Name = 'BIPL - CHENNAI' THEN '10002' \r\n        WHEN Name = 'BIPL - CHHATTISGARH' THEN '10003'\r\n        WHEN Name = 'BIPL - DELHI' THEN '10004'\r\n        WHEN Name = 'BIPL - GOA' THEN '10005'\r\n        WHEN Name = 'BIPL - GUJARAT' THEN '10006'\r\n        WHEN Name = 'BIPL - HARYANA' THEN '10007'\r\n        WHEN Name = 'BIPL - JAIPUR' THEN '10009'\r\n        WHEN Name = 'BIPL - KAMSHET' THEN '10010'\r\n        WHEN Name = 'BIPL - KARNATAKA' THEN '10011' \r\n        WHEN Name = 'BIPL - KERALA' THEN '10012' \r\n        WHEN Name = 'BIPL - MADHYAPRADESH' THEN '10013'\r\n        WHEN Name = 'BIPL - MUMBAI' THEN '10014' \r\n        WHEN Name = 'BIPL - ODISHA' THEN '10015' \r\n        WHEN Name = 'BIPL - PUNE' THEN '10016'\r\n        WHEN Name = 'BIPL - PUNJAB' THEN '10017'\r\n        WHEN Name = 'BIPL - RUDRAPUR' THEN '10018' \r\n        WHEN Name = 'BIPL – SAHIBABAD' THEN '10019'\r\n        WHEN Name = 'BIPL - TELANGANA' THEN '10020'\r\n        WHEN Name = 'BIPL - WESTBENGAL' THEN '10021'\r\n    END as Site_Code         \r\nFrom \r\n    [dbo].[Company]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Stage1_Full_Name_Company_Source",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Stage1_Full_Load_Company_Sink",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
