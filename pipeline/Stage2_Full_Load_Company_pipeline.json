@@ -20,7 +20,7 @@
 						"type": "DataFlowReference",
 						"parameters": {
 							"ContainerName": "'delta-lake'",
-							"FolderName": "' Master/Company'"
+							"FolderName": "'Master/Company'"
 						}
 					},
 					"compute": {
