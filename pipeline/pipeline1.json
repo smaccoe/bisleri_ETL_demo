@@ -1,0 +1,61 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "with item as \r\n(\r\nSELECT *\r\nFROM [dbo].[BIPL - ANDHRA PRADESH$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - CHENNAI$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - CHHATTISGARH$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - DELHI$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - GOA$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - GUJARAT$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - HARYANA$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - JAIPUR$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - KAMSHET$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - KARNATAKA$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - KERALA$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - MADHYAPRADESH$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - MUMBAI$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - ODISHA$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - PUNE$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - PUNJAB$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - RUDRAPUR$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL – SAHIBABAD$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - TELANGANA$Item]\r\n\r\nUNION ALL\r\nSELECT *\r\nFROM [dbo].[BIPL - WESTBENGAL$Item]\r\n\r\n),\r\nitem2 as\r\n(\r\nselect distinct(No_) from item\r\n)\r\nselect * from item2;\r\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

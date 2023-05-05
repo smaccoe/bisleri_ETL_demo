@@ -1,0 +1,1041 @@
+{
+	"name": "SqlServerTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "No_ 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Search Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Base Unit of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price Unit Conversion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Inventory Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shelf No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item Disc_ Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Allow Invoice Disc_",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Statistics Group",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Commission Group",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Unit Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Price_Profit Calculation",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Profit _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Costing Method",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Unit Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Standard Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Last Direct Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Indirect Cost _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Cost is Adjusted",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Allow Online Adjustment",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Vendor No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Vendor Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Lead Time Calculation",
+				"type": "varchar"
+			},
+			{
+				"name": "Reorder Point",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Maximum Inventory",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Reorder Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Alternative Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unit List Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Duty Due _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Duty Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Gross Weight",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Net Weight",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Units per Parcel",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Unit Volume",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Durability",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Freight Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Tariff No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Duty Unit Conversion",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Country_Region Purchased Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Budget Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Budgeted Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Budget Profit",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Blocked",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Last Date Modified",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Price Includes VAT",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "VAT Bus_ Posting Gr_ (Price)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Gen_ Prod_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Picture",
+				"type": "image"
+			},
+			{
+				"name": "Country_Region of Origin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Automatic Ext_ Texts",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "No_ Series",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Tax Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VAT Prod_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reserve",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Global Dimension 1 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Global Dimension 2 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Stockout Warning",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Prevent Negative Inventory",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Application Wksh_ User ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Assembly Policy",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GTIN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Default Deferral Template Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Low-Level Code",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Lot Size",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Serial Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Last Unit Cost Calc_ Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Rolled-up Material Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Rolled-up Capacity Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Scrap _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Inventory Value Zero",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Discrete Order Quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Minimum Order Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Maximum Order Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Safety Stock Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Order Multiple",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Safety Lead Time",
+				"type": "varchar"
+			},
+			{
+				"name": "Flushing Method",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Replenishment System",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Rounding Precision",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Sales Unit of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Unit of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Time Bucket",
+				"type": "varchar"
+			},
+			{
+				"name": "Reordering Policy",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Include Inventory",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Manufacturing Policy",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Rescheduling Period",
+				"type": "varchar"
+			},
+			{
+				"name": "Lot Accumulation Period",
+				"type": "varchar"
+			},
+			{
+				"name": "Dampener Period",
+				"type": "varchar"
+			},
+			{
+				"name": "Dampener Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Overflow Level",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Manufacturer Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item Category Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Created From Nonstock Item",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Product Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Service Item Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item Tracking Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Lot Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Expiration Calculation",
+				"type": "varchar"
+			},
+			{
+				"name": "Special Equipment Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Put-away Template Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Put-away Unit of Measure Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phys Invt Counting Period Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Last Counting Period Update",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Use Cross-Docking",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Next Counting Start Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Next Counting End Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Excise Prod_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Excise Accounting Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Assessable Value",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Declared Goods",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Capital Item",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Subcontracting",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Sub_ Comp_ Location",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed Asset",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Scrap Item",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "MRP Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "MRP Value",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Abatement _",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "PIT Structure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price Inclusive of Tax",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "GST Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HSN_SAC Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Credit",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Exempted",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "PVC_PPR Item Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Selling Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Excess Quantity Tolerance (_)",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Item Subcategory Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Free Supply",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Complimentary Item",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Supplementary Item",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Quality Plan-Incoming No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quality Plan-Final No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quality Plan-Sampling No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sampling Plan",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Machine Group",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Rating",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Operator",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Pack Size Information",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Wastage Form",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Wastage",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Control",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Costing Required",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Max Weight",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Min Weight",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Avg Weight",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Pack Size",
+				"type": "nvarchar"
+			},
+			{
+				"name": "2Way Item",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item FA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Scrap Item 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Scrap UOM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Dummy Jar",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Short Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Marketing Asset",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "GRN Item",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Pack Title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Verified",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Verified By",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Verfied On",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Pack Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MIS Group RM_PM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Scrap Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Overhead cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Jar Deposit",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Pcs Per Case",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RM Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MIS Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "RM Base Unit Of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consumption Allowed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Marketing Deposite",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "2wayAuto",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "2wayJAR",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Item Class",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Cases Per Pallete",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Cases Per cage",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Item Creation By",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item Creation Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "shelf life",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Routing No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Production BOM No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Single-Level Material Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Single-Level Capacity Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Single-Level Subcontrd_ Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Single-Level Cap_ Ovhd Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Single-Level Mfg_ Ovhd Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Overhead Rate",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Rolled-up Subcontracted Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Rolled-up Mfg_ Ovhd Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Rolled-up Cap_ Overhead Cost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Order Tracking Policy",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Critical",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Common Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fonzo",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Send DMS",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "FG Category",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Packaging Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Container Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Brand",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Sub Brand",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Item Barcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SKU Category",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ECOM Prod_ ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SS Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Item"
+		}
+	}
+}
