@@ -27,9 +27,6 @@
 			],
 			"transformations": [
 				{
-					"name": "ColumnRenaming"
-				},
-				{
 					"name": "DataCleaning"
 				}
 			],
@@ -45,12 +42,13 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Stage2FullLoadCompanySource",
-				"Stage2FullLoadCompanySource select(skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
-				"ColumnRenaming derive() ~> DataCleaning",
+				"Stage2FullLoadCompanySource derive(Name = iifNull(Name, toString(null())),",
+				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> DataCleaning",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
+				"     fileSystem: ($ContainerName),",
+				"     folderPath: ($FolderName),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
