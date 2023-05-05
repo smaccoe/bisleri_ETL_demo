@@ -33,7 +33,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     ContainerName as string ('delta-lake'),",
-				"     FolderName as string ('Company')",
+				"     FolderName as string ('Master/Company')",
 				"}",
 				"source(output(",
 				"          Name as string,",
