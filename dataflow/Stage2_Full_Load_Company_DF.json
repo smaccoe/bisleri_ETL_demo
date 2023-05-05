@@ -1,0 +1,19 @@
+{
+	"name": "Stage2_Full_Load_Company_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "Stage2FullLoadCompanySource"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> Stage2FullLoadCompanySource"
+			]
+		}
+	}
+}
