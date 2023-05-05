@@ -1,0 +1,32 @@
+{
+	"name": "Stage1_Full_Load_Location_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Master",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
