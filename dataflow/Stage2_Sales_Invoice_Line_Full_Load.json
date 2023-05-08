@@ -53,17 +53,17 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Amount = ERROR_FUNCTION(''),",
-				"          Shipment_No_ = ERROR_FUNCTION(''),",
-				"          Shipment_Line_No_ = ERROR_FUNCTION(''),",
-				"          Amount_To_Customer = ERROR_FUNCTION(''),",
-				"          Charges_To_Customer = ERROR_FUNCTION(''),",
-				"          GST_Base_Amount = ERROR_FUNCTION(''),",
-				"          Total_GST_Amount = ERROR_FUNCTION(''),",
-				"          Discount_Structure_Code = ERROR_FUNCTION(''),",
-				"          PVC_PPR_Cost = ERROR_FUNCTION(''),",
-				"          Posting_Date = ERROR_FUNCTION(''),",
-				"          Site_Code = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"select1 derive(Amount = toDouble(Amount),",
+				"          Shipment_No_ = iifNull(Shipment_No_, toString(null())),",
+				"          Shipment_Line_No_ = toInteger(Shipment_Line_No_),",
+				"          Amount_To_Customer = toDouble(Amount_To_Customer),",
+				"          Charges_To_Customer = toDouble(Charges_To_Customer),",
+				"          GST_Base_Amount = toDouble(GST_Base_Amount),",
+				"          Total_GST_Amount = toDouble(Total_GST_Amount),",
+				"          Discount_Structure_Code = iifNull(Discount_Structure_Code, toString(null())),",
+				"          PVC_PPR_Cost = toDouble(PVC_PPR_Cost),",
+				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Site_Code = toInteger(Site_Code)) ~> derivedColumn1"
 			]
 		}
 	}
