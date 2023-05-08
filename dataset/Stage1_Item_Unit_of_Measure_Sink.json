@@ -1,0 +1,36 @@
+{
+	"name": "Stage1_Item_Unit_of_Measure_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Delta_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Item_Unit_of_Measure',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "Master",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
