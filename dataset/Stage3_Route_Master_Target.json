@@ -9,7 +9,7 @@
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "dbo",
+			"schema": "master",
 			"table": "Stage3_Route_Master_Target"
 		}
 	}
