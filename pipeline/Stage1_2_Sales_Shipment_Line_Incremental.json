@@ -333,7 +333,7 @@
 				]
 			},
 			{
-				"name": "Stage2_sales_shipment_header_incremental_load",
+				"name": "Stage2_sales_shipment_line_incremental_load",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
