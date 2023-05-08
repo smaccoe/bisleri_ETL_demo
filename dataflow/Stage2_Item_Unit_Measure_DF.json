@@ -1,5 +1,5 @@
 {
-	"name": "Item_Unit_Measure_DF",
+	"name": "Stage2_Item_Unit_Measure_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

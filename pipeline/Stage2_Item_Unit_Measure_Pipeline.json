@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Item_Unit_Measure_DF",
+						"referenceName": "Stage2_Item_Unit_Measure_DF",
 						"type": "DataFlowReference",
 						"parameters": {
 							"Contanier_Name": "'delta-lake'",
