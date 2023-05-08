@@ -122,6 +122,16 @@
 				"          {Credit_Limit_(LCY)} = toDouble((iifNull({Credit_Limit_(LCY)}, toString(null())))),",
 				"          Customer_Posting_Group = iifNull(Customer_Posting_Group, toString(null())),",
 				"          Currency_Code = iifNull(Currency_Code, toString(null())),",
+				"          Customer_Price_Group = iifNull(Customer_Price_Group, toString(null())),",
+				"          Payment_Terms_Code = iifNull(Payment_Terms_Code, toString(null())),",
+				"          Invoice_Disc_Code = iifNull(Invoice_Disc_Code, toString(null())),",
+				"          Customer_Disc_Group = iifNull(Customer_Disc_Group, toString(null())),",
+				"          Collection_Method = toInteger(iifNull(Collection_Method, toString(null()))),",
+				"          Payment_Method_Code = iifNull(Payment_Method_Code, toString(null())),",
+				"          Gen_Bus_Posting_Group = iifNull(Gen_Bus_Posting_Group, toString(null())),",
+				"          Post_Code = iifNull(Post_Code, toString(null())),",
+				"          E_Mail = iifNull(E_Mail, toString(null())),",
+				"          T_I_N_No_ = iifNull(T_I_N_No_, toString(null())),",
 				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS'))) ~> DataCleaning"
 			]
 		}
