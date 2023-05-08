@@ -139,7 +139,13 @@
 				"          Route_Code = iifNull(Route_Code, toString(null())),",
 				"          Customer_Type = iifNull(Customer_Type, toString(null())),",
 				"          Executive_Code = iifNull(Executive_Code, toString(null())),",
-				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS'))) ~> DataCleaning"
+				"          Customer_Subcategory_Code = iifNull(Customer_Subcategory_Code, toString(null())),",
+				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS')),",
+				"          Sales_Code = iifNull(Sales_Code, toString(null())),",
+				"          Territory = iifNull(Territory, toString(null())),",
+				"          Parent_Group = iifNull(Parent_Group, toString(null())),",
+				"          Activate_Credit_Limit_Days = toInteger(iifNull(Activate_Credit_Limit_Days, toString(null()))),",
+				"          Billing_Type = toInteger(iifNull(Billing_Type, toString(null())))) ~> DataCleaning"
 			]
 		}
 	}
