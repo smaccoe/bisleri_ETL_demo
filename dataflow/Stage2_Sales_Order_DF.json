@@ -5,19 +5,26 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "stage2_sales_order_header",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
-					"name": "source1"
+					"name": "salesorderheader"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "coumnrename"
+				},
+				{
+					"name": "DataCleaning"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          No_ as string,",
-				"          {Document Type} as string,",
+				"          {Document Type} as short,",
 				"          {Sell-to Customer No_} as string,",
 				"          {Bill-to Customer No_} as string,",
 				"          {Ship-to Code} as string,",
@@ -37,17 +44,68 @@
 				"          {Customer Posting Group} as string,",
 				"          {Loading Slip No_} as string,",
 				"          {Customer Group Code} as string,",
-				"          AutoPDASO as string,",
-				"          {Order is Placed} as string,",
-				"          Channel as string,",
-				"          {Short Close} as string,",
-				"          ECOM as string,",
-				"          {Mannual Route order} as string,",
-				"          Site_Code as string",
+				"          AutoPDASO as boolean,",
+				"          {Order is Placed} as boolean,",
+				"          {Finance Control} as boolean,",
+				"          Channel as short,",
+				"          {Short Close} as boolean,",
+				"          ECOM as boolean,",
+				"          {Mannual Route order} as boolean,",
+				"          Site_Code as short",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Transaction/Full-Load',",
+				"     fileName: 'Sales_Order_Header2023-05-08 11:50:45.45.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> salesorderheader",
+				"salesorderheader select(mapColumn(",
+				"          No_,",
+				"          Document_Type = {Document Type},",
+				"          Sell_to_Customer_No = {Sell-to Customer No_},",
+				"          Bill_to_Customer_No = {Bill-to Customer No_},",
+				"          Ship_to_Code = {Ship-to Code},",
+				"          Ship_to_Name = {Ship-to Name},",
+				"          Ship_to_Name_2 = {Ship-to Name 2},",
+				"          Ship_to_Address = {Ship-to Address},",
+				"          Ship_to_Address_2 = {Ship-to Address 2},",
+				"          Ship_to_City = {Ship-to City},",
+				"          Ship_to_Contact = {Ship-to Contact},",
+				"          Order_Date = {Order Date},",
+				"          Posting_Date = {Posting Date},",
+				"          Shipment_Date = {Shipment Date},",
+				"          Shipment_Method_Code = {Shipment Method Code},",
+				"          Location_Code = {Location Code},",
+				"          Shortcut_Dimension_1_Code = {Shortcut Dimension 1 Code},",
+				"          Shortcut_Dimension_2_Code = {Shortcut Dimension 2 Code},",
+				"          Customer_Posting_Group = {Customer Posting Group},",
+				"          Loading_Slip_No = {Loading Slip No_},",
+				"          Customer_Group_Code = {Customer Group Code},",
+				"          AutoPDASO,",
+				"          Order_is_Placed = {Order is Placed},",
+				"          Finance_Control = {Finance Control},",
+				"          Channel,",
+				"          Short_Close = {Short Close},",
+				"          ECOM,",
+				"          Mannual_Route_order = {Mannual Route order},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> coumnrename",
+				"coumnrename derive(No_ = iifNull(No_, toString(null())),",
+				"          Document_Type = iifNull(toShort(Document_Type, toString(null()))),",
+				"          Sell_to_Customer_No = iifNull(Sell_to_Customer_No, toString(null())),",
+				"          Bill_to_Customer_No = iifNull(Bill_to_Customer_No,toString(null())),",
+				"          Ship_to_Code = iifNull(Ship_to_Code,toString(null())),",
+				"          Ship_to_Name = iifNull(Ship_to_Name, toString(null())),",
+				"          Ship_to_Name_2 = iifNull(Ship_to_Name_2, toString(null())),",
+				"          column1 = ERROR_FUNCTION('')) ~> DataCleaning"
 			]
 		}
 	}
