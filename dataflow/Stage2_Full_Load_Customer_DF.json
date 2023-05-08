@@ -132,6 +132,10 @@
 				"          Post_Code = iifNull(Post_Code, toString(null())),",
 				"          E_Mail = iifNull(E_Mail, toString(null())),",
 				"          T_I_N_No_ = iifNull(T_I_N_No_, toString(null())),",
+				"          P_A_N_No_ = iifNull(P_A_N_No_, toString(null())),",
+				"          Phone_No_2 = iifNull(Phone_No_2, toString(null())),",
+				"          Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
+				"          Customer_Category = iifNull(Customer_Category, toString(null())),",
 				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS'))) ~> DataCleaning"
 			]
 		}
