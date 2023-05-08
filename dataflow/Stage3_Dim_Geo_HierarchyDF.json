@@ -1,0 +1,60 @@
+{
+	"name": "Stage3_Dim_Geo_HierarchyDF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Dim_Geo_Hierarchy",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Area_Code as string,",
+				"          Area_Name as string,",
+				"          Branch_Code as string,",
+				"          Branch_Name as string,",
+				"          Territory_Code as string,",
+				"          Territory_Name as string,",
+				"          Region_Code as string,",
+				"          Region_Name as string,",
+				"          Zone_Code as string,",
+				"          Zone_Name as string,",
+				"          National_Code as string,",
+				"          National_Name as string,",
+				"          Division_Name as string,",
+				"          Site_Code as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Dim_Geo_Hierarchy') ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
