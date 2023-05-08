@@ -1,0 +1,16 @@
+{
+	"name": "Stage3_Full_Load_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DWH_Dump",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "master",
+			"table": "Location"
+		}
+	}
+}
