@@ -1,0 +1,78 @@
+{
+	"name": "Stage1_Full_Load_Location_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stage1FullLoadLocationSource",
+						"type": "DatasetReference"
+					},
+					"name": "Stage1FullLoadLocationsource"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "ColumnRenaming"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Code as string,",
+				"          Name as string,",
+				"          Address as string,",
+				"          {Address 2} as string,",
+				"          City as string,",
+				"          {Phone No_} as string,",
+				"          {Phone No_ 2} as string,",
+				"          {Post Code} as string,",
+				"          County as string,",
+				"          {E-Mail} as string,",
+				"          {Country_Region Code} as string,",
+				"          {Use As In-Transit} as string,",
+				"          {Require Put-away} as string,",
+				"          {Require Pick} as string,",
+				"          {Use Cross-Docking} as string,",
+				"          {Require Receive} as string,",
+				"          {Require Shipment} as string,",
+				"          {State Code} as string,",
+				"          {Subcontracting Location} as string,",
+				"          {Subcontractor No_} as string,",
+				"          Depot as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Stage1FullLoadLocationsource",
+				"Stage1FullLoadLocationsource select(mapColumn(",
+				"          Code,",
+				"          Name,",
+				"          Address,",
+				"          Address_2 = {Address 2},",
+				"          City,",
+				"          Phone_No_ = {Phone No_},",
+				"          Phone_No_2 = {Phone No_ 2},",
+				"          Post_Code = {Post Code},",
+				"          County,",
+				"          E_Mail = {E-Mail},",
+				"          Country_Region_Code = {Country_Region Code},",
+				"          Use_As_In_Transit = {Use As In-Transit},",
+				"          Require_Put_away = {Require Put-away},",
+				"          Require_Pick = {Require Pick},",
+				"          Use_Cross_Docking = {Use Cross-Docking},",
+				"          Require_Receive = {Require Receive},",
+				"          Require_Shipment = {Require Shipment},",
+				"          State_Code = {State Code},",
+				"          Subcontracting_Location = {Subcontracting Location},",
+				"          Subcontractor_No_ = {Subcontractor No_},",
+				"          Depot,",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming"
+			]
+		}
+	}
+}
