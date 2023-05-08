@@ -145,7 +145,15 @@
 				"          Territory = iifNull(Territory, toString(null())),",
 				"          Parent_Group = iifNull(Parent_Group, toString(null())),",
 				"          Activate_Credit_Limit_Days = toInteger(iifNull(Activate_Credit_Limit_Days, toString(null()))),",
-				"          Billing_Type = toInteger(iifNull(Billing_Type, toString(null())))) ~> DataCleaning"
+				"          Billing_Type = toInteger(iifNull(Billing_Type, toString(null()))),",
+				"          Scheme_Applicable = toInteger(iifNull(Scheme_Applicable, toString(null()))),",
+				"          Channel = toInteger(iifNull(Channel, toString(null()))),",
+				"          Sub_Channel_1 = iifNull(Sub_Channel_1, toString(null())),",
+				"          Sub_Channel_2 = iifNull(Sub_Channel_2, toString(null())),",
+				"          Sub_Channel_3 = iifNull(Sub_Channel_3, toString(null())),",
+				"          State_Code = iifNull(State_Code, toString(null())),",
+				"          Active_Customer = toInteger(iifNull(Active_Customer, toString(null()))),",
+				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> DataCleaning"
 			]
 		}
 	}
