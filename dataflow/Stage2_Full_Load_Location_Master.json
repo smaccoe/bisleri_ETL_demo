@@ -12,7 +12,19 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -75,16 +87,46 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Code = ERROR_FUNCTION(''),",
-				"          column7 = ERROR_FUNCTION(''),",
-				"          column6 = ERROR_FUNCTION(''),",
-				"          column5 = ERROR_FUNCTION(''),",
-				"          column4 = ERROR_FUNCTION(''),",
-				"          column3 = ERROR_FUNCTION(''),",
-				"          column2 = ERROR_FUNCTION(''),",
-				"          column10 = ERROR_FUNCTION(''),",
-				"          column9 = ERROR_FUNCTION(''),",
-				"          column8 = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"select1 derive(Code = iifNull(Code, toString(null())),",
+				"          Name = iifNull(Name, toString(null())),",
+				"          Address = iifNull(Address, toString(null())),",
+				"          Address_2 = iifNull(Address_2, toString(null())),",
+				"          City = iifNull(City, toString(null())),",
+				"          Phone_No_ = iifNull(Phone_No_, toString(null())),",
+				"          Phone_No_2 = iifNull(Phone_No_2, toString(null())),",
+				"          Post_Code = iifNull(Post_Code, toString(null())),",
+				"          County = iifNull(County, toString(null())),",
+				"          E_Mail = iifNull(E_Mail, toString(null())),",
+				"          Country_Region_Code = iifNull(Country_Region_Code, toString(null())),",
+				"          Use_As_In_Transit = toInteger(Use_As_In_Transit),",
+				"          Require_Put_away = toInteger(Require_Put_away),",
+				"          Require_Pick = toInteger(Require_Pick),",
+				"          Use_Cross_Docking = toInteger(Use_Cross_Docking),",
+				"          Require_Receive = toInteger(Require_Receive),",
+				"          Require_Shipment = toInteger(Require_Shipment),",
+				"          State_Code = iifNull(State_Code, toString(null())),",
+				"          Subcontracting_Location = toInteger(Subcontracting_Location),",
+				"          Subcontractor_No = iifNull(Subcontractor_No, toString(null())),",
+				"          Depot = toInteger(Depot),",
+				"          Site_Code = toInteger(Site_Code)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Location',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
