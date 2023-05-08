@@ -173,6 +173,8 @@
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($Folder_Name),",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
