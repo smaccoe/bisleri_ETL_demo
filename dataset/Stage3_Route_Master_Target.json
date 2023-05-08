@@ -1,0 +1,16 @@
+{
+	"name": "Stage3_Route_Master_Target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DWH_Dump",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Stage3_Route_Master_Target"
+		}
+	}
+}
