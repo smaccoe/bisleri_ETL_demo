@@ -12,7 +12,19 @@
 					"name": "Stage2FullLoadCustomerSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage2FullLoadCustomerSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
 					"name": "ColumnReaming"
@@ -22,6 +34,10 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('delta-lake'),",
+				"     Folder_Name as string ('Master/Customer')",
+				"}",
 				"source(output(",
 				"          No_ as string,",
 				"          Name as string,",
@@ -153,7 +169,23 @@
 				"          Sub_Channel_3 = iifNull(Sub_Channel_3, toString(null())),",
 				"          State_Code = iifNull(State_Code, toString(null())),",
 				"          Active_Customer = toInteger(iifNull(Active_Customer, toString(null()))),",
-				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> DataCleaning"
+				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage2FullLoadCustomerSink"
 			]
 		}
 	}
