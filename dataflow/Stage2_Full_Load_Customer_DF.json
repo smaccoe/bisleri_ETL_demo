@@ -118,7 +118,10 @@
 				"          Address = iifNull(Address, toString(null())),",
 				"          Address_2 = iifNull(Address_2, toString(null())),",
 				"          Contact = iifNull(Contact, toString(null())),",
-				"          Phone_No_ = ERROR_FUNCTION('')) ~> DataCleaning"
+				"          Phone_No_ = iifNull(Phone_No_, toString(null())),",
+				"          {Credit_Limit_(LCY)} = toDouble((iifNull({Credit_Limit_(LCY)}, toString(null())))),",
+				"          Customer_Posting_Group = iifNull(Customer_Posting_Group, toString(null())),",
+				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS'))) ~> DataCleaning"
 			]
 		}
 	}
