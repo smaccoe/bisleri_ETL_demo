@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Sales_Order_Header",
+						"referenceName": "Stage2_Sales_Order_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {
