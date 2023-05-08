@@ -136,6 +136,9 @@
 				"          Phone_No_2 = iifNull(Phone_No_2, toString(null())),",
 				"          Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
 				"          Customer_Category = iifNull(Customer_Category, toString(null())),",
+				"          Route_Code = iifNull(Route_Code, toString(null())),",
+				"          Customer_Type = iifNull(Customer_Type, toString(null())),",
+				"          Executive_Code = iifNull(Executive_Code, toString(null())),",
 				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS'))) ~> DataCleaning"
 			]
 		}
