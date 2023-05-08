@@ -9,13 +9,25 @@
 						"referenceName": "Transaction_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "salesorderheader"
+					"name": "SalesOrderHeader"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesOrderHeaderSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
-					"name": "coumnrename"
+					"name": "ColumnRename"
 				},
 				{
 					"name": "DataCleaning"
@@ -64,8 +76,8 @@
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
-				"     columnNamesAsHeader: true) ~> salesorderheader",
-				"salesorderheader select(mapColumn(",
+				"     columnNamesAsHeader: true) ~> SalesOrderHeader",
+				"SalesOrderHeader select(mapColumn(",
 				"          No_,",
 				"          Document_Type = {Document Type},",
 				"          Sell_to_Customer_No = {Sell-to Customer No_},",
@@ -97,8 +109,8 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> coumnrename",
-				"coumnrename derive(No_ = iifNull(No_, toString(null())),",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRename",
+				"ColumnRename derive(No_ = iifNull(No_, toString(null())),",
 				"          Document_Type = iifNull(toShort(Document_Type, toString(null()))),",
 				"          Sell_to_Customer_No = iifNull(Sell_to_Customer_No, toString(null())),",
 				"          Bill_to_Customer_No = iifNull(Bill_to_Customer_No,toString(null())),",
@@ -120,11 +132,29 @@
 				"          AutoPDASO = iif(AutoPDASO,1,0),",
 				"          Order_is_Placed = iif(Order_is_Placed,1,0),",
 				"          Finance_Control = iif(Finance_Control,1,0),",
-				"          Channel = toInteger(Channel, toString(null())),",
+				"          Channel = toInteger(Channel),",
 				"          Short_Close = iif(Short_Close,1,0),",
 				"          ECOM = iif(ECOM,1,0),",
 				"          Mannual_Route_order = iif(Mannual_Route_order,1,0),",
-				"          Site_Code = toInteger(Site_Code, toString(null()))) ~> DataCleaning"
+				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Transaction/Full-Load/Sales_Order_Header',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SalesOrderHeaderSink"
 			]
 		}
 	}
