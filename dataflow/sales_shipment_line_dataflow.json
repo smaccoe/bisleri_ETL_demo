@@ -1,0 +1,127 @@
+{
+	"name": "sales_shipment_line_dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     container_name as string ('delta-lake'),",
+				"     folder_name as string ('Transaction/Incremental-Load/Sales_Shipment_Line')",
+				"}",
+				"source(output(",
+				"          {Document No_} as string,",
+				"          {Line No_} as integer,",
+				"          Type as short,",
+				"          {Sell-to Customer No_} as string,",
+				"          {Location Code} as string,",
+				"          Description as string,",
+				"          {Unit of Measure} as string,",
+				"          Quantity as double,",
+				"          {Unit Price} as double,",
+				"          {Unit Cost (LCY)} as double,",
+				"          {Shortcut Dimension 1 Code} as string,",
+				"          {Shortcut Dimension 2 Code} as string,",
+				"          {Quantity (Base)} as double,",
+				"          {Item Category Code} as string,",
+				"          {Free Supply} as boolean,",
+				"          {Unit Price Incl_ of Tax} as double,",
+				"          {GST Group Code} as string,",
+				"          {Total GST Amount} as double,",
+				"          {HSN_SAC Code} as integer,",
+				"          {Scheme Reason} as string,",
+				"          {Scheme Code} as string,",
+				"          {Pack title} as string,",
+				"          {Scheme Parent Item No_} as string,",
+				"          ECOM as boolean,",
+				"          {Last Modified On} as string,",
+				"          {Posting Date} as string,",
+				"          Site_Code as short",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Transaction/Incremental-Load/sales_shipment_line',",
+				"     fileName: 'tesmp_sales_shipment_line.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> source1",
+				"source1 select(mapColumn(",
+				"          Document_No = {Document No_},",
+				"          Line_No = {Line No_},",
+				"          Type,",
+				"          Sell_to_Customer_No = {Sell-to Customer No_},",
+				"          Location_Code = {Location Code},",
+				"          Description,",
+				"          Unit_of_Measure = {Unit of Measure},",
+				"          Quantity,",
+				"          Unit_Price = {Unit Price},",
+				"          Unit_Cost_LCY = {Unit Cost (LCY)},",
+				"          Shortcut_Dimension_1_Code = {Shortcut Dimension 1 Code},",
+				"          Shortcut_Dimension_2_Code = {Shortcut Dimension 2 Code},",
+				"          Quantity_Base = {Quantity (Base)},",
+				"          Item_Category_Code = {Item Category Code},",
+				"          Free_Supply = {Free Supply},",
+				"          Unit_Price_Incl_of_Tax = {Unit Price Incl_ of Tax},",
+				"          GST_Group_Code = {GST Group Code},",
+				"          Total_GST_Amount = {Total GST Amount},",
+				"          HSN_SAC_Code = {HSN_SAC Code},",
+				"          Scheme_Reason = {Scheme Reason},",
+				"          Scheme_Code = {Scheme Code},",
+				"          Pack_title = {Pack title},",
+				"          Scheme_Parent_Item_No = {Scheme Parent Item No_},",
+				"          ECOM,",
+				"          Last_Modified_On = {Last Modified On},",
+				"          Posting_Date = {Posting Date},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($container_name),",
+				"     folderPath: ($folder_name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

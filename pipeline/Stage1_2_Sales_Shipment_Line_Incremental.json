@@ -353,11 +353,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "sales_shipment_header_dataflow",
+						"referenceName": "sales_shipment_line_dataflow",
 						"type": "DataFlowReference",
 						"parameters": {
 							"container_name": "'delta-lake'",
-							"folder_name": "'Transaction/Incremental-Load/Sales_Shipment_Header'"
+							"folder_name": "'Transaction/Incremental-Load/Sales_Shipment_Line'"
 						}
 					},
 					"compute": {
