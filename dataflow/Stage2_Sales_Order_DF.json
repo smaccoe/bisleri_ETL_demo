@@ -1,0 +1,54 @@
+{
+	"name": "Stage2_Sales_Order_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "stage2_sales_order_header",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          No_ as string,",
+				"          {Document Type} as string,",
+				"          {Sell-to Customer No_} as string,",
+				"          {Bill-to Customer No_} as string,",
+				"          {Ship-to Code} as string,",
+				"          {Ship-to Name} as string,",
+				"          {Ship-to Name 2} as string,",
+				"          {Ship-to Address} as string,",
+				"          {Ship-to Address 2} as string,",
+				"          {Ship-to City} as string,",
+				"          {Ship-to Contact} as string,",
+				"          {Order Date} as string,",
+				"          {Posting Date} as string,",
+				"          {Shipment Date} as string,",
+				"          {Shipment Method Code} as string,",
+				"          {Location Code} as string,",
+				"          {Shortcut Dimension 1 Code} as string,",
+				"          {Shortcut Dimension 2 Code} as string,",
+				"          {Customer Posting Group} as string,",
+				"          {Loading Slip No_} as string,",
+				"          {Customer Group Code} as string,",
+				"          AutoPDASO as string,",
+				"          {Order is Placed} as string,",
+				"          Channel as string,",
+				"          {Short Close} as string,",
+				"          ECOM as string,",
+				"          {Mannual Route order} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1"
+			]
+		}
+	}
+}

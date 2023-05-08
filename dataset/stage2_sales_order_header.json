@@ -1,0 +1,137 @@
+{
+	"name": "stage2_sales_order_header",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Sales_Order_Header2023-05-08 11:06:58.58.csv",
+				"folderPath": "Transaction/Full-Load",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "String"
+			},
+			{
+				"name": "Document Type",
+				"type": "String"
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Bill-to Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Code",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Name",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Name 2",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Address",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Address 2",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to City",
+				"type": "String"
+			},
+			{
+				"name": "Ship-to Contact",
+				"type": "String"
+			},
+			{
+				"name": "Order Date",
+				"type": "String"
+			},
+			{
+				"name": "Posting Date",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Date",
+				"type": "String"
+			},
+			{
+				"name": "Shipment Method Code",
+				"type": "String"
+			},
+			{
+				"name": "Location Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "String"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Posting Group",
+				"type": "String"
+			},
+			{
+				"name": "Loading Slip No_",
+				"type": "String"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "String"
+			},
+			{
+				"name": "AutoPDASO",
+				"type": "String"
+			},
+			{
+				"name": "Order is Placed",
+				"type": "String"
+			},
+			{
+				"name": "Channel",
+				"type": "String"
+			},
+			{
+				"name": "Short Close",
+				"type": "String"
+			},
+			{
+				"name": "ECOM",
+				"type": "String"
+			},
+			{
+				"name": "Mannual Route order",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
