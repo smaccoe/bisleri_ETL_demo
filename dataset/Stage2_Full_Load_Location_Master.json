@@ -1,0 +1,113 @@
+{
+	"name": "Stage2_Full_Load_Location_Master",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Location_2023-05-08 09:32:07.07.csv",
+				"folderPath": "Master",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Code",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Address",
+				"type": "String"
+			},
+			{
+				"name": "Address 2",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "Phone No_",
+				"type": "String"
+			},
+			{
+				"name": "Phone No_ 2",
+				"type": "String"
+			},
+			{
+				"name": "Post Code",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "E-Mail",
+				"type": "String"
+			},
+			{
+				"name": "Country_Region Code",
+				"type": "String"
+			},
+			{
+				"name": "Use As In-Transit",
+				"type": "String"
+			},
+			{
+				"name": "Require Put-away",
+				"type": "String"
+			},
+			{
+				"name": "Require Pick",
+				"type": "String"
+			},
+			{
+				"name": "Use Cross-Docking",
+				"type": "String"
+			},
+			{
+				"name": "Require Receive",
+				"type": "String"
+			},
+			{
+				"name": "Require Shipment",
+				"type": "String"
+			},
+			{
+				"name": "State Code",
+				"type": "String"
+			},
+			{
+				"name": "Subcontracting Location",
+				"type": "String"
+			},
+			{
+				"name": "Subcontractor No_",
+				"type": "String"
+			},
+			{
+				"name": "Depot",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}
