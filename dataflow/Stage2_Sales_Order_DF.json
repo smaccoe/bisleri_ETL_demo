@@ -105,7 +105,26 @@
 				"          Ship_to_Code = iifNull(Ship_to_Code,toString(null())),",
 				"          Ship_to_Name = iifNull(Ship_to_Name, toString(null())),",
 				"          Ship_to_Name_2 = iifNull(Ship_to_Name_2, toString(null())),",
-				"          column1 = ERROR_FUNCTION('')) ~> DataCleaning"
+				"          Ship_to_City = iifNull(Ship_to_City,toString(null())),",
+				"          Ship_to_Contact = iifNull(Ship_to_Contact, toString(null())),",
+				"          Order_Date = toTimestamp(toString(toTimestamp(Order_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Shipment_Date = toTimestamp(toString(toTimestamp(Shipment_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Shipment_Method_Code = iifNull(Shipment_Method_Code,toString(null())),",
+				"          Location_Code = iifNull(Location_Code,toString(null())),",
+				"          Shortcut_Dimension_1_Code = iifNull(Shortcut_Dimension_1_Code,toString(null())),",
+				"          Shortcut_Dimension_2_Code = iifNull(Shortcut_Dimension_2_Code,toString(null())),",
+				"          Customer_Posting_Group = iifNull(Customer_Posting_Group,toString(null())),",
+				"          Loading_Slip_No = iifNull(Loading_Slip_No,toString(null())),",
+				"          Customer_Group_Code = iifNull(Customer_Group_Code,toString(null())),",
+				"          AutoPDASO = iif(AutoPDASO,1,0),",
+				"          Order_is_Placed = iif(Order_is_Placed,1,0),",
+				"          Finance_Control = iif(Finance_Control,1,0),",
+				"          Channel = toInteger(Channel, toString(null())),",
+				"          Short_Close = iif(Short_Close,1,0),",
+				"          ECOM = iif(ECOM,1,0),",
+				"          Mannual_Route_order = iif(Mannual_Route_order,1,0),",
+				"          Site_Code = toInteger(Site_Code, toString(null()))) ~> DataCleaning"
 			]
 		}
 	}
