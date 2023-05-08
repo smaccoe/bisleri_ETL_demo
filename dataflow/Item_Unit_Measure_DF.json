@@ -1,0 +1,83 @@
+{
+	"name": "Item_Unit_Measure_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stage2_Item_Unit_Measure_Source",
+						"type": "DatasetReference"
+					},
+					"name": "ItemUnitMeasureSource"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage3ItemUnitMeasureSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "ColumnRenaming"
+				},
+				{
+					"name": "DataCleaning"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('delta-lake'),",
+				"     Folder_Name as string ('Master/ItemUnitMeasure')",
+				"}",
+				"source(output(",
+				"          {Item No_} as string,",
+				"          {UOM Code} as string,",
+				"          {Qty_ per Unit of Measure} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ItemUnitMeasureSource",
+				"ItemUnitMeasureSource select(mapColumn(",
+				"          Item_No_ = {Item No_},",
+				"          UOM_Code = {UOM Code},",
+				"          Qty_per_Unit_of_Measure = {Qty_ per Unit of Measure},",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
+				"ColumnRenaming derive(Item_No_ = iifNull(Item_No_, toString(null())),",
+				"          UOM_Code = iifNull(UOM_Code, toString(null())),",
+				"          Qty_per_Unit_of_Measure = toDouble((iifNull(Qty_per_Unit_of_Measure, toString(null())))),",
+				"          Site_Code = toInteger((iifNull(Site_Code, toString(null()))))) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage3ItemUnitMeasureSink"
+			]
+		}
+	}
+}
