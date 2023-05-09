@@ -9,16 +9,16 @@
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "source1"
+					"name": "source"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dim_Geo_Hierarchy",
+						"referenceName": "Stage3_Dim_Geo_Hierachy_Sink",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sink"
 				}
 			],
 			"transformations": [],
@@ -44,8 +44,8 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Master/Dim_Geo_Hierarchy') ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
+				"     folderPath: 'Master/Dim_Geo_Hierarchy') ~> source",
+				"source sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -53,7 +53,7 @@
 				"     upsertable:false,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sink"
 			]
 		}
 	}

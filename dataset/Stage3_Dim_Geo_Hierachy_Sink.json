@@ -1,0 +1,16 @@
+{
+	"name": "Stage3_Dim_Geo_Hierachy_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DWH_Dump",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "master",
+			"table": "DimGeoHierarchy"
+		}
+	}
+}
