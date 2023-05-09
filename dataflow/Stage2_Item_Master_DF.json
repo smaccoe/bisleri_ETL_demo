@@ -106,7 +106,7 @@
 				"          Short_Name = iifNull(Short_Name, toString(null())),",
 				"          Pack_Title = iifNull(Pack_Title, toString(null())),",
 				"          Pack_Group_Code = iifNull(Pack_Group_Code, toString(null())),",
-				"          Jar_Deposit = iifNull(Jar_Deposit, toString(null())),",
+				"          Jar_Deposit = toDouble((iifNull(Jar_Deposit, toString(null())))),",
 				"          Pcs_Per_Case = toInteger((iifNull(Pcs_Per_Case, toString(null())))),",
 				"          Item_Class = toInteger((iifNull(Item_Class, toString(null())))),",
 				"          FG_Category = toInteger((iifNull(FG_Category, toString(null())))),",
