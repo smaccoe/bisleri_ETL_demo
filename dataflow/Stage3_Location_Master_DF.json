@@ -1,5 +1,5 @@
 {
-	"name": "Stage3_Full_Load_Location",
+	"name": "Stage3_Location_Master_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -14,9 +14,9 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Stage3_Full_Load_Sink",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Azure_VMSQLDB",
+						"type": "LinkedServiceReference"
 					},
 					"name": "sink1"
 				}
@@ -55,12 +55,15 @@
 				"     folderPath: 'Master/Location') ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     recreate:true,",
 				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: 'master',",
+				"     tableName: 'Location_Master',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     recreate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]

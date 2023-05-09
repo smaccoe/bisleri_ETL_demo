@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_3_Location",
+	"name": "Stage2_3_Location_Master",
 	"properties": {
 		"activities": [
 			{
@@ -23,7 +23,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Full_Load_Location_Master",
+						"referenceName": "Stage2_Location_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Binary2",
+						"referenceName": "Location_Master_Folder_Delete",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
@@ -86,7 +86,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage3_Full_Load_Location",
+						"referenceName": "Stage3_Location_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

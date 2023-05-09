@@ -1,13 +1,13 @@
 {
-	"name": "Stage2_Full_Load_Location_Master",
+	"name": "Stage2_Location_Master_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Full_Load_Location_Master",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "source1"
 				}
@@ -53,14 +53,23 @@
 				"          {Require Receive} as string,",
 				"          {Require Shipment} as string,",
 				"          {State Code} as string,",
-				"          {Subcontracting Location} as string,",
+				"          {Subcontracting Location} as short,",
 				"          {Subcontractor No_} as string,",
 				"          Depot as string,",
-				"          Site_Code as string",
+				"          Site_Code as short",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Location_2023-05-08 09:32:07.07.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> source1",
 				"source1 select(mapColumn(",
 				"          Code,",
 				"          Name,",
@@ -107,7 +116,7 @@
 				"          State_Code = iifNull(State_Code, toString(null())),",
 				"          Subcontracting_Location = toInteger(Subcontracting_Location),",
 				"          Subcontractor_No = iifNull(Subcontractor_No, toString(null())),",
-				"          Depot = toInteger(Depot),",
+				"          Depot = toInteger(Subcontracting_Location),",
 				"          Site_Code = toInteger(Site_Code)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",

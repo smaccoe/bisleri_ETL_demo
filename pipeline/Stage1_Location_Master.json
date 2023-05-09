@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Location",
+	"name": "Stage1_Location_Master",
 	"properties": {
 		"activities": [
 			{
@@ -44,13 +44,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Stage1_Full_Load_Location_Source",
+						"referenceName": "Stage1_Location_Source",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Stage1_Full_Load_Location_Sink",
+						"referenceName": "Stage1_Location_Sink",
 						"type": "DatasetReference"
 					}
 				]
