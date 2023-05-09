@@ -17,7 +17,11 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Stage2_Full_Load_Sales_Shipment_Header_DF",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"container_name": "'delta-lake'",
+							"folder_name": "'Transaction/Full-Load/Sales_Shipment_Header'"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
