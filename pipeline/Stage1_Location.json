@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Full_Load_Location_Pipeline",
+	"name": "Stage1_Location",
 	"properties": {
 		"activities": [
 			{
