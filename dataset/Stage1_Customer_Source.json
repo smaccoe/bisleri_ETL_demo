@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Customer_Master",
+	"name": "Stage1_Customer_Source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BisleriServer",
