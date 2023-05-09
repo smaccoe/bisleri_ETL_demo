@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"linkedService": {
-						"referenceName": "Azure_VMSQLDB",
+						"referenceName": "DWH_Dump",
 						"type": "LinkedServiceReference"
 					},
 					"name": "sink1",
