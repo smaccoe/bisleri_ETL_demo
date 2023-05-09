@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "Master/Route_Master",
+				"folderPath": "Master/Customer",
 				"fileSystem": "delta-lake"
 			}
 		}
