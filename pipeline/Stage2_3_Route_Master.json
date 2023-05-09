@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_3_Route_Master_Pipeline",
+	"name": "Stage2_3_Route_Master",
 	"properties": {
 		"activities": [
 			{
@@ -23,7 +23,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage3_Route_Master",
+						"referenceName": "Stage3_Route_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -54,7 +54,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Route_Master_Dataflow",
+						"referenceName": "Stage2_Route_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

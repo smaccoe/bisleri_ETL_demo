@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Route_Master_Dataflow",
+						"referenceName": "Stage2_Route_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {

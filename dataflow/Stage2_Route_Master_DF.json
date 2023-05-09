@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Route_Master_Dataflow",
+	"name": "Stage2_Route_Master_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
