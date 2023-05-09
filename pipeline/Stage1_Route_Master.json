@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Route Master",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
