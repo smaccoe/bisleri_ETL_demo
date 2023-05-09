@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Location",
+				"name": "Location_Master",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
