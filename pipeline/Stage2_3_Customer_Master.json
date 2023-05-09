@@ -7,7 +7,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Delete1",
+						"activity": "Customer_Master_Folder_Delete",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -38,7 +38,7 @@
 				}
 			},
 			{
-				"name": "Delete1",
+				"name": "Customer_Master_Folder_Delete",
 				"type": "Delete",
 				"dependsOn": [],
 				"policy": {
