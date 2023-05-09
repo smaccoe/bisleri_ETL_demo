@@ -14,9 +14,9 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Stage3_Item_master_Sink",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "DWH_Dump",
+						"type": "LinkedServiceReference"
 					},
 					"name": "Stage3ItemmasterSink"
 				}
@@ -55,12 +55,15 @@
 				"     folderPath: 'Master/Item_Master') ~> Stage3ItemmasterSource",
 				"Stage3ItemmasterSource sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     recreate:true,",
 				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: 'master',",
+				"     tableName: 'Item_Master',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     recreate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> Stage3ItemmasterSink"
 			]
