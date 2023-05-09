@@ -51,7 +51,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Binary3",
+						"referenceName": "Item_Master_Folder_Delete",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
