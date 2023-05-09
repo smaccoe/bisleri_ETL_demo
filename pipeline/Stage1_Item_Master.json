@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Item_Full_Load",
+				"name": "Item_Master",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
