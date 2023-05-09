@@ -1,0 +1,68 @@
+{
+	"name": "Stage3_Item_master_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage3ItemmasterSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Stage3_Item_master_Sink",
+						"type": "DatasetReference"
+					},
+					"name": "Stage3ItemmasterSink"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Item_No as string,",
+				"          New_Item_No as string,",
+				"          Item_Name as string,",
+				"          Item_Name2 as string,",
+				"          Base_Unit_of_Measure as string,",
+				"          Item_Category_Code as string,",
+				"          Product_Group_Code as string,",
+				"          Selling_Price as double,",
+				"          Pack_Size_Information as integer,",
+				"          Pack_Size as string,",
+				"          {2Way_Item} as string,",
+				"          Short_Name as string,",
+				"          Pack_Title as string,",
+				"          Pack_Group_Code as string,",
+				"          Jar_Deposit as double,",
+				"          Pcs_Per_Case as integer,",
+				"          Item_Class as integer,",
+				"          FG_Category as integer,",
+				"          Packaging_Type as integer,",
+				"          Container_Type as integer,",
+				"          Sub_Brand as integer,",
+				"          SKU_Category as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Item_Master') ~> Stage3ItemmasterSource",
+				"Stage3ItemmasterSource sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage3ItemmasterSink"
+			]
+		}
+	}
+}

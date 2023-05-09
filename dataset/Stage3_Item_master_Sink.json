@@ -1,0 +1,16 @@
+{
+	"name": "Stage3_Item_master_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DWH_Dump",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "master",
+			"table": "Item_Master"
+		}
+	}
+}
