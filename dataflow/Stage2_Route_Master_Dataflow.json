@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Route_master_Source",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "Stage2RouteMaster"
 				}
@@ -35,13 +35,22 @@
 				"          Description as string,",
 				"          Type as string,",
 				"          Category as string,",
-				"          {Route category} as string,",
+				"          {Route category} as short,",
 				"          {Route Street category} as string,",
-				"          Site_Code as string",
+				"          Site_Code as short",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Stage2RouteMaster",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Route_Master2023-05-05 03:04:21.21.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> Stage2RouteMaster",
 				"Stage2RouteMaster select(mapColumn(",
 				"          Code,",
 				"          Description,",
@@ -55,11 +64,11 @@
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 derive(Code = iifNull(Code, toString(null())),",
 				"          Description = iifNull(Description, toString(null())),",
-				"          Type = toInteger(iifNull(Type, toString(null()))),",
 				"          Category = iifNull(Category, toString(null())),",
-				"          Route_category = toInteger(iifNull(Route_category, toString(null()))),",
+				"          Route_category = toInteger(Route_category),",
 				"          Route_Street_category = iifNull(Route_Street_category, toString(null())),",
-				"          Site_Code = iifNull(Site_Code, toString(null()))) ~> derivedColumn1",
+				"          Site_Code = toInteger(Site_Code),",
+				"          Type = toInteger(Type)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
