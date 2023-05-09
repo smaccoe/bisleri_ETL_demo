@@ -5,7 +5,14 @@
 			{
 				"name": "Stage3_Dim_Geo_HierarchyDF",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Stage2_Dim_Geo_Hierarchy_DF",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -18,6 +25,57 @@
 					"dataflow": {
 						"referenceName": "Stage3_Dim_Geo_HierarchyDF",
 						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableLogging": true
+				}
+			},
+			{
+				"name": "Stage2_Dim_Geo_Hierarchy_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Delete1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage2_Dim_Geo_Hierarchy_DF",
+						"type": "DataFlowReference",
+						"parameters": {
+							"Contanier_Name": "'delta-lake'",
+							"Folder_Name": "'Master/Dim_Geo_Hierarchy'"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
