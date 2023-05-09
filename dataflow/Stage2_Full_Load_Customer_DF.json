@@ -31,6 +31,9 @@
 				},
 				{
 					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -94,7 +97,7 @@
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true) ~> Stage2FullLoadCustomerSource",
-				"select1 derive(No_ = iifNull(No_, toString(null())),",
+				"derivedColumn1 derive(No_ = iifNull(No_, toString(null())),",
 				"          Name = iifNull(Name, toString(null())),",
 				"          Address = iifNull(Address, toString(null())),",
 				"          Address_2 = iifNull(Address_2, toString(null())),",
@@ -182,6 +185,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(No_ = iifNull(No_, toString(null()))) ~> derivedColumn1",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
