@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Customer_Master_DF",
+				"name": "Stage2_Customer_Master",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -70,11 +70,11 @@
 				}
 			},
 			{
-				"name": "Data flow1",
+				"name": "Stage3_Customer_Master",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Customer_Master_DF",
+						"activity": "Stage2_Customer_Master",
 						"dependencyConditions": [
 							"Completed"
 						]
