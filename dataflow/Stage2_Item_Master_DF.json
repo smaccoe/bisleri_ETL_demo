@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Iteam_Source",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "Stage2ItemSource"
 				}
@@ -60,12 +60,20 @@
 				"          {Packaging Type} as string,",
 				"          {Container Type} as string,",
 				"          {Sub Brand} as string,",
-				"          {SKU Category} as string,",
-				"          Site_Code as string",
+				"          {SKU Category} as string",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Stage2ItemSource",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Item_Master_2023-05-09 12:27:03.03.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> Stage2ItemSource",
 				"Stage2ItemSource select(mapColumn(",
 				"          Item_No = No_,",
 				"          New_Item_No = {No_ 2},",
