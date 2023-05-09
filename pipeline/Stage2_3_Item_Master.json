@@ -9,7 +9,7 @@
 					{
 						"activity": "Item_Master_Folder_Delete",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -76,7 +76,7 @@
 					{
 						"activity": "Stage2_Item_Master",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
