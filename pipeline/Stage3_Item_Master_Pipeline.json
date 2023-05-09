@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Stage3Itemmasterdataflow",
+				"name": "Stage3_Item_master_DF",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
