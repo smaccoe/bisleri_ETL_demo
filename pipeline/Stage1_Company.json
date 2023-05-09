@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Full_Load_Company_Pipeline",
+	"name": "Stage1_Company",
 	"properties": {
 		"activities": [
 			{
