@@ -1,5 +1,5 @@
 {
-	"name": "Dim_Geo_Hierarchy",
+	"name": "Stage3_Dim_Geo_Hierarchy",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DWH_Dump",
