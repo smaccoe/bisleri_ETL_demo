@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Full_Name_Company_Source",
+	"name": "Stage1_Company_Source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BisleriServer",

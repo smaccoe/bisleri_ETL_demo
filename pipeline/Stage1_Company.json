@@ -44,13 +44,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Stage1_Full_Name_Company_Source",
+						"referenceName": "Stage1_Company_Source",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Stage1_Full_Load_Company_Sink",
+						"referenceName": "Stage1_Company_Sink",
 						"type": "DatasetReference"
 					}
 				]

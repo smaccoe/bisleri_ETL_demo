@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Full_Load_Company_Sink",
+	"name": "Stage1_Company_Sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Transaction_Full_Load_Folder",

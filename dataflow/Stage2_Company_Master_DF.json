@@ -1,13 +1,13 @@
 {
-	"name": "Stage2_Full_Load_Company_DF",
+	"name": "Stage2_Company_Master_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2FullLoadCompanySource",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "Stage2FullLoadCompanySource"
 				}
@@ -37,13 +37,22 @@
 				"}",
 				"source(output(",
 				"          Name as string,",
-				"          Site_Code as string",
+				"          Site_Code as short",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Stage2FullLoadCompanySource",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Company_2023-05-05 11:11:10.10.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> Stage2FullLoadCompanySource",
 				"Stage2FullLoadCompanySource derive(Name = iifNull(Name, toString(null())),",
-				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> DataCleaning",
+				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",

@@ -1,5 +1,5 @@
 {
-	"name": "Stage3_Company_full_load",
+	"name": "Stage3_Company_Master",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
