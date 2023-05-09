@@ -7,7 +7,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Stage2_Route_Master_Dataflow",
+						"activity": "Stage2_Route_Master",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -34,7 +34,7 @@
 				}
 			},
 			{
-				"name": "Stage2_Route_Master_Dataflow",
+				"name": "Stage2_Route_Master",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
