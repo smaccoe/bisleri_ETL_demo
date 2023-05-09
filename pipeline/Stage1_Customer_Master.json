@@ -1,5 +1,5 @@
 {
-	"name": "Stage1_Full_Load_Customer_Pipeline",
+	"name": "Stage1_Customer_Master",
 	"properties": {
 		"activities": [
 			{
