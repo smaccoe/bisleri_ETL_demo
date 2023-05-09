@@ -18,7 +18,11 @@
 						"referenceName": "Azure_VMSQLDB",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [],
