@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Customer_Master_Folder_Delete",
+						"referenceName": "Company_Master_Folder_Delete",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
