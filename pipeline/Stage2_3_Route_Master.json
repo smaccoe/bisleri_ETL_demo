@@ -38,7 +38,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Delete1",
+						"activity": "Route_Master_Folder_Delete",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -65,7 +65,7 @@
 				}
 			},
 			{
-				"name": "Delete1",
+				"name": "Route_Master_Folder_Delete",
 				"type": "Delete",
 				"dependsOn": [],
 				"policy": {
