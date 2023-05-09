@@ -1,0 +1,16 @@
+{
+	"name": "Stage3_Customer_Master",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DWH_Dump",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "master",
+			"table": "Customer_Master"
+		}
+	}
+}
