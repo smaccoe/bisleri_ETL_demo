@@ -23,7 +23,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage3_Company_Master",
+						"referenceName": "Stage3_Company_Master_DF",
 						"type": "DataFlowReference"
 					},
 					"compute": {
