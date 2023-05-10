@@ -6,10 +6,10 @@
 			"sources": [
 				{
 					"linkedService": {
-						"referenceName": "Delta_Full_Load_Folder",
+						"referenceName": "Incre_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "source1"
+					"name": "Stage2DeltaLocation"
 				}
 			],
 			"sinks": [
@@ -18,26 +18,22 @@
 						"referenceName": "DWH_Dump",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1",
-					"rejectedDataLinkedService": {
-						"referenceName": "Delta_Full_Load_Folder",
-						"type": "LinkedServiceReference"
-					}
+					"name": "SQLDWH"
 				}
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
+					"name": "LocKey"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Code as string,",
-				"          Name as string,",
+				"          Location_Code as string,",
+				"          Location_Name as string,",
 				"          Address as string,",
 				"          Address_2 as string,",
 				"          City as string,",
-				"          Phone_No_ as string,",
+				"          Phone_No as string,",
 				"          Phone_No_2 as string,",
 				"          Post_Code as string,",
 				"          County as string,",
@@ -60,9 +56,9 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Master/Location') ~> source1",
-				"source1 derive(Loc_Key = concat(toString(Site_Code),'|', Code)) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     folderPath: 'Master/Location') ~> Stage2DeltaLocation",
+				"Stage2DeltaLocation derive(Loc_Key = concat(toString(Site_Code),'|',Location_Code)) ~> LocKey",
+				"LocKey sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",
@@ -74,7 +70,7 @@
 				"     upsertable: false,",
 				"     recreate: true,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> SQLDWH"
 			]
 		}
 	}
