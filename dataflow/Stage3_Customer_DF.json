@@ -14,9 +14,9 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Stage3_Customer_Master",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "DWH_Dump",
+						"type": "LinkedServiceReference"
 					},
 					"name": "sink1"
 				}
@@ -74,12 +74,14 @@
 				"     folderPath: 'Master/Customer') ~> Stage3CustomerSource",
 				"Stage3CustomerSource sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     recreate:true,",
 				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: '',",
+				"     tableName: '',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
