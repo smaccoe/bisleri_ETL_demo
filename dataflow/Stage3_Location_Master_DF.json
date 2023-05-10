@@ -25,7 +25,11 @@
 					}
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Code as string,",
@@ -57,12 +61,13 @@
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
 				"     folderPath: 'Master/Location') ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
+				"source1 derive(Loc_Key = concat(toString(Site_Code),'|', Code)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",
-				"     schemaName: 'master',",
-				"     tableName: 'Location_Master',",
+				"     schemaName: 'primarysales',",
+				"     tableName: 'dim_location',",
 				"     insertable: true,",
 				"     updateable: false,",
 				"     deletable: false,",
