@@ -117,7 +117,7 @@
 				"          Location_Code = iifNull(Location_Code, toString(null())),",
 				"          Description = iifNull(Description, toString(null())),",
 				"          Unit_of_Measure = iifNull(Unit_of_Measure, toString(null())),",
-				"          Quantity = toDecimal(Quantity),",
+				"          Quantity = toDouble(Quantity),",
 				"          Unit_Price = toDecimal(Unit_Price),",
 				"          Unit_Cost_LCY = toDecimal(Unit_Cost_LCY),",
 				"          Shortcut_Dimension_1_Code = iifNull(Shortcut_Dimension_1_Code, toString(null())),",
