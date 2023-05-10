@@ -10,14 +10,17 @@
 						"type": "LinkedServiceReference"
 					},
 					"name": "source1"
+				},
+				{
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source2"
 				}
 			],
 			"sinks": [
 				{
-					"linkedService": {
-						"referenceName": "raw_data",
-						"type": "LinkedServiceReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -27,6 +30,9 @@
 				},
 				{
 					"name": "select1"
+				},
+				{
+					"name": "exists1"
 				}
 			],
 			"scriptLines": [
@@ -66,7 +72,43 @@
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true) ~> source1",
-				"source1 alterRow(deleteIf(Code=='.State code:29\"')) ~> alterRow1",
+				"source(output(",
+				"          Code as string,",
+				"          Name as string,",
+				"          Address as string,",
+				"          {Address 2} as string,",
+				"          City as string,",
+				"          {Phone No_} as string,",
+				"          {Phone No_ 2} as string,",
+				"          {Post Code} as string,",
+				"          County as string,",
+				"          {E-Mail} as string,",
+				"          {Country_Region Code} as string,",
+				"          {Use As In-Transit} as boolean,",
+				"          {Require Put-away} as boolean,",
+				"          {Require Pick} as boolean,",
+				"          {Use Cross-Docking} as string,",
+				"          {Require Receive} as boolean,",
+				"          {Require Shipment} as boolean,",
+				"          {State Code} as string,",
+				"          {Subcontracting Location} as short,",
+				"          {Subcontractor No_} as string,",
+				"          Depot as boolean,",
+				"          Site_Code as short",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Master',",
+				"     fileName: 'Location_Master_2023-05-10 09:20:21.21.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> source2",
+				"exists1 alterRow(deleteIf(Code== '.State code:29\"')) ~> alterRow1",
 				"alterRow1 select(mapColumn(",
 				"          Code,",
 				"          Name,",
@@ -93,14 +135,11 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
+				"source1, source2 exists(source1@Code == '.State code:29\"',",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists1",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     format: 'delimited',",
-				"     container: 'raw-data',",
-				"     columnDelimiter: ',',",
-				"     escapeChar: '\\\\',",
-				"     quoteChar: '\\\"',",
-				"     columnNamesAsHeader: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
