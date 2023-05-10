@@ -1,5 +1,5 @@
 {
-	"name": "Binary1",
+	"name": "Customer_Master_Folder_Delete",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Delta_Full_Load_Folder",
