@@ -18,7 +18,11 @@
 						"referenceName": "Transaction_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -117,15 +121,15 @@
 				"          Location_Code = iifNull(Location_Code, toString(null())),",
 				"          Description = iifNull(Description, toString(null())),",
 				"          Unit_of_Measure = iifNull(Unit_of_Measure, toString(null())),",
-				"          Quantity = toDecimal(Quantity),",
-				"          Unit_Price = toDecimal(Unit_Price),",
-				"          Unit_Cost_LCY = toDecimal(Unit_Cost_LCY),",
+				"          Quantity = toDouble(Quantity),",
+				"          Unit_Price = toDouble(Unit_Price),",
+				"          Unit_Cost_LCY = toDouble(Unit_Cost_LCY),",
 				"          Shortcut_Dimension_1_Code = iifNull(Shortcut_Dimension_1_Code, toString(null())),",
 				"          Shortcut_Dimension_2_Code = iifNull(Shortcut_Dimension_2_Code, toString(null())),",
-				"          Quantity_Base = toDecimal(Quantity_Base),",
+				"          Quantity_Base = toDouble(Quantity_Base),",
 				"          Item_Category_Code = iifNull(Item_Category_Code, toString(null())),",
-				"          Free_Supply = toInteger(Free_Supply),",
-				"          Unit_Price_Incl_of_Tax = toDecimal(Unit_Price_Incl_of_Tax),",
+				"          Free_Supply = iif(toBoolean(Free_Supply),1,0),",
+				"          Unit_Price_Incl_of_Tax = toDouble(Unit_Price_Incl_of_Tax),",
 				"          GST_Group_Code = iifNull(GST_Group_Code, toString(null())),",
 				"          Total_GST_Amount = toDouble(Total_GST_Amount),",
 				"          HSN_SAC_Code = iifNull(HSN_SAC_Code,toString(null())),",
@@ -133,7 +137,7 @@
 				"          Scheme_Code = iifNull(Scheme_Code, toString(null())),",
 				"          Pack_title = iifNull(Pack_title, toString(null())),",
 				"          Scheme_Parent_Item_No_ = iifNull(Scheme_Parent_Item_No_, toString(null())),",
-				"          ECOM = iif(toBoolean(ECOM),1 ,0),",
+				"          ECOM = toInteger(ECOM),",
 				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Site_Code = toInteger(Site_Code)) ~> derivedColumn1",
