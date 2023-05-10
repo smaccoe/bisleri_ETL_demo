@@ -1,0 +1,14 @@
+{
+	"name": "Stage2_Sales_Cr_Memo_Header",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				""
+			]
+		}
+	}
+}
