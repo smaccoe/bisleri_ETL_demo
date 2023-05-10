@@ -27,10 +27,10 @@
 			],
 			"transformations": [
 				{
-					"name": "ColumnRenaming"
+					"name": "select1"
 				},
 				{
-					"name": "DataCleaning"
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -139,8 +139,8 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
-				"ColumnRenaming derive(No_ = iifNull(No_, toString(null())),",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(No_ = iifNull(No_, toString(null())),",
 				"          Name = iifNull(Name, toString(null())),",
 				"          Address = iifNull(Address, toString(null())),",
 				"          Address_2 = iifNull(Address_2, toString(null())),",
@@ -168,7 +168,7 @@
 				"          Customer_Type = iifNull(Customer_Type, toString(null())),",
 				"          Executive_Code = iifNull(Executive_Code, toString(null())),",
 				"          Customer_Subcategory_Code = iifNull(Customer_Subcategory_Code, toString(null())),",
-				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS')),",
+				"          Creation_Date_Time = toTimestamp(Creation_Date_Time),",
 				"          Salesperson_Code = iifNull(Salesperson_Code,toString(null())),",
 				"          Territory = iifNull(Territory, toString(null())),",
 				"          Parent_Group = iifNull(Parent_Group, toString(null())),",
@@ -181,8 +181,8 @@
 				"          Sub_Channel_3 = iifNull(Sub_Channel_3, toString(null())),",
 				"          State_Code = iifNull(State_Code, toString(null())),",
 				"          Active_Customer = toInteger(iifNull(Active_Customer, toString(null()))),",
-				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning",
-				"DataCleaning sink(allowSchemaDrift: true,",
+				"          Site_Code = toInteger(Site_Code)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: ($Contanier_Name),",
