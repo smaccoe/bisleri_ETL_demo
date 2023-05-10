@@ -1,0 +1,18 @@
+{
+	"name": "Binary4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Delta_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Transaction/Full-Load/Sales_Shipment_Header",
+				"fileSystem": "delta-lake"
+			}
+		}
+	}
+}
