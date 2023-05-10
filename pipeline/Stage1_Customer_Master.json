@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Customer_Master",
+				"name": "Customer_Maste",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
