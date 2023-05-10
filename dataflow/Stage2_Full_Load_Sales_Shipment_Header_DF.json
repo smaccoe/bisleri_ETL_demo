@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Sales_Shipment_Header_Fullload",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "source1"
 				}
@@ -62,14 +62,25 @@
 				"          {Route Code} as string,",
 				"          {Customer Category} as string,",
 				"          {Loading Slip No_} as string,",
-				"          AutoPDASO as string,",
-				"          ECOM as string,",
+				"          AutoPDASO as boolean,",
+				"          ECOM as boolean,",
 				"          {Last Modified On} as string,",
-				"          Site_Code as string",
+				"          {Salesperson Code} as string,",
+				"          Site_Code as short",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Transaction/Full-Load',",
+				"     fileName: 'Sales_Shipment_Header_2023-05-10 01:26:02.02.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true,",
+				"     multiLineRow: true) ~> source1",
 				"source1 select(mapColumn(",
 				"          No_,",
 				"          Sell_to_Customer_No_ = {Sell-to Customer No_},",
