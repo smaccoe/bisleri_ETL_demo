@@ -21,7 +21,11 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          No_ as string,",
@@ -72,12 +76,13 @@
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
 				"     folderPath: 'Master/Customer') ~> Stage3CustomerSource",
-				"Stage3CustomerSource sink(allowSchemaDrift: true,",
+				"Stage3CustomerSource derive(Cust_Key = concat(toString(Site_Code),'|',No_)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",
-				"     schemaName: '',",
-				"     tableName: '',",
+				"     schemaName: 'primarysales',",
+				"     tableName: 'dim_customer',",
 				"     insertable: true,",
 				"     updateable: false,",
 				"     deletable: false,",
