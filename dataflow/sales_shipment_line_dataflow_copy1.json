@@ -124,7 +124,7 @@
 				"          Shortcut_Dimension_2_Code = iifNull(Shortcut_Dimension_2_Code, toString(null())),",
 				"          Quantity_Base = toDouble(Quantity_Base),",
 				"          Item_Category_Code = iifNull(Item_Category_Code, toString(null())),",
-				"          Free_Supply = iif(toBoolean(Free_Supply),1 ,0),",
+				"          Free_Supply = toInteger(Free_Supply),",
 				"          Unit_Price_Incl_of_Tax = toDouble(Unit_Price_Incl_of_Tax),",
 				"          GST_Group_Code = iifNull(GST_Group_Code, toString(null())),",
 				"          Total_GST_Amount = toDouble(Total_GST_Amount),",
