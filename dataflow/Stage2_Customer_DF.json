@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Full_Load_Customer_DF",
+	"name": "Stage2_Customer_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

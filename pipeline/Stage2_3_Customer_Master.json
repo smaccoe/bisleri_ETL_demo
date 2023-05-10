@@ -23,7 +23,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Full_Load_Customer_DF",
+						"referenceName": "Stage2_Customer_DF",
 						"type": "DataFlowReference",
 						"parameters": {
 							"Contanier_Name": "'delta-lake'",
