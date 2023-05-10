@@ -214,7 +214,7 @@
 				"          Executive_Code = iifNull(Executive_Code, toString(null())),",
 				"          Customer_Subcategory_Code = iifNull(Customer_Subcategory_Code, toString(null())),",
 				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss.SSSSSSS','yyyy-MM-dd hh:mm:ss.SSSSSSS'),'yyyy-MM-dd hh:mm:ss.SSSSSSS')),",
-				"          Salesperson_Code = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"          Salesperson_Code = iifNull(Salesperson_Code,toString(null()))) ~> derivedColumn1",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
