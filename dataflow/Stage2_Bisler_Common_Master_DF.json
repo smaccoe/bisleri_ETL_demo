@@ -208,7 +208,14 @@
 				"          Description = iifNull(Description, toString(null())),",
 				"          Discount_Value = toInteger(iifNull(Discount_Value, toString(null()))),",
 				"          Down_Time_Group = iifNull(Down_Time_Group, toString(null())),",
-				"          {Driver_No_&_Name} = ERROR_FUNCTION('iifNull(Driver_No_&_Name, toString(null()))')) ~> derivedColumn1"
+				"          {Driver_No_&_Name} = ERROR_FUNCTION('iifNull(Driver_No_&_Name, toString(null()))'),",
+				"          Effective_Date = toTimestamp(toString(toTimestamp(Effective_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          End_Date = toTimestamp(toString(toTimestamp(End_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Executive_Code = iifNull(Executive_Code, toString(null())),",
+				"          Fat_category = toInteger(iifNull(Fat_category, toString(null()))),",
+				"          Fleet_No_ = toInteger(iifNull(Fleet_No_, toString(null()))),",
+				"          From_Slab = toInteger(iifNull(From_Slab, toString(null()))),",
+				"          Grade = toInteger(iifNull(Grade, toString(null())))) ~> derivedColumn1"
 			]
 		}
 	}
