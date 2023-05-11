@@ -52,7 +52,7 @@
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true) ~> Stage2FullLoadCompanySource",
 				"Stage2FullLoadCompanySource derive(Name = iifNull(Name, toString(null())),",
-				"          Site_Code = toInteger(Site_Code)) ~> DataCleaning",
+				"          Site_Code = toInteger(iifNull(toString(Site_Code), toString(null())))) ~> DataCleaning",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
