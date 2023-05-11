@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Sales_Cr_Memo_Header",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "SalesCrMemoHeader"
 				}
@@ -45,16 +45,25 @@
 				"          {Last Modified On} as string,",
 				"          Site_Code as short",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Transaction/Full-Load',",
+				"     fileName: 'Sales_Cr_Memo_Header_2023-05-10 03:39:39.39.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true) ~> SalesCrMemoHeader",
 				"select1 derive(Document_No = iifNull(Document_No, toString(null())),",
 				"          Customer_No = iifNull(Customer_No, toString(null())),",
 				"          Bill_to_Customer_No = iifNull(Bill_to_Customer_No, toString(null())),",
 				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Shipment_Date = toTimestamp(toString(toTimestamp(Shipment_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Location_Code = iifNull(Location_Code, toString(null())),",
-				"          ECOM = iif(ECOM,1 ,0),",
+				"          ECOM = iif((ECOM),1,0),",
 				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Site_Code = toString(Site_Code)) ~> derivedColumn1",
 				"SalesCrMemoHeader select(mapColumn(",
