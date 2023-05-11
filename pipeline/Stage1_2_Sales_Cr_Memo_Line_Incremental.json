@@ -285,7 +285,7 @@
 						"referenceName": "Stage2_Incremental_Sales_Cr_Memo_Line_DF",
 						"type": "DataFlowReference",
 						"parameters": {
-							"parameter1": {
+							"latest_file": {
 								"value": "'@{variables('latestfile')}'",
 								"type": "Expression"
 							}
