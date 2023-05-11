@@ -27,7 +27,7 @@
 			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "RenamingColumns"
 				},
 				{
 					"name": "derivedColumn1"
@@ -120,8 +120,7 @@
 				"          Payment_Terms_Code = {Payment Terms Code},",
 				"          Payment_Method_Code = {Payment Method Code},",
 				"          Collection_Method = {Collection Method},",
-				"          Phone_No_2 = {Scheme Applicable},",
-				"          Customer_Scheme_Applicable = {Customer Group Code},",
+				"          Customer_Scheme_Applicable = {Scheme Applicable},",
 				"          Customer_Contact = Contact,",
 				"          Phone_No = {Phone No_},",
 				"          Phone_No_2 = {Phone No_2},",
@@ -141,11 +140,12 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(No_ = iifNull(Customer_No, toString(null())),",
-				"          Name = iifNull(Customer_Name, toString(null())),",
-				"          Address = iifNull(Customer_Subcategory_Code, toString(null())),",
+				"     skipDuplicateMapOutputs: true) ~> RenamingColumns",
+				"RenamingColumns derive(Customer_No = iifNull(Customer_No, toString(null())),",
+				"          Customer_Name = iifNull(Customer_Name, toString(null())),",
+				"          Customer_Category = iifNull(Customer_Group_Code, toString(null())),",
 				"          Address_2 = iifNull(Customer_Group_Code, toString(null())),",
+				"          Address = iifNull(Customer_Subcategory_Code, toString(null())),",
 				"          Contact = iifNull(Parent_Group, toString(null())),",
 				"          City = iifNull(Customer_Type, toString(null())),",
 				"          Phone_No_ = iifNull(Billing_Type, toString(null())),",
@@ -163,9 +163,8 @@
 				"          E_Mail = iifNull(Currency_Code, toString(null())),",
 				"          T_I_N_No_ = iifNull(Customer_Invoice_Discount_Code, toString(null())),",
 				"          P_A_N_No_ = iifNull(Payment_Terms_Code, toString(null())),",
-				"          Phone_No_2 = iifNull(Phone_No_2, toString(null())),",
+				"          Phone_No_2 = iifNull(Collection_Method, toString(null())),",
 				"          Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
-				"          Customer_Category = iifNull(Customer_Group_Code, toString(null())),",
 				"          Route_Code = iifNull(Customer_Contact, toString(null())),",
 				"          Customer_Type = iifNull(Customer_Type, toString(null())),",
 				"          Executive_Code = iifNull(Collection_Method, toString(null())),",
