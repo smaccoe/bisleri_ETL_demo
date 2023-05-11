@@ -1,0 +1,15 @@
+{
+	"name": "RestService1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://api.fieldassist.in/api/data/plannedVisits/route?date=05/09/2023&employeeId=999",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "Bisleri_10996",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDdBQjhGRDMyLTA5NDYtNDUxNi1CMjA0LUFCRTcwRTVBREIyM181ZjUxYzE1MC0zNTRjLTQ5NjYtYmE1Yy1mMTMxZjM2NGM4NjkiDQp9"
+		}
+	}
+}
