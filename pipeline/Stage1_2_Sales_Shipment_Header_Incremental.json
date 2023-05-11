@@ -352,14 +352,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "sales_shipment_header_dataflow",
-						"type": "DataFlowReference",
-						"parameters": {
-							"container_name": "'delta-lake'",
-							"folder_name": "'Transaction/Incremental-Load/Sales_Shipment_Header'"
-						}
-					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
