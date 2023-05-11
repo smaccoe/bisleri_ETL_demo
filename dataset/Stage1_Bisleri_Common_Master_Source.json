@@ -1,0 +1,371 @@
+{
+	"name": "Stage1_Bisleri_Common_Master_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "Code Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pack Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Max Limit",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Vehicle Volume",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Tonnage Capacity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Minimum Value",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Average _ Best",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Maximum Value",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "UOM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Plant Maintenace",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Machine_Mould Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Reason Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Controllable",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Down Time Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Account No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Grade",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Route category",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Route Street category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fleet No_",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Deposit Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Deposit Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Vehicle Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales target",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Effective Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Executive Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fat category",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Own Vehicle",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Manager Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "A_S_M",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Metro City",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Sub Zone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Area",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Territory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cap Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Reason Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Zone In Charge Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PDA Route",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Manual Selection",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Pack Group Code 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Problem Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Spare Required",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Comman Problem",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Blocked",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "From Slab",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "To Slab",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Discount Value",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Item No",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Start Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "End Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Unit Of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shortage Cap By Cust",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Channel",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Sales_Person",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Vehicle_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Modified user Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Last Modified",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AutoSettlement Route",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "PSR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shipping Agent Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item Weight",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Scrap Pieces Per Case",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Jar Loan Amount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "PSR2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PSR3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cap Scrap Item",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Driver No_& Name",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - CHENNAI$Bisleri Common master"
+		}
+	}
+}
