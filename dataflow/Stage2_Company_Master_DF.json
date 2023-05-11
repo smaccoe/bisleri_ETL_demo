@@ -28,6 +28,9 @@
 			"transformations": [
 				{
 					"name": "DataCleaning"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -51,8 +54,14 @@
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true) ~> Stage2FullLoadCompanySource",
-				"Stage2FullLoadCompanySource derive(Name = iifNull(Name, toString(null())),",
+				"select1 derive(Site_Name = iifNull(Site_Name, toString(null())),",
 				"          Site_Code = toInteger(iifNull(toString(Site_Code), toString(null())))) ~> DataCleaning",
+				"Stage2FullLoadCompanySource select(mapColumn(",
+				"          Site_Name = Name,",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
 				"DataCleaning sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
