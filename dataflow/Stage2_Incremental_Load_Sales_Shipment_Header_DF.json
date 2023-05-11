@@ -37,7 +37,8 @@
 			"scriptLines": [
 				"parameters{",
 				"     container_name as string ('delta-lake'),",
-				"     folder_name as string ('Transaction/Incremental-Load/Sales_Shipment_Header')",
+				"     folder_name as string ('Transaction/Incremental-Load/Sales_Shipment_Header'),",
+				"     latest_file as string ('temp')",
 				"}",
 				"source(output(",
 				"          No_ as string,",
@@ -75,7 +76,7 @@
 				"     format: 'delimited',",
 				"     fileSystem: 'data-lake',",
 				"     folderPath: 'Transaction/Incremental-Load',",
-				"     fileName: 'temp.csv',",
+				"     fileName: ($latest_file),",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",

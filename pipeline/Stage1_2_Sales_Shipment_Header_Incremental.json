@@ -262,8 +262,8 @@
 				}
 			},
 			{
-				"name": "copying_data_from_adls_to_temp_file",
-				"type": "Copy",
+				"name": "Stage2_sales_shipment_header_incremental_load",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
 						"activity": "get_all_files_lastmodified",
@@ -281,77 +281,18 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "Dataset_to_get_all_filenames_according_to_modifieddate",
-						"type": "DatasetReference",
+					"dataflow": {
+						"referenceName": "Stage2_Incremental_Load_Sales_Shipment_Header_DF",
+						"type": "DataFlowReference",
 						"parameters": {
-							"filename": {
-								"value": "@variables('latestfile')",
+							"container_name": "'delta-lake'",
+							"folder_name": "'Transaction/Incremental-Load/Sales_Shipment_Header'",
+							"latest_file": {
+								"value": "'@{variables('latestfile')}'",
 								"type": "Expression"
 							}
 						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "dumpdata_to_temp_file",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "Stage2_sales_shipment_header_incremental_load",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "copying_data_from_adls_to_temp_file",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
