@@ -208,7 +208,7 @@
 				"          Description = iifNull(Description, toString(null())),",
 				"          Discount_Value = toDecimal(iifNull(Discount_Value,toString(null()))),",
 				"          Down_Time_Group = iifNull(Down_Time_Group, toString(null())),",
-				"          {Driver_No_&_Name} = ERROR_FUNCTION(''),",
+				"          {Driver_No_&_Name} = iifNull({Driver_No_&_Name}, toString(null())),",
 				"          Effective_Date = toTimestamp(toString(toTimestamp(Effective_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          End_Date = toTimestamp(toString(toTimestamp(End_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
 				"          Executive_Code = iifNull(Executive_Code, toString(null())),",
