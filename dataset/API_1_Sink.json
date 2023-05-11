@@ -1,0 +1,20 @@
+{
+	"name": "API_1_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "curated_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
