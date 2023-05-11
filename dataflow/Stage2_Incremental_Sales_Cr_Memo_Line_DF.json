@@ -34,6 +34,9 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     parameter1 as string ('temp')",
+				"}",
 				"source(output(",
 				"          {Document No_} as string,",
 				"          {Line No_} as string,",
@@ -70,7 +73,7 @@
 				"     format: 'delimited',",
 				"     fileSystem: 'data-lake',",
 				"     folderPath: 'Transaction/Incremental-Load/Sales_Cr_Memo_Line',",
-				"     fileName: 'temp.csv',",
+				"     fileName: ($parameter1),",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
