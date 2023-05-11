@@ -24,7 +24,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Name as string,",
+				"          Site_Name as string,",
 				"          Site_Code as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
