@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -184,7 +187,28 @@
 				"          Site_Code",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(A_S_M = iifNull(A_S_M, toString(null())),",
+				"          Account_No_ = toInteger(iifNull(Account_No_, toString(null()))),",
+				"          Amount = toInteger(iifNull(Amount, toString(null()))),",
+				"          Area = iifNull(Area, toString(null())),",
+				"          AutoSettlement_Route = toInteger(iifNull(AutoSettlement_Route, toString(null()))),",
+				"          Average_Best = toInteger(iifNull(Average_Best, toString(null()))),",
+				"          Blocked = toInteger(iifNull(Blocked, toString(null()))),",
+				"          Cap_Amount = toInteger(iifNull(Cap_Amount, toString(null()))),",
+				"          Cap_Scrap_Item = iifNull(Cap_Scrap_Item, toString(null())),",
+				"          Category = iifNull(Category, toString(null())),",
+				"          Channel = toInteger(iifNull(Channel, toString(null()))),",
+				"          Code = iifNull(Code, toString(null())),",
+				"          Code_Type = toInteger(iifNull(Code_Type, toString(null()))),",
+				"          Comman_Problem = toInteger(iifNull(Comman_Problem, toString(null()))),",
+				"          Controllable = toInteger(iifNull(Controllable, toString(null()))),",
+				"          Deposit_Code = iifNull(Deposit_Code, toString(null())),",
+				"          Deposit_Type = toInteger(iifNull(Deposit_Type, toString(null()))),",
+				"          Description = iifNull(Description, toString(null())),",
+				"          Discount_Value = toInteger(iifNull(Discount_Value, toString(null()))),",
+				"          Down_Time_Group = iifNull(Down_Time_Group, toString(null())),",
+				"          {Driver_No_&_Name} = ERROR_FUNCTION('iifNull(Driver_No_&_Name, toString(null()))')) ~> derivedColumn1"
 			]
 		}
 	}
