@@ -1,13 +1,13 @@
 {
-	"name": "Stage2_Full_Load_Sales_Cr_Memo_Header_DF",
+	"name": "Stage2_Incremental_Load_Sales_Cr_Memo_Header_DF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Stage2_Sales_Cr_Memo_Header",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
 					},
 					"name": "SalesCrMemoHeader"
 				}
@@ -43,11 +43,21 @@
 				"          {Location Code} as string,",
 				"          ECOM as boolean,",
 				"          {Last Modified On} as string,",
-				"          Site_Code as short",
+				"          Site_Code as string",
 				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesCrMemoHeader",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Transaction/Incremental-Load/Sales_CR_Memo_Header',",
+				"     fileName: 'temp.csv',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true,",
+				"     multiLineRow: true) ~> SalesCrMemoHeader",
 				"select1 derive(Document_No = iifNull(Document_No, toString(null())),",
 				"          Customer_No = iifNull(Customer_No, toString(null())),",
 				"          Bill_to_Customer_No = iifNull(Bill_to_Customer_No, toString(null())),",
