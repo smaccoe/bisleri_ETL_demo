@@ -288,7 +288,9 @@
 							"latest_file": {
 								"value": "'@{variables('latestfile')}'",
 								"type": "Expression"
-							}
+							},
+							"container_name": "'delta-lake'",
+							"folder_name": "'Transaction/Incremental-Load/Sales_Cr_Memo_Line'"
 						}
 					},
 					"compute": {
