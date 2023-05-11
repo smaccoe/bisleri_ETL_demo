@@ -155,7 +155,7 @@
 				"          Sub_Channel_2 = iifNull(Sub_Channel_2, toString(null())),",
 				"          Sub_Channel_3 = iifNull(Sub_Channel_3, toString(null())),",
 				"          Creation_Date_Time = toTimestamp(toString(toTimestamp(Creation_Date_Time,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Activate_Credit_Limit_Days = iifNull(Activate_Credit_Limit_Days, toString(null())),",
+				"          Activate_Credit_Limit_Days = toInteger(iifNull(Activate_Credit_Limit_Days, toString(null()))),",
 				"          Credit_Limit_LCY = iifNull(Credit_Limit_LCY, toString(null())),",
 				"          Customer_Posting_Group = toInteger(iifNull(Customer_Posting_Group, toString(null()))),",
 				"          Customer_General_Business_Posting_Group = iifNull(Customer_General_Business_Posting_Group, toString(null())),",
