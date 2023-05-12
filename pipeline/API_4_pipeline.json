@@ -60,7 +60,8 @@
 									"path": "$['InvoiceNumber']"
 								},
 								"sink": {
-									"name": "InvoiceNumber"
+									"name": "InvoiceNumber",
+									"type": "String"
 								}
 							},
 							{
@@ -84,7 +85,8 @@
 									"path": "$['Position']"
 								},
 								"sink": {
-									"name": "Position"
+									"name": "Position",
+									"type": "String"
 								}
 							},
 							{
@@ -92,7 +94,8 @@
 									"path": "$['PositionCode']"
 								},
 								"sink": {
-									"name": "PositionCode"
+									"name": "PositionCode",
+									"type": "String"
 								}
 							},
 							{
@@ -164,7 +167,8 @@
 									"path": "$['BeatERPId']"
 								},
 								"sink": {
-									"name": "BeatERPId"
+									"name": "BeatERPId",
+									"type": "String"
 								}
 							},
 							{
@@ -212,7 +216,8 @@
 									"path": "$['NoSalesReason']"
 								},
 								"sink": {
-									"name": "NoSalesReason"
+									"name": "NoSalesReason",
+									"type": "String"
 								}
 							},
 							{
@@ -220,7 +225,8 @@
 									"path": "$['RemarksManagement']"
 								},
 								"sink": {
-									"name": "RemarksManagement"
+									"name": "RemarksManagement",
+									"type": "String"
 								}
 							},
 							{
@@ -228,7 +234,8 @@
 									"path": "$['RemarksDistributor']"
 								},
 								"sink": {
-									"name": "RemarksDistributor"
+									"name": "RemarksDistributor",
+									"type": "String"
 								}
 							},
 							{
@@ -236,7 +243,8 @@
 									"path": "$['RemarksOther']"
 								},
 								"sink": {
-									"name": "RemarksOther"
+									"name": "RemarksOther",
+									"type": "String"
 								}
 							},
 							{
@@ -292,7 +300,8 @@
 									"path": "$['Sales'][0]['Variant']"
 								},
 								"sink": {
-									"name": "Variant"
+									"name": "Variant",
+									"type": "String"
 								}
 							},
 							{
@@ -300,7 +309,8 @@
 									"path": "$['Sales'][0]['Material']"
 								},
 								"sink": {
-									"name": "Material"
+									"name": "Material",
+									"type": "String"
 								}
 							},
 							{
@@ -308,7 +318,8 @@
 									"path": "$['Sales'][0]['Quantity']"
 								},
 								"sink": {
-									"name": "Quantity"
+									"name": "Quantity",
+									"type": "String"
 								}
 							},
 							{
@@ -316,7 +327,8 @@
 									"path": "$['Sales'][0]['Price']"
 								},
 								"sink": {
-									"name": "Price"
+									"name": "Price",
+									"type": "String"
 								}
 							},
 							{
@@ -324,7 +336,8 @@
 									"path": "$['Sales'][0]['OrderType']"
 								},
 								"sink": {
-									"name": "OrderType"
+									"name": "OrderType",
+									"type": "String"
 								}
 							},
 							{
@@ -332,7 +345,8 @@
 									"path": "$['Sales'][0]['Discount_Product']"
 								},
 								"sink": {
-									"name": "Discount_Product"
+									"name": "Discount_Product",
+									"type": "String"
 								}
 							},
 							{
@@ -340,7 +354,8 @@
 									"path": "$['Sales'][0]['SchemeCashDiscount']"
 								},
 								"sink": {
-									"name": "SchemeCashDiscount"
+									"name": "SchemeCashDiscount",
+									"type": "String"
 								}
 							},
 							{
@@ -348,7 +363,8 @@
 									"path": "$['Sales'][0]['SchemeQuantity']"
 								},
 								"sink": {
-									"name": "SchemeQuantity"
+									"name": "SchemeQuantity",
+									"type": "String"
 								}
 							},
 							{
@@ -356,7 +372,8 @@
 									"path": "$['Sales'][0]['SchemeErpId']"
 								},
 								"sink": {
-									"name": "SchemeErpId"
+									"name": "SchemeErpId",
+									"type": "String"
 								}
 							},
 							{
@@ -364,7 +381,8 @@
 									"path": "$['Sales'][0]['SuggestiveQuantity']"
 								},
 								"sink": {
-									"name": "SuggestiveQuantity"
+									"name": "SuggestiveQuantity",
+									"type": "String"
 								}
 							},
 							{
@@ -372,7 +390,8 @@
 									"path": "$['Sales'][0]['VisitId']"
 								},
 								"sink": {
-									"name": "Sales_Visit_Id"
+									"name": "Sales_Visit_Id",
+									"type": "String"
 								}
 							},
 							{
@@ -380,7 +399,8 @@
 									"path": "$['Sales'][0]['AlternateCategory']"
 								},
 								"sink": {
-									"name": "AlternateCategory"
+									"name": "AlternateCategory",
+									"type": "String"
 								}
 							},
 							{
@@ -388,7 +408,8 @@
 									"path": "$['Sales'][0]['DistributorErpId']"
 								},
 								"sink": {
-									"name": "Sales_DistributorErpId"
+									"name": "Sales_DistributorErpId",
+									"type": "String"
 								}
 							},
 							{
@@ -396,7 +417,8 @@
 									"path": "$['Sales'][0]['OriginalPTR']"
 								},
 								"sink": {
-									"name": "OriginalPTR"
+									"name": "OriginalPTR",
+									"type": "String"
 								}
 							},
 							{
@@ -404,7 +426,8 @@
 									"path": "$['Sales'][0]['DistributorType']"
 								},
 								"sink": {
-									"name": "DistributorType"
+									"name": "DistributorType",
+									"type": "String"
 								}
 							},
 							{
@@ -412,7 +435,8 @@
 									"path": "$['Sales'][0]['FAUnifySource']"
 								},
 								"sink": {
-									"name": "FAUnifySource"
+									"name": "FAUnifySource",
+									"type": "String"
 								}
 							},
 							{
@@ -420,7 +444,8 @@
 									"path": "$['Sales'][0]['ProductUnit']"
 								},
 								"sink": {
-									"name": "ProductUnit"
+									"name": "ProductUnit",
+									"type": "String"
 								}
 							},
 							{
@@ -428,7 +453,8 @@
 									"path": "$['Sales'][0]['CGST']"
 								},
 								"sink": {
-									"name": "CGST"
+									"name": "CGST",
+									"type": "String"
 								}
 							},
 							{
@@ -436,7 +462,8 @@
 									"path": "$['Sales'][0]['SGST']"
 								},
 								"sink": {
-									"name": "SGST"
+									"name": "SGST",
+									"type": "String"
 								}
 							},
 							{
@@ -444,7 +471,8 @@
 									"path": "$['Sales'][0]['IGST']"
 								},
 								"sink": {
-									"name": "IGST"
+									"name": "IGST",
+									"type": "String"
 								}
 							},
 							{
@@ -452,7 +480,8 @@
 									"path": "$['Sales'][0]['FirstLevelDiscountAmount']"
 								},
 								"sink": {
-									"name": "FirstLevelDiscountAmount"
+									"name": "FirstLevelDiscountAmount",
+									"type": "String"
 								}
 							},
 							{
@@ -460,7 +489,8 @@
 									"path": "$['Sales'][0]['SecondLevelDiscountAmount']"
 								},
 								"sink": {
-									"name": "SecondLevelDiscountAmount"
+									"name": "SecondLevelDiscountAmount",
+									"type": "String"
 								}
 							},
 							{
@@ -468,7 +498,8 @@
 									"path": "$['OutOfTurn']"
 								},
 								"sink": {
-									"name": "OutOfTurn"
+									"name": "OutOfTurn",
+									"type": "String"
 								}
 							},
 							{
@@ -476,7 +507,8 @@
 									"path": "$['IsTelephonic']"
 								},
 								"sink": {
-									"name": "IsTelephonic"
+									"name": "IsTelephonic",
+									"type": "String"
 								}
 							},
 							{
@@ -484,7 +516,8 @@
 									"path": "$['Outlet']['OutletId']"
 								},
 								"sink": {
-									"name": "OutletId"
+									"name": "OutletId",
+									"type": "String"
 								}
 							},
 							{
@@ -492,7 +525,8 @@
 									"path": "$['Outlet']['OutletName']"
 								},
 								"sink": {
-									"name": "Outlet_OutletName"
+									"name": "Outlet_OutletName",
+									"type": "String"
 								}
 							},
 							{
@@ -500,7 +534,8 @@
 									"path": "$['Outlet']['ShopType']"
 								},
 								"sink": {
-									"name": "ShopType"
+									"name": "ShopType",
+									"type": "String"
 								}
 							},
 							{
@@ -508,7 +543,8 @@
 									"path": "$['Outlet']['ShopTypeErpId']"
 								},
 								"sink": {
-									"name": "ShopTypeErpId"
+									"name": "ShopTypeErpId",
+									"type": "String"
 								}
 							},
 							{
@@ -516,7 +552,8 @@
 									"path": "$['Outlet']['ChannelErpId']"
 								},
 								"sink": {
-									"name": "ChannelErpId"
+									"name": "ChannelErpId",
+									"type": "String"
 								}
 							},
 							{
@@ -548,7 +585,8 @@
 									"path": "$['Outlet']['OwnersName']"
 								},
 								"sink": {
-									"name": "OwnersName"
+									"name": "OwnersName",
+									"type": "String"
 								}
 							},
 							{
@@ -556,7 +594,8 @@
 									"path": "$['Outlet']['OwnersNo']"
 								},
 								"sink": {
-									"name": "OwnersNo"
+									"name": "OwnersNo",
+									"type": "String"
 								}
 							},
 							{
@@ -564,7 +603,8 @@
 									"path": "$['Outlet']['TIN']"
 								},
 								"sink": {
-									"name": "TIN"
+									"name": "TIN",
+									"type": "String"
 								}
 							},
 							{
@@ -572,7 +612,8 @@
 									"path": "$['Outlet']['GSTIN']"
 								},
 								"sink": {
-									"name": "GSTIN"
+									"name": "GSTIN",
+									"type": "String"
 								}
 							},
 							{
@@ -580,7 +621,8 @@
 									"path": "$['Outlet']['PAN']"
 								},
 								"sink": {
-									"name": "PAN"
+									"name": "PAN",
+									"type": "String"
 								}
 							},
 							{
@@ -588,7 +630,8 @@
 									"path": "$['Outlet']['Aadhar']"
 								},
 								"sink": {
-									"name": "Aadhar"
+									"name": "Aadhar",
+									"type": "String"
 								}
 							},
 							{
@@ -596,7 +639,8 @@
 									"path": "$['Outlet']['Email']"
 								},
 								"sink": {
-									"name": "Email"
+									"name": "Email",
+									"type": "String"
 								}
 							},
 							{
@@ -604,7 +648,8 @@
 									"path": "$['Outlet']['PinCode']"
 								},
 								"sink": {
-									"name": "PinCode"
+									"name": "PinCode",
+									"type": "String"
 								}
 							},
 							{
@@ -612,7 +657,8 @@
 									"path": "$['Outlet']['MarketName']"
 								},
 								"sink": {
-									"name": "MarketName"
+									"name": "MarketName",
+									"type": "String"
 								}
 							},
 							{
@@ -620,7 +666,8 @@
 									"path": "$['Outlet']['City']"
 								},
 								"sink": {
-									"name": "City"
+									"name": "City",
+									"type": "String"
 								}
 							},
 							{
@@ -628,7 +675,8 @@
 									"path": "$['Outlet']['SubCity']"
 								},
 								"sink": {
-									"name": "SubCity"
+									"name": "SubCity",
+									"type": "String"
 								}
 							},
 							{
@@ -636,7 +684,8 @@
 									"path": "$['Outlet']['State']"
 								},
 								"sink": {
-									"name": "State"
+									"name": "State",
+									"type": "String"
 								}
 							},
 							{
@@ -644,7 +693,8 @@
 									"path": "$['Outlet']['GSTRegistered']"
 								},
 								"sink": {
-									"name": "GSTRegistered"
+									"name": "GSTRegistered",
+									"type": "String"
 								}
 							},
 							{
@@ -652,7 +702,8 @@
 									"path": "$['Outlet']['BankAccountNumber']"
 								},
 								"sink": {
-									"name": "BankAccountNumber"
+									"name": "BankAccountNumber",
+									"type": "String"
 								}
 							},
 							{
@@ -660,7 +711,8 @@
 									"path": "$['Outlet']['AccountHoldersName']"
 								},
 								"sink": {
-									"name": "AccountHoldersName"
+									"name": "AccountHoldersName",
+									"type": "String"
 								}
 							},
 							{
@@ -668,7 +720,8 @@
 									"path": "$['Outlet']['IFSCCode']"
 								},
 								"sink": {
-									"name": "IFSCCode"
+									"name": "IFSCCode",
+									"type": "String"
 								}
 							},
 							{
@@ -676,7 +729,8 @@
 									"path": "$['Outlet']['AttributeText1']"
 								},
 								"sink": {
-									"name": "AttributeText1"
+									"name": "AttributeText1",
+									"type": "String"
 								}
 							},
 							{
@@ -684,7 +738,8 @@
 									"path": "$['Outlet']['AttributeText2']"
 								},
 								"sink": {
-									"name": "AttributeText2"
+									"name": "AttributeText2",
+									"type": "String"
 								}
 							},
 							{
@@ -692,7 +747,8 @@
 									"path": "$['Outlet']['AttributeText3']"
 								},
 								"sink": {
-									"name": "AttributeText3"
+									"name": "AttributeText3",
+									"type": "String"
 								}
 							},
 							{
@@ -700,7 +756,8 @@
 									"path": "$['Outlet']['SegmentationDisplayName']"
 								},
 								"sink": {
-									"name": "SegmentationDisplayName"
+									"name": "SegmentationDisplayName",
+									"type": "String"
 								}
 							},
 							{
@@ -708,7 +765,8 @@
 									"path": "$['Outlet']['Segmentation']"
 								},
 								"sink": {
-									"name": "Segmentation"
+									"name": "Segmentation",
+									"type": "String"
 								}
 							},
 							{
@@ -716,7 +774,8 @@
 									"path": "$['Outlet']['SegmentationErpId']"
 								},
 								"sink": {
-									"name": "SegmentationErpId"
+									"name": "SegmentationErpId",
+									"type": "String"
 								}
 							},
 							{
@@ -724,7 +783,8 @@
 									"path": "$['Outlet']['OutletGuid']"
 								},
 								"sink": {
-									"name": "OutletGuid"
+									"name": "OutletGuid",
+									"type": "String"
 								}
 							},
 							{
@@ -732,7 +792,8 @@
 									"path": "$['Outlet']['Latitude']"
 								},
 								"sink": {
-									"name": "Outlet_Latitude"
+									"name": "Outlet_Latitude",
+									"type": "String"
 								}
 							},
 							{
@@ -740,7 +801,8 @@
 									"path": "$['Outlet']['Longitude']"
 								},
 								"sink": {
-									"name": "Outlet_Longitude"
+									"name": "Outlet_Longitude",
+									"type": "String"
 								}
 							},
 							{
@@ -748,7 +810,8 @@
 									"path": "$['Outlet']['PlaceOfDelivery']"
 								},
 								"sink": {
-									"name": "PlaceOfDelivery"
+									"name": "PlaceOfDelivery",
+									"type": "String"
 								}
 							},
 							{
@@ -756,7 +819,8 @@
 									"path": "$['EmployeeLocalName']"
 								},
 								"sink": {
-									"name": "EmployeeLocalName"
+									"name": "EmployeeLocalName",
+									"type": "String"
 								}
 							},
 							{
@@ -764,7 +828,8 @@
 									"path": "$['RouteErpId']"
 								},
 								"sink": {
-									"name": "RouteErpId"
+									"name": "RouteErpId",
+									"type": "String"
 								}
 							},
 							{
@@ -772,7 +837,8 @@
 									"path": "$['CallStartTime']"
 								},
 								"sink": {
-									"name": "CallStartTime"
+									"name": "CallStartTime",
+									"type": "String"
 								}
 							},
 							{
@@ -780,7 +846,8 @@
 									"path": "$['CallEndTime']"
 								},
 								"sink": {
-									"name": "CallEndTime"
+									"name": "CallEndTime",
+									"type": "String"
 								}
 							},
 							{
@@ -788,7 +855,8 @@
 									"path": "$['OrderInUnits']"
 								},
 								"sink": {
-									"name": "OrderInUnits"
+									"name": "OrderInUnits",
+									"type": "String"
 								}
 							},
 							{
@@ -796,7 +864,8 @@
 									"path": "$['OrderInValue']"
 								},
 								"sink": {
-									"name": "OrderInValue"
+									"name": "OrderInValue",
+									"type": "String"
 								}
 							},
 							{
@@ -804,7 +873,8 @@
 									"path": "$['TotalGST']"
 								},
 								"sink": {
-									"name": "TotalGST"
+									"name": "TotalGST",
+									"type": "String"
 								}
 							},
 							{
@@ -812,7 +882,8 @@
 									"path": "$['TotalDiscount']"
 								},
 								"sink": {
-									"name": "TotalDiscount"
+									"name": "TotalDiscount",
+									"type": "String"
 								}
 							},
 							{
@@ -820,7 +891,8 @@
 									"path": "$['NetValue']"
 								},
 								"sink": {
-									"name": "NetValue"
+									"name": "NetValue",
+									"type": "String"
 								}
 							},
 							{
@@ -828,7 +900,8 @@
 									"path": "$['GrossValue']"
 								},
 								"sink": {
-									"name": "GrossValue"
+									"name": "GrossValue",
+									"type": "String"
 								}
 							},
 							{
@@ -836,7 +909,8 @@
 									"path": "$['IsNewOutlet']"
 								},
 								"sink": {
-									"name": "IsNewOutlet"
+									"name": "IsNewOutlet",
+									"type": "String"
 								}
 							},
 							{
@@ -844,7 +918,8 @@
 									"path": "$['InternationDiscounts'][0]"
 								},
 								"sink": {
-									"name": "items"
+									"name": "items",
+									"type": "String"
 								}
 							}
 						],
