@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Company_Master",
+				"name": "Stage1_Company_Master",
 				"type": "Copy",
 				"dependsOn": [
 					{
