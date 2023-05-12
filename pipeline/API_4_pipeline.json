@@ -35,7 +35,923 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['VisitGuid']"
+								},
+								"sink": {
+									"name": "VisitGuid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['VisitId']"
+								},
+								"sink": {
+									"name": "VisitId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['InvoiceNumber']"
+								},
+								"sink": {
+									"name": "InvoiceNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EmployeeName']"
+								},
+								"sink": {
+									"name": "EmployeeName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EmployeeGuid']"
+								},
+								"sink": {
+									"name": "EmployeeGuid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Position']"
+								},
+								"sink": {
+									"name": "Position",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PositionCode']"
+								},
+								"sink": {
+									"name": "PositionCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DistributorErpId']"
+								},
+								"sink": {
+									"name": "DistributorErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EmployeeDesignation']"
+								},
+								"sink": {
+									"name": "EmployeeDesignation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EmpoyeeERPId']"
+								},
+								"sink": {
+									"name": "EmpoyeeERPId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EmployeeType']"
+								},
+								"sink": {
+									"name": "EmployeeType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OutletName']"
+								},
+								"sink": {
+									"name": "OutletName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OutletERPId']"
+								},
+								"sink": {
+									"name": "OutletERPId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['IsFocused']"
+								},
+								"sink": {
+									"name": "IsFocused",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BeatName']"
+								},
+								"sink": {
+									"name": "BeatName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BeatERPId']"
+								},
+								"sink": {
+									"name": "BeatERPId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['VanName']"
+								},
+								"sink": {
+									"name": "VanName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Latitude']"
+								},
+								"sink": {
+									"name": "Latitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Longitude']"
+								},
+								"sink": {
+									"name": "Longitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Productive']"
+								},
+								"sink": {
+									"name": "Productive",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Valid']"
+								},
+								"sink": {
+									"name": "Valid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NoSalesReason']"
+								},
+								"sink": {
+									"name": "NoSalesReason",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['RemarksManagement']"
+								},
+								"sink": {
+									"name": "RemarksManagement",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['RemarksDistributor']"
+								},
+								"sink": {
+									"name": "RemarksDistributor",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['RemarksOther']"
+								},
+								"sink": {
+									"name": "RemarksOther",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Time']"
+								},
+								"sink": {
+									"name": "Time",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SyncTime']"
+								},
+								"sink": {
+									"name": "SyncTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Discount']"
+								},
+								"sink": {
+									"name": "Discount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProductERPId']"
+								},
+								"sink": {
+									"name": "ProductERPId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProductName']"
+								},
+								"sink": {
+									"name": "ProductName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProductDivision']"
+								},
+								"sink": {
+									"name": "ProductDivision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Variant']"
+								},
+								"sink": {
+									"name": "Variant",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Material']"
+								},
+								"sink": {
+									"name": "Material",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Quantity']"
+								},
+								"sink": {
+									"name": "Quantity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Price']"
+								},
+								"sink": {
+									"name": "Price",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['OrderType']"
+								},
+								"sink": {
+									"name": "OrderType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Discount_Product']"
+								},
+								"sink": {
+									"name": "Discount_Product",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['SchemeCashDiscount']"
+								},
+								"sink": {
+									"name": "SchemeCashDiscount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['SchemeQuantity']"
+								},
+								"sink": {
+									"name": "SchemeQuantity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['SchemeErpId']"
+								},
+								"sink": {
+									"name": "SchemeErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['SuggestiveQuantity']"
+								},
+								"sink": {
+									"name": "SuggestiveQuantity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['VisitId']"
+								},
+								"sink": {
+									"name": "Sales'][0]['VisitId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['AlternateCategory']"
+								},
+								"sink": {
+									"name": "AlternateCategory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['DistributorErpId']"
+								},
+								"sink": {
+									"name": "Sales'][0]['DistributorErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['OriginalPTR']"
+								},
+								"sink": {
+									"name": "OriginalPTR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['DistributorType']"
+								},
+								"sink": {
+									"name": "DistributorType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['FAUnifySource']"
+								},
+								"sink": {
+									"name": "FAUnifySource",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ProductUnit']"
+								},
+								"sink": {
+									"name": "ProductUnit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['CGST']"
+								},
+								"sink": {
+									"name": "CGST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['SGST']"
+								},
+								"sink": {
+									"name": "SGST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['IGST']"
+								},
+								"sink": {
+									"name": "IGST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['FirstLevelDiscountAmount']"
+								},
+								"sink": {
+									"name": "FirstLevelDiscountAmount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['SecondLevelDiscountAmount']"
+								},
+								"sink": {
+									"name": "SecondLevelDiscountAmount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OutOfTurn']"
+								},
+								"sink": {
+									"name": "OutOfTurn",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['IsTelephonic']"
+								},
+								"sink": {
+									"name": "IsTelephonic",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['OutletId']"
+								},
+								"sink": {
+									"name": "OutletId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['OutletName']"
+								},
+								"sink": {
+									"name": "Outlet_OutletName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['ShopType']"
+								},
+								"sink": {
+									"name": "ShopType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['ShopTypeErpId']"
+								},
+								"sink": {
+									"name": "ShopTypeErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['ChannelErpId']"
+								},
+								"sink": {
+									"name": "ChannelErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['OutletChannelName']"
+								},
+								"sink": {
+									"name": "OutletChannelName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['Address']"
+								},
+								"sink": {
+									"name": "Address",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['FormattedAddress']"
+								},
+								"sink": {
+									"name": "FormattedAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['OwnersName']"
+								},
+								"sink": {
+									"name": "OwnersName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['OwnersNo']"
+								},
+								"sink": {
+									"name": "OwnersNo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['TIN']"
+								},
+								"sink": {
+									"name": "TIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['GSTIN']"
+								},
+								"sink": {
+									"name": "GSTIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['PAN']"
+								},
+								"sink": {
+									"name": "PAN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['Aadhar']"
+								},
+								"sink": {
+									"name": "Aadhar",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['Email']"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['PinCode']"
+								},
+								"sink": {
+									"name": "PinCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['MarketName']"
+								},
+								"sink": {
+									"name": "MarketName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['City']"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['SubCity']"
+								},
+								"sink": {
+									"name": "SubCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['State']"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['GSTRegistered']"
+								},
+								"sink": {
+									"name": "GSTRegistered",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['BankAccountNumber']"
+								},
+								"sink": {
+									"name": "BankAccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['AccountHoldersName']"
+								},
+								"sink": {
+									"name": "AccountHoldersName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['IFSCCode']"
+								},
+								"sink": {
+									"name": "IFSCCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['AttributeText1']"
+								},
+								"sink": {
+									"name": "AttributeText1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['AttributeText2']"
+								},
+								"sink": {
+									"name": "AttributeText2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['AttributeText3']"
+								},
+								"sink": {
+									"name": "AttributeText3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['SegmentationDisplayName']"
+								},
+								"sink": {
+									"name": "SegmentationDisplayName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['Segmentation']"
+								},
+								"sink": {
+									"name": "Segmentation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['SegmentationErpId']"
+								},
+								"sink": {
+									"name": "SegmentationErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['OutletGuid']"
+								},
+								"sink": {
+									"name": "OutletGuid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['Latitude']"
+								},
+								"sink": {
+									"name": "Outlet_Latitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['Longitude']"
+								},
+								"sink": {
+									"name": "Outlet_Longitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Outlet']['PlaceOfDelivery']"
+								},
+								"sink": {
+									"name": "PlaceOfDelivery",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['EmployeeLocalName']"
+								},
+								"sink": {
+									"name": "EmployeeLocalName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['RouteErpId']"
+								},
+								"sink": {
+									"name": "RouteErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CallStartTime']"
+								},
+								"sink": {
+									"name": "CallStartTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CallEndTime']"
+								},
+								"sink": {
+									"name": "CallEndTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OrderInUnits']"
+								},
+								"sink": {
+									"name": "OrderInUnits",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OrderInValue']"
+								},
+								"sink": {
+									"name": "OrderInValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['TotalGST']"
+								},
+								"sink": {
+									"name": "TotalGST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['TotalDiscount']"
+								},
+								"sink": {
+									"name": "TotalDiscount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NetValue']"
+								},
+								"sink": {
+									"name": "NetValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['GrossValue']"
+								},
+								"sink": {
+									"name": "GrossValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['IsNewOutlet']"
+								},
+								"sink": {
+									"name": "IsNewOutlet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['InternationDiscounts'][0]"
+								},
+								"sink": {
+									"name": "items",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "$['Sales']",
+						"mapComplexValuesToString": true
+					}
 				},
 				"inputs": [
 					{
