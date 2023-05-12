@@ -15,6 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().FileName, '.csv')",
+					"type": "Expression"
+				},
 				"folderPath": "Master",
 				"fileSystem": "data-lake"
 			},
