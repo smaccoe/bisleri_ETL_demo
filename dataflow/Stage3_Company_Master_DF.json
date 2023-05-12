@@ -45,7 +45,11 @@
 				"     upsertable: false,",
 				"     recreate: true,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Site_Name,",
+				"          Site_Code",
+				"     )) ~> sink1"
 			]
 		}
 	}
