@@ -29,7 +29,19 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \n\tDistinct\n\tLeft(RIGHT(TABLE_NAME, 21),11) as TABLE_NAME\nfrom INFORMATION_SCHEMA.COLUMNS\nwhere TABLE_NAME like '%Salesperson_Purchaser'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Stage1_SalesPerson_Source",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"annotations": []
