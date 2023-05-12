@@ -1,0 +1,20 @@
+{
+	"name": "API_4_JSON_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "curated_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "API_4.JSON",
+				"folderPath": "API",
+				"fileSystem": "curated-data"
+			}
+		},
+		"schema": {}
+	}
+}
