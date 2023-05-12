@@ -1,5 +1,5 @@
 {
-	"name": "API_4_CSV_Source",
+	"name": "API_4_CSV_Sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "curated_data",
