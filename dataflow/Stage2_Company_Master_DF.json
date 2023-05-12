@@ -36,7 +36,8 @@
 			"scriptLines": [
 				"parameters{",
 				"     ContainerName as string ('delta-lake'),",
-				"     FolderName as string ('Master/Company')",
+				"     FolderName as string ('Master/Company'),",
+				"     TableName as string ('temp')",
 				"}",
 				"source(output(",
 				"          Name as string,",
@@ -49,7 +50,7 @@
 				"     format: 'delimited',",
 				"     fileSystem: 'data-lake',",
 				"     folderPath: 'Master',",
-				"     fileName: 'Company_2023-05-12 09:06:20.20.csv',",
+				"     fileName: ($TableName),",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
