@@ -25,15 +25,132 @@
 						}
 					},
 					"sink": {
-						"type": "JsonSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "JsonWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['RouteName']"
+								},
+								"sink": {
+									"name": "RouteName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['RouteErpId']"
+								},
+								"sink": {
+									"name": "RouteErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['BeatName']"
+								},
+								"sink": {
+									"name": "BeatName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['BeatErpId']"
+								},
+								"sink": {
+									"name": "BeatErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ShopName']"
+								},
+								"sink": {
+									"name": "ShopName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ShopErpId']"
+								},
+								"sink": {
+									"name": "ShopErpId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['OwnerName']"
+								},
+								"sink": {
+									"name": "OwnerName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['OwnerPhoneNo']"
+								},
+								"sink": {
+									"name": "OwnerPhoneNo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ShopType']"
+								},
+								"sink": {
+									"name": "ShopType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['ShopChannel']"
+								},
+								"sink": {
+									"name": "ShopChannel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['IsFocussed']"
+								},
+								"sink": {
+									"name": "IsFocussed",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Segmentation']"
+								},
+								"sink": {
+									"name": "Segmentation",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "$['RetailerList']",
+						"mapComplexValuesToString": true
+					}
 				},
 				"inputs": [
 					{
@@ -43,7 +160,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "API_1_Json_Sink",
+						"referenceName": "API_1_Sink",
 						"type": "DatasetReference"
 					}
 				]
