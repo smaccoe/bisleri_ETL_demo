@@ -5,7 +5,14 @@
 			{
 				"name": "Company_Master",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "FileName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -51,9 +58,41 @@
 				"outputs": [
 					{
 						"referenceName": "Stage1_Company_Sink",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@activity('FileName').output.firstRow.TABLE_NAME",
+								"type": "Expression"
+							}
+						}
 					}
 				]
+			},
+			{
+				"name": "FileName",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \r\n\tDistinct\r\n\tTABLE_NAME\r\nfrom \r\nINFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME = 'Company'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Stage1_Company_Source",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": true
+				}
 			}
 		],
 		"annotations": []
