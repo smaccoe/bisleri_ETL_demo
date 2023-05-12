@@ -38,7 +38,7 @@
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "Set variable2",
+						"activity": "Stage1_Company_Master",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -98,7 +98,7 @@
 							"ContainerName": "'delta-lake'",
 							"FolderName": "'Master/Company'",
 							"Table": {
-								"value": "'@{variables('TableName2')}'",
+								"value": "'@{concat(variables('TableName'),'.csv') }'",
 								"type": "Expression"
 							}
 						}
@@ -216,26 +216,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "TableName",
-					"value": {
-						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Set variable2",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Stage1_Company_Master",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "TableName2",
 					"value": {
 						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
 						"type": "Expression"
