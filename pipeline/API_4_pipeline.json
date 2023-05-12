@@ -25,14 +25,12 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "JsonSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"type": "JsonWriteSettings"
 						}
 					},
 					"enableStaging": false,
@@ -42,814 +40,510 @@
 							{
 								"source": {
 									"path": "$['VisitGuid']"
-								},
-								"sink": {
-									"name": "VisitGuid"
 								}
 							},
 							{
 								"source": {
 									"path": "$['VisitId']"
-								},
-								"sink": {
-									"name": "VisitId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['InvoiceNumber']"
-								},
-								"sink": {
-									"name": "InvoiceNumber"
 								}
 							},
 							{
 								"source": {
 									"path": "$['EmployeeName']"
-								},
-								"sink": {
-									"name": "EmployeeName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['EmployeeGuid']"
-								},
-								"sink": {
-									"name": "EmployeeGuid"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Position']"
-								},
-								"sink": {
-									"name": "Position"
 								}
 							},
 							{
 								"source": {
 									"path": "$['PositionCode']"
-								},
-								"sink": {
-									"name": "PositionCode"
 								}
 							},
 							{
 								"source": {
 									"path": "$['DistributorErpId']"
-								},
-								"sink": {
-									"name": "DistributorErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['EmployeeDesignation']"
-								},
-								"sink": {
-									"name": "EmployeeDesignation"
 								}
 							},
 							{
 								"source": {
 									"path": "$['EmpoyeeERPId']"
-								},
-								"sink": {
-									"name": "EmpoyeeERPId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['EmployeeType']"
-								},
-								"sink": {
-									"name": "EmployeeType"
 								}
 							},
 							{
 								"source": {
 									"path": "$['OutletName']"
-								},
-								"sink": {
-									"name": "OutletName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['OutletERPId']"
-								},
-								"sink": {
-									"name": "OutletERPId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['IsFocused']"
-								},
-								"sink": {
-									"name": "IsFocused"
 								}
 							},
 							{
 								"source": {
 									"path": "$['BeatName']"
-								},
-								"sink": {
-									"name": "BeatName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['BeatERPId']"
-								},
-								"sink": {
-									"name": "BeatERPId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['VanName']"
-								},
-								"sink": {
-									"name": "VanName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Latitude']"
-								},
-								"sink": {
-									"name": "Latitude"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Longitude']"
-								},
-								"sink": {
-									"name": "Longitude"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Productive']"
-								},
-								"sink": {
-									"name": "Productive"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Valid']"
-								},
-								"sink": {
-									"name": "Valid"
 								}
 							},
 							{
 								"source": {
 									"path": "$['NoSalesReason']"
-								},
-								"sink": {
-									"name": "NoSalesReason"
 								}
 							},
 							{
 								"source": {
 									"path": "$['RemarksManagement']"
-								},
-								"sink": {
-									"name": "RemarksManagement"
 								}
 							},
 							{
 								"source": {
 									"path": "$['RemarksDistributor']"
-								},
-								"sink": {
-									"name": "RemarksDistributor"
 								}
 							},
 							{
 								"source": {
 									"path": "$['RemarksOther']"
-								},
-								"sink": {
-									"name": "RemarksOther"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Time']"
-								},
-								"sink": {
-									"name": "Time"
 								}
 							},
 							{
 								"source": {
 									"path": "$['SyncTime']"
-								},
-								"sink": {
-									"name": "SyncTime"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Discount']"
-								},
-								"sink": {
-									"name": "Discount"
 								}
 							},
 							{
 								"source": {
 									"path": "['ProductERPId']"
-								},
-								"sink": {
-									"name": "ProductERPId"
 								}
 							},
 							{
 								"source": {
 									"path": "['ProductName']"
-								},
-								"sink": {
-									"name": "ProductName"
 								}
 							},
 							{
 								"source": {
 									"path": "['ProductDivision']"
-								},
-								"sink": {
-									"name": "ProductDivision"
 								}
 							},
 							{
 								"source": {
 									"path": "['Variant']"
-								},
-								"sink": {
-									"name": "Variant"
 								}
 							},
 							{
 								"source": {
 									"path": "['Material']"
-								},
-								"sink": {
-									"name": "Material"
 								}
 							},
 							{
 								"source": {
 									"path": "['Quantity']"
-								},
-								"sink": {
-									"name": "Quantity"
 								}
 							},
 							{
 								"source": {
 									"path": "['Price']"
-								},
-								"sink": {
-									"name": "Price"
 								}
 							},
 							{
 								"source": {
 									"path": "['OrderType']"
-								},
-								"sink": {
-									"name": "OrderType"
 								}
 							},
 							{
 								"source": {
 									"path": "['Discount_Product']"
-								},
-								"sink": {
-									"name": "Discount_Product"
 								}
 							},
 							{
 								"source": {
 									"path": "['SchemeCashDiscount']"
-								},
-								"sink": {
-									"name": "SchemeCashDiscount"
 								}
 							},
 							{
 								"source": {
 									"path": "['SchemeQuantity']"
-								},
-								"sink": {
-									"name": "SchemeQuantity"
 								}
 							},
 							{
 								"source": {
 									"path": "['SchemeErpId']"
-								},
-								"sink": {
-									"name": "SchemeErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "['SuggestiveQuantity']"
-								},
-								"sink": {
-									"name": "SuggestiveQuantity"
 								}
 							},
 							{
 								"source": {
 									"path": "['VisitId']"
-								},
-								"sink": {
-									"name": "Sales'][0]['VisitId"
 								}
 							},
 							{
 								"source": {
 									"path": "['AlternateCategory']"
-								},
-								"sink": {
-									"name": "AlternateCategory"
 								}
 							},
 							{
 								"source": {
 									"path": "['DistributorErpId']"
-								},
-								"sink": {
-									"name": "Sales'][0]['DistributorErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "['OriginalPTR']"
-								},
-								"sink": {
-									"name": "OriginalPTR"
 								}
 							},
 							{
 								"source": {
 									"path": "['DistributorType']"
-								},
-								"sink": {
-									"name": "DistributorType"
 								}
 							},
 							{
 								"source": {
 									"path": "['FAUnifySource']"
-								},
-								"sink": {
-									"name": "FAUnifySource"
 								}
 							},
 							{
 								"source": {
 									"path": "['ProductUnit']"
-								},
-								"sink": {
-									"name": "ProductUnit"
 								}
 							},
 							{
 								"source": {
 									"path": "['CGST']"
-								},
-								"sink": {
-									"name": "CGST"
 								}
 							},
 							{
 								"source": {
 									"path": "['SGST']"
-								},
-								"sink": {
-									"name": "SGST"
 								}
 							},
 							{
 								"source": {
 									"path": "['IGST']"
-								},
-								"sink": {
-									"name": "IGST"
 								}
 							},
 							{
 								"source": {
 									"path": "['FirstLevelDiscountAmount']"
-								},
-								"sink": {
-									"name": "FirstLevelDiscountAmount"
 								}
 							},
 							{
 								"source": {
 									"path": "['SecondLevelDiscountAmount']"
-								},
-								"sink": {
-									"name": "SecondLevelDiscountAmount"
 								}
 							},
 							{
 								"source": {
 									"path": "$['OutOfTurn']"
-								},
-								"sink": {
-									"name": "OutOfTurn"
 								}
 							},
 							{
 								"source": {
 									"path": "$['IsTelephonic']"
-								},
-								"sink": {
-									"name": "IsTelephonic"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['OutletId']"
-								},
-								"sink": {
-									"name": "OutletId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['OutletName']"
-								},
-								"sink": {
-									"name": "Outlet_OutletName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['ShopType']"
-								},
-								"sink": {
-									"name": "ShopType"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['ShopTypeErpId']"
-								},
-								"sink": {
-									"name": "ShopTypeErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['ChannelErpId']"
-								},
-								"sink": {
-									"name": "ChannelErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['OutletChannelName']"
-								},
-								"sink": {
-									"name": "OutletChannelName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['Address']"
-								},
-								"sink": {
-									"name": "Address"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['FormattedAddress']"
-								},
-								"sink": {
-									"name": "FormattedAddress"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['OwnersName']"
-								},
-								"sink": {
-									"name": "OwnersName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['OwnersNo']"
-								},
-								"sink": {
-									"name": "OwnersNo"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['TIN']"
-								},
-								"sink": {
-									"name": "TIN"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['GSTIN']"
-								},
-								"sink": {
-									"name": "GSTIN"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['PAN']"
-								},
-								"sink": {
-									"name": "PAN"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['Aadhar']"
-								},
-								"sink": {
-									"name": "Aadhar"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['Email']"
-								},
-								"sink": {
-									"name": "Email"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['PinCode']"
-								},
-								"sink": {
-									"name": "PinCode"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['MarketName']"
-								},
-								"sink": {
-									"name": "MarketName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['City']"
-								},
-								"sink": {
-									"name": "City"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['SubCity']"
-								},
-								"sink": {
-									"name": "SubCity"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['State']"
-								},
-								"sink": {
-									"name": "State"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['GSTRegistered']"
-								},
-								"sink": {
-									"name": "GSTRegistered"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['BankAccountNumber']"
-								},
-								"sink": {
-									"name": "BankAccountNumber"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['AccountHoldersName']"
-								},
-								"sink": {
-									"name": "AccountHoldersName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['IFSCCode']"
-								},
-								"sink": {
-									"name": "IFSCCode"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['AttributeText1']"
-								},
-								"sink": {
-									"name": "AttributeText1"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['AttributeText2']"
-								},
-								"sink": {
-									"name": "AttributeText2"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['AttributeText3']"
-								},
-								"sink": {
-									"name": "AttributeText3"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['SegmentationDisplayName']"
-								},
-								"sink": {
-									"name": "SegmentationDisplayName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['Segmentation']"
-								},
-								"sink": {
-									"name": "Segmentation"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['SegmentationErpId']"
-								},
-								"sink": {
-									"name": "SegmentationErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['OutletGuid']"
-								},
-								"sink": {
-									"name": "OutletGuid"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['Latitude']"
-								},
-								"sink": {
-									"name": "Outlet_Latitude"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['Longitude']"
-								},
-								"sink": {
-									"name": "Outlet_Longitude"
 								}
 							},
 							{
 								"source": {
 									"path": "$['Outlet']['PlaceOfDelivery']"
-								},
-								"sink": {
-									"name": "PlaceOfDelivery"
 								}
 							},
 							{
 								"source": {
 									"path": "$['EmployeeLocalName']"
-								},
-								"sink": {
-									"name": "EmployeeLocalName"
 								}
 							},
 							{
 								"source": {
 									"path": "$['RouteErpId']"
-								},
-								"sink": {
-									"name": "RouteErpId"
 								}
 							},
 							{
 								"source": {
 									"path": "$['CallStartTime']"
-								},
-								"sink": {
-									"name": "CallStartTime"
 								}
 							},
 							{
 								"source": {
 									"path": "$['CallEndTime']"
-								},
-								"sink": {
-									"name": "CallEndTime"
 								}
 							},
 							{
 								"source": {
 									"path": "$['OrderInUnits']"
-								},
-								"sink": {
-									"name": "OrderInUnits"
 								}
 							},
 							{
 								"source": {
 									"path": "$['OrderInValue']"
-								},
-								"sink": {
-									"name": "OrderInValue"
 								}
 							},
 							{
 								"source": {
 									"path": "$['TotalGST']"
-								},
-								"sink": {
-									"name": "TotalGST"
 								}
 							},
 							{
 								"source": {
 									"path": "$['TotalDiscount']"
-								},
-								"sink": {
-									"name": "TotalDiscount"
 								}
 							},
 							{
 								"source": {
 									"path": "$['NetValue']"
-								},
-								"sink": {
-									"name": "NetValue"
 								}
 							},
 							{
 								"source": {
 									"path": "$['GrossValue']"
-								},
-								"sink": {
-									"name": "GrossValue"
 								}
 							},
 							{
 								"source": {
 									"path": "$['IsNewOutlet']"
-								},
-								"sink": {
-									"name": "IsNewOutlet"
 								}
 							},
 							{
 								"source": {
 									"path": "$['InternationDiscounts'][0]"
-								},
-								"sink": {
-									"name": "items"
 								}
 							}
 						],
-						"collectionReference": "$['Sales']",
-						"mapComplexValuesToString": false
+						"collectionReference": "$['Sales']"
 					}
 				},
 				"inputs": [
@@ -860,7 +554,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "API_4_CSV_Sink",
+						"referenceName": "API_4_JSON_Sink",
 						"type": "DatasetReference"
 					}
 				]
