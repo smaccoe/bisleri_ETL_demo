@@ -1,5 +1,5 @@
 {
-	"name": "API_4_Sink",
+	"name": "API_4_JSON_Sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "curated_data",
