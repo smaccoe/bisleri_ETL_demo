@@ -5,7 +5,14 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "TableNameVar",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -15,8 +22,19 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
 					"enableStaging": false
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "Stage1_SalesPerson_Source",
+						"type": "DatasetReference"
+					}
+				]
 			},
 			{
 				"name": "FileName",
@@ -42,8 +60,33 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "TableNameVar",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "FileName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "TableName",
+					"value": {
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"TableName": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
