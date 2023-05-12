@@ -5,6 +5,11 @@
 			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

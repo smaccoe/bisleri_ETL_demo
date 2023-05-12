@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Stage1_SalesPerson_Master",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -58,7 +58,13 @@
 				"outputs": [
 					{
 						"referenceName": "Stage1_SalesPerson_Sink",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
