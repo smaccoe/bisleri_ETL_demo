@@ -1,0 +1,118 @@
+{
+	"name": "Stage1_2_3_Location_Master",
+	"properties": {
+		"activities": [
+			{
+				"name": "FileName",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \n\tDistinct\n\tTABLE_NAME\nfrom \nINFORMATION_SCHEMA.COLUMNS\nwhere TABLE_NAME = 'Location'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Stage1_Location_Source1",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "FileName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "TableName",
+					"value": {
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Stage1_Location",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \r\n\tName,\r\n\tCASE \r\n\t\tWHEN Name = 'BIPL - ANDHRA PRADESH' THEN '10001'\r\n\t\tWHEN Name = 'BIPL - CHENNAI' THEN '10002' \r\n\t\tWHEN Name = 'BIPL - CHHATTISGARH' THEN '10003'\r\n\t\tWHEN Name = 'BIPL - DELHI' THEN '10004'\r\n\t\tWHEN Name = 'BIPL - GOA' THEN '10005'\r\n\t\tWHEN Name = 'BIPL - GUJARAT' THEN '10006'\r\n\t\tWHEN Name = 'BIPL - HARYANA' THEN '10007'\r\n\t\tWHEN Name = 'BIPL - JAIPUR' THEN '10009'\r\n\t\tWHEN Name = 'BIPL - KAMSHET' THEN '10010'\r\n\t\tWHEN Name = 'BIPL - KARNATAKA' THEN '10011' \r\n\t\tWHEN Name = 'BIPL - KERALA' THEN '10012' \r\n\t\tWHEN Name = 'BIPL - MADHYAPRADESH' THEN '10013'\r\n\t\tWHEN Name = 'BIPL - MUMBAI' THEN '10014' \r\n\t\tWHEN Name = 'BIPL - ODISHA' THEN '10015' \r\n\t\tWHEN Name = 'BIPL - PUNE' THEN '10016'\r\n\t\tWHEN Name = 'BIPL - PUNJAB' THEN '10017'\r\n\t\tWHEN Name = 'BIPL - RUDRAPUR' THEN '10018' \r\n\t\tWHEN Name = 'BIPL – SAHIBABAD' THEN '10019'\r\n\t\tWHEN Name = 'BIPL - TELANGANA' THEN '10020'\r\n\t\tWHEN Name = 'BIPL - WESTBENGAL' THEN '10021'\r\n\tEND as Site_Code\t\t \r\nFrom \r\n\t[dbo].[Location]\r\nwhere Name not in ('BIPL-  DELHI(HO)', 'BIPL - HO', 'BIPL-  IND AS', 'BIPL - INVESTMENT', 'BIPL - SHAHIBABAD');",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Stage1_Location_Source1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Stage1_Location_Sink1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
