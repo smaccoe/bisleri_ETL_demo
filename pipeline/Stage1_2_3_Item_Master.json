@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "Select \r\n\tDistinct\r\n\tTABLE_NAME\r\nfrom \r\nINFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME = 'Item'",
+						"sqlReaderQuery": "Select \r\n    Distinct\r\n    Left(RIGHT(TABLE_NAME, 4),11) as TABLE_NAME\r\nfrom INFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME like '%Item'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -42,7 +42,7 @@
 				"typeProperties": {
 					"variableName": "TableName",
 					"value": {
-						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME\n\n",
 						"type": "Expression"
 					}
 				}
