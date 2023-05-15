@@ -222,11 +222,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"Container": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"TableName": {
 				"type": "String"
