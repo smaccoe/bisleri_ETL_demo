@@ -1,0 +1,107 @@
+{
+	"name": "Stage1_Sales_Hierarchy_D",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "Territory Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Area Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Branch Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zone Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "National Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "National Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Region Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Region Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Regional Sales Head Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Branch Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Branch Sales Head Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zone Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Manager Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Area Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Area Sales Manager Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Territory Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Executive Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Division Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SE Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Channel",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Business Unit",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Sales hierarchy"
+		}
+	}
+}
