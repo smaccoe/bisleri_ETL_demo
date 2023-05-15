@@ -150,6 +150,41 @@
 						"enablePartitionDiscovery": false
 					}
 				}
+			},
+			{
+				"name": "Stage2_Sales_Hierarchy",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Sales_Hierarchy_Master_Folder_Delete",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage2_Sales_Hierarchy",
+						"type": "DataFlowReference",
+						"parameters": {
+							"ContainerName": "'delta-lake'",
+							"FolderName": "'Master/Company'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"variables": {
