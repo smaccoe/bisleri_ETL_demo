@@ -1,0 +1,18 @@
+{
+	"name": "Location_Folder_Delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Delta_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Master/Location",
+				"fileSystem": "delta-lake"
+			}
+		}
+	}
+}

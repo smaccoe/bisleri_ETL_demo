@@ -229,9 +229,6 @@
 			},
 			"TableName2": {
 				"type": "String"
-			},
-			"Table Name": {
-				"type": "String"
 			}
 		},
 		"annotations": []
