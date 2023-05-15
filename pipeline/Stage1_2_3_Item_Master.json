@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "FileName",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -32,7 +32,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "FileName",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -40,11 +40,22 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "",
-					"value": ""
+					"variableName": "TableName",
+					"value": {
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME\r\n",
+						"type": "Expression"
+					}
 				}
 			}
 		],
+		"variables": {
+			"TableName": {
+				"type": "String"
+			},
+			"TableName2": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
