@@ -42,7 +42,7 @@
 				"typeProperties": {
 					"variableName": "TableName",
 					"value": {
-						"value": "@activity('FileName').output.firstRow.TABLE_NAME\r\n",
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
 						"type": "Expression"
 					}
 				}
