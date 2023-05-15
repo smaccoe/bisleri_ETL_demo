@@ -1,0 +1,123 @@
+{
+	"name": "Stage2_Target_Incremental_Load_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Transaction_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage2TargetFullLoadSource"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Stage2TargetFullLoadSink",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "ColumnRenaming"
+				},
+				{
+					"name": "DataCleaning"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     Contanier_Name as string ('delta-lake'),",
+				"     Folder_Name as string ('Transaction/Incremental-Load/Target'),",
+				"     latest_file as string",
+				"}",
+				"source(output(",
+				"          {Customer No_} as string,",
+				"          {Route Code} as string,",
+				"          {Customer Group Code} as string,",
+				"          {Item No_} as string,",
+				"          {Start Date} as string,",
+				"          {DLP Target Qty} as string,",
+				"          {Target Qty} as string,",
+				"          {End Date} as string,",
+				"          {Item Unit of Measure} as string,",
+				"          {Pack Group Code} as string,",
+				"          Month as string,",
+				"          Year as string,",
+				"          {Last Modified} as string,",
+				"          {Pack Title} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'Transaction/Incremental-Load/Target',",
+				"     fileName: ($latest_file),",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: true,",
+				"     multiLineRow: true) ~> Stage2TargetFullLoadSource",
+				"Stage2TargetFullLoadSource select(mapColumn(",
+				"          Customer_No_ = {Customer No_},",
+				"          Route_Code = {Route Code},",
+				"          Customer_Group_Code = {Customer Group Code},",
+				"          Item_No_ = {Item No_},",
+				"          Start_Date = {Start Date},",
+				"          DLP_Target_Qty = {DLP Target Qty},",
+				"          Target_Qty = {Target Qty},",
+				"          End_Date = {End Date},",
+				"          Item_Unit_of_Measure = {Item Unit of Measure},",
+				"          Pack_Group_Code = {Pack Group Code},",
+				"          Month,",
+				"          Year,",
+				"          Site_Code",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ColumnRenaming",
+				"ColumnRenaming derive(Customer_No_ = iifNull(Customer_No_, toString(null())),",
+				"          Route_Code = iifNull(Route_Code, toString(null())),",
+				"          Customer_Group_Code = iifNull(Customer_Group_Code, toString(null())),",
+				"          Item_No_ = iifNull(Item_No_, toString(null())),",
+				"          Start_Date = toTimestamp(toString(toTimestamp(Start_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          DLP_Target_Qty = toDouble((iifNull(DLP_Target_Qty, toString(null())))),",
+				"          Target_Qty = toDouble((iifNull(Target_Qty, toString(null())))),",
+				"          End_Date = toTimestamp(toString(toTimestamp(End_Date,'yyyy-MM-dd HH:mm:ss.SSS','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
+				"          Item_Unit_of_Measure = iifNull(Item_Unit_of_Measure, toString(null())),",
+				"          Pack_Group_Code = iifNull(Pack_Group_Code, toString(null())),",
+				"          Month = toInteger(iifNull(Month, toString(null()))),",
+				"          Year = toInteger(iifNull(Year, toString(null()))),",
+				"          Site_Code = toInteger(iifNull(Site_Code, toString(null())))) ~> DataCleaning",
+				"DataCleaning sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: ($Contanier_Name),",
+				"     folderPath: ($Folder_Name),",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Stage2TargetFullLoadSink"
+			]
+		}
+	}
+}

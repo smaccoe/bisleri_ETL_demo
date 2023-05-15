@@ -1,0 +1,84 @@
+{
+	"name": "DelimitedText10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Transaction_Full_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Transaction/Incremental-Load/Target",
+				"fileSystem": "data-lake"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Customer No_",
+				"type": "String"
+			},
+			{
+				"name": "Route Code",
+				"type": "String"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Item No_",
+				"type": "String"
+			},
+			{
+				"name": "Start Date",
+				"type": "String"
+			},
+			{
+				"name": "DLP Target Qty",
+				"type": "String"
+			},
+			{
+				"name": "Target Qty",
+				"type": "String"
+			},
+			{
+				"name": "End Date",
+				"type": "String"
+			},
+			{
+				"name": "Item Unit of Measure",
+				"type": "String"
+			},
+			{
+				"name": "Pack Group Code",
+				"type": "String"
+			},
+			{
+				"name": "Month",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Last Modified",
+				"type": "String"
+			},
+			{
+				"name": "Pack Title",
+				"type": "String"
+			},
+			{
+				"name": "Site_Code",
+				"type": "String"
+			}
+		]
+	}
+}

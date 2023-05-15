@@ -1,0 +1,89 @@
+{
+	"name": "SqlServerTable12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_VMSQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Route Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Start Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DLP Target Qty",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "Target Qty",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "End Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Item Unit of Measure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pack Group Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Last Modified",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Pack Title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Site_Code",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Target"
+		}
+	}
+}
