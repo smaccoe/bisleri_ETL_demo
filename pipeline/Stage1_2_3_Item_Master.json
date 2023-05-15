@@ -17,6 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \r\n\tDistinct\r\n\tTABLE_NAME\r\nfrom \r\nINFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME = 'Item'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -24,6 +25,23 @@
 						"referenceName": "Stage1_Item_Source",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "",
+					"value": ""
 				}
 			}
 		],
