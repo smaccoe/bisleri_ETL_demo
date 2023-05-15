@@ -176,8 +176,43 @@
 						"type": "DataFlowReference",
 						"parameters": {
 							"Contanier_Name": "'delta-lake'",
-							"Folder_Name": "'Master/Customer'"
+							"Folder_Name": "'Master/Customer'",
+							"Table": {
+								"value": "'@{concat(variables('TableName'),'.csv') }'",
+								"type": "Expression"
+							}
 						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Stage3_Customer_Master_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Stage2_Customer_Master_DF",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage3_Customer_DF",
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
