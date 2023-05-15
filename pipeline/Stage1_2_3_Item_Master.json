@@ -191,9 +191,16 @@
 				}
 			},
 			{
-				"name": "Data flow1",
+				"name": "Stage3_Item_Master_DF",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Stage2_Item_Master_DF",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
