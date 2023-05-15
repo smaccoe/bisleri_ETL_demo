@@ -177,7 +177,10 @@
 						"parameters": {
 							"ContainerName": "'delta-lake'",
 							"FolderName": "'Master/Company'",
-							"Table": "'temp'"
+							"Table": {
+								"value": "'@{concat(variables('TableName'),'.csv')}'",
+								"type": "Expression"
+							}
 						}
 					},
 					"compute": {
