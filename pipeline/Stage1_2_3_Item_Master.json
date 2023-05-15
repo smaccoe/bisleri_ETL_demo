@@ -48,7 +48,7 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "Stage1_Item_Master",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -112,6 +112,79 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Item_Master_Folder_Delete",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Stage1_Item_Master",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Item_Master_Folder_Delete",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "curated_data",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			},
+			{
+				"name": "Stage2_Item_Master_DF",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Item_Master_Folder_Delete",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage2_Item_Master_DF",
+						"type": "DataFlowReference",
+						"parameters": {
+							"Contanier_Name": "'delta-lake'",
+							"Folder_Name": "'Master/Item_Master'"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"variables": {
