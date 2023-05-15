@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "FileName",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -17,6 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \r\n    Distinct\r\n    Left(RIGHT(TABLE_NAME, 8),11) as TABLE_NAME\r\nfrom INFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME like '%Customer'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -25,8 +26,33 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "FileName",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "TableName",
+					"value": {
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"TableName": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
