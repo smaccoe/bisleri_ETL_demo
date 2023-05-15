@@ -5,13 +5,18 @@
 			"referenceName": "Transaction_Full_Load_Folder",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@concat('Customer_Master',formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
+					"value": "@concat(dataset().FileName,formatDateTime(convertTimeZone(utcNow(),'UTC','India Standard Time'),'_yyyy-MM-dd hh:mm:ss.sss'),'.csv')",
 					"type": "Expression"
 				},
 				"folderPath": "Master",
