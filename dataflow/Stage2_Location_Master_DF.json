@@ -36,7 +36,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     ContainerName as string ('delt-lake'),",
-				"     FolderName as string ('Master/Company'),",
+				"     FolderName as string ('Master/Location'),",
 				"     Table as string ('temp')",
 				"}",
 				"source(output(",

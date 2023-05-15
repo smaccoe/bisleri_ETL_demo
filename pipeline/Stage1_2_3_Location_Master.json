@@ -173,7 +173,15 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Stage2_Location_Master_DF",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"ContainerName": "'delta-lake'",
+							"FolderName": "'Master/Location'",
+							"Table": {
+								"value": "'@{concat(variables('TableName'),'.csv')}'",
+								"type": "Expression"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
