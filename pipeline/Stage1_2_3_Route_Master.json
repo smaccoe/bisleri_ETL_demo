@@ -172,11 +172,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Stage2_Route_Master_DF",
+						"referenceName": "dataflow3_copy1",
 						"type": "DataFlowReference",
 						"parameters": {
 							"ContainerName": "'delta-lake'",
-							"FolderName": "'Master/Company'",
+							"FolderName": "'Master/Route_Master'",
 							"Table": {
 								"value": "'@{concat(variables('TableName'),'.csv')}'",
 								"type": "Expression"
