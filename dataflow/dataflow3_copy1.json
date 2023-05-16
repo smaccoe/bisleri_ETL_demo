@@ -1,5 +1,5 @@
 {
-	"name": "dataflow3",
+	"name": "dataflow3_copy1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -30,6 +30,11 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     ContainerName as string ('data-lake'),",
+				"     FolderName as string ('Master'),",
+				"     Table as string ('Route-Master')",
+				"}",
 				"source(output(",
 				"          Code as string,",
 				"          Description as string,",
@@ -44,9 +49,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     format: 'delimited',",
-				"     fileSystem: 'data-lake',",
-				"     folderPath: 'Master',",
-				"     fileName: 'Route_Master.csv',",
+				"     fileSystem: 'delta-lake',",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
@@ -74,7 +77,7 @@
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
-				"     folderPath: 'Master/Route_Master',",
+				"     folderPath: 'Master/Route-Master',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
