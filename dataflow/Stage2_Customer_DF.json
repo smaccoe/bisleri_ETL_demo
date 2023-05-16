@@ -90,7 +90,7 @@
 				"     format: 'delimited',",
 				"     fileSystem: 'data-lake',",
 				"     folderPath: 'Master',",
-				"     fileName: 'Customer_Master_2023-05-09 04:28:09.09.csv',",
+				"     fileName: ($Table),",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
