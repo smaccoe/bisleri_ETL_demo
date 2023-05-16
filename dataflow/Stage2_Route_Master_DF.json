@@ -33,7 +33,7 @@
 				"parameters{",
 				"     ContainerName as string ('delta-lake'),",
 				"     FolderName as string ('Master/Route'),",
-				"     Table as string ('temp')",
+				"     Table as string ('Temp')",
 				"}",
 				"source(output(",
 				"          Code as string,",

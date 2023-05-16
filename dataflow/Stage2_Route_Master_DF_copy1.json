@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"linkedService": {
-						"referenceName": "Transaction_Full_Load_Folder",
-						"type": "LinkedServiceReference"
+					"dataset": {
+						"referenceName": "DelimitedText13",
+						"type": "DatasetReference"
 					},
 					"name": "Stage2RouteMaster"
 				}
@@ -43,18 +43,9 @@
 				"          {Route Street category} as string,",
 				"          Site_Code as string",
 				"     ),",
-				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'delimited',",
-				"     fileSystem: 'data-lake',",
-				"     folderPath: 'Master',",
-				"     fileName: 'Route_Master.csv',",
-				"     columnDelimiter: ',',",
-				"     escapeChar: '\\\\',",
-				"     quoteChar: '\\\"',",
-				"     columnNamesAsHeader: true,",
 				"     multiLineRow: true) ~> Stage2RouteMaster",
 				"Stage2RouteMaster select(mapColumn(",
 				"          Route_Code = Code,",
