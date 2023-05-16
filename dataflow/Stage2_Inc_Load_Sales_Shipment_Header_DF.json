@@ -28,10 +28,6 @@
 			"transformations": [
 				{
 					"name": "select1"
-				},
-				{
-					"name": "derivedColumn1",
-					"description": "Creating/updating the columns 'No_, Sell_to_Customer_No_, Bill_to_Customer_No_, Ship_to_Code, \nShip_to_Name, Ship_to_Address, Ship_to_Address_2, Ship_to_City, Posting_Date, Shipment_Date, Shipment_Method_Code, Location_Code, Shortcut_Dimension_1_Code, Shortcut_Dimension_2_Code, Shipping_Agent_Code, LR_RR_No_, LR_RR_Date, Vehicle_No_, Vehicle_Type, Route_Code, Customer_Category, Loading_Slip_No_, AutoPDASO, ECOM, Last_Modified_On, Site_Code'"
 				}
 			],
 			"scriptLines": [
@@ -112,34 +108,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(Shipment_No = iifNull(Shipment_No, toString(null())),",
-				"          Customer_No = iifNull(Customer_No, toString(null())),",
-				"          Bill_to_Customer_No = iifNull(Bill_to_Customer_No, toString(null())),",
-				"          Ship_to_Code = iifNull(Ship_to_Code, toString(null())),",
-				"          Ship_to_Name = iifNull(Ship_to_Name, toString(null())),",
-				"          Ship_to_Address = iifNull(Ship_to_Address, toString(null())),",
-				"          Ship_to_Address_2 = iifNull(Ship_to_Address_2, toString(null())),",
-				"          Ship_to_City = iifNull(Ship_to_City, toString(null())),",
-				"          Posting_Date = toTimestamp(toString(toTimestamp(Posting_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Shipment_Date = toTimestamp(toString(toTimestamp(Shipment_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Shipment_Method_Code = iifNull(Shipment_Method_Code, toString(null())),",
-				"          Location_Code = iifNull(Location_Code, toString(null())),",
-				"          Branch = iifNull(Branch, toString(null())),",
-				"          Division = iifNull(Division, toString(null())),",
-				"          Shipping_Agent_Code = iifNull(Shipping_Agent_Code, toString(null())),",
-				"          LR_RR_No = toInteger(iifNull(LR_RR_No, toString(null()))),",
-				"          LR_RR_Date = toTimestamp(toString(toTimestamp(LR_RR_Date,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Vehicle_No = iifNull(Vehicle_No, toString(null())),",
-				"          Vehicle_Type = iifNull(Vehicle_Type, toString(null())),",
-				"          Route_Code = iifNull(Route_Code, toString(null())),",
-				"          Customer_Category = iifNull(Customer_Category, toString(null())),",
-				"          Loading_Slip_No = iifNull(Loading_Slip_No, toString(null())),",
-				"          AutoPDASO = iif(toBoolean(AutoPDASO),1 ,0),",
-				"          ECOM = iif(toBoolean(ECOM),1 ,0),",
-				"          Last_Modified_On = toTimestamp(toString(toTimestamp(Last_Modified_On,'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd hh:mm:ss.SSS'),'yyyy-MM-dd hh:mm:ss.SSS')),",
-				"          Site_Code = toInteger(Site_Code),",
-				"          Salesperson_Code = iifNull(Salesperson_Code, toString(null()))) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: ($container_name),",
