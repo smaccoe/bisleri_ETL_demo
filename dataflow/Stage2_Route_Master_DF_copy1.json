@@ -1,5 +1,5 @@
 {
-	"name": "Stage2_Route_Master_DF",
+	"name": "Stage2_Route_Master_DF_copy1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -18,7 +18,11 @@
 						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -30,11 +34,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     ContainerName as string ('delta-lake'),",
-				"     FolderName as string ('Master/Route'),",
-				"     Table as string ('temp')",
-				"}",
 				"source(output(",
 				"          Code as string,",
 				"          Description as string,",
@@ -51,7 +50,7 @@
 				"     format: 'delimited',",
 				"     fileSystem: 'data-lake',",
 				"     folderPath: 'Master',",
-				"     fileName: ($Table),",
+				"     fileName: 'Route_Master.csv',",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
@@ -78,8 +77,8 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: ($ContainerName),",
-				"     folderPath: ($FolderName),",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Route_Master',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
