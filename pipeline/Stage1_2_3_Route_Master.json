@@ -17,12 +17,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "Select \r\n\tDistinct\r\n\tTABLE_NAME\r\nfrom \r\nINFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME = 'Bisleri Common master'",
+						"sqlReaderQuery": "select * from dbo.table_name",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "Stage1_Route_Master",
+						"referenceName": "SqlServerTable13",
 						"type": "DatasetReference"
 					}
 				}
@@ -42,7 +42,7 @@
 				"typeProperties": {
 					"variableName": "TableName",
 					"value": {
-						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
+						"value": "@activity('FileName').output.firstRow.table_name",
 						"type": "Expression"
 					}
 				}
