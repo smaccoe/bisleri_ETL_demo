@@ -1,15 +1,15 @@
 {
-	"name": "Stage2_Route_Master_DF",
+	"name": "dataflow3",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"linkedService": {
-						"referenceName": "Transaction_Full_Load_Folder",
+						"referenceName": "Delta_Full_Load_Folder",
 						"type": "LinkedServiceReference"
 					},
-					"name": "Stage2RouteMaster"
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -30,25 +30,29 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     ContainerName as string ('delta-lake'),",
-				"     FolderName as string ('Master'),",
-				"     Table as string ('Route')",
-				"}",
-				"source(useSchema: false,",
+				"source(output(",
+				"          Code as string,",
+				"          Description as string,",
+				"          Type as string,",
+				"          Category as string,",
+				"          {Route category} as string,",
+				"          {Route Street category} as string,",
+				"          Site_Code as string",
+				"     ),",
+				"     useSchema: false,",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     format: 'delimited',",
 				"     fileSystem: 'data-lake',",
 				"     folderPath: 'Master',",
-				"     fileName: ($Table),",
+				"     fileName: 'Route_Master.csv',",
 				"     columnDelimiter: ',',",
 				"     escapeChar: '\\\\',",
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true,",
-				"     multiLineRow: true) ~> Stage2RouteMaster",
-				"Stage2RouteMaster select(mapColumn(",
+				"     multiLineRow: true) ~> source1",
+				"source1 select(mapColumn(",
 				"          Route_Code = Code,",
 				"          Route_Description = Description,",
 				"          Route_Type = Type,",
@@ -60,8 +64,8 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 derive(Route_Code = iifNull(Route_Code, toString(null())),",
-				"          Route_Description = iifNull(Route_Code, toString(null())),",
-				"          Route_Type = toInteger(iifNull(Route_Code, toString(null()))),",
+				"          Route_Description = iifNull(Route_Description, toString(null())),",
+				"          Route_Type = toInteger(iifNull(Route_Type, toString(null()))),",
 				"          Category = iifNull(Category, toString(null())),",
 				"          Route_category = toInteger(iifNull(Route_category, toString(null()))),",
 				"          Route_Street_category = iifNull(Route_Street_category, toString(null())),",
@@ -69,8 +73,8 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: ($ContainerName),",
-				"     folderPath: ($FolderName),",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Route-Master',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
