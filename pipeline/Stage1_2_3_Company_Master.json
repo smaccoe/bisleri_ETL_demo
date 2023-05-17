@@ -215,7 +215,7 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "TableName",
+					"variableName": "",
 					"value": {
 						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
 						"type": "Expression"

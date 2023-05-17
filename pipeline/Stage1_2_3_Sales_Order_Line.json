@@ -5,7 +5,14 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -29,8 +36,58 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "FileName",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "Select \r\n    Distinct\r\n    Left(RIGHT(TABLE_NAME, 10),11) as TABLE_NAME\r\nfrom INFORMATION_SCHEMA.COLUMNS\r\nwhere TABLE_NAME like '%Sales Line'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Stage1_Sales_Order_Line",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "FileName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "TableName",
+					"value": {
+						"value": "@activity('FileName').output.firstRow.TABLE_NAME\n\n",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"TableName": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
