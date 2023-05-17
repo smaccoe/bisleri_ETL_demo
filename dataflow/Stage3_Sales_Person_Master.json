@@ -1,0 +1,83 @@
+{
+	"name": "Stage3_Sales_Person_Master",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "salespersonmaster"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Azure_VMSQLDB",
+						"type": "LinkedServiceReference"
+					},
+					"name": "salespersonsink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Sales_Person_Code as string,",
+				"          Sales_Person_Name as string,",
+				"          ASM_Code as integer,",
+				"          Manager_Code as integer,",
+				"          Executive_Code as integer,",
+				"          SalesPerson_Location as string,",
+				"          SalesPerson_Route as string,",
+				"          Sales_Hierarchy_Code as string,",
+				"          BranchCode_SP as string,",
+				"          SalesPersonZone as string,",
+				"          Site_Code as integer,",
+				"          Sales_Executive_Name as string,",
+				"          Sales_Manager_Name as string,",
+				"          Area_Sales_Manager_Name as string,",
+				"          Branch_Sales_Head_Name as string,",
+				"          Regional_Sales_Head_Name as string,",
+				"          Area_Code as string,",
+				"          Area_Name as string,",
+				"          Branch_Code as string,",
+				"          Branch_Name as string,",
+				"          Territory_Code as string,",
+				"          Territory_Name as string,",
+				"          Region_Code as string,",
+				"          Region_Name as string,",
+				"          Zone_Code as string,",
+				"          Zone_Name as string,",
+				"          National_Code as string,",
+				"          National_Name as string,",
+				"          Division_Name as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Sales_Person_Master') ~> salespersonmaster",
+				"salespersonmaster derive(SP_Key = concat(toString(Site_Code),'|',Sales_Hierarchy_Code)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: '',",
+				"     tableName: '',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> salespersonsink"
+			]
+		}
+	}
+}

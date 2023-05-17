@@ -137,6 +137,8 @@
 						"referenceName": "Stage2_Sales_Person_Master_DF",
 						"type": "DataFlowReference",
 						"parameters": {
+							"container_name": "'delta-lake'",
+							"folder_name": "'Master/Sales_Person_Master'",
 							"Table": {
 								"value": "'@{concat(variables('TableName'), '.csv')}'",
 								"type": "Expression"
@@ -187,6 +189,33 @@
 						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
+				}
+			},
+			{
+				"name": "Data flow2",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Data flow1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
