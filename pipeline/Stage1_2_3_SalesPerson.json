@@ -114,7 +114,7 @@
 				}
 			},
 			{
-				"name": "Data flow1",
+				"name": "Stage2_Sales_Person_Master",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -192,11 +192,11 @@
 				}
 			},
 			{
-				"name": "Data flow2",
+				"name": "Stage3_Sales_Person_Master",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow1",
+						"activity": "Stage2_Sales_Person_Master",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -211,6 +211,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Stage3_Sales_Person_Master",
+						"type": "DataFlowReference"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
