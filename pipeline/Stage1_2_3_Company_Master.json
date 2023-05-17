@@ -61,7 +61,8 @@
 						"linkedServiceName": {
 							"referenceName": "curated_data",
 							"type": "LinkedServiceReference"
-						}
+						},
+						"path": "curated-data"
 					},
 					"enableLogging": true,
 					"storeSettings": {
@@ -215,7 +216,7 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "",
+					"variableName": "TableName",
 					"value": {
 						"value": "@activity('FileName').output.firstRow.TABLE_NAME",
 						"type": "Expression"
