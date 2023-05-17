@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"linkedService": {
-						"referenceName": "Azure_VMSQLDB",
+						"referenceName": "DWH_Dump",
 						"type": "LinkedServiceReference"
 					},
 					"name": "salespersonsink"
@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "filter1"
 				}
 			],
 			"scriptLines": [
@@ -64,17 +67,20 @@
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
 				"     folderPath: 'Master/Sales_Person_Master') ~> salespersonmaster",
-				"salespersonmaster derive(SP_Key = concat(toString(Site_Code),'|',Sales_Hierarchy_Code)) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"salespersonmaster derive(S_Key = concat(toString(Site_Code),'|',Sales_Hierarchy_Code)) ~> derivedColumn1",
+				"derivedColumn1 filter(isNull(S_Key)) ~> filter1",
+				"filter1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",
-				"     schemaName: '',",
-				"     tableName: '',",
+				"     schemaName: 'primarysales',",
+				"     tableName: 'dim_salesperson',",
+				"     preSQLs:['DROP TABLE IF EXISTS [primarysales].[dim_salesperson];', 'CREATE TABLE [primarysales].[dim_salesperson] (\\n    S_Key NVARCHAR(255) PRIMARY KEY NOT NULL,\\n    Sales_Person_Code NVARCHAR(255) ,\\n    Sales_Person_Name NVARCHAR(255) ,\\n    ASM_Code INT ,\\n    Manager_Code INT ,\\n    Executive_Code INT ,\\n    SalesPerson_Location NVARCHAR(255) ,\\n    SalesPerson_Route NVARCHAR(255) ,\\n    Sales_Hierarchy_Code NVARCHAR(255) ,\\n    BranchCode_SP NVARCHAR(255) ,\\n    SalesPersonZone NVARCHAR(255) ,\\n    Sales_Executive_Name NVARCHAR(255) ,\\n    Sales_Manager_Name NVARCHAR(255) ,\\n    Area_Sales_Manager_Name NVARCHAR(255) ,\\n    Branch_Sales_Head_Name NVARCHAR(255) ,\\n    Regional_Sales_Head_Name NVARCHAR(255) ,\\n    Area_Code NVARCHAR(255) ,\\n    Area_Name NVARCHAR(255) ,\\n    Branch_Code NVARCHAR(255) ,\\n    Branch_Name NVARCHAR(255) ,\\n    Territory_Code NVARCHAR(255) ,\\n    Territory_Name NVARCHAR(255) ,\\n    Region_Code NVARCHAR(255) ,\\n    Region_Name NVARCHAR(255) ,\\n    Zone_Code NVARCHAR(255) ,\\n    Zone_Name NVARCHAR(255) ,\\n    National_Code NVARCHAR(255) ,\\n    National_Name NVARCHAR(255) ,\\n    Division_Name NVARCHAR(255) ,\\n    Site_Code INT NOT NULL\\n);'],",
 				"     insertable: true,",
 				"     updateable: false,",
 				"     deletable: false,",
 				"     upsertable: false,",
+				"     recreate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> salespersonsink"
 			]

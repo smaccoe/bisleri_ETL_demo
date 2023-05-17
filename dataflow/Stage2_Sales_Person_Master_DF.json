@@ -79,7 +79,7 @@
 				"     folderPath: 'Master',",
 				"     fileName: 'Salesperson.csv',",
 				"     columnDelimiter: ',',",
-				"     escapeChar: '\\\\',",
+				"     escapeChar: '\\\"',",
 				"     quoteChar: '\\\"',",
 				"     columnNamesAsHeader: true) ~> source1",
 				"source1 select(mapColumn(",
