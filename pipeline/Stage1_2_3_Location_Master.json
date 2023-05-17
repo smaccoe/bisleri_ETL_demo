@@ -141,7 +141,8 @@
 						"linkedServiceName": {
 							"referenceName": "curated_data",
 							"type": "LinkedServiceReference"
-						}
+						},
+						"path": "curated-data"
 					},
 					"enableLogging": true,
 					"storeSettings": {
