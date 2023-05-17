@@ -24,9 +24,6 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
-				},
-				{
-					"name": "filter1"
 				}
 			],
 			"scriptLines": [
@@ -80,20 +77,19 @@
 				"     format: 'delta',",
 				"     fileSystem: 'delta-lake',",
 				"     folderPath: 'Master/Customer') ~> Stage3CustomerSource",
-				"filter1 derive(Cust_Key = concat(toString(Site_Code),'|',Customer_No),",
+				"Stage3CustomerSource derive(Cust_Key = concat(toString(Site_Code),'|',Customer_No),",
 				"          SP_Key = concat(toString(Site_Code),'|',Customer_Territory)) ~> derivedColumn1",
-				"Stage3CustomerSource filter(isNull(Site_Code)) ~> filter1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",
 				"     schemaName: 'primarysales',",
-				"     tableName: 'dim_customer',",
+				"     tableName: '',",
+				"     preSQLs:['DROP TABLE IF EXISTS [primarysales].[dim_customer];', 'CREATE TABLE [primarysales].[dim_customer] (\\n    Cust_Key NVARCHAR(255) PRIMARY KEY NOT NULL,\\n    SP_Key NVARCHAR(255) ,\\n    Customer_No NVARCHAR(255) ,\\n    Customer_Name NVARCHAR(255) ,\\n    Customer_Category NVARCHAR(255) ,\\n    Customer_Subcategory_Code NVARCHAR(255) ,\\n    Customer_Group_Code NVARCHAR(255) ,\\n    Customer_Parent_Group NVARCHAR(255) ,\\n    Customer_Type NVARCHAR(255) ,\\n    Billing_Type INT ,\\n    Channel INT ,\\n    Sub_Channel_1 NVARCHAR(255) ,\\n    Sub_Channel_2 NVARCHAR(255) ,\\n    Sub_Channel_3 NVARCHAR(255) ,\\n    Creation_Date_Time DATETIME2 ,\\n    Activate_Credit_Limit_Days INT ,\\n    Credit_Limit_LCY DECIMAL ,\\n    Customer_Posting_Group NVARCHAR(255) ,\\n    Customer_General_Business_Posting_Group NVARCHAR(255) ,\\n    Customer_Discount_Group NVARCHAR(255) ,\\n    Customer_Price_Group NVARCHAR(255) ,\\n    Currency_Code NVARCHAR(255) ,\\n    Customer_Invoice_Discount_Code NVARCHAR(255) ,\\n    Payment_Terms_Code NVARCHAR(255) ,\\n    Payment_Method_Code NVARCHAR(255) ,\\n    Collection_Method NVARCHAR(255) ,\\n    Customer_Scheme_Applicable INT ,\\n    Customer_Contact NVARCHAR(255) ,\\n    Phone_No NVARCHAR(255) ,\\n    Phone_No_2 NVARCHAR(255) ,\\n    E_Mail NVARCHAR(255) ,\\n    PAN_NO NVARCHAR(255) ,\\n    TIN_NO NVARCHAR(255) ,\\n    Address NVARCHAR(255) ,\\n    Address_2 NVARCHAR(255) ,\\n    City NVARCHAR(255) ,\\n    State_Code NVARCHAR(255) ,\\n    Post_Code NVARCHAR(255) ,\\n    Customer_Salesperson_Code NVARCHAR(255) ,\\n    Customer_Executive_Code NVARCHAR(255) ,\\n    Customer_Route_Code NVARCHAR(255) ,\\n    Customer_Territory NVARCHAR(255) ,\\n    Customer_Status INT ,\\n    Site_Code INT NOT NULL\\n);'],",
 				"     insertable: true,",
 				"     updateable: false,",
 				"     deletable: false,",
 				"     upsertable: false,",
-				"     truncate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
