@@ -34,7 +34,7 @@
 					{
 						"activity": "FileName",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -54,7 +54,7 @@
 					{
 						"activity": "Set variable1",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -120,7 +120,7 @@
 					{
 						"activity": "Stage1_Customer_Master",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -158,7 +158,7 @@
 					{
 						"activity": "Customer_Master_Folder_delete",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -197,7 +197,7 @@
 					{
 						"activity": "Stage2_Customer_Master_DF",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
