@@ -55,7 +55,17 @@
 				"     upsertable: false,",
 				"     truncate: true,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Route_Key,",
+				"          Route_Code,",
+				"          Route_Description,",
+				"          Route_Type,",
+				"          Category,",
+				"          Route_category,",
+				"          Route_Street_category,",
+				"          Site_Code",
+				"     )) ~> sink1"
 			]
 		}
 	}
