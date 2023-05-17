@@ -112,38 +112,6 @@
 						"type": "Expression"
 					}
 				}
-			},
-			{
-				"name": "Order_Line_Folder_Delete",
-				"type": "Delete",
-				"dependsOn": [
-					{
-						"activity": "Stage1_Sales_Order_Line",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "Sales_Order_Line_Folder_Delete",
-						"type": "DatasetReference"
-					},
-					"enableLogging": true,
-					"storeSettings": {
-						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					}
-				}
 			}
 		],
 		"variables": {
