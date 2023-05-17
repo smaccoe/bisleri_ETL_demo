@@ -15,6 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().FileName, '.csv')\r\n\r\n",
+					"type": "Expression"
+				},
 				"folderPath": "Transaction/Full-Load",
 				"fileSystem": "data-lake"
 			},
