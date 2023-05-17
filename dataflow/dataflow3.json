@@ -1,0 +1,60 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Delta_Full_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "DWH_Dump",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Code as string,",
+				"          Name as string,",
+				"          A_S_M as integer,",
+				"          Agent as integer,",
+				"          ARM as integer,",
+				"          Location_Code as string,",
+				"          Route as string,",
+				"          Sales_hierarchy_code as string,",
+				"          Global_Dimension_1_Code as string,",
+				"          Zone as string,",
+				"          Site_Code as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta-lake',",
+				"     folderPath: 'Master/Sales_Person_Master') ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: 'primarysales',",
+				"     tableName: 'dim_salesperson',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
