@@ -91,6 +91,7 @@
 				"     deletable: false,",
 				"     upsertable: false,",
 				"     recreate: true,",
+				"     postSQLs:[' Alter table [primarysales].[dim_customer] \\n    Add Constraint Fk_CustKey  \\n    Foreign Key(SP_Key) References [primarysales].[dim_salesperson](S_Key)'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
