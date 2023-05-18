@@ -34,7 +34,7 @@
 					{
 						"activity": "FileName",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -198,7 +198,7 @@
 					{
 						"activity": "Stage2_Item_Master_DF",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
