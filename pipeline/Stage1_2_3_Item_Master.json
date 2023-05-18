@@ -134,7 +134,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Item_Master_Folder_Delete",
+						"referenceName": "Stage2_Item_Folder_Delete",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {

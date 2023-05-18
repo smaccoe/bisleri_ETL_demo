@@ -1,5 +1,5 @@
 {
-	"name": "Item_Master_Folder_Delete",
+	"name": "Stage2_Item_Folder_Delete",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Delta_Full_Load_Folder",
