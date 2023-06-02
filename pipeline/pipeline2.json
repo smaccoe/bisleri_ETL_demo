@@ -102,7 +102,17 @@
 									"referenceName": "pipeline3",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"tblName": {
+										"value": "@variables('table')",
+										"type": "Expression"
+									},
+									"Colnames": {
+										"value": "@variables('column')",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
@@ -119,10 +129,19 @@
 			"column": {
 				"type": "String"
 			},
-			"Query": {
+			"tblname": {
+				"type": "String"
+			},
+			"tbln": {
 				"type": "String"
 			},
 			"entity": {
+				"type": "String"
+			},
+			"query": {
+				"type": "String"
+			},
+			"query2": {
 				"type": "String"
 			}
 		},

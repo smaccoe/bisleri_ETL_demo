@@ -15,6 +15,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup2').output.value",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "Set variable4",
@@ -42,9 +46,79 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "",
-								"value": ""
+								"variableName": "query2",
+								"value": {
+									"value": "select @{pipeline().parameters.Colnames} from @{concat('[',variables('entity'),pipeline().parameters.tblName,']')}",
+									"type": "Expression"
+								}
 							}
+						},
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Set variable5",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "select @{pipeline().parameters.Colnames} from @{concat('[',variables('entity'),pipeline().parameters.tblName,']')}",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SqlServerTable15",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Parquet4",
+									"type": "DatasetReference",
+									"parameters": {
+										"sink_table_name": {
+											"value": "@pipeline().parameters.tblName",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
@@ -81,6 +155,30 @@
 				}
 			}
 		],
+		"parameters": {
+			"tblName": {
+				"type": "string",
+				"defaultValue": "sales_shipment_header"
+			},
+			"Colnames": {
+				"type": "string",
+				"defaultValue": "[No_],[ECOM]"
+			}
+		},
+		"variables": {
+			"tblname": {
+				"type": "String"
+			},
+			"tbln": {
+				"type": "String"
+			},
+			"entity": {
+				"type": "String"
+			},
+			"query2": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }

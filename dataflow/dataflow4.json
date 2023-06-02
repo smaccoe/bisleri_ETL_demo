@@ -1,0 +1,37 @@
+{
+	"name": "dataflow4",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "Incre_Load_Folder",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {_col0_} as string,",
+				"          {_col1_} as string",
+				"     ),",
+				"     useSchema: false,",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'data-lake',",
+				"     folderPath: 'sales_shipment_header',",
+				"     fileName: 'data_717cf3eb-6b21-434e-8d4d-64cdc445b52c_d134e48b-705d-4bf3-a6ed-bb4f494c0f22.parquet',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: false) ~> source1"
+			]
+		}
+	}
+}

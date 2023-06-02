@@ -1,0 +1,29 @@
+{
+	"name": "Parquet4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sink_table_name": {
+				"type": "string",
+				"defaultValue": "'folder'"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().sink_table_name",
+					"type": "Expression"
+				},
+				"fileSystem": "data-lake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

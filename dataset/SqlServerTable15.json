@@ -1,0 +1,131 @@
+{
+	"name": "SqlServerTable15",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_VMSQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sell-to Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Bill-to Customer No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to Address 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ship-to City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posting Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Shipment Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Shipment Method Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shortcut Dimension 1 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shortcut Dimension 2 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shipping Agent Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LR_RR No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LR_RR Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Vehicle No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Route Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Loading Slip No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AutoPDASO",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "ECOM",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Last Modified On",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Site_Code",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$sales_shipment_header"
+		}
+	}
+}
