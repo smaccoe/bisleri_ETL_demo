@@ -1,0 +1,420 @@
+{
+	"name": "Parquet3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "curated-data"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Customer_No",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Creation_Date",
+				"type": "INT96"
+			},
+			{
+				"name": "Cust_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Search_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Name_2",
+				"type": "UTF8"
+			},
+			{
+				"name": "Phone_No_2",
+				"type": "UTF8"
+			},
+			{
+				"name": "Territory_SH",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Resd_Phone_no",
+				"type": "INT32"
+			},
+			{
+				"name": "Cust_Mobile_no",
+				"type": "INT32"
+			},
+			{
+				"name": "Address",
+				"type": "UTF8"
+			},
+			{
+				"name": "Address_2",
+				"type": "UTF8"
+			},
+			{
+				"name": "City",
+				"type": "UTF8"
+			},
+			{
+				"name": "PAN_NO",
+				"type": "UTF8"
+			},
+			{
+				"name": "TIN_NO",
+				"type": "UTF8"
+			},
+			{
+				"name": "Contact",
+				"type": "UTF8"
+			},
+			{
+				"name": "Phone_No_",
+				"type": "INT32"
+			},
+			{
+				"name": "Telex_No_",
+				"type": "INT32"
+			},
+			{
+				"name": "Cust_Fax_No",
+				"type": "INT32"
+			},
+			{
+				"name": "Our_Account_No_",
+				"type": "INT32"
+			},
+			{
+				"name": "Territory_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Global_Dimension1_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Global_Dimension2_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Chain_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Lead_generated_by",
+				"type": "UTF8"
+			},
+			{
+				"name": "Route",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Route_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "SalesCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "SalesName",
+				"type": "UTF8"
+			},
+			{
+				"name": "Budgeted_Amount",
+				"type": "INT32"
+			},
+			{
+				"name": "Credit_Limit_LCY",
+				"type": "INT32"
+			},
+			{
+				"name": "Customer_Posting_Group",
+				"type": "UTF8"
+			},
+			{
+				"name": "Currency_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Customer_Price_Group",
+				"type": "UTF8"
+			},
+			{
+				"name": "Language_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Statistics_Group",
+				"type": "INT32"
+			},
+			{
+				"name": "Payment_Terms_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Fin_Charge_Terms_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Salesperson_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Invoice_Disc_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Disc_Group",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Collection_Method",
+				"type": "UTF8"
+			},
+			{
+				"name": "Creation_Date_Time",
+				"type": "INT96"
+			},
+			{
+				"name": "Cust_Last_Date_Modified",
+				"type": "INT96"
+			},
+			{
+				"name": "Customer_Category",
+				"type": "UTF8"
+			},
+			{
+				"name": "Customer_Group_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Customer_Area",
+				"type": "UTF8"
+			},
+			{
+				"name": "Zone",
+				"type": "UTF8"
+			},
+			{
+				"name": "District",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sub_Zone",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Division",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Zone_IN_Charge_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Posting_Group",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_posting_Group",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_gen_bus_Posting_Grp",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_subcategory_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_type",
+				"type": "UTF8"
+			},
+			{
+				"name": "Executive_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Executive_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Manager_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Manager_name",
+				"type": "UTF8"
+			},
+			{
+				"name": "cust_parent_group",
+				"type": "UTF8"
+			},
+			{
+				"name": "payment_method_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_sales_area_Div",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_Structure",
+				"type": "UTF8"
+			},
+			{
+				"name": "A_S_M_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Cust_ASM_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Active_Customer",
+				"type": "INT32"
+			},
+			{
+				"name": "Customer_Channel",
+				"type": "INT32"
+			},
+			{
+				"name": "A_S_M_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Post_Code",
+				"type": "INT32"
+			},
+			{
+				"name": "E_Mail",
+				"type": "UTF8"
+			},
+			{
+				"name": "Urzza_Display_Outlet",
+				"type": "INT32"
+			},
+			{
+				"name": "Cust_Credit_Limit_Active",
+				"type": "INT32"
+			},
+			{
+				"name": "Activate_Credit_Limit_Days",
+				"type": "INT32"
+			},
+			{
+				"name": "Billing_Type",
+				"type": "INT32"
+			},
+			{
+				"name": "Cust_Scheme_Applicable",
+				"type": "INT32"
+			},
+			{
+				"name": "Cust_Ceration_User_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "SGA",
+				"type": "INT32"
+			},
+			{
+				"name": "Created_From_Source",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Monday",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Tuesday",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Wednesday",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Thursday",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Friday",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Saturday",
+				"type": "UTF8"
+			},
+			{
+				"name": "BT_Sunday",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Week-1",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Week-2",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Week-3",
+				"type": "INT32"
+			},
+			{
+				"name": "BT_Week-4",
+				"type": "INT32"
+			},
+			{
+				"name": "Exclude_Cust",
+				"type": "INT32"
+			},
+			{
+				"name": "DLP",
+				"type": "INT32"
+			},
+			{
+				"name": "DLP_Slab",
+				"type": "INT32"
+			},
+			{
+				"name": "LOCATIONFLAG",
+				"type": "UTF8"
+			},
+			{
+				"name": "Channel",
+				"type": "INT32"
+			},
+			{
+				"name": "Sub-Channel_1",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sub-Channel_2",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sub-Channel_3",
+				"type": "UTF8"
+			},
+			{
+				"name": "Remaining_Amt",
+				"type": "DOUBLE"
+			}
+		]
+	}
+}
