@@ -28,7 +28,7 @@
 							"typeProperties": {
 								"variableName": "entity",
 								"value": {
-									"value": "@activity('Lookup2').output.value[0].Entity",
+									"value": "@item().Entity",
 									"type": "Expression"
 								}
 							}
