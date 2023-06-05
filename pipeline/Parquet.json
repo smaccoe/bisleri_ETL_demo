@@ -1,0 +1,59 @@
+{
+	"name": "Parquet",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT \r\n\tNo_,\r\n\t[No_ 2],\r\n\t[Description],\r\n\t[Description 2],\r\n\t--replace(replace(replace([Description],',', ' '), '\"', ' '), '''', ' ') as [Description],\r\n\t--replace(replace(replace([Description 2],',', ' '), '\"', ' '), '''', ' ') as [Description 2],\r\n\t[Base Unit of Measure],\r\n\t[Item Category Code],\r\n\t[Product Group Code],\r\n\t[Selling Price],\r\n\t[Pack Size Information],\r\n\t[Pack Size],\r\n\t[2Way Item],\r\n\t[Short Name],\r\n\t[Pack Title],\r\n\t[Pack Group Code],\r\n\t[Jar Deposit],\r\n\t[Pcs Per Case],\r\n\t[Item Class],\r\n\t[FG Category],\r\n\t[Packaging Type],\r\n\t[Container Type],\r\n\t[Sub Brand],\r\n\t[SKU Category]\r\n FROM [BisleriNAV16Test].[dbo].[BIPL - MUMBAI$Item]\r\n where [Item Category Code] in ('FG', 'TRD-FG')",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable14",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Parquet3",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
