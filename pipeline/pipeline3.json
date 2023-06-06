@@ -80,7 +80,7 @@
 										"type": "Copy",
 										"dependsOn": [
 											{
-												"activity": "Set variable7",
+												"activity": "Lookup3",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -98,7 +98,7 @@
 											"source": {
 												"type": "SqlServerSource",
 												"sqlReaderQuery": {
-													"value": "select @{pipeline().parameters.Colnames},@{variables('new_columns')} as Site_Code from @{concat('[',item().Entity,pipeline().parameters.tblName,']')}",
+													"value": "@activity('Lookup3').output.firstRow.Query",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
@@ -177,6 +177,61 @@
 												"type": "Expression"
 											}
 										}
+									},
+									{
+										"name": "Set variable8",
+										"type": "SetVariable",
+										"dependsOn": [
+											{
+												"activity": "Set variable7",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "entity_table",
+											"value": {
+												"value": "@{concat('[',item().Entity,pipeline().parameters.tblName,']')}",
+												"type": "Expression"
+											}
+										}
+									},
+									{
+										"name": "Lookup3",
+										"type": "Lookup",
+										"dependsOn": [
+											{
+												"activity": "Set variable8",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "SqlServerSource",
+												"sqlReaderQuery": {
+													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='BIPL - ANDHRA PRADESH$sales_shipment_header' \n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code1 from [' + @tablename +']' as Query",
+													"type": "Expression"
+												},
+												"queryTimeout": "02:00:00",
+												"partitionOption": "None"
+											},
+											"dataset": {
+												"referenceName": "SqlServerTable15",
+												"type": "DatasetReference"
+											}
+										}
 									}
 								]
 							}
@@ -209,6 +264,9 @@
 				"type": "String"
 			},
 			"new_columns": {
+				"type": "String"
+			},
+			"entity_table": {
 				"type": "String"
 			}
 		},
