@@ -76,31 +76,11 @@
 										}
 									},
 									{
-										"name": "Set variable5",
-										"type": "SetVariable",
-										"dependsOn": [
-											{
-												"activity": "Set variable4",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "query2",
-											"value": {
-												"value": "select @{pipeline().parameters.Colnames} from @{concat('[',item().Entity,pipeline().parameters.tblName,']')}",
-												"type": "Expression"
-											}
-										}
-									},
-									{
 										"name": "Copy data1",
 										"type": "Copy",
 										"dependsOn": [
 											{
-												"activity": "Set variable5",
+												"activity": "Set variable7",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -118,19 +98,21 @@
 											"source": {
 												"type": "SqlServerSource",
 												"sqlReaderQuery": {
-													"value": "select @{pipeline().parameters.Colnames} from @{concat('[',variables('entity'),pipeline().parameters.tblName,']')}",
+													"value": "select @{pipeline().parameters.Colnames},@{variables('new_columns')} as Site_Code from @{concat('[',item().Entity,pipeline().parameters.tblName,']')}",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
 												"partitionOption": "None"
 											},
 											"sink": {
-												"type": "ParquetSink",
+												"type": "DelimitedTextSink",
 												"storeSettings": {
 													"type": "AzureBlobFSWriteSettings"
 												},
 												"formatSettings": {
-													"type": "ParquetWriteSettings"
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
 												}
 											},
 											"enableStaging": false,
@@ -151,16 +133,50 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Parquet4",
-												"type": "DatasetReference",
-												"parameters": {
-													"sink_table_name": {
-														"value": "@pipeline().parameters.tblName",
-														"type": "Expression"
-													}
-												}
+												"referenceName": "DelimitedText19",
+												"type": "DatasetReference"
 											}
 										]
+									},
+									{
+										"name": "Set variable6",
+										"type": "SetVariable",
+										"dependsOn": [
+											{
+												"activity": "Set variable4",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "new_columns",
+											"value": {
+												"value": "@item().Entity_Code",
+												"type": "Expression"
+											}
+										}
+									},
+									{
+										"name": "Set variable7",
+										"type": "SetVariable",
+										"dependsOn": [
+											{
+												"activity": "Set variable6",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "query2",
+											"value": {
+												"value": "select @{pipeline().parameters.Colnames},@{variables('new_columns')} as Site_Code from @{concat('[',item().Entity,pipeline().parameters.tblName,']')}",
+												"type": "Expression"
+											}
+										}
 									}
 								]
 							}
@@ -190,6 +206,9 @@
 				"type": "String"
 			},
 			"query2": {
+				"type": "String"
+			},
+			"new_columns": {
 				"type": "String"
 			}
 		},
