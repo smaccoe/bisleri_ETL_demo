@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedText18",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Item_config.csv",
+				"fileSystem": "configfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Table_Name",
+				"type": "String"
+			},
+			{
+				"name": "Column_Name",
+				"type": "String"
+			},
+			{
+				"name": "no_of_tables",
+				"type": "String"
+			}
+		]
+	}
+}

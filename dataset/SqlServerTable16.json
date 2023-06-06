@@ -1,0 +1,76 @@
+{
+	"name": "SqlServerTable16",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Item No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Open",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Variant Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Positive",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Location Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posting Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Expiration Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Lot No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serial No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "$Cnt",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUM$Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			},
+			{
+				"name": "SUM$Remaining Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 20
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - CHENNAI$Item Ledger Entry$VSIFT$6"
+		}
+	}
+}
