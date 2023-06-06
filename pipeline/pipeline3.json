@@ -105,14 +105,12 @@
 												"partitionOption": "None"
 											},
 											"sink": {
-												"type": "DelimitedTextSink",
+												"type": "ParquetSink",
 												"storeSettings": {
 													"type": "AzureBlobFSWriteSettings"
 												},
 												"formatSettings": {
-													"type": "DelimitedTextWriteSettings",
-													"quoteAllText": true,
-													"fileExtension": ".txt"
+													"type": "ParquetWriteSettings"
 												}
 											},
 											"enableStaging": false,
@@ -133,7 +131,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "DelimitedText19",
+												"referenceName": "Parquet5",
 												"type": "DatasetReference"
 											}
 										]
@@ -269,6 +267,9 @@
 			"entity_table": {
 				"type": "String"
 			}
+		},
+		"folder": {
+			"name": "Aaryan_Pipelines"
 		},
 		"annotations": []
 	}

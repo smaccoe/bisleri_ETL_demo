@@ -1,0 +1,21 @@
+{
+	"name": "Parquet5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "output.parquet",
+				"folderPath": "sales_shipment_header",
+				"fileSystem": "data-lake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

@@ -143,7 +143,16 @@
 			},
 			"query2": {
 				"type": "String"
+			},
+			"new_columns": {
+				"type": "String"
+			},
+			"entityTable": {
+				"type": "String"
 			}
+		},
+		"folder": {
+			"name": "Aaryan_Pipelines"
 		},
 		"annotations": []
 	}
