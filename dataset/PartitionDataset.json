@@ -1,0 +1,20 @@
+{
+	"name": "PartitionDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "ParquetFiles",
+				"fileSystem": "data-lake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

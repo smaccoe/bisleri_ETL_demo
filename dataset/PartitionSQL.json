@@ -1,0 +1,25 @@
+{
+	"name": "PartitionSQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_VMSQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string",
+				"defaultValue": "BIPL - ANDHRA PRADESH$sales_shipment_header"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
