@@ -696,7 +696,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "BIPL - ANDHRA PRADESH$Customer"
+			"table": "BIPL - ANDHRA PRADESH$Salesperson_Purchaser"
 		}
 	}
 }
