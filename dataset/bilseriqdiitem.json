@@ -15,7 +15,10 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Mumbai$Item"
+			"table": {
+				"value": "@dataset().filename",
+				"type": "Expression"
+			}
 		}
 	}
 }
