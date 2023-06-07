@@ -81,7 +81,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "SqlServerTable19bisleriUAT",
+									"referenceName": "Bisleriuatdatasetitem",
 									"type": "DatasetReference"
 								}
 							],
