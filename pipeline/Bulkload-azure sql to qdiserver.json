@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "Select \r\n    TABLE_SCHEMA,\r\n    --SUBSTRING(TABLE_NAME,1,len(TABLE_NAME)) as trim_TABLE_NAME,\r\n    --LTRIM(TABLE_NAME) as trim_TABLE_NAME,\r\n    --replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$','_') as \r\n    TABLE_NAME\r\nFROM INFORMATION_SCHEMA.TABLES\r\nwhere\r\nTABLE_SCHEMA = 'dbo' and \r\nTABLE_NAME like '%$Customer' \r\n--and TABLE_NAME not in ('BIPL - HO$Customer', 'BIPL-  IND AS$Customer', 'BIPL-  DELHI(HO) $Customer',\r\n--'BIPL - INVESTMENT$Customer','BIPL - SHAHIBABAD$Customer')",
+						"sqlReaderQuery": "Select \r\n    TABLE_SCHEMA,\r\n    --SUBSTRING(TABLE_NAME,1,len(TABLE_NAME)) as trim_TABLE_NAME,\r\n    --LTRIM(TABLE_NAME) as trim_TABLE_NAME,\r\n    --replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$','_') as \r\n    TABLE_NAME\r\nFROM INFORMATION_SCHEMA.TABLES\r\nwhere\r\nTABLE_SCHEMA = 'dbo' and \r\nTABLE_NAME like '%$Salesperson_Purchaser' \r\n--and TABLE_NAME not in ('BIPL - HO$Salesperson_Purchaser', 'BIPL-  IND AS$Salesperson_Purchaser', 'BIPL-  DELHI(HO) $Salesperson_Purchaser',\r\n--'BIPL - INVESTMENT$Salesperson_Purchaser','BIPL - SHAHIBABAD$Salesperson_Purchaser')",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
