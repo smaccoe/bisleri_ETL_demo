@@ -5,20 +5,12 @@
 			"referenceName": "BisleriUATdataDB",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"filename": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": {
-				"value": "@dataset().filename",
-				"type": "Expression"
-			}
+			"table": "BIPL - ANDHRA PRADESH$Location"
 		}
 	}
 }
