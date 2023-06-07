@@ -89,7 +89,13 @@
 							"outputs": [
 								{
 									"referenceName": "bilseriqdiitem",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
