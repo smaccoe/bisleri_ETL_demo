@@ -22,7 +22,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "Bisleriuatdatasetitem",
+						"referenceName": "SqlServerTable19bisleriUAT",
 						"type": "DatasetReference"
 					}
 				}
@@ -82,13 +82,29 @@
 							"inputs": [
 								{
 									"referenceName": "Bisleriuatdatasetitem",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"schema": {
+											"value": "@item().TABLE_SCHEMA",
+											"type": "Expression"
+										},
+										"table": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "itemdataset",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@concat(item().TABLE_SCHEMA,'_',item().TABLE_NAME,'.csv')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
