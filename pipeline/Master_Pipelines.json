@@ -107,10 +107,6 @@
 									"TableNames": {
 										"value": "@variables('Table')",
 										"type": "Expression"
-									},
-									"ColumnNames": {
-										"value": "@variables('Columns')",
-										"type": "Expression"
 									}
 								}
 							}
@@ -140,6 +136,9 @@
 			},
 			"Lookup_Output": {
 				"type": "String"
+			},
+			"testquery": {
+				"type": "Array"
 			}
 		},
 		"folder": {

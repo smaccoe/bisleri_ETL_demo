@@ -1,0 +1,118 @@
+{
+	"name": "SqlServerTable18",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_VMSQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Loc_Key",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Address_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone_No",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone_No_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Post_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "E_Mail",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country_Region_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Use_As_In_Transit",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Require_Put_away",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Require_Pick",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Use_Cross_Docking",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Require_Receive",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Require_Shipment",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "State_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Subcontracting_Location",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Subcontractor_No",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Depot",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Site_Code",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Location"
+		}
+	}
+}

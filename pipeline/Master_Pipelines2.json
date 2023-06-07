@@ -50,6 +50,7 @@
 						"value": "@activity('Lookup2').output.value",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "If Condition1",
@@ -98,14 +99,14 @@
 											"source": {
 												"type": "SqlServerSource",
 												"sqlReaderQuery": {
-													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code1 from [' + @tablename +']' as Query",
+													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as Site_Code from [' + @tablename +']' as Query",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
 												"partitionOption": "None"
 											},
 											"dataset": {
-												"referenceName": "SqlServerTable17",
+												"referenceName": "SqlServerTable18",
 												"type": "DatasetReference"
 											}
 										}
@@ -177,7 +178,7 @@
 				}
 			},
 			{
-				"name": "Set variable5",
+				"name": "Set variable8",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -191,7 +192,7 @@
 				"typeProperties": {
 					"variableName": "Final_Query1",
 					"value": {
-						"value": "@join(variables('Final_Query'), ' UNION ALL ')",
+						"value": "@join(variables('Final_Query'),'UNION ALL' )",
 						"type": "Expression"
 					}
 				}
@@ -201,10 +202,6 @@
 			"TableNames": {
 				"type": "string",
 				"defaultValue": "Location"
-			},
-			"ColumnNames": {
-				"type": "string",
-				"defaultValue": "[Code],[Name],[Address],[Address 2],[City],[Phone No_],[Phone No_ 2],[Post Code],[County],[E-Mail],[Country_Region Code],[Use As In-Transit],[Require Put-away],[Require Pick],[Use Cross-Docking],[Require Receive],[Require Shipment],[State Code], [Subcontracting Location],[Subcontractor No_],[Depot]"
 			}
 		},
 		"variables": {
@@ -218,7 +215,8 @@
 				"type": "String"
 			},
 			"Final_Query": {
-				"type": "Array"
+				"type": "Array",
+				"defaultValue": []
 			},
 			"Final_Query1": {
 				"type": "String"
@@ -228,6 +226,9 @@
 			},
 			"Lookup_Output": {
 				"type": "String"
+			},
+			"testquery": {
+				"type": "Array"
 			}
 		},
 		"folder": {
