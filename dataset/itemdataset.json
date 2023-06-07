@@ -15,7 +15,10 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Company"
+			"table": {
+				"value": "@dataset().filename",
+				"type": "Expression"
+			}
 		}
 	}
 }

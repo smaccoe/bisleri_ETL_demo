@@ -1042,8 +1042,14 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "Company"
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table",
+				"type": "Expression"
+			}
 		}
 	}
 }
