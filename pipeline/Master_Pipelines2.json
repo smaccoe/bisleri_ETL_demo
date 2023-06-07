@@ -105,7 +105,7 @@
 												"partitionOption": "None"
 											},
 											"dataset": {
-												"referenceName": "SqlServerTable15",
+												"referenceName": "SqlServerTable17",
 												"type": "DatasetReference"
 											}
 										}
@@ -125,7 +125,7 @@
 										"typeProperties": {
 											"variableName": "Final_Query",
 											"value": {
-												"value": "@activity('Lookup3').output.firstRow.Query",
+												"value": "@variables('Lookup_Output')",
 												"type": "Expression"
 											}
 										}

@@ -1,0 +1,702 @@
+{
+	"name": "SqlServerTable17",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriUATServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "timestamp"
+			},
+			{
+				"name": "Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Default Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Address 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone No_ 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Telex No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fax No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Contact",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Post Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "E-Mail",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Home Page",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country_Region Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Use As In-Transit",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Require Put-away",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Require Pick",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Cross-Dock Due Date Calc_",
+				"type": "varchar"
+			},
+			{
+				"name": "Use Cross-Docking",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Require Receive",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Require Shipment",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Bin Mandatory",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Directed Put-away and Pick",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Default Bin Selection",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Outbound Whse_ Handling Time",
+				"type": "varchar"
+			},
+			{
+				"name": "Inbound Whse_ Handling Time",
+				"type": "varchar"
+			},
+			{
+				"name": "Put-away Template Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Use Put-away Worksheet",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Pick According to FEFO",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Allow Breakbulk",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Bin Capacity Policy",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Open Shop Floor Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "To-Production Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "From-Production Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Adjustment Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Always Create Put-away Line",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Always Create Pick Line",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Special Equipment",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Receipt Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Shipment Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cross-Dock Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "To-Assembly Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "From-Assembly Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Asm_-to-Order Shpt_ Bin Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Base Calendar Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Use ADCS",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Purch_ Invoice Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Receipt Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Invoice Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Shipment Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Excise Bus_ Posting Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "E_C_C_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "State Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Subcontracting Location",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Subcontractor No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "T_A_N_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "T_I_N_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Service Tax Registration No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "T_C_A_N_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Composition",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Export or Deemed Export",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Composition Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Trading Location",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Testing Location",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Input Service Distributor",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Sales Shipment Nos_ (Captive)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Credit Memo Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Return Receipt Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Credit Memo Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Ret_ Shipment Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transfer Shipment Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transfer Receipt Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purh_ Invoice Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Invoice Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Ret Rcpt Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Ret Shpt Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Rcpt_ Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Shpt_ Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch Cr_ Memo Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sale Cr_ Memo Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "L_S_T_ No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C_S_T No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C_E_ Range",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C_E_ Commissionerate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C_E_ Division",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posted Serv_ Shipment Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posted Serv_ Invoice Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posted Serv_ Cr_ Memo Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Shipment Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Invoice Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Cr_ Memo Nos_ (Trading)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Registration No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Inv_ Nos_ (Exempt)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Cr_ Memo Nos_ (Exempt)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Inv_ No_ (Export)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Cr_ Memo No_ (Export)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Inv_ No_ (Supp)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Cr_ Memo No_ (Supp)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Inv_ No_ (Debit Note)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Inv_ Nos_ (Exempt)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Cr_ Memo Nos_ (Exempt)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Inv_ Nos_ (Export)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Cr_ Memo Nos_ (Export)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Inv_ Nos_ (Supp)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Cr_ Memo Nos_ (Supp)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serv_ Inv_ Nos_ (Debit Note)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Inv_ Nos_ (Non-GST)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales Cr_ Memo Nos_ (Non-GST)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posted Serv_ Trans_ Shpt_ Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Posted Serv_ Trans_ Rcpt_ Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Liability Invoice",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Input Service Distributor",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Purch_ Inv_ Nos_ (Unreg)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Cr_ Memo Nos_ (Unreg)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch_ Inv_ Nos_ (Unreg Supp)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pur_ Inv_ Nos_(Unreg Deb_Note)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GST Transfer Shipment No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Range",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Commissioner",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Division",
+				"type": "nvarchar"
+			},
+			{
+				"name": "L_S_T_ Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "C_S_T_ Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Vehicle",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Vehicle Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Co_ Add",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Co_ Tel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Co_ Fax",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Range1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Range2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Range3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Div1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Div2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Div3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "T_I_N_ Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Actual Vehical",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Depot",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Dual Route",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Item Reclass Allowed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Feeder",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Global Dimension 2 Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Manf_ Trading Location",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Manf_ Excise location",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Allow Trf_ Trading Loc",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Allow Trf_ Excise Loc",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Barcode Applicable",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Excise Applicable",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "CO Posting Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RU Posting Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GRN Posting Nos_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Block",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "FSSAI No_",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IC Purchase",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IC Sales",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ECOM Location",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "ECOM Customer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ECOM Subs Customer",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BIPL - ANDHRA PRADESH$Location"
+		}
+	}
+}
