@@ -1,0 +1,16 @@
+{
+	"name": "itemqdidataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriUATQDI",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Company"
+		}
+	}
+}

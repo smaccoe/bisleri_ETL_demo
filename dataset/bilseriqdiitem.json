@@ -1,0 +1,16 @@
+{
+	"name": "bilseriqdiitem",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BisleriUATQDI",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mumbai$Item"
+		}
+	}
+}
