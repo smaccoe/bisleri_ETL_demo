@@ -1,10 +1,6 @@
 {
 	"name": "Stage1_Sales_Hierarchy",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "BisleriServer",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "SqlServerTable",
 		"schema": [],

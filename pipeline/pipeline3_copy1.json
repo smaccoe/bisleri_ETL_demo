@@ -63,89 +63,9 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "Set variable4",
-										"type": "SetVariable",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "entity",
-											"value": {
-												"value": "@item().Entity",
-												"type": "Expression"
-											}
-										}
-									},
-									{
-										"name": "Set variable6",
-										"type": "SetVariable",
-										"dependsOn": [
-											{
-												"activity": "Set variable4",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "new_columns",
-											"value": {
-												"value": "@item().Entity_Code",
-												"type": "Expression"
-											}
-										}
-									},
-									{
-										"name": "Set variable7",
-										"type": "SetVariable",
-										"dependsOn": [
-											{
-												"activity": "Set variable6",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "query2",
-											"value": {
-												"value": "select @{pipeline().parameters.Colnames},@{variables('new_columns')} as Site_Code from @{concat('[',item().Entity,pipeline().parameters.tblName,']')}",
-												"type": "Expression"
-											}
-										}
-									},
-									{
-										"name": "Set variable8",
-										"type": "SetVariable",
-										"dependsOn": [
-											{
-												"activity": "Set variable7",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "entity_table",
-											"value": {
-												"value": "@{concat(variables('entity'),pipeline().parameters.tblName)}",
-												"type": "Expression"
-											}
-										}
-									},
-									{
 										"name": "Lookup3",
 										"type": "Lookup",
-										"dependsOn": [
-											{
-												"activity": "Set variable8",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
+										"dependsOn": [],
 										"policy": {
 											"timeout": "0.12:00:00",
 											"retry": 0,
@@ -158,7 +78,7 @@
 											"source": {
 												"type": "SqlServerSource",
 												"sqlReaderQuery": {
-													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(variables('entity'),pipeline().parameters.tblName)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code1 from [' + @tablename +']' as Query",
+													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.tblName)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code1 from [' + @tablename +']' as Query",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
@@ -254,9 +174,6 @@
 			"tbln": {
 				"type": "String"
 			},
-			"entity": {
-				"type": "String"
-			},
 			"query2": {
 				"type": "String"
 			},
@@ -276,6 +193,21 @@
 				"type": "String"
 			},
 			"lookup output": {
+				"type": "String"
+			},
+			"Table_Name": {
+				"type": "String"
+			},
+			"Table": {
+				"type": "String"
+			},
+			"Columns": {
+				"type": "String"
+			},
+			"testing": {
+				"type": "String"
+			},
+			"Lookup_Output": {
 				"type": "String"
 			}
 		},

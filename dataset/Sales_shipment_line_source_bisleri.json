@@ -1,10 +1,6 @@
 {
 	"name": "Sales_shipment_line_source_bisleri",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "BisleriServer",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "SqlServerTable",
 		"schema": [

@@ -1,10 +1,6 @@
 {
 	"name": "Sales_Shipment_Header_AP",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "BisleriServer",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "SqlServerTable",
 		"schema": [
