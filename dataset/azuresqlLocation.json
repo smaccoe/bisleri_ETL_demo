@@ -1,5 +1,5 @@
 {
-	"name": "itemdataset",
+	"name": "azuresqlLocation",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BisleriUATdataDB",
@@ -7,13 +7,6 @@
 		},
 		"annotations": [],
 		"type": "SqlServerTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": {
-				"value": "@dataset().filename",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	}
 }
