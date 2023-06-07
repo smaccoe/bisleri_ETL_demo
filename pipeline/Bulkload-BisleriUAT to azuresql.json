@@ -99,13 +99,7 @@
 							"outputs": [
 								{
 									"referenceName": "itemdataset",
-									"type": "DatasetReference",
-									"parameters": {
-										"filename": {
-											"value": "@item().TABLE_NAME",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
