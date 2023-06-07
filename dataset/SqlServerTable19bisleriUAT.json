@@ -696,7 +696,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "BIPL - ANDHRA PRADESH$Location"
+			"table": "BIPL - ANDHRA PRADESH$Customer"
 		}
 	}
 }

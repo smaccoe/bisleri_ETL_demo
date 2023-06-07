@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "Select \r\n    TABLE_SCHEMA,\r\n    --SUBSTRING(TABLE_NAME,1,len(TABLE_NAME)) as trim_TABLE_NAME,\r\n    --LTRIM(TABLE_NAME) as trim_TABLE_NAME,\r\n    --replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$','_') as \r\n    TABLE_NAME\r\nFROM INFORMATION_SCHEMA.TABLES\r\nwhere\r\nTABLE_SCHEMA = 'dbo' and \r\nTABLE_NAME like '%$Location' \r\nand TABLE_NAME not in ('BIPL - HO$Location', 'BIPL-  IND AS$Location', 'BIPL-  DELHI(HO) $Location',\r\n'BIPL - INVESTMENT$Location','BIPL - SHAHIBABAD$Location')",
+						"sqlReaderQuery": "Select \r\n    TABLE_SCHEMA,\r\n    --SUBSTRING(TABLE_NAME,1,len(TABLE_NAME)) as trim_TABLE_NAME,\r\n    --LTRIM(TABLE_NAME) as trim_TABLE_NAME,\r\n    --replace(RIGHT(TABLE_NAME, len(TABLE_NAME) -7),'$','_') as \r\n    TABLE_NAME\r\nFROM INFORMATION_SCHEMA.TABLES\r\nwhere\r\nTABLE_SCHEMA = 'dbo' and \r\nTABLE_NAME like '%$Customer' \r\nand TABLE_NAME not in ('BIPL - HO$Customer', 'BIPL-  IND AS$Customer', 'BIPL-  DELHI(HO) $Customer',\r\n'BIPL - INVESTMENT$Customer','BIPL - SHAHIBABAD$Customer')",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -99,7 +99,13 @@
 							"outputs": [
 								{
 									"referenceName": "itemdataset",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
