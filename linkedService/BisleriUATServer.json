@@ -1,0 +1,16 @@
+{
+	"name": "BisleriUATServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=NAV2016DEV;initial catalog=BisleriNAV16Test;user id=misalteam",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YWFmZTU1Yi1kZDViLTQ2OWItYjgwOS0wNDBlZTQ5Y2JjNWYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "Bisleri-UAT-Server",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
