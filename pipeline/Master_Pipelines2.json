@@ -99,7 +99,7 @@
 											"source": {
 												"type": "SqlServerSource",
 												"sqlReaderQuery": {
-													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as Site_Code from [' + @tablename +']' as Query",
+													"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code from [' + @tablename +']' as Query",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
@@ -227,14 +227,12 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false,
@@ -255,7 +253,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText22",
+						"referenceName": "Parquet6",
 						"type": "DatasetReference"
 					}
 				]

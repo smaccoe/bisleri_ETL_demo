@@ -1,0 +1,128 @@
+{
+	"name": "Parquet6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Incre_Load_Folder",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "Location",
+					"type": "Expression"
+				},
+				"fileSystem": "data-lake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "No_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sell-toCustomerNo_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Bill-toCustomerNo_",
+				"type": "UTF8"
+			},
+			{
+				"name": "Ship-toCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "Ship-toName",
+				"type": "UTF8"
+			},
+			{
+				"name": "Ship-toAddress",
+				"type": "UTF8"
+			},
+			{
+				"name": "Ship-toAddress2",
+				"type": "UTF8"
+			},
+			{
+				"name": "Ship-toCity",
+				"type": "UTF8"
+			},
+			{
+				"name": "PostingDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ShipmentDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ShipmentMethodCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "LocationCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "ShortcutDimension1Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "ShortcutDimension2Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "ShippingAgentCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "LR_RRNo_",
+				"type": "UTF8"
+			},
+			{
+				"name": "LR_RRDate",
+				"type": "INT96"
+			},
+			{
+				"name": "VehicleNo_",
+				"type": "UTF8"
+			},
+			{
+				"name": "VehicleType",
+				"type": "UTF8"
+			},
+			{
+				"name": "RouteCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "CustomerCategory",
+				"type": "UTF8"
+			},
+			{
+				"name": "LoadingSlipNo_",
+				"type": "UTF8"
+			},
+			{
+				"name": "AutoPDASO",
+				"type": "INT32"
+			},
+			{
+				"name": "ECOM",
+				"type": "INT32"
+			},
+			{
+				"name": "LastModifiedOn",
+				"type": "INT96"
+			},
+			{
+				"name": "Site_Code",
+				"type": "UTF8"
+			}
+		]
+	}
+}
