@@ -91,7 +91,7 @@
 			},
 			"PartitionColumnName": {
 				"type": "string",
-				"defaultValue": "Year([PostingDate])"
+				"defaultValue": "Year([Posting Date])"
 			}
 		},
 		"annotations": []
