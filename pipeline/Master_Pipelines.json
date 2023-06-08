@@ -66,31 +66,11 @@
 							}
 						},
 						{
-							"name": "Set variable2",
-							"type": "SetVariable",
-							"dependsOn": [
-								{
-									"activity": "Set variable1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "Columns",
-								"value": {
-									"value": "@item().Columns",
-									"type": "Expression"
-								}
-							}
-						},
-						{
 							"name": "Execute Pipeline1",
 							"type": "ExecutePipeline",
 							"dependsOn": [
 								{
-									"activity": "Set variable2",
+									"activity": "Set variable1",
 									"dependencyConditions": [
 										"Succeeded"
 									]
