@@ -71,21 +71,8 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "EntityTable",
-										"type": "SetVariable",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "EntityTable",
-											"value": {
-												"value": "@{concat(item().Entity,pipeline().parameters.TableNames)}",
-												"type": "Expression"
-											}
-										}
-									},
-									{
-										"name": "Execute nested if",
-										"type": "ExecutePipeline",
+										"name": "Lookup3",
+										"type": "Lookup",
 										"dependsOn": [
 											{
 												"activity": "EntityTable",
@@ -94,39 +81,36 @@
 												]
 											}
 										],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
 										"userProperties": [],
 										"typeProperties": {
-											"pipeline": {
-												"referenceName": "Master Nested Execute",
-												"type": "PipelineReference"
+											"source": {
+												"type": "SqlServerSource",
+												"sqlReaderQuery": {
+													"value": "DECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code from [' + @tablename +'] UNION ALL ' as Query",
+													"type": "Expression"
+												},
+												"queryTimeout": "02:00:00",
+												"partitionOption": "None"
 											},
-											"waitOnCompletion": true,
-											"parameters": {
-												"LastItem": {
-													"value": "@variables('LastItem')",
-													"type": "Expression"
-												},
-												"CurrentItem": {
-													"value": "@variables('CurrentItem')",
-													"type": "Expression"
-												},
-												"TableName": {
-													"value": "@variables('EntityTable')",
-													"type": "Expression"
-												},
-												"EntityCode": {
-													"value": "@variables('EntityCode')",
-													"type": "Expression"
-												}
+											"dataset": {
+												"referenceName": "SqlServerTable18",
+												"type": "DatasetReference"
 											}
 										}
 									},
 									{
-										"name": "Return inside if",
+										"name": "FinalVar",
 										"type": "SetVariable",
 										"dependsOn": [
 											{
-												"activity": "Return Str",
+												"activity": "Lookup3",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -134,19 +118,19 @@
 										],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "ReturnQuery",
+											"variableName": "FinalVar",
 											"value": {
-												"value": "@activity('Execute nested if').output.pipelineReturnValue.LastOutput",
+												"value": "@{concat(variables('IntermediateVar'),activity('Lookup3').output.firstRow.Query)}",
 												"type": "Expression"
 											}
 										}
 									},
 									{
-										"name": "Return Str",
+										"name": "IntermediateVar",
 										"type": "SetVariable",
 										"dependsOn": [
 											{
-												"activity": "Execute nested if",
+												"activity": "FinalVar",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -154,9 +138,22 @@
 										],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "ReturnStr",
+											"variableName": "IntermediateVar",
 											"value": {
-												"value": "@concat(activity('Execute nested if').output.pipelineReturnValue.Str,activity('Execute nested if').output.pipelineReturnValue.LastOutput,'abcdf')",
+												"value": "@variables('FinalVar')",
+												"type": "Expression"
+											}
+										}
+									},
+									{
+										"name": "EntityTable",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "EntityTable",
+											"value": {
+												"value": "@{concat(item().Entity,pipeline().parameters.TableNames)}",
 												"type": "Expression"
 											}
 										}
@@ -235,7 +232,7 @@
 				"typeProperties": {
 					"variableName": "Final_Query1",
 					"value": {
-						"value": "@activity('Execute nested if').output.pipelineReturnValue.LastOutputVar",
+						"value": "@substring(variables('FinalVar'),0,sub(length(variables('FinalVar')),11))",
 						"type": "Expression"
 					}
 				}
@@ -343,8 +340,7 @@
 				"type": "String"
 			},
 			"IntermediateVar": {
-				"type": "String",
-				"defaultValue": "''"
+				"type": "String"
 			},
 			"FinalVar": {
 				"type": "String"
