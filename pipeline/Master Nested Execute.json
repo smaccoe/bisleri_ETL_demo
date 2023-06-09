@@ -1,0 +1,211 @@
+{
+	"name": "Master Nested Execute",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(pipeline().parameters.CurrentItem, pipeline().parameters.LastItem)",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Lookup3",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{pipeline().parameters.TableName}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename\n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''pipeline().parameters.EntityCode'' as site_code from [' + @tablename +'] UNION ALL ' as Query",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "SqlServerTable18",
+									"type": "DatasetReference"
+								}
+							}
+						},
+						{
+							"name": "FinalVar",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Lookup3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "FinalVar",
+								"value": {
+									"value": "@{concat(variables('IntermediateVar'),activity('Lookup3').output.firstRow.Query)}",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "IntermediateVar",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "FinalVar",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "IntermediateVar",
+								"value": {
+									"value": "@variables('FinalVar')",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "LastLookup",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "\nDECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{pipeline().parameters.TableName}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename\n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''pipeline().parameters.EntityCode'' as site_code from [' + @tablename +']' as Query",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "SqlServerTable18",
+									"type": "DatasetReference"
+								}
+							}
+						},
+						{
+							"name": "LastOutput",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "LastLookup",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "LastOutputVar",
+								"value": {
+									"value": "@concat(variables('FinalVar'),activity('LastLookup').output.firstRow.Query)",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "If Condition1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "pipelineReturnValue",
+					"value": [
+						{
+							"key": "ReturnVar",
+							"value": {
+								"type": "Object",
+								"content": "@variables('LastOutputVar')"
+							}
+						}
+					],
+					"setSystemVariable": true
+				}
+			}
+		],
+		"parameters": {
+			"LastItem": {
+				"type": "String",
+				"defaultValue": "BIPL - WESTBENGAL$"
+			},
+			"CurrentItem": {
+				"type": "string",
+				"defaultValue": "BIPL - ANDHRA PRADESH$"
+			},
+			"TableName": {
+				"type": "string",
+				"defaultValue": "BIPL - ANDHRA PRADESH$Location"
+			},
+			"EntityCode": {
+				"type": "string",
+				"defaultValue": "'1001'"
+			}
+		},
+		"variables": {
+			"CurrentItem": {
+				"type": "String"
+			},
+			"LastItem": {
+				"type": "String"
+			},
+			"EntityCode": {
+				"type": "String"
+			},
+			"IntermediateVar": {
+				"type": "String",
+				"defaultValue": "''"
+			},
+			"FinalVar": {
+				"type": "String"
+			},
+			"LastOutputVar": {
+				"type": "String"
+			},
+			"ReturnQuery": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Aaryan_Pipelines"
+		},
+		"annotations": []
+	}
+}

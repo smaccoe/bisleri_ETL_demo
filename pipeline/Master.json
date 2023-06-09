@@ -1,0 +1,151 @@
+{
+	"name": "Master",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DelimitedText20",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Table",
+								"value": {
+									"value": "@item().Table_Name",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Master_Execute",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"TableNames": {
+										"value": "@variables('Table')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"Table": {
+				"type": "String"
+			},
+			"Columns": {
+				"type": "String"
+			},
+			"Entity": {
+				"type": "String"
+			},
+			"Final_Query": {
+				"type": "String"
+			},
+			"Final_Query1": {
+				"type": "String"
+			},
+			"testing": {
+				"type": "String"
+			},
+			"Lookup_Output": {
+				"type": "String"
+			},
+			"testquery": {
+				"type": "Array"
+			},
+			"CurrentItem": {
+				"type": "String"
+			},
+			"LastItem": {
+				"type": "String"
+			},
+			"EntityCode": {
+				"type": "String"
+			},
+			"IntermediateVar": {
+				"type": "String",
+				"defaultValue": "''"
+			},
+			"FinalVar": {
+				"type": "String"
+			},
+			"LastOutputVar": {
+				"type": "String"
+			},
+			"ReturnQuery": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Aaryan_Pipelines"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,324 @@
+{
+	"name": "Master_Execute",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup2",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DelimitedText21",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup2').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "EntityCode",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@greater(int(item().Active_Inactive),0)",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "EntityTable",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "EntityTable",
+											"value": {
+												"value": "@{concat(item().Entity,pipeline().parameters.TableNames)}",
+												"type": "Expression"
+											}
+										}
+									},
+									{
+										"name": "Execute nested if",
+										"type": "ExecutePipeline",
+										"dependsOn": [
+											{
+												"activity": "EntityTable",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Master Nested Execute",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"LastItem": {
+													"value": "@variables('LastItem')",
+													"type": "Expression"
+												},
+												"CurrentItem": {
+													"value": "@variables('CurrentItem')",
+													"type": "Expression"
+												},
+												"TableName": {
+													"value": "@variables('EntityTable')",
+													"type": "Expression"
+												},
+												"EntityCode": {
+													"value": "@variables('EntityCode')",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "EntityCode",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "LastItem",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "EntityCode",
+								"value": {
+									"value": "@item().Entity_Code",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "CurrentItem",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "CurrentItem",
+								"value": {
+									"value": "@item().Entity",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "LastItem",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "CurrentItem",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "LastItem",
+								"value": {
+									"value": "@last(item().Entity)",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable8",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Final_Query1",
+					"value": {
+						"value": "@activity('Execute nested if').output.pipelineReturnValue.LastOutputVar",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set variable8",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@variables('Final_Query1')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable18",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Parquet6",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"TableNames": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"Table": {
+				"type": "String"
+			},
+			"Columns": {
+				"type": "String"
+			},
+			"Entity": {
+				"type": "String"
+			},
+			"Final_Query": {
+				"type": "Array",
+				"defaultValue": []
+			},
+			"Final_Query1": {
+				"type": "String"
+			},
+			"EntityTable": {
+				"type": "String"
+			},
+			"Lookup_Output": {
+				"type": "String"
+			},
+			"testquery": {
+				"type": "Array"
+			},
+			"CurrentItem": {
+				"type": "String"
+			},
+			"LastItem": {
+				"type": "String"
+			},
+			"EntityCode": {
+				"type": "String"
+			},
+			"IntermediateVar": {
+				"type": "String",
+				"defaultValue": "''"
+			},
+			"FinalVar": {
+				"type": "String"
+			},
+			"LastOutputVar": {
+				"type": "String"
+			},
+			"ReturnQuery": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Aaryan_Pipelines"
+		},
+		"annotations": []
+	}
+}
