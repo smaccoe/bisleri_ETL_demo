@@ -38,7 +38,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Lookup2",
+						"activity": "Filter1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -47,159 +47,45 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Lookup2').output.value",
+						"value": "@activity('Filter1').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "If Condition1",
-							"type": "IfCondition",
-							"dependsOn": [
-								{
-									"activity": "EntityCode",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"expression": {
-									"value": "@greater(int(item().Active_Inactive),0)",
-									"type": "Expression"
-								},
-								"ifTrueActivities": [
-									{
-										"name": "Lookup3",
-										"type": "Lookup",
-										"dependsOn": [
-											{
-												"activity": "EntityTable",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"policy": {
-											"timeout": "0.12:00:00",
-											"retry": 0,
-											"retryIntervalInSeconds": 30,
-											"secureOutput": false,
-											"secureInput": false
-										},
-										"userProperties": [],
-										"typeProperties": {
-											"source": {
-												"type": "SqlServerSource",
-												"sqlReaderQuery": {
-													"value": "DECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code from [' + @tablename +'] UNION ALL ' as Query",
-													"type": "Expression"
-												},
-												"queryTimeout": "02:00:00",
-												"partitionOption": "None"
-											},
-											"dataset": {
-												"referenceName": "SqlServerTable18",
-												"type": "DatasetReference"
-											}
-										}
-									},
-									{
-										"name": "FinalVar",
-										"type": "SetVariable",
-										"dependsOn": [
-											{
-												"activity": "Lookup3",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "FinalVar",
-											"value": {
-												"value": "@{concat(variables('IntermediateVar'),activity('Lookup3').output.firstRow.Query)}",
-												"type": "Expression"
-											}
-										}
-									},
-									{
-										"name": "IntermediateVar",
-										"type": "SetVariable",
-										"dependsOn": [
-											{
-												"activity": "FinalVar",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "IntermediateVar",
-											"value": {
-												"value": "@variables('FinalVar')",
-												"type": "Expression"
-											}
-										}
-									},
-									{
-										"name": "EntityTable",
-										"type": "SetVariable",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "EntityTable",
-											"value": {
-												"value": "@{concat(item().Entity,pipeline().parameters.TableNames)}",
-												"type": "Expression"
-											}
-										}
-									}
-								]
-							}
-						},
-						{
-							"name": "EntityCode",
-							"type": "SetVariable",
-							"dependsOn": [
-								{
-									"activity": "LastItem",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "EntityCode",
-								"value": {
-									"value": "@item().Entity_Code",
-									"type": "Expression"
-								}
-							}
-						},
-						{
-							"name": "CurrentItem",
-							"type": "SetVariable",
+							"name": "Lookup3",
+							"type": "Lookup",
 							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "CurrentItem",
-								"value": {
-									"value": "@item().Entity",
-									"type": "Expression"
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "DECLARE @s VARCHAR(MAX) \n\nDECLARE @tablename VARCHAR(500) ='@{concat(item().Entity,pipeline().parameters.TableNames)}'\n\nSELECT @s = ISNULL(@s+', ','') + '[' + c.name + ']' + ' as ['+replace(c.name,' ','')+'] ' \n\nFROM sys.all_columns c join sys.tables t \n\nON c.object_id = t.object_id \n\nWHERE t.name = @tablename \n\nselect 'select ' + REPLACE(REPLACE( @s, '(', ''),')','') + ',''@{item().Entity_Code}'' as site_code from [' + @tablename +'] UNION ALL ' as Query",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "SqlServerTable18",
+									"type": "DatasetReference"
 								}
 							}
 						},
 						{
-							"name": "LastItem",
+							"name": "FinalVar",
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "CurrentItem",
+									"activity": "Lookup3",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -207,9 +93,29 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "LastItem",
+								"variableName": "FinalVar",
 								"value": {
-									"value": "@last(item().Entity)",
+									"value": "@{concat(variables('IntermediateVar'),activity('Lookup3').output.firstRow.Query)}",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "IntermediateVar",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "FinalVar",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "IntermediateVar",
+								"value": {
+									"value": "@variables('FinalVar')",
 									"type": "Expression"
 								}
 							}
@@ -297,11 +203,35 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Lookup2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup2').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().Active_Inactive,'1')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
 			"TableNames": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Location"
 			}
 		},
 		"variables": {
