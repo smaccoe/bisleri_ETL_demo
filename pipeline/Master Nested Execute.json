@@ -124,11 +124,17 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "LastOutputVar",
-								"value": {
-									"value": "@concat(variables('FinalVar'),activity('LastLookup').output.firstRow.Query)",
-									"type": "Expression"
-								}
+								"variableName": "pipelineReturnValue",
+								"value": [
+									{
+										"key": "LastOutput",
+										"value": {
+											"type": "Expression",
+											"content": "@concat(variables('FinalVar'),activity('LastLookup').output.firstRow.Query)"
+										}
+									}
+								],
+								"setSystemVariable": true
 							}
 						}
 					]
@@ -152,8 +158,7 @@
 						{
 							"key": "ReturnVar",
 							"value": {
-								"type": "Object",
-								"content": "@variables('LastOutputVar')"
+								"type": "Expression"
 							}
 						}
 					],
