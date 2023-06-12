@@ -10,10 +10,24 @@
 						"type": "DatasetReference"
 					},
 					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Parquet6",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "lookup1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Table_Name as string,",
@@ -21,7 +35,44 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          No_ as string,",
+				"          {Sell-toCustomerNo_} as string,",
+				"          {Bill-toCustomerNo_} as string,",
+				"          {Ship-toCode} as string,",
+				"          {Ship-toName} as string,",
+				"          {Ship-toAddress} as string,",
+				"          {Ship-toAddress2} as string,",
+				"          {Ship-toCity} as string,",
+				"          PostingDate as timestamp,",
+				"          ShipmentDate as timestamp,",
+				"          ShipmentMethodCode as string,",
+				"          LocationCode as string,",
+				"          ShortcutDimension1Code as string,",
+				"          ShortcutDimension2Code as string,",
+				"          ShippingAgentCode as string,",
+				"          LR_RRNo_ as string,",
+				"          LR_RRDate as timestamp,",
+				"          VehicleNo_ as string,",
+				"          VehicleType as string,",
+				"          RouteCode as string,",
+				"          CustomerCategory as string,",
+				"          LoadingSlipNo_ as string,",
+				"          AutoPDASO as integer,",
+				"          ECOM as integer,",
+				"          LastModifiedOn as timestamp,",
+				"          Site_Code as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source2",
+				"source1 derive(Columns = split(replace(replace(replace(replace(replace(replace(Columns, \" \", \"\"),\"(\",\"\"),\")\",\"\"),\"-\",\"\"),\"[\",\"\"),\"]\",\"\"),',')[4]) ~> derivedColumn1",
+				"derivedColumn1 lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1"
 			]
 		}
 	}
