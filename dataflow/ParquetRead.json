@@ -19,7 +19,15 @@
 					"name": "source2"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -29,9 +37,18 @@
 				},
 				{
 					"name": "join1"
+				},
+				{
+					"name": "derivedColumn3"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     ColumnName as string ( \"['Code','Name','Address','Address 2','City','Phone No_','Phone No_ 2','Post Code','County','E-Mail','Country_Region Code','Use As In-Transit','Require Put-away','Require Pick','Use Cross-Docking','Require Receive','Require Shipment','State Code', 'Subcontracting Location','Subcontractor No_','Depot']\")",
+				"}",
 				"source(output(",
 				"          Table_Name as string,",
 				"          Columns as string",
@@ -75,7 +92,56 @@
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1 derive(NewColumns = split(replace(replace(replace(replace(replace(replace($ColumnName, \" \", \"\"),\"(\",\"\"),\")\",\"\"),\"-\",\"\"),\"[\",\"\"),\"]\",\"\"),',')) ~> derivedColumn3",
+				"derivedColumn3 select(mapColumn(",
+				"          Loc_Key,",
+				"          Location_Code,",
+				"          Location_Name,",
+				"          Address,",
+				"          Address_2,",
+				"          City,",
+				"          Phone_No,",
+				"          Phone_No_2,",
+				"          Post_Code,",
+				"          County,",
+				"          E_Mail,",
+				"          Country_Region_Code,",
+				"          Use_As_In_Transit,",
+				"          Require_Put_away,",
+				"          Require_Pick,",
+				"          Use_Cross_Docking,",
+				"          Require_Receive,",
+				"          Require_Shipment,",
+				"          State_Code,",
+				"          Subcontracting_Location,",
+				"          Subcontractor_No,",
+				"          Depot,",
+				"          Site_Code = source2@Site_Code,",
+				"          site_code = source2@site_code,",
+				"          Table_Name = derivedColumn2@Table_Name,",
+				"          Table_Name = source1@Table_Name,",
+				"          Columns,",
+				"          NewColumns",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
