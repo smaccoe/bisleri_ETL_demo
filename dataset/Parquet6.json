@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "Location.parquet",
 				"folderPath": {
 					"value": "Location",
 					"type": "Expression"
