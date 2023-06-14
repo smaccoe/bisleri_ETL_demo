@@ -79,19 +79,39 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "Master_Execute",
+									"referenceName": "Master Nested Execute",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
 								"parameters": {
-									"TableNames": {
-										"value": "@variables('Table')",
-										"type": "Expression"
-									}
+									"LastItem": "BIPL - WESTBENGAL$",
+									"CurrentItem": "BIPL - ANDHRA PRADESH$",
+									"TableName": "BIPL - ANDHRA PRADESH$Location",
+									"EntityCode": "1001"
 								}
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Return Variable",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ReturnQuery",
+					"value": {
+						"value": "concat(@{activity('Execute Pipeline1').output.pipelineReturnValue.Str},@{activity('Execute Pipeline1').output.pipelineReturnValue.LastOutput})",
+						"type": "Expression"
+					}
 				}
 			}
 		],

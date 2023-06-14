@@ -183,7 +183,7 @@
 			},
 			"EntityCode": {
 				"type": "string",
-				"defaultValue": "'1001'"
+				"defaultValue": "1001"
 			}
 		},
 		"variables": {
