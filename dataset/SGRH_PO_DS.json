@@ -1,0 +1,15 @@
+{
+	"name": "SGRH_PO_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SGRHAPI",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "/fscmRestApi/resources/11.13.18.05/purchaseOrders"
+		},
+		"schema": []
+	}
+}
